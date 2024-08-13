@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
+        _horizontalInput = Input.GetAxisRaw("Horizontal"); //getting input for horizontal movement
     }
 
     private void FixedUpdate()
@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
     }
     private void InputMovement()
     {
-        if (_horizontalInput > 0)
+        //setting the direction of our movement based on the input
+        if (_horizontalInput > 0) 
         {
             rb.velocity = Vector2.right * moveSpeed * Time.fixedDeltaTime;
             sr.flipX = true;

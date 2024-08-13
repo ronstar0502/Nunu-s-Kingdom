@@ -15,12 +15,18 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        //checking if the player is overlapping a building spot when pressing space to build
         if (isOverlappingBuildingSpot && Input.GetKeyDown(KeyCode.Space))
         {
-            _buildingSpot.BuildAtSpot();
+            //checking if there iss a building already at the building spot
+            if (!_buildingSpot.hasBuilding)
+            {
+                _buildingSpot.BuildAtSpot();
+            }
         }
     }
 
+    //on trigger -> checks if  the player is overlapping a building spot
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("BuildingSpot"))
