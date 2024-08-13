@@ -1,17 +1,28 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingSpot : MonoBehaviour
 {
-    [SerializeField] private GameObject building;
+    [SerializeField] private GameObject buildMenu;
+    [SerializeField] private List<GameObject> buildingPrefabs;
     public bool hasBuilding;
-    public void BuildAtSpot()
+
+    private void Awake()
     {
-        if (hasBuilding) return; 
-        GameObject spotBuilding = Instantiate(building,transform.position,Quaternion.identity,transform);
-        hasBuilding = true;
+        buildMenu.SetActive(false);
     }
-    public GameObject GetBuilding()
+    public void BuildAtSpot(GameObject building)
     {
-        return building;
+        if (hasBuilding) return;
+        Instantiate(building, transform.position, Quaternion.identity, transform);
+        print("instatiated");
+        hasBuilding = true;
+        buildMenu.SetActive(false);
+    }
+
+    public void EnableBuildMenu()
+    {
+        buildMenu.SetActive(true);
+        buildMenu.GetComponent<BuildMenuUI>().InitBuildMenu(buildingPrefabs,this);
     }
 }

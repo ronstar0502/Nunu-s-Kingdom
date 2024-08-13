@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
             //checking if there iss a building already at the building spot
             if (!_buildingSpot.hasBuilding)
             {
-                _buildingSpot.BuildAtSpot();
+                _buildingSpot.EnableBuildMenu();
             }
         }
     }

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2702879217558905645}
   - component: {fileID: 3095828887650829364}
-  - component: {fileID: 4075651118173316858}
+  - component: {fileID: 3074490680139794128}
+  - component: {fileID: -4329490507199403375}
   m_Layer: 0
-  m_Name: Weaponry
+  m_Name: Barracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,9 +74,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 0.452595, g: 0.9528302, b: 0.31011927, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 567bf7d17f771ab438bee5a5c5ac6e86, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4075651118173316858
+--- !u!114 &3074490680139794128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,12 +95,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 8171013364113157511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1c88d05175ad23419abf02bbe29f487, type: 3}
+  m_Script: {fileID: 11500000, guid: 52cff0ca43a51f24db0998a09d7206c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4329490507199403375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171013364113157511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104179a8fb9caac40b033927cdd55e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData:
-    buildingSprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-    buildingName: Weaponry
-    buildingHP: 250
+    buildingSprite: {fileID: 21300000, guid: 567bf7d17f771ab438bee5a5c5ac6e86, type: 3}
+    buildingName: Barracks
+    buildingHP: 600
     buildingTime: 3
-    cost: 20
+    cost: 150
