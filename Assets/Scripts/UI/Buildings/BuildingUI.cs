@@ -8,6 +8,8 @@ public class BuildingUI : MonoBehaviour
     [SerializeField] private Image buildingSprite;
     public GameObject buildingObject;
     private BuildingSpot buildingSpot;
+
+    //method to initialize the building UI in the building menu
     public void InitBuildingItemUI(string name, int cost,Sprite sprite ,GameObject building,BuildingSpot currentBuildingSpot)
     {
         buildingName.text = $"{name}";
@@ -17,6 +19,7 @@ public class BuildingUI : MonoBehaviour
         buildingSpot = currentBuildingSpot;
     }
 
+    //method for the button in the build ui to build the specific building
     public void ConstructBuilding()
     {
         print("clicked build");

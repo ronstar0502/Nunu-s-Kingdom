@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    protected BuildingData buildingData;
+    protected BuildingData buildingData; //seperated the data to different script for easier use
 
     private void Awake()
     {

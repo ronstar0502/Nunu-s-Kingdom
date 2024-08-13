@@ -7,6 +7,8 @@ public class BuildMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject buildMenuScrollViewContent;
     [SerializeField] private GameObject buildingUIPrefab;
+
+    //method to initialize the build menu
     public void InitBuildMenu(List<GameObject> buildings,BuildingSpot buildingSpot)
     {
         foreach (GameObject buildingObj in buildings)

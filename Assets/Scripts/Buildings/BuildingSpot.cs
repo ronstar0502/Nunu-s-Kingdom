@@ -11,6 +11,7 @@ public class BuildingSpot : MonoBehaviour
     {
         buildMenu.SetActive(false);
     }
+    //method to build a building at the current building spot
     public void BuildAtSpot(GameObject building)
     {
         if (hasBuilding) return;
@@ -20,6 +21,7 @@ public class BuildingSpot : MonoBehaviour
         buildMenu.SetActive(false);
     }
 
+    //method to enable and initialize the build menue
     public void EnableBuildMenu()
     {
         buildMenu.SetActive(true);
