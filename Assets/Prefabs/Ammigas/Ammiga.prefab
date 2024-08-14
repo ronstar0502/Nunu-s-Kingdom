@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8171013364113157511
+--- !u!1 &8534889528132189151
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2702879217558905645}
-  - component: {fileID: 3095828887650829364}
-  - component: {fileID: 5966045851807844106}
-  - component: {fileID: 2160334532056407386}
+  - component: {fileID: 2417298801306730825}
+  - component: {fileID: 2985807423966815545}
+  - component: {fileID: 2842340920559803500}
   m_Layer: 0
-  m_Name: HQ
+  m_Name: Ammiga
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2702879217558905645
+--- !u!4 &2417298801306730825
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171013364113157511}
+  m_GameObject: {fileID: 8534889528132189151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.4877, y: 3.2964, z: 1}
+  m_LocalPosition: {x: 1.6199999, y: 0.4093, z: 0}
+  m_LocalScale: {x: 1, y: 2.1047, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3095828887650829364
+--- !u!212 &2985807423966815545
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171013364113157511}
+  m_GameObject: {fileID: 8534889528132189151}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,48 +73,33 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ede8f2a829efdd243995e3311bca81ea, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0.26717696, g: 0.7169812, b: 0.48294497, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.8828125}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5966045851807844106
+--- !u!114 &2842340920559803500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171013364113157511}
+  m_GameObject: {fileID: 8534889528132189151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39d6e759d02a4bb4caecc69cbe5bc061, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dbf6940e4a9c6945a0d5fe129d62880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVillagerAmount: 0
-  currentVillaagerAmount: 0
-  villagers: []
---- !u!114 &2160334532056407386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171013364113157511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 104179a8fb9caac40b033927cdd55e0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingData:
-    buildingSprite: {fileID: 21300000, guid: ede8f2a829efdd243995e3311bca81ea, type: 3}
-    buildingName: HQ
-    buildingHP: 1500
-    buildingTime: 0
-    cost: 0
+  villagerData:
+    villagerName: Ammiga
+    maxHealth: 25
+    health: 0
+    speed: 5
+    productionCost: 10

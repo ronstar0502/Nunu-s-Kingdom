@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weaponry : Building
+public class GuardTower : Building
 {
-    //
+    //Guard Tower
 }
