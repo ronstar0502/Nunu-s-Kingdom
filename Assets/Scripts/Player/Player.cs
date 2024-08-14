@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     {
         playerData.SetInitHealth();
     }
+    /// <summary>
+    /// /
+    /// </summary>
 
     private void Update()
     {
