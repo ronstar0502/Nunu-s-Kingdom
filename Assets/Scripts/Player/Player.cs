@@ -22,8 +22,7 @@ public class Player : MonoBehaviour
             if (!_buildingSpot.hasBuilding && ! _buildingSpot.isBuildMenuOpen)
             {
                 _buildingSpot.EnableBuildMenu();
-            }
-            if (_buildingSpot.isBuildMenuOpen)
+            }else if (_buildingSpot.isBuildMenuOpen)
             {
                 _buildingSpot.DisableBuildMenu();
             }

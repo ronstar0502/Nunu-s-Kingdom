@@ -11,8 +11,8 @@ public class BuildingSpot : MonoBehaviour
 
     private void Start()
     {
-        buildMenu.SetActive(false);
         buildMenu.GetComponent<BuildMenuUI>().InitBuildMenu(buildingPrefabs, this);
+        buildMenu.SetActive(false);
     }
     //method to build a building at the current building spot
     public void BuildAtSpot(GameObject building)
