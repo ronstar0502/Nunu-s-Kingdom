@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d6e759d02a4bb4caecc69cbe5bc061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVillagerAmount: 0
-  currentVillaagerAmount: 0
+  maxVillagerAmount: 12
+  currentVillagerAmount: 0
   villagers: []
 --- !u!114 &2160334532056407386
 MonoBehaviour:
