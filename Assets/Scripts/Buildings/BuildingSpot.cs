@@ -9,8 +9,9 @@ public class BuildingSpot : MonoBehaviour
     public bool isBuildMenuOpen;
 
 
-    private void Awake()
+    private void Start()
     {
+        buildMenu.GetComponent<BuildMenuUI>().InitBuildMenu(buildingPrefabs, this);
         buildMenu.SetActive(false);
     }
     //method to build a building at the current building spot
@@ -27,7 +28,6 @@ public class BuildingSpot : MonoBehaviour
     public void EnableBuildMenu()
     {
         buildMenu.SetActive(true);
-        buildMenu.GetComponent<BuildMenuUI>().InitBuildMenu(buildingPrefabs,this);
         isBuildMenuOpen = true;
     }
     //method to disable the build menu

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2702879217558905645}
   - component: {fileID: 3095828887650829364}
-  - component: {fileID: 5966045851807844106}
-  - component: {fileID: 2160334532056407386}
+  - component: {fileID: 4075651118173316858}
+  - component: {fileID: -3906913056427987081}
   m_Layer: 0
-  m_Name: HQ
+  m_Name: Blacksmith
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ede8f2a829efdd243995e3311bca81ea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d3d56d5ff724b904c924b342e6583803, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5966045851807844106
+--- !u!114 &4075651118173316858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,13 +95,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8171013364113157511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39d6e759d02a4bb4caecc69cbe5bc061, type: 3}
+  m_Script: {fileID: 11500000, guid: fb3cff72d3027db46809d586578988c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVillagerAmount: 0
-  currentVillaagerAmount: 0
-  villagers: []
---- !u!114 &2160334532056407386
+  katanaPrefab: {fileID: 0}
+  katanaAmount: 0
+--- !u!114 &-3906913056427987081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,8 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData:
-    buildingSprite: {fileID: 21300000, guid: ede8f2a829efdd243995e3311bca81ea, type: 3}
-    buildingName: HQ
-    buildingHP: 1500
-    buildingTime: 0
-    cost: 0
+    buildingSprite: {fileID: 21300000, guid: d3d56d5ff724b904c924b342e6583803, type: 3}
+    buildingName: Blacksmith
+    buildingHP: 500
+    buildingTime: 2.5
+    cost: 100

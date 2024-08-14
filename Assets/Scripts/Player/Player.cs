@@ -12,18 +12,17 @@ public class Player : MonoBehaviour
     {
         playerData.SetInitHealth();
     }
-
+    //somethng
     private void Update()
     {
         //checking if the player is overlapping a building spot when pressing space to build
         if (isOverlappingBuildingSpot && Input.GetKeyDown(KeyCode.Space))
         {
             //checking if there iss a building already at the building spot
-            if (!_buildingSpot.hasBuilding && ! _buildingSpot.isBuildMenuOpen)
+            if (!_buildingSpot.hasBuilding && !_buildingSpot.isBuildMenuOpen)
             {
                 _buildingSpot.EnableBuildMenu();
-            }
-            if (_buildingSpot.isBuildMenuOpen)
+            }else if (_buildingSpot.isBuildMenuOpen)
             {
                 _buildingSpot.DisableBuildMenu();
             }
