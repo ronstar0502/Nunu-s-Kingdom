@@ -6,6 +6,8 @@ public class BuildingSpot : MonoBehaviour
     [SerializeField] private GameObject buildMenu;
     [SerializeField] private List<GameObject> buildingPrefabs;
     public bool hasBuilding;
+    public bool isBuildMenuOpen;
+
 
     private void Awake()
     {
@@ -26,5 +28,12 @@ public class BuildingSpot : MonoBehaviour
     {
         buildMenu.SetActive(true);
         buildMenu.GetComponent<BuildMenuUI>().InitBuildMenu(buildingPrefabs,this);
+        isBuildMenuOpen = true;
+    }
+    //method to disable the build menu
+    public void DisableBuildMenu()
+    {
+        buildMenu.SetActive(false);
+        isBuildMenuOpen = false;
     }
 }

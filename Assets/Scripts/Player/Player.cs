@@ -19,9 +19,13 @@ public class Player : MonoBehaviour
         if (isOverlappingBuildingSpot && Input.GetKeyDown(KeyCode.Space))
         {
             //checking if there iss a building already at the building spot
-            if (!_buildingSpot.hasBuilding)
+            if (!_buildingSpot.hasBuilding && ! _buildingSpot.isBuildMenuOpen)
             {
                 _buildingSpot.EnableBuildMenu();
+            }
+            if (_buildingSpot.isBuildMenuOpen)
+            {
+                _buildingSpot.DisableBuildMenu();
             }
         }
     }
