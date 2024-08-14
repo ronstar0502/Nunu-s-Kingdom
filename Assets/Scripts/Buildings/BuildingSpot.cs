@@ -9,7 +9,7 @@ public class BuildingSpot : MonoBehaviour
     public bool isBuildMenuOpen;
 
 
-    private void Awake()
+    private void Start()
     {
         buildMenu.SetActive(false);
         buildMenu.GetComponent<BuildMenuUI>().InitBuildMenu(buildingPrefabs, this);
