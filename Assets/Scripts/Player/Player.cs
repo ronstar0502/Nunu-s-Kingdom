@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     {
         playerData.SetInitHealth();
     }
-
+    //somethng
     private void Update()
     {
         //checking if the player is overlapping a building spot when pressing space to build
