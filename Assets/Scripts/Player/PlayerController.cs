@@ -30,12 +30,12 @@ public class PlayerController : MonoBehaviour
         if (_horizontalInput > 0) 
         {
             rb.velocity = Vector2.right * moveSpeed * Time.fixedDeltaTime;
-            sr.flipX = true;
+            sr.flipX = false;
         }
         else if (_horizontalInput < 0)
         {
             rb.velocity = Vector2.left * moveSpeed * Time.fixedDeltaTime;
-            sr.flipX = false;
+            sr.flipX = true;
         }
         else
         {
