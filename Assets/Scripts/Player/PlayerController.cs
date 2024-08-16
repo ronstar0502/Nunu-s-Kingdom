@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private float _horizontalInput;
+    private Animator _animator;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -31,15 +33,18 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.right * moveSpeed * Time.fixedDeltaTime;
             sr.flipX = false;
+            _animator.SetBool("isWalking",true);
         }
         else if (_horizontalInput < 0)
         {
             rb.velocity = Vector2.left * moveSpeed * Time.fixedDeltaTime;
             sr.flipX = true;
+            _animator.SetBool("isWalking", true);
         }
         else
         {
             rb.velocity = Vector2.zero;
+            _animator.SetBool("isWalking", false);
         }
     }
 }

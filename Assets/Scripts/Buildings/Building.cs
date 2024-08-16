@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-    protected BuildingData buildingData; //seperated the data to different script for easier use
-
-    private void Awake()
-    {
-        buildingData = GetComponent<BuildingDataHolder>().buildingData;
-    }
+    [SerializeField]protected BuildingData buildingData; //seperated the data to different script for easier use
     private void Start()
     {
         print(buildingData.ToString());

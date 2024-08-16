@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2702879217558905645}
   - component: {fileID: 3095828887650829364}
   - component: {fileID: 5966045851807844106}
-  - component: {fileID: 2160334532056407386}
   m_Layer: 0
   m_Name: HQ
   m_TagString: Untagged
@@ -101,21 +100,3 @@ MonoBehaviour:
   maxVillagerAmount: 12
   currentVillagerAmount: 0
   villagers: []
---- !u!114 &2160334532056407386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171013364113157511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 104179a8fb9caac40b033927cdd55e0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingData:
-    buildingSprite: {fileID: 21300000, guid: ede8f2a829efdd243995e3311bca81ea, type: 3}
-    buildingName: HQ
-    buildingHP: 1500
-    buildingTime: 0
-    cost: 0

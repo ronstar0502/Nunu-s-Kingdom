@@ -21,6 +21,11 @@ public class Enemy : MonoBehaviour
         if (transform.position.x > 0)
         {
             direction = -1;
+            sr.flipX = true;
+        }
+        else
+        {
+            sr.flipX = false;
         }
     }
 
@@ -28,10 +33,13 @@ public class Enemy : MonoBehaviour
     {
         rb.velocity = Vector2.right * enemyData.speed*Time.deltaTime*direction;
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         print("attack");
+        if (collision.gameObject.tag == "Player")
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }
