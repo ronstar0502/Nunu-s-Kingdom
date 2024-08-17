@@ -8,4 +8,9 @@ public class PlayerData
     {
         health = maxHealth;
     }
+
+    public void SubstarctSeedsAmount(int amount)
+    {
+        seedAmount -= amount;
+    }
 }

@@ -1,22 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
-    private BuildingSpot _buildingSpot;
     private void Awake()
     {
         playerData.SetInitHealth();
     }
+
+    public PlayerData GetPlayerData() { return playerData; }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("BuildingSpot")&& Input.GetKeyDown(KeyCode.Space))
+        if(collision.gameObject.CompareTag("BuildingSpot") && Input.GetKeyDown(KeyCode.Space))
         {
-            _buildingSpot = collision.gameObject.GetComponent<BuildingSpot>();
-            _buildingSpot.BuildAtSpot();
+            collision.gameObject.GetComponent<BuildingSpot>().Interact();
+        }
+        if(collision.gameObject.CompareTag("Building") && Input.GetKeyDown(KeyCode.Space)) // upgrade building
+        {
+            collision.gameObject.GetComponent<Building>().Interact();
         }
     }
+
 }
