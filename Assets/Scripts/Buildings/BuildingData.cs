@@ -22,6 +22,10 @@ public class BuildingData
         buildingHP -= damage;
     }
 
+    public void LevelUp()
+    {
+        buildingLevel++;
+    }
     public int GetNextLevelCost()
     {
         return costLevels[buildingLevel];

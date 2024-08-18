@@ -1,5 +1,98 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1222418530303470598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3977919680987811659}
+  m_Layer: 0
+  m_Name: HatchPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3977919680987811659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222418530303470598}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.47, y: 4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2702879217558905645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3104084398006100808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2276668878833894305}
+  m_Layer: 0
+  m_Name: HatchPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2276668878833894305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104084398006100808}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.89, y: -0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2702879217558905645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3541056390440491098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 428222846708303003}
+  m_Layer: 0
+  m_Name: VillagerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &428222846708303003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3541056390440491098}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.58, y: -9.27, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2702879217558905645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7499991357383543098
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4581774193652330596}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: HatchPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 7499991357383543098}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.72, y: 0, z: 0}
+  m_LocalPosition: {x: 4.73, y: -3.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -59,10 +152,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.46, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.22, y: 0.19130434, z: 0.19130434}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4581774193652330596}
+  - {fileID: 428222846708303003}
+  - {fileID: 2276668878833894305}
+  - {fileID: 3977919680987811659}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3095828887650829364
@@ -107,7 +203,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f3d3f2b13b2ca3d4f8e026bb87672cfe, type: 3}
-  m_Color: {r: 0.35955858, g: 0.754717, b: 0.39243594, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -130,15 +226,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData:
-    buildingName: 
+    buildingName: Hatchery
     buildingSprites:
     - {fileID: 21300000, guid: f3d3f2b13b2ca3d4f8e026bb87672cfe, type: 3}
     - {fileID: 21300000, guid: f3d3f2b13b2ca3d4f8e026bb87672cfe, type: 3}
     - {fileID: 21300000, guid: f3d3f2b13b2ca3d4f8e026bb87672cfe, type: 3}
-    costLevels: 000000000000000000000000
-    buildingLevel: 0
-    maxBuildingHP: 0
+    costLevels: 050000001400000023000000
+    buildingLevel: 1
+    maxBuildingHP: 800
     buildingHP: 0
-    buildingTime: 0
+    buildingTime: 2
   villagerPrefab: {fileID: 8534889528132189151, guid: 8c8723b2b56f0a3458b4d71f68aa4be7, type: 3}
-  spawnPoint: {fileID: 4581774193652330596}
+  eggPrefab: {fileID: 4536669054792532824, guid: d4733a24678803444a549359bcf470fb, type: 3}
+  eggSpawnPoints:
+  - {fileID: 4581774193652330596}
+  - {fileID: 2276668878833894305}
+  - {fileID: 3977919680987811659}
+  villagerSpawnPoint: {fileID: 428222846708303003}
+  villagerCost: 10
