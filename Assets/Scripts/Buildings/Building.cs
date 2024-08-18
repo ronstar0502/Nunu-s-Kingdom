@@ -36,8 +36,7 @@ public class Building : MonoBehaviour , IInteractable , IDamageable
     {
         if(player.GetPlayerData().seedAmount >= nextLevelCost)
         {
-            player.GetPlayerData().SubstarctSeedsAmount(nextLevelCost);
-            buildingData.buildingLevel++;
+            LevelUpBuilding();
             print($"upgraded building: {buildingData.buildingName} to level: {buildingData.buildingLevel} and cost {nextLevelCost} seeds");
             nextLevelCost = buildingData.GetNextLevelCost();
         }
@@ -45,5 +44,12 @@ public class Building : MonoBehaviour , IInteractable , IDamageable
         {
             print($"not enough seeds!! , you need {nextLevelCost} seeds and you have {player.GetPlayerData().seedAmount}");
         }
+    }
+
+    private void LevelUpBuilding()
+    {
+        player.GetPlayerData().SubstarctSeedsAmount(nextLevelCost);
+        buildingData.LevelUp();
+        sr.sprite = buildingData.buildingSprites[buildingData.buildingLevel - 1];
     }
 }

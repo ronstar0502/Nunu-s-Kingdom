@@ -1,12 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Hatchery : Building
 {
+    [Header("Prefabs")]
     [SerializeField] private GameObject villagerPrefab;
-    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private GameObject eggPrefab;
+    [Header("Transforms")]
+    [SerializeField] private Transform[] eggSpawnPoints = new Transform[3];
+    [SerializeField] private Transform villagerSpawnPoint;
+    [Header("Variables")]
+    [SerializeField] private int villagerCost;
     private HQ HQ;
+    private int eggsHatching;
 
     private void Start()
     {
@@ -22,12 +27,19 @@ public class Hatchery : Building
     }
     public void RecruitVillager()
     {
-        if (HQ.CanRecruitVillager())
+        if (HQ.CanRecruitVillager() && eggsHatching < eggSpawnPoints.Length)
         {
-            GameObject newVillager = Instantiate(villagerPrefab, spawnPoint.position,Quaternion.identity);
-            HQ.AddVillager(newVillager);
+            
+            GameObject newEgg = Instantiate(eggPrefab,eggSpawnPoints[eggsHatching]);
+            VillagerEgg villagerEgg = newEgg.GetComponent<VillagerEgg>();
+            villagerEgg.InitEgg(villagerPrefab, villagerSpawnPoint);
+            eggsHatching++;
         }
     }
 
-    
+    public void EggHatch()
+    {
+        eggsHatching--;
+    }
+   
 }

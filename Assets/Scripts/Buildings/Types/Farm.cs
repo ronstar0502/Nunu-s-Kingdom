@@ -7,5 +7,4 @@ public class Farm : Building
     [SerializeField]private List<GameObject> farmers;
     [SerializeField]private GameObject farmOwner;
 
-
 }

@@ -142,9 +142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData:
-    maxHealth: 20
+    maxHealth: 100
     health: 0
-    seedAmount: 0
+    seedAmount: 25
 --- !u!61 &5448610570639379147
 BoxCollider2D:
   m_ObjectHideFlags: 0

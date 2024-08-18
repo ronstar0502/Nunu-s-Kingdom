@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
     public PlayerData GetPlayerData() { return playerData; }
     private void OnTriggerStay2D(Collider2D collision)
     {
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if(collision.gameObject.CompareTag("BuildingSpot") && Input.GetKeyDown(KeyCode.Space))
         {
             collision.gameObject.GetComponent<BuildingSpot>().Interact();
@@ -19,6 +23,6 @@ public class Player : MonoBehaviour
         {
             collision.gameObject.GetComponent<Building>().Interact();
         }
+        
     }
-
 }
