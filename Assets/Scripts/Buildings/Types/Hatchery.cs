@@ -11,11 +11,13 @@ public class Hatchery : Building
     [Header("Variables")]
     [SerializeField] private int villagerCost;
     private HQ HQ;
+    private int maxEggHatching;
     private int eggsHatching;
 
     private void Start()
     {
         HQ =  FindObjectOfType<HQ>();
+        maxEggHatching = buildingData.buildingLevel;
     }
 
     private void Update()
@@ -27,7 +29,7 @@ public class Hatchery : Building
     }
     public void RecruitVillager()
     {
-        if (HQ.CanRecruitVillager() && eggsHatching < eggSpawnPoints.Length)
+        if (HQ.CanRecruitVillager() && eggsHatching < maxEggHatching)
         {
             
             GameObject newEgg = Instantiate(eggPrefab,eggSpawnPoints[eggsHatching]);
@@ -41,5 +43,12 @@ public class Hatchery : Building
     {
         eggsHatching--;
     }
-   
+
+    protected override void LevelUpBuilding()
+    {
+        base.LevelUpBuilding();
+        maxEggHatching = buildingData.buildingLevel;
+        print($"hatchery can hatch {maxEggHatching} now");
+    }
+
 }

@@ -7,7 +7,8 @@ public class BuildingData
     [Header("Building Sprites And Levels")]
     public Sprite[] buildingSprites;
     public int[] costLevels;
-    public int buildingLevel;
+    public int maxBuildingLevel = 3;
+    public int buildingLevel = 1;
     [Header("Building Data")]
     public float maxBuildingHP;
     public float buildingHP;
@@ -28,7 +29,7 @@ public class BuildingData
     }
     public int GetNextLevelCost()
     {
-        return costLevels[buildingLevel];
+        return costLevels[buildingLevel-1];
     }
     public override string ToString()
     {
