@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Building : MonoBehaviour , IInteractable , IDamageable
+public class Building : MonoBehaviour, IInteractable, IDamageable
 {
     [SerializeField] protected BuildingData buildingData; //seperated the data to different script for easier use
     protected int nextLevelCost;
@@ -34,19 +34,22 @@ public class Building : MonoBehaviour , IInteractable , IDamageable
 
     private void UpgradeBuilding()
     {
-        if(player.GetPlayerData().seedAmount >= nextLevelCost)
+        if(buildingData.buildingLevel < buildingData.maxBuildingLevel)
         {
-            LevelUpBuilding();
-            print($"upgraded building: {buildingData.buildingName} to level: {buildingData.buildingLevel} and cost {nextLevelCost} seeds");
+            if(player.GetPlayerData().seedAmount >= nextLevelCost)
+            {
+                LevelUpBuilding();
+                print($"upgraded building: {buildingData.buildingName} to level: {buildingData.buildingLevel} and cost {nextLevelCost} seeds");                
+            }
+            else
+            {
+                print($"not enough seeds!! , you need {nextLevelCost} seeds and you have {player.GetPlayerData().seedAmount}");
+            }
             nextLevelCost = buildingData.GetNextLevelCost();
-        }
-        else
-        {
-            print($"not enough seeds!! , you need {nextLevelCost} seeds and you have {player.GetPlayerData().seedAmount}");
         }
     }
 
-    private void LevelUpBuilding()
+    protected virtual void LevelUpBuilding()
     {
         player.GetPlayerData().SubstarctSeedsAmount(nextLevelCost);
         buildingData.LevelUp();

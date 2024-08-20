@@ -600,6 +600,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5926698070870205923, guid: 9478ef78475a02b4e82681e2c27f609e, type: 3}
+      propertyPath: buildingData.costLevels.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926698070870205923, guid: 9478ef78475a02b4e82681e2c27f609e, type: 3}
+      propertyPath: buildingData.costLevels.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926698070870205923, guid: 9478ef78475a02b4e82681e2c27f609e, type: 3}
+      propertyPath: buildingData.costLevels.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8171013364113157511, guid: 9478ef78475a02b4e82681e2c27f609e, type: 3}
       propertyPath: m_Name
       value: Hatchery

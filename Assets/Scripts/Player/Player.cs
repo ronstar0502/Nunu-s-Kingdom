@@ -11,18 +11,23 @@ public class Player : MonoBehaviour
     public PlayerData GetPlayerData() { return playerData; }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            print("pressed space");
+            print($"object tag {collision.gameObject.tag}");
+            if(collision.gameObject.CompareTag("BuildingSpot"))
+            {
+                collision.gameObject.GetComponent<BuildingSpot>().Interact();
+            }
+            if(collision.gameObject.CompareTag("Building")) // upgrade building
+            {
+                collision.gameObject.GetComponent<Building>().Interact();
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("BuildingSpot") && Input.GetKeyDown(KeyCode.Space))
-        {
-            collision.gameObject.GetComponent<BuildingSpot>().Interact();
-        }
-        if(collision.gameObject.CompareTag("Building") && Input.GetKeyDown(KeyCode.Space)) // upgrade building
-        {
-            collision.gameObject.GetComponent<Building>().Interact();
-        }
         
     }
 }
