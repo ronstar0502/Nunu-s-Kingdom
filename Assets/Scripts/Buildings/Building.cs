@@ -25,6 +25,10 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     public void TakeDamage(int damage)
     {
         buildingData.TakeDamage(damage);
+        if (buildingData.buildingHP <= 0)
+        {
+            DestroyBuilding();
+        }
     }
 
     public void Interact() //interact for level up
@@ -54,5 +58,13 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
         player.GetPlayerData().SubstarctSeedsAmount(nextLevelCost); //substracts seed from player based on level up cost
         buildingData.LevelUp(); //levels up building by adding 1 to the level
         sr.sprite = buildingData.buildingSprites[buildingData.buildingLevel - 1]; //changes the building visual based on level
+    }
+    private void DestroyBuilding()
+    {
+        //put building on destroy state
+        if (this!=null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

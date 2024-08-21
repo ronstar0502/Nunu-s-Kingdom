@@ -172,7 +172,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 3581f13b0089e254caf836bb233b4c88, type: 3}
-  m_Color: {r: 0.6603774, g: 0.56381273, b: 0.56381273, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -201,6 +201,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 3581f13b0089e254caf836bb233b4c88, type: 3}
     - {fileID: 21300000, guid: 3581f13b0089e254caf836bb233b4c88, type: 3}
     costLevels: 0a000000190000002d00000046000000
+    maxBuildingLevel: 3
     buildingLevel: 1
     maxBuildingHP: 850
     buildingHP: 0

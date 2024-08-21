@@ -72,8 +72,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2702879217558905645}
   - component: {fileID: 3095828887650829364}
-  - component: {fileID: 4075651118173316858}
   - component: {fileID: 9137399245546576632}
+  - component: {fileID: 5696290463779324146}
   m_Layer: 0
   m_Name: Blacksmith
   m_TagString: Building
@@ -151,35 +151,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4075651118173316858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171013364113157511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb3cff72d3027db46809d586578988c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingData:
-    buildingName: Blacksmith
-    buildingSprites:
-    - {fileID: 21300000, guid: ff897f554be83ed4bbe03c089e3526d1, type: 3}
-    - {fileID: 21300000, guid: ff897f554be83ed4bbe03c089e3526d1, type: 3}
-    - {fileID: 21300000, guid: ff897f554be83ed4bbe03c089e3526d1, type: 3}
-    costLevels: 0a000000190000002d000000
-    buildingLevel: 1
-    maxBuildingHP: 1000
-    buildingHP: 0
-    buildingTime: 2.5
-  weaponPrefab: {fileID: 1218095432757400823, guid: 13117e2a28c90444996586d5f324f513, type: 3}
-  weaponVisualTransforms:
-  - {fileID: 1883510839125616517}
-  - {fileID: 2512952435679497704}
-  - {fileID: 1180830404276743344}
-  weaponName: Katana
 --- !u!61 &9137399245546576632
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -225,6 +196,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.139774, y: 33.17141}
   m_EdgeRadius: 0
+--- !u!114 &5696290463779324146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171013364113157511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb3cff72d3027db46809d586578988c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingData:
+    buildingName: 
+    buildingSprites:
+    - {fileID: 21300000, guid: ff897f554be83ed4bbe03c089e3526d1, type: 3}
+    - {fileID: 21300000, guid: ff897f554be83ed4bbe03c089e3526d1, type: 3}
+    - {fileID: 21300000, guid: ff897f554be83ed4bbe03c089e3526d1, type: 3}
+    costLevels: 000000000000000000000000
+    maxBuildingLevel: 3
+    buildingLevel: 1
+    maxBuildingHP: 0
+    buildingHP: 0
+    buildingTime: 0
+  weaponPrefab: {fileID: 0}
+  weaponVisualTransforms:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  weaponName: 
 --- !u!1 &9051608038157180132
 GameObject:
   m_ObjectHideFlags: 0
