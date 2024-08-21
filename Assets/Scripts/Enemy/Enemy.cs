@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -9,6 +10,10 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     private int direction = 1;
+    GameObject target;
+    IDamageable targetInterface;
+    private bool isAttacking;
+    private int isWalking = 1;
 
     private void Awake()
     {
@@ -31,7 +36,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = Vector2.right * enemyData.speed*Time.deltaTime*direction;
+        rb.velocity = Vector2.right * enemyData.speed*Time.deltaTime*direction*isWalking;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -40,6 +45,33 @@ public class Enemy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable TMPtarget))
+        {
+            StopMovement();
+            target = collision.gameObject;
+            targetInterface = TMPtarget;
+            Attacking();
+        }
+    }
+    private void StopMovement()
+    {
+        isWalking = 0;
+    }
+    private void ResumeMovement()
+    {
+        isWalking = 1;
     }
 
+    private void Attacking()
+    {
+        if (target != null)
+        {
+            targetInterface.TakeDamage(enemyData.dmg);
+            Invoke("Attacking", 1f);
+        }
+        else
+        {
+            ResumeMovement();
+        }
+    }
 }
