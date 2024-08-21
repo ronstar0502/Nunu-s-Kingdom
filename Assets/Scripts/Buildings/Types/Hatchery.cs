@@ -16,25 +16,25 @@ public class Hatchery : Building
 
     private void Start()
     {
-        HQ =  FindObjectOfType<HQ>();
+        HQ =  FindObjectOfType<HQ>(); //finds the hq game object for the hatchery to work
         maxEggHatching = buildingData.buildingLevel;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F)) //placeholder for testing
         {
             RecruitVillager();
         }
     }
-    public void RecruitVillager()
+    public void RecruitVillager() //recruits a villager
     {
-        if (HQ.CanRecruitVillager() && eggsHatching < maxEggHatching)
+        if (HQ.CanRecruitVillager() && eggsHatching < maxEggHatching) //checks if the player can recruit and there are available eggs slots
         {
             
-            GameObject newEgg = Instantiate(eggPrefab,eggSpawnPoints[eggsHatching]);
+            GameObject newEgg = Instantiate(eggPrefab,eggSpawnPoints[eggsHatching]); //spawns an egg on pre determined transforms
             VillagerEgg villagerEgg = newEgg.GetComponent<VillagerEgg>();
-            villagerEgg.InitEgg(villagerPrefab, villagerSpawnPoint);
+            villagerEgg.InitEgg(villagerPrefab, villagerSpawnPoint); //sets the egg data and script
             eggsHatching++;
         }
     }
@@ -44,7 +44,7 @@ public class Hatchery : Building
         eggsHatching--;
     }
 
-    protected override void LevelUpBuilding()
+    protected override void LevelUpBuilding() //extension of level up building with more logic for hatchery
     {
         base.LevelUpBuilding();
         maxEggHatching = buildingData.buildingLevel;

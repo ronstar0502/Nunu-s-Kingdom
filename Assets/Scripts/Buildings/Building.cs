@@ -4,8 +4,8 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
 {
     [SerializeField] protected BuildingData buildingData; //seperated the data to different script for easier use
     protected int nextLevelCost;
+    protected Player player;
     private SpriteRenderer sr;
-    private Player player;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     }
     private void Start()
     {
-        print(buildingData.ToString());
+        //print(buildingData.ToString());
         nextLevelCost = buildingData.GetNextLevelCost();
     }
 
@@ -27,16 +27,16 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
         buildingData.TakeDamage(damage);
     }
 
-    public void Interact() //for level up
+    public void Interact() //interact for level up
     {
         UpgradeBuilding();
     }
 
-    private void UpgradeBuilding()
+    private void UpgradeBuilding() // method for upgrading a building when interacting with it
     {
-        if(buildingData.buildingLevel < buildingData.maxBuildingLevel)
+        if(buildingData.buildingLevel < buildingData.maxBuildingLevel) //first check if the building is ont already in max level
         {
-            if(player.GetPlayerData().seedAmount >= nextLevelCost)
+            if(player.GetPlayerData().seedAmount >= nextLevelCost) // checks if the player has enough seeds to upgrade
             {
                 LevelUpBuilding();
                 print($"upgraded building: {buildingData.buildingName} to level: {buildingData.buildingLevel} and cost {nextLevelCost} seeds");                
@@ -45,14 +45,14 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
             {
                 print($"not enough seeds!! , you need {nextLevelCost} seeds and you have {player.GetPlayerData().seedAmount}");
             }
-            nextLevelCost = buildingData.GetNextLevelCost();
+            nextLevelCost = buildingData.GetNextLevelCost(); // after level up , sets the next level up cost
         }
     }
 
-    protected virtual void LevelUpBuilding()
+    protected virtual void LevelUpBuilding() //method for building level up
     {
-        player.GetPlayerData().SubstarctSeedsAmount(nextLevelCost);
-        buildingData.LevelUp();
-        sr.sprite = buildingData.buildingSprites[buildingData.buildingLevel - 1];
+        player.GetPlayerData().SubstarctSeedsAmount(nextLevelCost); //substracts seed from player based on level up cost
+        buildingData.LevelUp(); //levels up building by adding 1 to the level
+        sr.sprite = buildingData.buildingSprites[buildingData.buildingLevel - 1]; //changes the building visual based on level
     }
 }

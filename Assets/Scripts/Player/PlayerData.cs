@@ -13,4 +13,9 @@ public class PlayerData
     {
         seedAmount -= amount;
     }
+
+    public void AddSeedsAmount(int amount)
+    {
+        seedAmount += amount;
+    }
 }

@@ -5,31 +5,34 @@ public class BuildingSpot : MonoBehaviour , IInteractable
 {
     [SerializeField] private GameObject buildingObj;
     private Player player;
-    private int buildingInitialCost;
+    private int buildingStartingCost;
 
     private void Start()
     {
         player = FindObjectOfType<Player>();
-        buildingInitialCost = buildingObj.GetComponent<Building>().GetBuildingData().costLevels[0];
+        buildingStartingCost = buildingObj.GetComponent<Building>().GetBuildingData().costLevels[0];
     }
 
     //method to build a building at the current building spot
     public void BuildAtSpot()
     {
-        if (buildingObj == null)
+        if (buildingObj == null) //check first if the buildingObj prefab is not null
         {
             print("No Building Prefab Avilable");
             return;
         }
-        Instantiate(buildingObj, transform.position, Quaternion.identity);
-        player.GetPlayerData().SubstarctSeedsAmount(buildingInitialCost);
+        Instantiate(buildingObj, transform.position, Quaternion.identity); //spawns the building at the desired position
+        player.GetPlayerData().SubstarctSeedsAmount(buildingStartingCost); //substracts seeds amount based on building starting cost
         print("instatiated");
-        Destroy(gameObject);
+
+        //add a delay with animation of the building being built?
+
+        Destroy(gameObject); //destroying the building spot after the building is built
     }
 
-    public void Interact()
+    public void Interact() //interaction with the building spot
     {
-        if(player.GetPlayerData().seedAmount >= buildingInitialCost)
+        if(player.GetPlayerData().seedAmount >= buildingStartingCost)
         {
             BuildAtSpot();
         }
