@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2702879217558905645}
   - component: {fileID: 3095828887650829364}
-  - component: {fileID: 5966045851807844106}
-  - component: {fileID: -2683729666222292435}
+  - component: {fileID: 6295904070072557041}
+  - component: {fileID: 5588828637602594391}
   m_Layer: 0
-  m_Name: HQ
+  m_Name: Farm
   m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ede8f2a829efdd243995e3311bca81ea, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.06808474, g: 0.8490566, b: 0.26065484, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5966045851807844106
+--- !u!114 &6295904070072557041
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,26 +95,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 8171013364113157511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39d6e759d02a4bb4caecc69cbe5bc061, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eb4cd4124e2bb0419bd0baf59807497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData:
-    buildingName: HQ
+    buildingName: Farm
     buildingSprites:
     - {fileID: 21300000, guid: ede8f2a829efdd243995e3311bca81ea, type: 3}
     - {fileID: 21300000, guid: ede8f2a829efdd243995e3311bca81ea, type: 3}
     - {fileID: 21300000, guid: ede8f2a829efdd243995e3311bca81ea, type: 3}
-    - {fileID: 21300000, guid: ede8f2a829efdd243995e3311bca81ea, type: 3}
-    costLevels: 000000000a0000001e00000032000000
+    costLevels: 000000000000000000000000
     maxBuildingLevel: 3
     buildingLevel: 1
-    maxBuildingHP: 1500
+    maxBuildingHP: 600
     buildingHP: 0
-    buildingTime: 0
-  maxVillagerAmount: 12
-  currentVillagerAmount: 0
-  villagers: []
---- !u!61 &-2683729666222292435
+    buildingTime: 3
+  farmerPrefab: {fileID: 8534889528132189151, guid: 8c8723b2b56f0a3458b4d71f68aa4be7, type: 3}
+  harvestRate: 2
+--- !u!61 &5588828637602594391
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -12,14 +12,14 @@ public class WeaponryBuilding : Building
     [SerializeField] private string weaponName;
     protected int weaponAmount;
 
-    protected void CraftWeapon()
+    protected void CraftWeapon() //method for crafting a weapon
     {
         weaponAmount++;
         UpdateVisualTransforms();
         print($"{weaponName} in BlackSmith: {weaponAmount}");
     }
 
-    private void UpdateVisualTransforms()
+    private void UpdateVisualTransforms() //visual transforms for amount of weapons crafted in in the weaponry building
     {
         if(weaponAmount == 1)
         {

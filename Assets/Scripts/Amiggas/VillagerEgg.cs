@@ -16,7 +16,7 @@ public class VillagerEgg : MonoBehaviour
         hatchery = FindObjectOfType<Hatchery>();
     }
 
-    public void InitEgg(GameObject villager,Transform spawnPoint )
+    public void InitEgg(GameObject villager,Transform spawnPoint ) //initializing egg data to know what to spawn after it hatches and where;
     {
         _villager = villager;
         villagerSpawnPoint = spawnPoint;
@@ -25,11 +25,16 @@ public class VillagerEgg : MonoBehaviour
     private void Update()
     {
         hatchTimer -= Time.deltaTime;
+        CanEggHatch();
+    }
+
+    private void CanEggHatch() //method to check if the egg can hatch
+    {
         if (hatchTimer <= 0f)
         {
-            GameObject villagerObj = Instantiate(_villager, villagerSpawnPoint.position ,Quaternion.identity);
+            GameObject villagerObj = Instantiate(_villager, villagerSpawnPoint.position, Quaternion.identity); // after the egg timer is over , spawns the villager
             hatchery.EggHatch();
-            Destroy(gameObject);
+            Destroy(gameObject); //after the villager spawn destroy egg
         }
     }
 }
