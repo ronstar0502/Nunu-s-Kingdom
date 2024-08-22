@@ -39,8 +39,9 @@ public class Hatchery : Building
         }
     }
 
-    public void EggHatch()
+    public void EggHatch(GameObject villager)
     {
+        HQ.AddVillager(villager);
         eggsHatching--;
     }
 

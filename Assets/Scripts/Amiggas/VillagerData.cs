@@ -10,7 +10,7 @@ public class VillagerData
     [SerializeField] protected int health;
     [SerializeField] protected float speed;
 
-    [SerializeField] protected int productionCost;
+    [SerializeField] protected int seedsCost;
 
     public void InitHealth()
     {

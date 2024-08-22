@@ -25,8 +25,10 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     public void TakeDamage(int damage)
     {
         buildingData.TakeDamage(damage);
+        buildingData.ToString();
         if (buildingData.buildingHP <= 0)
         {
+            print($"{buildingData.buildingName} Destroyed!!");
             DestroyBuilding();
         }
     }

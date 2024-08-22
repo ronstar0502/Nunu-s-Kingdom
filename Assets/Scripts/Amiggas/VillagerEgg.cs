@@ -33,7 +33,7 @@ public class VillagerEgg : MonoBehaviour
         if (hatchTimer <= 0f)
         {
             GameObject villagerObj = Instantiate(_villager, villagerSpawnPoint.position, Quaternion.identity); // after the egg timer is over , spawns the villager
-            hatchery.EggHatch();
+            hatchery.EggHatch(villagerObj);
             Destroy(gameObject); //after the villager spawn destroy egg
         }
     }
