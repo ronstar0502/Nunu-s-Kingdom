@@ -3,7 +3,7 @@ using UnityEngine;
 public class Hatchery : Building
 {
     [Header("Prefabs")]
-    [SerializeField] private GameObject villagerPrefab;
+    [SerializeField] private GameObject unemployedVillagerPrefab;
     [SerializeField] private GameObject eggPrefab;
     [Header("Transforms")]
     [SerializeField] private Transform[] eggSpawnPoints = new Transform[3];
@@ -30,18 +30,17 @@ public class Hatchery : Building
     public void RecruitVillager() //recruits a villager
     {
         if (HQ.CanRecruitVillager() && eggsHatching < maxEggHatching) //checks if the player can recruit and there are available eggs slots
-        {
-            
+        {         
             GameObject newEgg = Instantiate(eggPrefab,eggSpawnPoints[eggsHatching]); //spawns an egg on pre determined transforms
             VillagerEgg villagerEgg = newEgg.GetComponent<VillagerEgg>();
-            villagerEgg.InitEgg(villagerPrefab, villagerSpawnPoint); //sets the egg data and script
+            villagerEgg.InitEgg(unemployedVillagerPrefab, villagerSpawnPoint); //sets the egg data and script
             eggsHatching++;
         }
     }
 
     public void EggHatch(GameObject villager)
     {
-        HQ.AddVillager(villager);
+        HQ.AddUnemployedVillager(villager);
         eggsHatching--;
     }
 

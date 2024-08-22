@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingSpot : MonoBehaviour , IInteractable
+public class BuildingSpot : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject buildingObj;
     private Player player;
@@ -28,11 +28,12 @@ public class BuildingSpot : MonoBehaviour , IInteractable
         //add a delay with animation of the building being built?
 
         Destroy(gameObject); //destroying the building spot after the building is built
+
     }
 
     public void Interact() //interaction with the building spot
     {
-        if(player.GetPlayerData().seedAmount >= buildingStartingCost)
+        if (player.GetPlayerData().seedAmount >= buildingStartingCost)
         {
             BuildAtSpot();
         }

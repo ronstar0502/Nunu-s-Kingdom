@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Farm : Building
+public class Farm : ProffesionBuilding
 {
-    //villager slots
-    //generate x amount of seeds every x amount of seconds
-    //amount of seeds depends on farm level , villager amount working in the farm
-
-    [SerializeField] private GameObject farmerPrefab;
+    [Header("Farm Details")]
     [SerializeField] private float harvestRate;
-    private int[] farmerSlots = new int[3];
+    [SerializeField] private int[] farmerSlots = new int[3];
     private int currentFarmerSlots;
     private int currentWorkingVillagers;
     private int harvestAmount;
@@ -19,6 +15,14 @@ public class Farm : Building
     {
         currentFarmerSlots = farmerSlots[0];
         harvestAmount = 1; //default harvest amount for idle = no farmers
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            RecruitVillagerProffesion();
+        }
     }
 
     /*public void ActivateFarm() // method to access from game manager to activate the FarmSeeds enumerator during day;
@@ -47,14 +51,13 @@ public class Farm : Building
         player.GetPlayerData().AddSeedsAmount(harvestAmount);
     }
 
-    public void AddFarmer() //add farmer if there is an available slot // placeholder method
+    public override void RecruitVillagerProffesion() //add farmer if there is an available slot 
     {
         if (!IsFarmFull())
         {
-            currentWorkingVillagers++;
+            base.RecruitVillagerProffesion();            
         }
     }
-
     public bool IsFarmFull() //checks if there are no avalable slots
     {
         return currentWorkingVillagers == currentFarmerSlots;
