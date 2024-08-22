@@ -233,11 +233,12 @@ MonoBehaviour:
     - {fileID: 21300000, guid: f3d3f2b13b2ca3d4f8e026bb87672cfe, type: 3}
     - {fileID: 21300000, guid: f3d3f2b13b2ca3d4f8e026bb87672cfe, type: 3}
     costLevels: 000000000000000000000000
+    maxBuildingLevel: 3
     buildingLevel: 1
     maxBuildingHP: 800
     buildingHP: 0
     buildingTime: 2
-  villagerPrefab: {fileID: 8534889528132189151, guid: 8c8723b2b56f0a3458b4d71f68aa4be7, type: 3}
+  unemployedVillagerPrefab: {fileID: 8534889528132189151, guid: 8c8723b2b56f0a3458b4d71f68aa4be7, type: 3}
   eggPrefab: {fileID: 4536669054792532824, guid: d4733a24678803444a549359bcf470fb, type: 3}
   eggSpawnPoints:
   - {fileID: 4581774193652330596}

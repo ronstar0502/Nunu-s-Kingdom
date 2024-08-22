@@ -5,12 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class VillagerData
 {
-    [SerializeField] protected string villagerName;
-    [SerializeField] protected int maxHealth;
-    [SerializeField] protected int health;
-    [SerializeField] protected float speed;
-
-    [SerializeField] protected int seedsCost;
+    public string villagerName;
+    public int maxHealth;
+    public int health;
+    public float speed;
+    public int seedsCost;
 
     public void InitHealth()
     {

@@ -7,13 +7,13 @@ public class GameManger : MonoBehaviour
     [SerializeField] private float dayDuration, nightDuration;
     private Farm[] farms;
     //private List<Farm> farms;
-    private Spawner spawner;
+    //private Spawner spawner;
     public GameState gameState;
     private float lastStateSwapped=0f;
 
     private void Awake()
     {
-        spawner = FindAnyObjectByType<Spawner>();
+        //spawner = FindAnyObjectByType<Spawner>();
         gameState = GameState.Day;
     }
 
@@ -64,7 +64,7 @@ public class GameManger : MonoBehaviour
     {
         print("NightTime!");
         //DeactivateFarms();
-        spawner.StartSpawning();
+        //spawner.StartSpawning();
     }
     private void StartDayActivities() //starts all day activities
     {
@@ -81,8 +81,8 @@ public class GameManger : MonoBehaviour
             {
                 farms[0].FarmSeeds();
             }
+            print("harvested farms");
         }
-        print("harvested farms");
     }
     /*private void ActivateFarms() 
     {
