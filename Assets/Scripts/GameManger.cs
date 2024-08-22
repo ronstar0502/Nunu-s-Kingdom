@@ -63,15 +63,28 @@ public class GameManger : MonoBehaviour
     private void StartNightActivities() //starts all night activities
     {
         print("NightTime!");
-        DeactivateFarms();
+        //DeactivateFarms();
         spawner.StartSpawning();
     }
     private void StartDayActivities() //starts all day activities
     {
         print("DayTime!");
-        ActivateFarms();
+        HarvestFarms();
+        //ActivateFarms();
     }
-    private void ActivateFarms() 
+
+    private void HarvestFarms()
+    {
+        if (farms.Length > 0)
+        {
+            for (int i = 0; i < farms.Length; i++)
+            {
+                farms[0].FarmSeeds();
+            }
+        }
+        print("harvested farms");
+    }
+    /*private void ActivateFarms() 
     {
         if(farms.Length > 0)
         {
@@ -92,7 +105,7 @@ public class GameManger : MonoBehaviour
             }
         }
         print("deactivated farms");
-    }
+    }*/
 
 
 

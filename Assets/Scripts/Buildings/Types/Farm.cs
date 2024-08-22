@@ -13,13 +13,15 @@ public class Farm : Building
     private int[] farmerSlots = new int[3];
     private int currentFarmerSlots;
     private int currentWorkingVillagers;
+    private int harvestAmount;
 
     private void Start()
     {
         currentFarmerSlots = farmerSlots[0];
+        harvestAmount = 1; //default harvest amount for idle = no farmers
     }
 
-    public void ActivateFarm() // method to access from game manager to activate the FarmSeeds enumerator during day;
+    /*public void ActivateFarm() // method to access from game manager to activate the FarmSeeds enumerator during day;
     {
         StartCoroutine(FarmSeeds());
     }
@@ -36,6 +38,13 @@ public class Farm : Building
             print($"seeds amount {player.GetPlayerData().seedAmount}");
             yield return new WaitForSeconds(harvestRate);
         }
+    }*/
+
+    public void FarmSeeds()
+    {
+        harvestAmount = 1 * buildingData.buildingLevel + currentWorkingVillagers ;
+        print($"harvest amount : {harvestAmount}");
+        player.GetPlayerData().AddSeedsAmount(harvestAmount);
     }
 
     public void AddFarmer() //add farmer if there is an available slot // placeholder method

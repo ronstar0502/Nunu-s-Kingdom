@@ -33,6 +33,6 @@ public class BuildingData
     }
     public override string ToString()
     {
-        return $"{buildingName} : HP -> {buildingHP} , Building Cost -> {costLevels[0]}";
+        return $"{buildingName} : HP -> {buildingHP}";
     }
 }
