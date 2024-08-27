@@ -77,7 +77,7 @@ public class HQ : Building
 
     private void AssignArcherToGuardTower(GameObject archerToAssign) //method to tell the archer which guard tower to go to
     {
-        GuardTower guardTower = GetGuardTowerToAssignTo();
+        GuardTower guardTower = GetAvailableGuardTower();
         if (guardTower == null)
         {
             print("cant assign archer due to no guard towers slots available");
@@ -87,7 +87,7 @@ public class HQ : Building
         archer.GoToGuardTower(guardTower);
     }
 
-    private GuardTower GetGuardTowerToAssignTo() //method to get a guard tower to assign an archer that got recruited
+    /*private GuardTower GetGuardTowerToAssignTo() //method to get a guard tower to assign an archer that got recruited
     {
         if (CanAssignArcherToEveryGuardTower())
         {
@@ -110,6 +110,33 @@ public class HQ : Building
             if (!guardTowers[i].hasOpenSlots()) return false;
         }
         return true;
+    }*/
+
+    private GuardTower GetAvailableGuardTower()
+    {
+        List<GuardTower> availableTowers = GetGuardTowerForArcher();
+        if (availableTowers.Count == 0)
+        {
+            print("no available towers");
+            return null;
+        }
+        int randomTower = Random.Range(0, availableTowers.Count);
+
+        return availableTowers[randomTower];
+    }
+    
+    private List<GuardTower> GetGuardTowerForArcher()
+    {
+        List<GuardTower> availableTowers = new List<GuardTower>();
+        for (int i = 0; i < guardTowers.Count; i++)
+        {
+            if (guardTowers[i].hasOpenSlots())
+            {
+                availableTowers.Add(guardTowers[i]);
+            }
+        }
+        return availableTowers;
+
     }
 }
 
