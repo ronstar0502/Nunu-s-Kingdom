@@ -12,12 +12,10 @@ public class Hatchery : Building
     [Header("Variables")]
     [SerializeField] private int villagerCost;
     private HQ HQ;
-    private int maxEggHatching;
 
     private void Start()
     {
         HQ =  FindObjectOfType<HQ>(); //finds the hq game object for the hatchery to work
-        maxEggHatching = buildingData.level;
     }
 
     private void Update()
@@ -50,9 +48,7 @@ public class Hatchery : Building
     protected override void LevelUpBuilding() //extension of level up building with more logic for hatchery
     {
         base.LevelUpBuilding();
-        maxEggHatching = buildingData.level;
-        eggSlotsOpen[maxEggHatching - 1] = true;
-        print($"hatchery can hatch {maxEggHatching} now");
+        eggSlotsOpen[buildingData.level - 1] = true;
     }
 
     private bool HasOpenEggSlots()

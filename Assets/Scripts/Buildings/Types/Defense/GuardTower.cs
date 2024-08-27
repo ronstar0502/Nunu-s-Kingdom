@@ -25,32 +25,50 @@ public class GuardTower : Building
     public void AddArcherToGuard(GameObject archer)
     {
         archers.Add(archer);
-        Transform spotTransform = archerSpots[GetAvailableSpotIndex()];
+        int slotIndex = GetAvailableSpotIndex();
+        print($"slot index for archer placement {slotIndex}");
+        Transform spotTransform = archerSpots[slotIndex];
         archer.gameObject.transform.position = spotTransform.position;
-        archer.gameObject.transform.SetParent(spotTransform);        
+        archer.gameObject.transform.SetParent(spotTransform);
+        availableSpots[slotIndex] = false;
     }
 
     public bool hasOpenSlots()
     {
         for (int i = 0;i < buildingData.level; i++)
         {
-            if (!availableSpots[i]) return false;
+            if (availableSpots[i]) 
+            {
+                print("guard tower has open slots");
+                return true; 
+            }
         }
-        return true;
+        return false;
+
     }
 
     private int GetAvailableSpotIndex()
     {
         for(int i = 0; i < buildingData.level; i++)
         {
-            if(availableSpots[i]) return i;
+            if (availableSpots[i])
+            {
+                print($"slot index: {i}");
+                return i;
+            }
         }
-        return 0;
+        return -1;
 
     }
 
     public float GetAttackRangeBonus()
     {
         return attackRangeBonus;
+    }
+
+    protected override void LevelUpBuilding()
+    {
+        base.LevelUpBuilding();
+        availableSpots[buildingData.level-1] = true;
     }
 }

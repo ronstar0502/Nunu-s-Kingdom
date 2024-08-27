@@ -23,14 +23,14 @@ public class Player : MonoBehaviour
         if(collision.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable))
         {
             interactableObj = interactable;
-            print($"object tag {collision.gameObject.tag}");
+            //print($"object tag {collision.gameObject.tag}");
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         interactableObj=null;
-        print($"object tag {collision.gameObject.tag}");
+        //print($"object tag {collision.gameObject.tag}");
     }
 
     
