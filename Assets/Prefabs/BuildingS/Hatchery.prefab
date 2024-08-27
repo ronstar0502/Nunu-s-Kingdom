@@ -93,6 +93,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2702879217558905645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4095392027359991794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 691639759677029624}
+  m_Layer: 0
+  m_Name: VillagerSpawnPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &691639759677029624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095392027359991794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.1, y: -9.27, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2702879217558905645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7499991357383543098
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,6 +189,7 @@ Transform:
   m_Children:
   - {fileID: 4581774193652330596}
   - {fileID: 428222846708303003}
+  - {fileID: 691639759677029624}
   - {fileID: 2276668878833894305}
   - {fileID: 3977919680987811659}
   m_Father: {fileID: 0}
@@ -226,25 +258,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a337dac6fcced64f821b4679a44fa02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingData:
-    buildingName: Hatchery
-    buildingSprites:
-    - {fileID: 21300000, guid: f3d3f2b13b2ca3d4f8e026bb87672cfe, type: 3}
-    - {fileID: 21300000, guid: f3d3f2b13b2ca3d4f8e026bb87672cfe, type: 3}
-    - {fileID: 21300000, guid: f3d3f2b13b2ca3d4f8e026bb87672cfe, type: 3}
-    costLevels: 000000000000000000000000
-    maxBuildingLevel: 3
-    buildingLevel: 1
-    maxBuildingHP: 800
-    buildingHP: 0
-    buildingTime: 2
+  buildingData: {fileID: 11400000, guid: c3d89b19df226de489860fe862f31581, type: 2}
+  buildingHealth: 0
   unemployedVillagerPrefab: {fileID: 8534889528132189151, guid: 8c8723b2b56f0a3458b4d71f68aa4be7, type: 3}
   eggPrefab: {fileID: 4536669054792532824, guid: d4733a24678803444a549359bcf470fb, type: 3}
   eggSpawnPoints:
   - {fileID: 4581774193652330596}
   - {fileID: 2276668878833894305}
   - {fileID: 3977919680987811659}
-  villagerSpawnPoint: {fileID: 428222846708303003}
+  villagerSpawnPoints:
+  - {fileID: 428222846708303003}
+  - {fileID: 691639759677029624}
   villagerCost: 10
 --- !u!61 &6878812667053373355
 BoxCollider2D:

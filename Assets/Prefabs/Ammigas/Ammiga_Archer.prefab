@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.54089534, g: 0.59434354, b: 0.6132076, a: 1}
   m_FlipX: 0
@@ -101,6 +101,9 @@ MonoBehaviour:
     villagerName: Archer
     maxHealth: 25
     health: 0
-    speed: 15
+    speed: 5.25
     seedsCost: 0
   villagerTool: {fileID: 5341729962025019665, guid: 98b47637b53dccd46bdb1def65d50be1, type: 3}
+  villagerState: 0
+  leftPatrolBorder: 0
+  rightPatrolBorder: 0

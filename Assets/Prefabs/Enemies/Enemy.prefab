@@ -177,3 +177,4 @@ MonoBehaviour:
     dmg: 25
     speed: 100
     name: Goblin
+  spawnOffsetY: -2.69619

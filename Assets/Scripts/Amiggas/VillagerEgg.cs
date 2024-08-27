@@ -9,6 +9,7 @@ public class VillagerEgg : MonoBehaviour
     private GameObject _villager;
     private Transform villagerSpawnPoint;
     private float hatchTimer;
+    private int eggSlot;
 
     private void Start()
     {
@@ -16,10 +17,11 @@ public class VillagerEgg : MonoBehaviour
         hatchery = FindObjectOfType<Hatchery>();
     }
 
-    public void InitEgg(GameObject villager,Transform spawnPoint ) //initializing egg data to know what to spawn after it hatches and where;
+    public void InitEgg(GameObject villager,Transform spawnPoint , int eggSlot) //initializing egg data to know what to spawn after it hatches and where;
     {
         _villager = villager;
         villagerSpawnPoint = spawnPoint;
+        this.eggSlot = eggSlot;
     }
 
     private void Update()
@@ -33,7 +35,7 @@ public class VillagerEgg : MonoBehaviour
         if (hatchTimer <= 0f)
         {
             GameObject villagerObj = Instantiate(_villager, villagerSpawnPoint.position, Quaternion.identity); // after the egg timer is over , spawns the villager
-            hatchery.EggHatch(villagerObj);
+            hatchery.EggHatch(villagerObj, eggSlot);
             Destroy(gameObject); //after the villager spawn destroy egg
         }
     }

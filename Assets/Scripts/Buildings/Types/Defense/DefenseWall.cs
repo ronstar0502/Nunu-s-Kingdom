@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class DefenseWall : Building
 {
-    //regular defense wall - level 1
-    //medium defense wall , has more hp - level 2
-    //big defense wall , more hp , ability to but an additional deefnse upgrade on like spike to deal some damage back to the enemy
+    //big defense wall (max level), ability to but an additional deefnse upgrade on like spike to deal some damage back to the enemy 
+    //if enemy hits the wall and the wall is max level it will trigger the damage reflect method
+
+    public float reflectDamage;
+
 }

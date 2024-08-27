@@ -177,3 +177,4 @@ MonoBehaviour:
     dmg: 50
     speed: 70
     name: Big Goblin
+  spawnOffsetY: -1.450436

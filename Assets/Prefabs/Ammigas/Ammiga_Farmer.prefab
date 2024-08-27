@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.6886792, g: 0.5267349, b: 0.20465466, a: 1}
   m_FlipX: 0
@@ -101,6 +101,9 @@ MonoBehaviour:
     villagerName: Farmer
     maxHealth: 35
     health: 0
-    speed: 12
+    speed: 4.75
     seedsCost: 0
   villagerTool: {fileID: 2652840577269973180, guid: c3d05136d185f414f8977fad9cc319f1, type: 3}
+  villagerState: 0
+  leftPatrolBorder: 0
+  rightPatrolBorder: 0

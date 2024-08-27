@@ -5,31 +5,22 @@ using UnityEngine.SocialPlatforms;
 public class GameManger : MonoBehaviour
 {
     [SerializeField] private float dayDuration, nightDuration;
-    private Farm[] farms;
-    //private List<Farm> farms;
-    //private Spawner spawner;
+    private HQ HQ; // will be pre built
+    private Spawner spawner;
     public GameState gameState;
     private float lastStateSwapped=0f;
 
     private void Awake()
     {
-        //spawner = FindAnyObjectByType<Spawner>();
+        spawner = FindAnyObjectByType<Spawner>();
         gameState = GameState.Day;
+        HQ = FindObjectOfType<HQ>();
     }
 
-    private void Start()
-    {
-        farms = FindObjectsByType<Farm>(FindObjectsSortMode.None);
-    }
     void Update()
     {
         ChangeStateTimerCheck();
     }
-
-    /*public void AddFarm(Farm farm)
-    {
-        farms.Add(farm);
-    }*/
     private void ChangeStateTimerCheck() //check if game state needs to change based on time for state of Day/Night
     {
         if (Time.time >= lastStateSwapped + dayDuration && gameState == GameState.Day)
@@ -42,7 +33,6 @@ public class GameManger : MonoBehaviour
         {
             SetState(GameState.Day);
             lastStateSwapped = Time.time;
-            print("DayTime!");
         }
     }
 
@@ -63,50 +53,20 @@ public class GameManger : MonoBehaviour
     private void StartNightActivities() //starts all night activities
     {
         print("NightTime!");
-        //DeactivateFarms();
-        //spawner.StartSpawning();
+        spawner.StartSpawning();
     }
     private void StartDayActivities() //starts all day activities
     {
         print("DayTime!");
-        HarvestFarms();
-        //ActivateFarms();
+        HarvestFarm();
     }
 
-    private void HarvestFarms()
+    private void HarvestFarm()
     {
-        if (farms.Length > 0)
+        if (HQ.farm != null)
         {
-            for (int i = 0; i < farms.Length; i++)
-            {
-                farms[0].FarmSeeds();
-            }
-            print("harvested farms");
+            HQ.farm.FarmSeeds();
         }
     }
-    /*private void ActivateFarms() 
-    {
-        if(farms.Length > 0)
-        {
-            for (int i = 0; i < farms.Length; i++)
-            {
-                farms[0].ActivateFarm();
-            }
-        }
-        print("activated farms");
-    }
-    private void DeactivateFarms()
-    {
-        if (farms.Length > 0)
-        {
-            for (int i = 0; i < farms.Length; i++)
-            {
-                farms[0].DeactivateFarm();
-            }
-        }
-        print("deactivated farms");
-    }*/
-
-
-
+    
 }

@@ -98,22 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d6e759d02a4bb4caecc69cbe5bc061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingData:
-    buildingName: HQ
-    buildingSprites:
-    - {fileID: 21300000, guid: 0115e559f8f3d744c92b75e007712c61, type: 3}
-    - {fileID: 21300000, guid: 0115e559f8f3d744c92b75e007712c61, type: 3}
-    - {fileID: 21300000, guid: 0115e559f8f3d744c92b75e007712c61, type: 3}
-    - {fileID: 21300000, guid: 0115e559f8f3d744c92b75e007712c61, type: 3}
-    costLevels: 000000000a0000001e00000032000000
-    maxBuildingLevel: 3
-    buildingLevel: 1
-    maxBuildingHP: 1500
-    buildingHP: 0
-    buildingTime: 0
+  buildingData: {fileID: 11400000, guid: 96a5d91cfe3002e44bdb7f9737787991, type: 2}
+  buildingHealth: 0
+  unemployedVillagers: []
+  proffesionVillagers: []
   maxVillagerAmount: 12
   currentVillagerAmount: 0
-  villagers: []
 --- !u!61 &-2683729666222292435
 BoxCollider2D:
   m_ObjectHideFlags: 0

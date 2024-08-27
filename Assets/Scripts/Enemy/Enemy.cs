@@ -7,6 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]EnemyData enemyData;
+    [SerializeField]float spawnOffsetY;
     Rigidbody2D rb;
     SpriteRenderer sr;
     private int direction = 1;
@@ -32,8 +33,8 @@ public class Enemy : MonoBehaviour
         {
             sr.flipX = false;
         }
+        transform.position = new Vector3(transform.position.x, spawnOffsetY, 0f);
     }
-
     private void FixedUpdate()
     {
         rb.velocity = Vector2.right * enemyData.speed*Time.deltaTime*direction*isWalking;

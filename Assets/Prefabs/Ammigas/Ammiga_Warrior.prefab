@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.5471698, g: 0.21528395, b: 0.12130651, a: 1}
   m_FlipX: 0
@@ -101,6 +101,9 @@ MonoBehaviour:
     villagerName: Warrior
     maxHealth: 50
     health: 0
-    speed: 10
+    speed: 4.5
     seedsCost: 0
   villagerTool: {fileID: 1218095432757400823, guid: 13117e2a28c90444996586d5f324f513, type: 3}
+  villagerState: 0
+  leftPatrolBorder: 0
+  rightPatrolBorder: 0
