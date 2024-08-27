@@ -22,15 +22,14 @@ public class GuardTower : Building
         HQ.AddGuardTower(gameObject.GetComponent<GuardTower>());
     }
 
-    public void AddArcherToGuard(GameObject archer)
+    public void AddArcherToGuard(GameObject archer,int slot)
     {
         archers.Add(archer);
-        int slotIndex = GetAvailableSpotIndex();
-        print($"slot index for archer placement {slotIndex}");
-        Transform spotTransform = archerSpots[slotIndex];
+        print($"slot index for archer placement {slot}");
+        Transform spotTransform = archerSpots[slot];
         archer.gameObject.transform.position = spotTransform.position;
         archer.gameObject.transform.SetParent(spotTransform);
-        availableSpots[slotIndex] = false;
+        //availableSpots[slot] = false;
     }
 
     public bool hasOpenSlots()
@@ -47,13 +46,14 @@ public class GuardTower : Building
 
     }
 
-    private int GetAvailableSpotIndex()
+    public int GetAvailableSpotIndex()
     {
         for(int i = 0; i < buildingData.level; i++)
         {
             if (availableSpots[i])
             {
-                print($"slot index: {i}");
+                availableSpots[i] = false;
+                print($"slot index: {i} -> available? {availableSpots[i]}");
                 return i;
             }
         }
