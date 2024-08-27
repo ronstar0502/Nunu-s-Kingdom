@@ -121,7 +121,6 @@ public class HQ : Building
             return null;
         }
         int randomTower = Random.Range(0, availableTowers.Count);
-
         return availableTowers[randomTower];
     }
     
