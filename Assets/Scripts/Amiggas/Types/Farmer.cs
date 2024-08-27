@@ -4,13 +4,5 @@ using UnityEngine;
 
 public class Farmer : Villager
 {
-    void Start()
-    {
-        
-    }
 
-    void Update()
-    {
-        
-    }
 }

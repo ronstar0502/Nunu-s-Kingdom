@@ -1,3 +1,5 @@
+using System.Numerics;
+
 [System.Serializable]
 public class EnemyData 
 {

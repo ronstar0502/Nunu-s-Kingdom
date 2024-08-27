@@ -17,21 +17,6 @@ public class Player : MonoBehaviour
         }
     }
     public PlayerData GetPlayerData() { return playerData; }
-    /*private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            print("pressed space");
-            if(collision.gameObject.CompareTag("BuildingSpot"))
-            {
-                collision.gameObject.GetComponent<BuildingSpot>().Interact();
-            }
-            if(collision.gameObject.CompareTag("Building")) // upgrade building
-            {
-                collision.gameObject.GetComponent<Building>().Interact();
-            }
-        }
-    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -47,4 +32,6 @@ public class Player : MonoBehaviour
         interactableObj=null;
         print($"object tag {collision.gameObject.tag}");
     }
+
+    
 }
