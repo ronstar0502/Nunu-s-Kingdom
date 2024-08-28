@@ -12,9 +12,9 @@ public class Farm : ProffesionBuilding
 
     //TBD: visualization of farmers
 
-    private void Start()
+    protected override void Start()
     {
-        HQ HQ = FindObjectOfType<HQ>();
+        base.Start();
         HQ.SetFarm(gameObject.GetComponent<Farm>());
 
         currentFarmerSlots = farmerSlots[0];
@@ -42,13 +42,13 @@ public class Farm : ProffesionBuilding
         }
     }
 
-    /*public override void RecruitVillagerProffesion() //add farmer if there is an available slot 
+    public override void RecruitVillagerProffesion() //add farmer if there is an available slot 
     {
         if (!IsFarmFull())
         {
             base.RecruitVillagerProffesion();            
         }
-    }*/
+    }
     public bool IsFarmFull() //checks if there are no avalable slots
     {
         return currentWorkingVillagers == currentFarmerSlots;
