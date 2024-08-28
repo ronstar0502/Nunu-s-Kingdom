@@ -10,13 +10,15 @@ public class Farm : ProffesionBuilding
     [SerializeField] private int currentWorkingVillagers;
     private int harvestAmount;
 
-    private void Start()
+    //TBD: visualization of farmers
+
+    protected override void Start()
     {
-        HQ HQ = FindObjectOfType<HQ>();
+        base.Start();
         HQ.SetFarm(gameObject.GetComponent<Farm>());
 
         currentFarmerSlots = farmerSlots[0];
-        harvestAmount = 1; //default harvest amount for idle = no farmers
+        harvestAmount = 1; //default harvest amount for idle = no farmers        
     }
 
     private void Update()
@@ -30,7 +32,14 @@ public class Farm : ProffesionBuilding
     {
         harvestAmount = 1 * buildingData.level + currentWorkingVillagers ;
         print($"harvest amount : {harvestAmount}");
-        player.GetPlayerData().AddSeedsAmount(harvestAmount);
+        if (player != null)
+        {
+            player.GetPlayerData().AddSeedsAmount(harvestAmount);
+        }
+        else
+        {
+            print("player not found!!");
+        }
     }
 
     public override void RecruitVillagerProffesion() //add farmer if there is an available slot 

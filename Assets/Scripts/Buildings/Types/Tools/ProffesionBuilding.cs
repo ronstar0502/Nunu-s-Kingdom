@@ -10,10 +10,10 @@ public class ProffesionBuilding : Building
     [Header("Other Data")]
     [SerializeField] private string toolName;
     [SerializeField] private float changeProffesionDelay;
-    private HQ HQ;
-    private Villager villager;
+    protected HQ HQ;
+    protected Villager villager;
 
-    private void Start()
+    protected virtual void Start()
     {
         HQ = FindObjectOfType<HQ>();
         villager = villlagerProffesionPrefab.GetComponent<Villager>();

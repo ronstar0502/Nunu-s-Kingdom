@@ -14,12 +14,32 @@ public class GuardTower : Building
     [Header("Archers Data")]
     [SerializeField] private List<GameObject> archers;
     [SerializeField] private float attackRangeBonus;
+
+    private HQ HQ;
     private int archersInGuard;
 
     private void Start()
     {
-        HQ HQ = FindObjectOfType<HQ>();
+        HQ = FindObjectOfType<HQ>();
         HQ.AddGuardTower(gameObject.GetComponent<GuardTower>());
+        
+        CanAssignArcher();
+    }
+
+    public void CanAssignArcher()
+    {
+        if (hasOpenSlots() && HQ.ArcherCount()>0)
+        {
+            GameObject archerToassign = HQ.GetRandomArcher();
+            if (archerToassign != null)
+            {
+                archerToassign.gameObject.GetComponent<Archer>().GoToGuardTower(gameObject.GetComponent<GuardTower>());
+            }
+            else
+            {
+                print("no archers found");
+            }
+        }
     }
 
     public void AddArcherToGuard(GameObject archer,int slot)
@@ -70,5 +90,7 @@ public class GuardTower : Building
     {
         base.LevelUpBuilding();
         availableSpots[buildingData.level-1] = true;
+
+        CanAssignArcher();
     }
 }
