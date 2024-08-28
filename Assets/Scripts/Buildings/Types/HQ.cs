@@ -137,5 +137,21 @@ public class HQ : Building
         return availableTowers;
 
     }
+
+    public GameObject GetRandomArcher() //for guard tower that just got built
+    {
+        for (int i = 0;i< archers.Count; i++)
+        {
+            if (!archers[i].GetComponent<Archer>().isAssigned)
+            {
+                return archers[i];
+            }
+        }   
+        return null;
+    }
+    public int ArcherCount()
+    {
+        return archers.Count;
+    }
 }
 

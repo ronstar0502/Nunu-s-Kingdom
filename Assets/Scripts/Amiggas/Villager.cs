@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Villager : MonoBehaviour
@@ -14,20 +15,25 @@ public class Villager : MonoBehaviour
     [SerializeField] protected float rightPatrolBorder;
     protected HQ HQ;
 
-    protected void Awake()
+    private void Awake()
     {
         villagerData.InitHealth();
     }
 
-    private void Start()
+    protected void Start()
     {
-        villagerState = VillagerState.Spawned;
-        Invoke(nameof(StartPatroling),1f);
-        
-        //place holder to test patrol system
+        InitVillager();
+    }
+
+    private void InitVillager()
+    {
         HQ = FindObjectOfType<HQ>();
+        //place holder to test patrol system
         leftPatrolBorder = HQ.transform.position.x - 10f;
         rightPatrolBorder = HQ.transform.position.x + 10f;
+
+        villagerState = VillagerState.Spawned;
+        Invoke(nameof(StartPatroling), 1f);
     }
 
     private void Update()
@@ -85,8 +91,9 @@ public class Villager : MonoBehaviour
     {
         targetPosition = new Vector2(recruitPosition.x, transform.position.y);
         buildingTarget = proffesionBuilding;
-    }
 
+
+    }
     protected void StartPatroling()
     {
         ChangeState(VillagerState.Patrol);
@@ -97,7 +104,7 @@ public class Villager : MonoBehaviour
         float randomPatrolPoint = Random.Range(leftPatrolBorder,rightPatrolBorder);
         targetPosition = new Vector2(randomPatrolPoint, transform.position.y);
     }
-    private void ChangeState(VillagerState state) //changing villager state
+    protected void ChangeState(VillagerState state) //changing villager state
     {
         villagerState = state;
         switch (state)
@@ -106,9 +113,10 @@ public class Villager : MonoBehaviour
                 ChangeState(VillagerState.Patrol);
                 Invoke(nameof(StartPatroling),2f);
                 break;
-            case VillagerState.ProffesionAction:             
+            case VillagerState.ProffesionAction:  
+                
                 break;
-            case VillagerState.Idle:
+            case VillagerState.InProffesionBuilding:
                 break;
             case VillagerState.Patrol:
                 VillagerPatrol();
@@ -125,7 +133,7 @@ public enum VillagerState
 {
     Spawned,
     ProffesionAction,
-    Idle,
+    InProffesionBuilding,
     Patrol,
     Combat
 }
