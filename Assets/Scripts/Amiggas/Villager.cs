@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Villager : MonoBehaviour
@@ -9,6 +8,7 @@ public class Villager : MonoBehaviour
     private GameObject buildingTarget;
     private Vector2 targetPosition;
     private bool isUnemployed = true;
+    private SpriteRenderer sr;
 
     [Header("Temporary Patrol Points")] //place holder for testing will update later
     [SerializeField] protected float leftPatrolBorder;
@@ -18,6 +18,7 @@ public class Villager : MonoBehaviour
     private void Awake()
     {
         villagerData.InitHealth();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     protected void Start()

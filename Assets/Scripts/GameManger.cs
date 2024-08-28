@@ -1,18 +1,16 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class GameManger : MonoBehaviour
 {
     [SerializeField] private float dayDuration, nightDuration;
     private HQ HQ; // will be pre built
-    //private Spawner spawner;
+    private Spawner spawner;
     public GameState gameState;
     private float lastStateSwapped=0f;
 
     private void Awake()
     {
-        //spawner = FindAnyObjectByType<Spawner>();
+        spawner = FindAnyObjectByType<Spawner>();
         gameState = GameState.Day;
         HQ = FindObjectOfType<HQ>();
     }
@@ -53,7 +51,7 @@ public class GameManger : MonoBehaviour
     private void StartNightActivities() //starts all night activities
     {
         print("NightTime!");
-        //spawner.StartSpawning();
+        spawner.StartSpawning();
     }
     private void StartDayActivities() //starts all day activities
     {
