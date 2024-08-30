@@ -10,11 +10,12 @@ public class Spawner : MonoBehaviour
     public void StartSpawning()
     {
         int amount = waves[currWave].enemiesAmount[0];
+        randomNum = Random.Range(0, 2);
         for (int i = 0; i < waves[currWave].enemies.Length; i++)
         {
             for (int j = 0; j < waves[currWave].enemiesAmount[i]; j++)
             {
-                randomNum=Random.Range(0, 2);
+                
                 spawnPosition = spawnPoints[randomNum].position;
                 Instantiate(waves[currWave].enemies[i], spawnPosition, Quaternion.identity, spawnPoints[randomNum]);
             }
