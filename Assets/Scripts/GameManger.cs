@@ -66,7 +66,7 @@ public class GameManger : MonoBehaviour
     {
         if (HQ.farm != null)
         {
-            HQ.farm.FarmSeeds();
+            HQ.FarmSeeds();
         }
     }
     

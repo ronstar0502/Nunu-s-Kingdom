@@ -7,6 +7,7 @@ public class HQ : Building
     [Header("Villagers General Info")]
     [SerializeField] private List<GameObject> unemployedVillagers;
     [SerializeField] private List<GameObject> proffesionVillagers;
+    [SerializeField] private int[] maxVillagerPerLevel = new int[3];
     [SerializeField] private int maxVillagerAmount;
     [SerializeField] private int currentVillagerAmount;
 
@@ -15,12 +16,30 @@ public class HQ : Building
     [SerializeField] private List<GameObject> warriors;
     [SerializeField] private List<GameObject> archers;
 
-    public Farm farm;
     [SerializeField]private List<GuardTower> guardTowers;
+    public Farm farm;
+    private VillageInfo villageInfoUI;
+
+    private void Start()
+    {
+        maxVillagerAmount = maxVillagerPerLevel[buildingData.level-1];
+        villageInfoUI = FindObjectOfType<VillageInfo>();
+        villageInfoUI.InitInfo(maxVillagerAmount,player.GetPlayerData().seedAmount);
+    }
+
+    protected override void LevelUpBuilding()
+    {
+        base.LevelUpBuilding();
+        maxVillagerAmount = maxVillagerPerLevel[buildingData.level-1];
+        villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
+    }
     public void AddUnemployedVillager(GameObject villager)
     {
         unemployedVillagers.Add(villager);
         currentVillagerAmount++;
+
+        villageInfoUI.SetUnemployedText(unemployedVillagers.Count);
+        villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
         print($"total villager {currentVillagerAmount} / {maxVillagerAmount} and {unemployedVillagers.Count} are unemployed");
     }
 
@@ -30,13 +49,16 @@ public class HQ : Building
         {
             case "Archery":
                 archers.Add(villager);
+                villageInfoUI.SetArchersText(archers.Count,unemployedVillagers.Count);
                 AssignArcherToGuardTower(villager);
                 break;
             case "Blacksmith":
                 warriors.Add(villager);
+                villageInfoUI.SetWarriorsText(warriors.Count, unemployedVillagers.Count);
                 break;
             case "Farm":
                 farmers.Add(villager);
+                villageInfoUI.SetFarmersText(farmers.Count, unemployedVillagers.Count);
                 break;
         }
         proffesionVillagers.Add(villager);
@@ -69,6 +91,12 @@ public class HQ : Building
     {
         print("Set te farm");
         this.farm = farm;
+    }
+
+    public void FarmSeeds()
+    {
+        farm.FarmSeeds();
+        villageInfoUI.SetSeedsText(player.GetPlayerData().seedAmount);
     }
     public void AddGuardTower(GuardTower guardTower)
     {
