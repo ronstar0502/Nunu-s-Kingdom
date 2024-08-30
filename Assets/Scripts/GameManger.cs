@@ -7,6 +7,7 @@ public class GameManger : MonoBehaviour
     private Spawner spawner;
     public GameState gameState;
     private float lastStateSwapped=0f;
+    private int currday = 1;
 
     private void Awake()
     {
@@ -55,8 +56,10 @@ public class GameManger : MonoBehaviour
     }
     private void StartDayActivities() //starts all day activities
     {
-        print("DayTime!");
+        currday++;
+        print($"Day {currday}");
         HarvestFarm();
+        currday++;
     }
 
     private void HarvestFarm()

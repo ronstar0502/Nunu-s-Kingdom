@@ -103,6 +103,14 @@ public class Villager : MonoBehaviour
     {
         print("starts patroling");
         float randomPatrolPoint = Random.Range(leftPatrolBorder,rightPatrolBorder);
+        if(randomPatrolPoint < transform.position.x)
+        {
+            sr.flipX = true;
+        }
+        else if(randomPatrolPoint > transform.position.x)
+        {
+            sr.flipX = false; 
+        }
         targetPosition = new Vector2(randomPatrolPoint, transform.position.y);
     }
     protected void ChangeState(VillagerState state) //changing villager state
