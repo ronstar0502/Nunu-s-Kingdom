@@ -5,6 +5,8 @@ using UnityEngine;
 public class CombatVillager : Villager
 {
     private GameObject targetEnemy;
+
+
     protected void SetNewTarget()
     {
 

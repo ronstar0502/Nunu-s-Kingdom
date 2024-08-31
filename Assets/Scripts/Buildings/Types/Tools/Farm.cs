@@ -60,6 +60,13 @@ public class Farm : ProffesionBuilding
         currentFarmerSlots = farmerSlots[buildingData.level-1];
     }
 
+    protected override void ChangeVillagerProffesion()
+    {
+        int randomSpawnPoint = Random.Range(0, villagerRecruitSpawnPoints.Length);
+        GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint]);
+        HQ.AddProffesionVillager(proffesionVillager, buildingData.buildingName);
+    }
+
 
 
 }

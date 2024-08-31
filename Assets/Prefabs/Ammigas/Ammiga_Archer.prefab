@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7466338137144798965}
   m_Layer: 0
   m_Name: Ammiga_Archer
-  m_TagString: Untagged
+  m_TagString: Ammiga
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8534889528132189151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6199999, y: 0.4093, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.14331, y: 0.1402261, z: 0.4710315}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -102,6 +102,7 @@ MonoBehaviour:
     maxHealth: 25
     health: 0
     speed: 5.25
+    attackRange: 3.2
     seedsCost: 0
   villagerTool: {fileID: 5341729962025019665, guid: 98b47637b53dccd46bdb1def65d50be1, type: 3}
   villagerState: 0

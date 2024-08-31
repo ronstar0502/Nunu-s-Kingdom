@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Archer : CombatVillager
@@ -11,8 +8,27 @@ public class Archer : CombatVillager
     private int guardTowerSlot;
     public bool isAssigned; //assigned archers cant get out of the tower , unassigned can go to combat 
 
+    protected override void Start()
+    {
+        InitVillager();
+        Invoke(nameof(CheckIfCanPatrol),2f);
+    }
+
+    private void CheckIfCanPatrol()
+    {
+        if (assignedGuardTower != null)
+        {
+            return;
+        }
+        if (villagerState == VillagerState.ProffesionAction || villagerState == VillagerState.InProffesionBuilding)
+        {
+            return;
+        }
+        ChangeState(VillagerState.Patrol);
+    }
     public void GoToGuardTower(GuardTower guardTower)
     {
+        ChangeState(VillagerState.ProffesionAction);
         assignedGuardTower = guardTower;
         guardTowerSlot = guardTower.GetAvailableSpotIndex();
         targetTower = new Vector2(guardTower.transform.position.x, transform.position.y);

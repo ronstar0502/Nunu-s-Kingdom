@@ -9,6 +9,7 @@ public class VillagerData
     public int maxHealth;
     public int health;
     public float speed;
+    public float attackRange;
     public int seedsCost;
 
     public void InitHealth()

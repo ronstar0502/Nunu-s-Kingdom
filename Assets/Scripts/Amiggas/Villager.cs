@@ -21,20 +21,18 @@ public class Villager : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         InitVillager();
+        ChangeState(VillagerState.Spawned);
     }
 
-    private void InitVillager()
+    protected void InitVillager()
     {
         HQ = FindObjectOfType<HQ>();
         //place holder to test patrol system
         leftPatrolBorder = HQ.transform.position.x - 10f;
         rightPatrolBorder = HQ.transform.position.x + 10f;
-
-        villagerState = VillagerState.Spawned;
-        Invoke(nameof(StartPatroling), 1f);
     }
 
     private void Update()
@@ -92,8 +90,6 @@ public class Villager : MonoBehaviour
     {
         targetPosition = new Vector2(recruitPosition.x, transform.position.y);
         buildingTarget = proffesionBuilding;
-
-
     }
     protected void StartPatroling()
     {
@@ -119,11 +115,9 @@ public class Villager : MonoBehaviour
         switch (state)
         {
             case VillagerState.Spawned:
-                ChangeState(VillagerState.Patrol);
                 Invoke(nameof(StartPatroling),2f);
                 break;
-            case VillagerState.ProffesionAction:  
-                
+            case VillagerState.ProffesionAction:                
                 break;
             case VillagerState.InProffesionBuilding:
                 break;

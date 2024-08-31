@@ -23,6 +23,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     public void TakeDamage(int damage)
     {
         buildingHealth -= damage;
+        print($"{buildingData.buildingName} took {damage} damage and now has {buildingHealth}!!");
         if (buildingHealth <= 0)
         {
             print($"{buildingData.buildingName} Destroyed!!");

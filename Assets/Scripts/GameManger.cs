@@ -19,6 +19,15 @@ public class GameManger : MonoBehaviour
     void Update()
     {
         ChangeStateTimerCheck();
+
+        if(gameState == GameState.Night)
+        {
+            if(HQ == null)
+            {
+                print("Game Over");
+                Time.timeScale = 0f;
+            }
+        }
     }
     private void ChangeStateTimerCheck() //check if game state needs to change based on time for state of Day/Night
     {

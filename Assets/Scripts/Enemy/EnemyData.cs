@@ -3,7 +3,9 @@ public class EnemyData
 {
     public int health;
     public int maxHealth;
-    public int dmg;
-    public float speed;
+    public int damage;
+    public float movementSpeed;
+    public float attackSpeed;
+    public float attackRange;
     public string name;
 }
