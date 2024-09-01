@@ -23,7 +23,7 @@ public class CombatVillager : Villager
         base.Update();
         if (villagerState == VillagerState.Combat || villagerState == VillagerState.InProffesionBuilding)
         {
-            if (targetEnemy == null || !targetEnemy.activeInHierarchy)
+            if (targetEnemy == null || !targetEnemy.activeInHierarchy) //if target is not in hierarchy and null sets new target
             {
                 SetNewTarget();
             }
@@ -32,7 +32,7 @@ public class CombatVillager : Villager
             {
                 if (IsInAttackRange())
                 {
-                    rb.velocity = Vector2.zero;
+                    //rb.velocity = Vector2.zero;
                     attackTimer -= Time.deltaTime;
                     if (attackTimer <= 0)
                     {
@@ -63,16 +63,16 @@ public class CombatVillager : Villager
         }
     }*/
 
-    public virtual void ChangeToCombatMode()
+    public virtual void ChangeToCombatMode() // change the combat villager to combat mode
     {
         ChangeState(VillagerState.Combat);
     }
 
-    public virtual void ChangeToPatrolMode()
+    public virtual void ChangeToPatrolMode() // change the combat villager back to patrol mode
     {
         ChangeState(VillagerState.Patrol);
     }
-    protected void SetNewTarget()
+    protected void SetNewTarget() //method to set new target
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, targetDetectRange);
         float minDistance = float.MaxValue;
@@ -90,7 +90,7 @@ public class CombatVillager : Villager
         }
     }
 
-    protected void AttackTarget()
+    protected void AttackTarget() //method to attack the target by using the target's interface
     {
         if (targetEnemy != null)
         {
@@ -102,7 +102,7 @@ public class CombatVillager : Villager
             SetNewTarget();
         }
     }
-    private bool IsInAttackRange()
+    private bool IsInAttackRange() //checks if villager in attack range
     {
         if (targetEnemy == null) return false;
         float distance = Mathf.Abs(transform.position.x - targetEnemy.transform.position.x); //with vector2.Distance() had some troubles with the target set and attack range

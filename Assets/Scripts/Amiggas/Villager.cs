@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum VillagerState
+{
+    Spawned,
+    ProffesionAction,
+    InProffesionBuilding,
+    Patrol,
+    Combat
+}
 public class Villager : MonoBehaviour
 {
     [SerializeField] protected VillagerData villagerData;
@@ -54,7 +62,7 @@ public class Villager : MonoBehaviour
         }
     }
 
-    protected void VillagerMoveTo(Vector2 targetPos)
+    protected void VillagerMoveTo(Vector2 targetPos) //method to move the villager to target position on X axsis only
     {
         SetVillagerDirection(targetPos.x);
         //float movementDirection = targetPosition.x - transform.position.x;
@@ -112,7 +120,7 @@ public class Villager : MonoBehaviour
         VillagerMoveTo(targetPosition);
     }
 
-    protected void SetVillagerDirection(float targetPoint)
+    protected void SetVillagerDirection(float targetPoint) //sets the direction of the sprite and movement
     {
         if (targetPoint < transform.position.x)
         {
@@ -148,12 +156,3 @@ public class Villager : MonoBehaviour
     }
 }
 
-
-public enum VillagerState
-{
-    Spawned,
-    ProffesionAction,
-    InProffesionBuilding,
-    Patrol,
-    Combat
-}

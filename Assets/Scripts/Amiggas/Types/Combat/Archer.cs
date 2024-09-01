@@ -13,7 +13,7 @@ public class Archer : CombatVillager
         InitVillager();
         Invoke(nameof(CheckIfCanPatrol),2f);
     }
-    public override void ChangeToCombatMode()
+    public override void ChangeToCombatMode() //changes the archer to combat mode if not in tower
     {
         if (!isAssigned)
         {
@@ -21,7 +21,7 @@ public class Archer : CombatVillager
         }
     }
 
-    public override void ChangeToPatrolMode()
+    public override void ChangeToPatrolMode() //changes the archer back to patrol mode if not in tower
     {
         if (!isAssigned)
         {
@@ -29,18 +29,22 @@ public class Archer : CombatVillager
         }
     }
 
-    public void GoToGuardTower(GuardTower guardTower)
+    public void GoToGuardTower(GuardTower guardTower) // method to tell the archer to go to assigned tower
     {
         ChangeState(VillagerState.ProffesionAction);
+
         assignedGuardTower = guardTower;
         guardTowerSlot = guardTower.GetAvailableSpotIndex();
         targetTower = new Vector2(guardTower.transform.position.x, transform.position.y);
+
         ChangeState(VillagerState.InProffesionBuilding);
         StartCoroutine(ArcherTowerArrival());
+
         attackRange += assignedGuardTower.GetAttackRangeBonus();
+        print($"archer in tower {gameObject.name} in slot {guardTowerSlot} has {attackRange} range");
     }
 
-    private void CheckIfCanPatrol()
+    private void CheckIfCanPatrol() //checks if archer can patrol
     {
         if (assignedGuardTower != null)
         {
@@ -52,7 +56,7 @@ public class Archer : CombatVillager
         }
         ChangeState(VillagerState.Patrol);
     }
-    private IEnumerator ArcherTowerArrival()
+    private IEnumerator ArcherTowerArrival() // used courtine to move the archer to the tower so it wont be in update all the time
     {
         while (!isAssigned && assignedGuardTower != null)
         {

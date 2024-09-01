@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData: {fileID: 11400000, guid: 0fe8a1aea58feac40808b8519dfc7b07, type: 2}
+  buildingSpot: {fileID: 6361311465978411407, guid: b473059a8f6629e438b29be20730cbca, type: 3}
   buildingHealth: 0
   villlagerProffesionPrefab: {fileID: 8534889528132189151, guid: 5f9cc50508d43b84fbca07770cd43364, type: 3}
   villagerRecruitSpot: {fileID: 3599568871410712701}

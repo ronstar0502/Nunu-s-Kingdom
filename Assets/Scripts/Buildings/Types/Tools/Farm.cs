@@ -28,9 +28,9 @@ public class Farm : ProffesionBuilding
             RecruitVillagerProffesion();
         }
     }
-    public void FarmSeeds()
+    public void FarmSeeds() //farm seeds
     {
-        harvestAmount = 1 * buildingData.level + currentWorkingVillagers ;
+        harvestAmount = (1 + currentWorkingVillagers) * buildingData.level;
         print($"harvest amount : {harvestAmount}");
         if (player != null)
         {
@@ -60,7 +60,7 @@ public class Farm : ProffesionBuilding
         currentFarmerSlots = farmerSlots[buildingData.level-1];
     }
 
-    protected override void ChangeVillagerProffesion()
+    protected override void ChangeVillagerProffesion() //method to change unemployed to farmer
     {
         int randomSpawnPoint = Random.Range(0, villagerRecruitSpawnPoints.Length);
         GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint]);

@@ -75,13 +75,13 @@ public class HQ : Building
         return unemployedVillagers.Count > 0;
     }
 
-    public GameObject GetRandomUnemployed()
+    public GameObject GetRandomUnemployed() //gets a random unemployed to recruit to a proffesion
     {
         int randomIndex = Random.Range(0, unemployedVillagers.Count);
         return unemployedVillagers[randomIndex];
     }
 
-    public void RemoveUnemployed(GameObject unemployed)
+    public void RemoveUnemployed(GameObject unemployed) // after recruitment of an unemployed remove from the list
     {
         unemployedVillagers.Remove(unemployed);
         print($"now you have {unemployedVillagers.Count} unepmloyed villagers");
@@ -97,7 +97,7 @@ public class HQ : Building
         farm.FarmSeeds();
         //villageInfoUI.SetSeedsText(player.GetPlayerData().seedAmount);
     }
-    public void AddGuardTower(GuardTower guardTower)
+    public void AddGuardTower(GuardTower guardTower) //list of built guard tower
     {
         guardTowers.Add(guardTower);
     }
@@ -114,34 +114,9 @@ public class HQ : Building
         archer.GoToGuardTower(guardTower);
     }
 
-    /*private GuardTower GetGuardTowerToAssignTo() //method to get a guard tower to assign an archer that got recruited
+    private GuardTower GetAvailableGuardTower() //method to get one of the available guard towers for the archer
     {
-        if (CanAssignArcherToEveryGuardTower())
-        {
-            int randomTower = Random.Range(0,guardTowers.Count);          
-            return guardTowers[randomTower];
-        }
-        else
-        {
-            for (int i = 0; i < guardTowers.Count; i++)
-            {
-                if (guardTowers[i].hasOpenSlots()) return guardTowers[i];
-            }
-        }      
-        return null;
-    }
-    private bool CanAssignArcherToEveryGuardTower() //checking if i can assign to all available guard towers
-    {
-        for (int i = 0; i < guardTowers.Count; i++)
-        {
-            if (!guardTowers[i].hasOpenSlots()) return false;
-        }
-        return true;
-    }*/
-
-    private GuardTower GetAvailableGuardTower()
-    {
-        List<GuardTower> availableTowers = GetGuardTowerForArcher();
+        List<GuardTower> availableTowers = GetAvailableGuardTowers();
         if (availableTowers.Count == 0)
         {
             print("no available towers");
@@ -151,7 +126,7 @@ public class HQ : Building
         return availableTowers[randomTower];
     }
     
-    private List<GuardTower> GetGuardTowerForArcher()
+    private List<GuardTower> GetAvailableGuardTowers() //method to get all available guard tower that can assign an archer to
     {
         List<GuardTower> availableTowers = new List<GuardTower>();
         for (int i = 0; i < guardTowers.Count; i++)

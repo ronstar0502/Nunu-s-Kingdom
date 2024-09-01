@@ -46,7 +46,7 @@ public class ProffesionBuilding : Building
             print("no unemployed villager available, pls recruit more villager from the hatchery");
         }
     }
-    private void VillagerRecruitAction()
+    private void VillagerRecruitAction() //method for the recruit an unemployed villager to a proffesion
     {
         GameObject randomUnemployed = HQ.GetRandomUnemployed();
         Villager unemployedVillager = randomUnemployed.GetComponent<Villager>();
@@ -63,7 +63,7 @@ public class ProffesionBuilding : Building
         Invoke(nameof(ChangeVillagerProffesion), changeProffesionDelay);
     }
 
-    protected virtual void ChangeVillagerProffesion()
+    protected virtual void ChangeVillagerProffesion() // method to change unemployed to the building's proffesion
     {
         int randomSpawnPoint = Random.Range(0, villagerRecruitSpawnPoints.Length);
         GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint].position, Quaternion.identity);

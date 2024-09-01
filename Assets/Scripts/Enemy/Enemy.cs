@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour , IDamageable
 
     private void Start()
     {
-        FlipSprite();
+        SetMovementDirection();
         transform.position = new Vector3(transform.position.x, spawnOffsetY, 0f);
         attackTimer = enemyData.attackSpeed;
         SetTarget();
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour , IDamageable
 
     private void Update()
     {
-        if (currentBuildingTarget == null || !currentBuildingTarget.activeInHierarchy)
+        if (currentBuildingTarget == null || !currentBuildingTarget.activeInHierarchy) //if target is not in hierarchy and null sets new target
         {
             SetTarget();
         }
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour , IDamageable
         {
             if (IsInAttackRange())
             {
-                _rb.velocity = Vector2.zero;
+                //_rb.velocity = Vector2.zero;
                 attackTimer -= Time.deltaTime;
                 if (attackTimer <= 0)
                 {
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour , IDamageable
         }
     }*/
 
-    private void FlipSprite()
+    private void SetMovementDirection()
     {
         if (transform.position.x > 0)
         {
@@ -91,6 +91,20 @@ public class Enemy : MonoBehaviour , IDamageable
         }
         else
         {
+            _sr.flipX = false;
+        }
+    }
+
+    private void SetMovementDirection(float targetPoint)
+    {
+        if (targetPoint < transform.position.x)
+        {
+            direction = -1;
+            _sr.flipX = true;
+        }
+        else if (targetPoint > transform.position.x)
+        {
+            direction = 1;
             _sr.flipX = false;
         }
     }
@@ -133,6 +147,7 @@ public class Enemy : MonoBehaviour , IDamageable
     {
         if (currentBuildingTarget != null)
         {
+            SetMovementDirection(currentBuildingTarget.transform.position.x);
             currentBuildingTarget.GetComponent<IDamageable>().TakeDamage(enemyData.damage);
         }
         else
@@ -153,15 +168,15 @@ public class Enemy : MonoBehaviour , IDamageable
 
 
     /*private void StopMovement()
-{
-   isWalking = 0;
-   print("stopped moving");
-}
-private void ResumeMovement()
-{
-   isWalking = 1;
-   print("resumed moving");
-}*/
+    {
+        isWalking = 0;
+        print("stopped moving");
+    }
+    private void ResumeMovement()
+    {
+        isWalking = 1;
+        print("resumed moving");
+    }*/
 
     /*private void Attacking()
     {
