@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2417298801306730825}
   - component: {fileID: 2985807423966815545}
   - component: {fileID: -8696585596981799036}
+  - component: {fileID: 3217269770152235193}
   m_Layer: 0
   m_Name: Ammiga_Warrior
   m_TagString: Ammiga
@@ -99,12 +100,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   villagerData:
     villagerName: Warrior
-    maxHealth: 50
+    maxHealth: 150
     health: 0
-    speed: 4.5
-    attackRange: 1.66
+    movementSpeed: 5
     seedsCost: 0
   villagerTool: {fileID: 1218095432757400823, guid: 13117e2a28c90444996586d5f324f513, type: 3}
   villagerState: 0
   leftPatrolBorder: 0
   rightPatrolBorder: 0
+  damage: 25
+  targetDetectRange: 30
+  attackRange: 4
+  attackSpeed: 1.5
+--- !u!50 &3217269770152235193
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534889528132189151}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

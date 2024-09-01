@@ -62,12 +62,14 @@ public class GameManger : MonoBehaviour
     {
         print("NightTime!");
         spawner.StartSpawning();
+        HQ.SetCombatVillagers();
     }
     private void StartDayActivities() //starts all day activities
     {
         currday++;
         print($"Day {currday}");
         HarvestFarm();
+        HQ.SetCombatToPatrol();
         currday++;
     }
 

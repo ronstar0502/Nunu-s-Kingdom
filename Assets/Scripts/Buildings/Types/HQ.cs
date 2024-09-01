@@ -184,7 +184,30 @@ public class HQ : Building
     public List<GameObject> GetFarmersList()
     {
         return farmers;
+    } 
+
+    public void SetCombatVillagers()
+    {
+        for(int i = 0; i < warriors.Count; i++)
+        {
+            warriors[i].GetComponent<CombatVillager>().ChangeToCombatMode();
+        }
+        for (int i = 0; i < archers.Count; i++)
+        {
+            archers[i].GetComponent<CombatVillager>().ChangeToCombatMode();
+        }
     }
 
+    public void SetCombatToPatrol()
+    {
+        for (int i = 0; i < warriors.Count; i++)
+        {
+            warriors[i].GetComponent<CombatVillager>().ChangeToPatrolMode();
+        }
+        for (int i = 0; i < archers.Count; i++)
+        {
+            archers[i].GetComponent<CombatVillager>().ChangeToPatrolMode();
+        }
+    }
 }
 

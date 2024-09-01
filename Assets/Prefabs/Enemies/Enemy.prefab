@@ -173,9 +173,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData:
     health: 5
-    maxHealth: 5
+    maxHealth: 100
     damage: 50
-    movementSpeed: 55
+    movementSpeed: 90
     attackSpeed: 1
     attackRange: 2
     name: Goblin

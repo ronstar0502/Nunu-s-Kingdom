@@ -72,6 +72,7 @@ public class GuardTower : Building
         {
             if (availableSpots[i])
             {
+                print($"slot index: {i} -> available? {availableSpots[i]}");
                 availableSpots[i] = false;
                 print($"slot index: {i} -> available? {availableSpots[i]}");
                 return i;

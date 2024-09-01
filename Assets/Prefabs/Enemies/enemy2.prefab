@@ -173,9 +173,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData:
     health: 8
-    maxHealth: 8
+    maxHealth: 200
     damage: 100
-    movementSpeed: 45
+    movementSpeed: 75
     attackSpeed: 2
     attackRange: 3
     name: Big Goblin

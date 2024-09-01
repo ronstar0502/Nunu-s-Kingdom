@@ -954,7 +954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &593140463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1684,8 +1684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0462634be341d7a4abef72c2de75ab82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 10
-  nightDuration: 30
+  dayDuration: 50
+  nightDuration: 50
   gameState: 0
 --- !u!4 &952256233
 Transform:

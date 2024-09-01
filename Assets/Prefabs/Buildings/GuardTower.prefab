@@ -170,7 +170,7 @@ MonoBehaviour:
   - {fileID: 6912622065575287077}
   - {fileID: 913569815974645851}
   archers: []
-  attackRangeBonus: 0
+  attackRangeBonus: 2
 --- !u!61 &9137399245546576632
 BoxCollider2D:
   m_ObjectHideFlags: 0

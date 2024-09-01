@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour , IDamageable
 {
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private float spawnOffsetY;
@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer _sr;
     private int direction = 1;
     private List<GameObject> buildingTargets;
-    private GameObject currentTarget;
+    private GameObject currentBuildingTarget;
     //private IDamageable targetInterface;
     private float attackTimer;
 
@@ -32,12 +32,12 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (currentTarget == null || !currentTarget.activeInHierarchy)
+        if (currentBuildingTarget == null || !currentBuildingTarget.activeInHierarchy)
         {
             SetTarget();
         }
 
-        if (currentTarget != null)
+        if (currentBuildingTarget != null)
         {
             if (IsInAttackRange())
             {
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currentTarget != null && !IsInAttackRange())
+        if (currentBuildingTarget != null && !IsInAttackRange())
         {
             _rb.velocity = new Vector2(direction * enemyData.movementSpeed * Time.deltaTime,_rb.velocity.y);
         }
@@ -104,16 +104,16 @@ public class Enemy : MonoBehaviour
             if (distance < minDistance)
             {
                 minDistance = distance;
-                currentTarget = buildingTargets[i];
+                currentBuildingTarget = buildingTargets[i];
             }
         }
-        print($"enemy target: {currentTarget.gameObject.name}");
+        print($"enemy target: {currentBuildingTarget.gameObject.name}");
     }
 
     private bool IsInAttackRange()
     {
-        if(currentTarget==null) return false;
-        float distance = Mathf.Abs(transform.position.x - currentTarget.transform.position.x); //with vector2.Distance() had some troubles with the target set and attack range
+        if(currentBuildingTarget==null) return false;
+        float distance = Mathf.Abs(transform.position.x - currentBuildingTarget.transform.position.x); //with vector2.Distance() had some troubles with the target set and attack range
         return distance <= enemyData.attackRange;
     }
 
@@ -131,25 +131,37 @@ public class Enemy : MonoBehaviour
 
     private void AttackTarget()
     {
-        if (currentTarget != null)
+        if (currentBuildingTarget != null)
         {
-            currentTarget.GetComponent<IDamageable>().TakeDamage(enemyData.damage);
+            currentBuildingTarget.GetComponent<IDamageable>().TakeDamage(enemyData.damage);
         }
         else
         {
             SetTarget();
         }
     }
-    /*private void StopMovement()
+
+    public void TakeDamage(int damage)
     {
-        isWalking = 0;
-        print("stopped moving");
+        enemyData.health -= damage;
+        print($"{enemyData.name} took {damage} damage and now has {enemyData.health} health");
+        if(enemyData.health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
-    private void ResumeMovement()
-    {
-        isWalking = 1;
-        print("resumed moving");
-    }*/
+
+
+    /*private void StopMovement()
+{
+   isWalking = 0;
+   print("stopped moving");
+}
+private void ResumeMovement()
+{
+   isWalking = 1;
+   print("resumed moving");
+}*/
 
     /*private void Attacking()
     {
