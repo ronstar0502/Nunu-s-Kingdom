@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class Farmer : Villager
 {
-    
+    protected override void Start()
+    {
+        InitVillager();
+        ChangeState(VillagerState.InProffesionBuilding);
+    }
 }

@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable))
+        if(collision.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable)) //looks for building spot to interact with ot other interactable objects
         {
             interactableObj = interactable;
         }

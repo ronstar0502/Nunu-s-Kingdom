@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Building : MonoBehaviour, IInteractable, IDamageable
 {
-    //[SerializeField] protected BuildingData buildingData; //seperated the data to different script for easier use
     [SerializeField] protected BuildingData buildingData;
+    [SerializeField] private GameObject buildingSpot; //after building destroyed
     [SerializeField] private float buildingHealth;
     protected int nextLevelCost;
     protected bool IsMaxLevel;
@@ -22,11 +22,15 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
 
     public void TakeDamage(int damage)
     {
-        buildingHealth -= damage;
-        if (buildingHealth <= 0)
+        if (this != null) // checks if this building is not destroyed
         {
-            print($"{buildingData.buildingName} Destroyed!!");
-            DestroyBuilding();
+            buildingHealth -= damage;
+            print($"{buildingData.buildingName} took {damage} damage and now has {buildingHealth}!!");
+            if (buildingHealth <= 0)
+            {
+                print($"{buildingData.buildingName} Destroyed!!");
+                DestroyBuilding();
+            }
         }
     }
 
@@ -77,7 +81,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
         //put building on destroy state
         if (this!=null)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -18,28 +18,28 @@ public class HQ : Building
 
     [SerializeField]private List<GuardTower> guardTowers;
     public Farm farm;
-    private VillageInfo villageInfoUI;
+    //private VillageInfo villageInfoUI;
 
     private void Start()
     {
         maxVillagerAmount = maxVillagerPerLevel[buildingData.level-1];
-        villageInfoUI = FindObjectOfType<VillageInfo>();
-        villageInfoUI.InitInfo(maxVillagerAmount,player.GetPlayerData().seedAmount);
+        //villageInfoUI = FindObjectOfType<VillageInfo>();
+        //villageInfoUI.InitInfo(maxVillagerAmount,player.GetPlayerData().seedAmount);
     }
 
     protected override void LevelUpBuilding()
     {
         base.LevelUpBuilding();
         maxVillagerAmount = maxVillagerPerLevel[buildingData.level-1];
-        villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
+        //villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
     }
     public void AddUnemployedVillager(GameObject villager)
     {
         unemployedVillagers.Add(villager);
         currentVillagerAmount++;
 
-        villageInfoUI.SetUnemployedText(unemployedVillagers.Count);
-        villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
+        //villageInfoUI.SetUnemployedText(unemployedVillagers.Count);
+        //villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
         print($"total villager {currentVillagerAmount} / {maxVillagerAmount} and {unemployedVillagers.Count} are unemployed");
     }
 
@@ -49,16 +49,16 @@ public class HQ : Building
         {
             case "Archery":
                 archers.Add(villager);
-                villageInfoUI.SetArchersText(archers.Count,unemployedVillagers.Count);
+                //villageInfoUI.SetArchersText(archers.Count,unemployedVillagers.Count);
                 AssignArcherToGuardTower(villager);
                 break;
             case "Blacksmith":
                 warriors.Add(villager);
-                villageInfoUI.SetWarriorsText(warriors.Count, unemployedVillagers.Count);
+                //villageInfoUI.SetWarriorsText(warriors.Count, unemployedVillagers.Count);
                 break;
             case "Farm":
                 farmers.Add(villager);
-                villageInfoUI.SetFarmersText(farmers.Count, unemployedVillagers.Count);
+                //villageInfoUI.SetFarmersText(farmers.Count, unemployedVillagers.Count);
                 break;
         }
         proffesionVillagers.Add(villager);
@@ -75,13 +75,13 @@ public class HQ : Building
         return unemployedVillagers.Count > 0;
     }
 
-    public GameObject GetRandomUnemployed()
+    public GameObject GetRandomUnemployed() //gets a random unemployed to recruit to a proffesion
     {
         int randomIndex = Random.Range(0, unemployedVillagers.Count);
         return unemployedVillagers[randomIndex];
     }
 
-    public void RemoveUnemployed(GameObject unemployed)
+    public void RemoveUnemployed(GameObject unemployed) // after recruitment of an unemployed remove from the list
     {
         unemployedVillagers.Remove(unemployed);
         print($"now you have {unemployedVillagers.Count} unepmloyed villagers");
@@ -89,16 +89,15 @@ public class HQ : Building
 
     public void SetFarm(Farm farm)
     {
-        print("Set te farm");
         this.farm = farm;
     }
 
     public void FarmSeeds()
     {
         farm.FarmSeeds();
-        villageInfoUI.SetSeedsText(player.GetPlayerData().seedAmount);
+        //villageInfoUI.SetSeedsText(player.GetPlayerData().seedAmount);
     }
-    public void AddGuardTower(GuardTower guardTower)
+    public void AddGuardTower(GuardTower guardTower) //list of built guard tower
     {
         guardTowers.Add(guardTower);
     }
@@ -115,34 +114,9 @@ public class HQ : Building
         archer.GoToGuardTower(guardTower);
     }
 
-    /*private GuardTower GetGuardTowerToAssignTo() //method to get a guard tower to assign an archer that got recruited
+    private GuardTower GetAvailableGuardTower() //method to get one of the available guard towers for the archer
     {
-        if (CanAssignArcherToEveryGuardTower())
-        {
-            int randomTower = Random.Range(0,guardTowers.Count);          
-            return guardTowers[randomTower];
-        }
-        else
-        {
-            for (int i = 0; i < guardTowers.Count; i++)
-            {
-                if (guardTowers[i].hasOpenSlots()) return guardTowers[i];
-            }
-        }      
-        return null;
-    }
-    private bool CanAssignArcherToEveryGuardTower() //checking if i can assign to all available guard towers
-    {
-        for (int i = 0; i < guardTowers.Count; i++)
-        {
-            if (!guardTowers[i].hasOpenSlots()) return false;
-        }
-        return true;
-    }*/
-
-    private GuardTower GetAvailableGuardTower()
-    {
-        List<GuardTower> availableTowers = GetGuardTowerForArcher();
+        List<GuardTower> availableTowers = GetAvailableGuardTowers();
         if (availableTowers.Count == 0)
         {
             print("no available towers");
@@ -152,7 +126,7 @@ public class HQ : Building
         return availableTowers[randomTower];
     }
     
-    private List<GuardTower> GetGuardTowerForArcher()
+    private List<GuardTower> GetAvailableGuardTowers() //method to get all available guard tower that can assign an archer to
     {
         List<GuardTower> availableTowers = new List<GuardTower>();
         for (int i = 0; i < guardTowers.Count; i++)
@@ -180,6 +154,35 @@ public class HQ : Building
     public int ArcherCount()
     {
         return archers.Count;
+    }
+
+    public List<GameObject> GetFarmersList()
+    {
+        return farmers;
+    } 
+
+    public void SetCombatVillagers()
+    {
+        for(int i = 0; i < warriors.Count; i++)
+        {
+            warriors[i].GetComponent<CombatVillager>().ChangeToCombatMode();
+        }
+        for (int i = 0; i < archers.Count; i++)
+        {
+            archers[i].GetComponent<CombatVillager>().ChangeToCombatMode();
+        }
+    }
+
+    public void SetCombatToPatrol()
+    {
+        for (int i = 0; i < warriors.Count; i++)
+        {
+            warriors[i].GetComponent<CombatVillager>().ChangeToPatrolMode();
+        }
+        for (int i = 0; i < archers.Count; i++)
+        {
+            archers[i].GetComponent<CombatVillager>().ChangeToPatrolMode();
+        }
     }
 }
 

@@ -6,7 +6,7 @@ public class ProffesionBuilding : Building
     [SerializeField] protected GameObject villlagerProffesionPrefab;
     [Header("Transforms")]
     [SerializeField] protected Transform villagerRecruitSpot;
-    [SerializeField] private Transform[] villagerRecruitSpawnPoints;
+    [SerializeField] protected Transform[] villagerRecruitSpawnPoints;
     [Header("Other Data")]
     [SerializeField] private string toolName;
     [SerializeField] private float changeProffesionDelay;
@@ -46,12 +46,15 @@ public class ProffesionBuilding : Building
             print("no unemployed villager available, pls recruit more villager from the hatchery");
         }
     }
-    private void VillagerRecruitAction()
+    private void VillagerRecruitAction() //method for the recruit an unemployed villager to a proffesion
     {
         GameObject randomUnemployed = HQ.GetRandomUnemployed();
         Villager unemployedVillager = randomUnemployed.GetComponent<Villager>();
-        unemployedVillager.ChangeProffesion(gameObject, transform.position);
-        HQ.RemoveUnemployed(randomUnemployed);
+        if(unemployedVillager != null)
+        {
+            unemployedVillager.ChangeProffesion(gameObject, transform.position);
+            HQ.RemoveUnemployed(randomUnemployed);
+        }
 
     }
     public void VillagerProffesionChange_OnArrival(GameObject unemployedVillager) //destroying the unepmloyed and invoking for a delay of x amount of time to change proffesion
@@ -60,7 +63,7 @@ public class ProffesionBuilding : Building
         Invoke(nameof(ChangeVillagerProffesion), changeProffesionDelay);
     }
 
-    private void ChangeVillagerProffesion()
+    protected virtual void ChangeVillagerProffesion() // method to change unemployed to the building's proffesion
     {
         int randomSpawnPoint = Random.Range(0, villagerRecruitSpawnPoints.Length);
         GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint].position, Quaternion.identity);

@@ -1,22 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GuardTower : Building
 {
-    //Guard Tower
-    //make slots for archers depends on level
-    //only when an archer is in the guard tower only than he can shoot
-    //make the archer on the guard tower shoot at a direction and the first enemy to get hit the arrow will deal damage to
     [Header("Archer Spots")]
     [SerializeField] private Transform[] archerSpots = new Transform[3];
     private bool[] availableSpots = new bool[] { true, false, false };
     [Header("Archers Data")]
     [SerializeField] private List<GameObject> archers;
     [SerializeField] private float attackRangeBonus;
-
     private HQ HQ;
-    private int archersInGuard;
 
     private void Start()
     {
@@ -26,7 +19,7 @@ public class GuardTower : Building
         CanAssignArcher();
     }
 
-    public void CanAssignArcher()
+    public void CanAssignArcher() //checks if can assign an archer to guard tower
     {
         if (hasOpenSlots() && HQ.ArcherCount()>0)
         {
@@ -42,7 +35,7 @@ public class GuardTower : Building
         }
     }
 
-    public void AddArcherToGuard(GameObject archer,int slot)
+    public void AddArcherToGuard(GameObject archer,int slot) //method to add the assigned archer to the guard tower
     {
         archers.Add(archer);
         print($"slot index for archer placement {slot}");
@@ -52,7 +45,7 @@ public class GuardTower : Building
         //availableSpots[slot] = false;
     }
 
-    public bool hasOpenSlots()
+    public bool hasOpenSlots() //checks if the guard tower has open slots to assign an archer to
     {
         for (int i = 0;i < buildingData.level; i++)
         {
@@ -66,18 +59,19 @@ public class GuardTower : Building
 
     }
 
-    public int GetAvailableSpotIndex()
+    public int GetAvailableSpotIndex() //gets available slot in the guard tower
     {
         for(int i = 0; i < buildingData.level; i++)
         {
             if (availableSpots[i])
             {
+                print($"slot index: {i} -> available? {availableSpots[i]}");
                 availableSpots[i] = false;
                 print($"slot index: {i} -> available? {availableSpots[i]}");
                 return i;
             }
         }
-        return -1;
+        return -1; //if there are no slots open
 
     }
 

@@ -164,13 +164,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData: {fileID: 11400000, guid: cdc1e8e6d835d684e970d3acf3ede1a3, type: 2}
+  buildingSpot: {fileID: 6361311465978411407, guid: b473059a8f6629e438b29be20730cbca, type: 3}
   buildingHealth: 0
   archerSpots:
   - {fileID: 7622819842083193789}
   - {fileID: 6912622065575287077}
   - {fileID: 913569815974645851}
   archers: []
-  attackRangeBonus: 0
+  attackRangeBonus: 2
 --- !u!61 &9137399245546576632
 BoxCollider2D:
   m_ObjectHideFlags: 0
