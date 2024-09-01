@@ -1932,7 +1932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0462634be341d7a4abef72c2de75ab82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 50
+  dayDuration: 15
   nightDuration: 50
   gameState: 0
 --- !u!4 &952256233
@@ -4506,20 +4506,20 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 285714125}
-  - {fileID: 558981880}
-  - {fileID: 593140464}
-  - {fileID: 786488607}
-  - {fileID: 4674033899858550426}
-  - {fileID: 952256233}
-  - {fileID: 968621315}
-  - {fileID: 994333899}
-  - {fileID: 1342423696}
   - {fileID: 1631946447}
+  - {fileID: 952256233}
+  - {fileID: 994333899}
+  - {fileID: 558981880}
+  - {fileID: 786488607}
+  - {fileID: 593140464}
+  - {fileID: 4674033899858550426}
+  - {fileID: 285714125}
+  - {fileID: 1342423696}
+  - {fileID: 186988118}
   - {fileID: 1251873036}
   - {fileID: 1104107203}
   - {fileID: 1867069224}
-  - {fileID: 186988118}
   - {fileID: 1463956843}
   - {fileID: 921662576}
   - {fileID: 1211645345}
+  - {fileID: 968621315}
