@@ -76,4 +76,10 @@ public class Hatchery : Building
         print($"egg slot number: {slotIndex}");
         return slotIndex;
     }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        buildingSpot.SetActive(true);
+    }
 }

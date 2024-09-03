@@ -3,12 +3,13 @@ using UnityEngine;
 public class Building : MonoBehaviour, IInteractable, IDamageable
 {
     [SerializeField] protected BuildingData buildingData;
-    [SerializeField] private GameObject buildingSpot; //after building destroyed
+    [SerializeField] protected GameObject buildingSpot;
     [SerializeField] private float buildingHealth;
+    protected Player player;
     protected int nextLevelCost;
     protected bool IsMaxLevel;
-    protected Player player;
     private SpriteRenderer sr;
+
 
     private void Awake()
     {
@@ -17,10 +18,16 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
         sr.sprite = buildingData.sprite;
         buildingHealth = buildingData.health;
         SetNextLevelCost();
+
+
     }
     public BuildingData GetBuildingData() { return buildingData; }
 
-    public void TakeDamage(int damage)
+    public void SetBuildingSpot(GameObject buildSpot)
+    {
+        buildingSpot = buildSpot;
+    }
+    public virtual void TakeDamage(int damage)
     {
         if (this != null) // checks if this building is not destroyed
         {
@@ -33,7 +40,6 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
             }
         }
     }
-
     public void Interact() //interact for level up
     {
         UpgradeBuilding();
@@ -84,4 +90,5 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
             Destroy(gameObject);
         }
     }
+
 }

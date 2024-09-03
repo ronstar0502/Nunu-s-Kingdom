@@ -8,6 +8,7 @@ TagManager:
   - Building
   - Enemy
   - Ammiga
+  - Seed
   layers:
   - Default
   - TransparentFX
