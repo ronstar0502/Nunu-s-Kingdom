@@ -2,15 +2,31 @@ using UnityEngine;
 public class BuildingSpot : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject buildingObj;
+    [SerializeField] private GameObject buildingGhost;
     private Player player;
     private BuildingData buildingData;
+    private SpriteRenderer _sr;
 
     private void Start()
     {
+        _sr = GetComponent<SpriteRenderer>();
         player = FindObjectOfType<Player>();
         buildingData = buildingObj.GetComponent<Building>().GetBuildingData();
+
+        buildingGhost.SetActive(false);
     }
 
+    public void ShowBuildingGhost()
+    {
+        buildingGhost.SetActive(true);
+        _sr.enabled = false;
+    }
+
+    public void HideBuildingGhost()
+    {
+        buildingGhost.SetActive(false);
+        _sr.enabled = true;
+    }
     //method to build a building at the current building spot
     public void BuildAtSpot()
     {
@@ -19,13 +35,14 @@ public class BuildingSpot : MonoBehaviour, IInteractable
             print("No Building Prefab Avilable");
             return;
         }
-        Instantiate(buildingObj, transform.position, Quaternion.identity); //spawns the building at the desired position
+        GameObject building = Instantiate(buildingObj, buildingGhost.transform.position, Quaternion.identity); //spawns the building at the desired position
+        building.GetComponent<Building>().SetBuildingSpot(gameObject);
         player.GetPlayerData().SubstarctSeedsAmount(buildingData.cost); //substracts seeds amount based on building starting cost
 
         //add a delay with animation of the building being built?
 
-        Destroy(gameObject); //destroying the building spot after the building is built
-
+        //Destroy(gameObject); //destroying the building spot after the building is built
+        gameObject.SetActive(false);
     }
     public void Interact() //interaction with the building spot
     {
@@ -37,6 +54,5 @@ public class BuildingSpot : MonoBehaviour, IInteractable
         {
             print("not enough seeds!");
         }
-
     }
 }

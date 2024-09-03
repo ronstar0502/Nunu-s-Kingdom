@@ -2,16 +2,18 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour , IDamageable
+public class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField] private EnemyData enemyData;
+    [SerializeField] private GameObject seedLoot;
+    [SerializeField] private Transform lootDropSpot;
+    [SerializeField] private int lootDropChance;
     [SerializeField] private float spawnOffsetY;
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
-    private int direction = 1;
     private List<GameObject> buildingTargets;
     private GameObject currentBuildingTarget;
-    //private IDamageable targetInterface;
+    private int direction = 1;
     private float attackTimer;
 
     private void Awake()
@@ -27,14 +29,14 @@ public class Enemy : MonoBehaviour , IDamageable
         SetMovementDirection();
         transform.position = new Vector3(transform.position.x, spawnOffsetY, 0f);
         attackTimer = enemyData.attackSpeed;
-        SetTarget();
+        SetBuildingTarget();
     }
 
     private void Update()
     {
         if (currentBuildingTarget == null || !currentBuildingTarget.activeInHierarchy) //if target is not in hierarchy and null sets new target
         {
-            SetTarget();
+            SetBuildingTarget();
         }
 
         if (currentBuildingTarget != null)
@@ -52,36 +54,17 @@ public class Enemy : MonoBehaviour , IDamageable
         }
 
     }
-
-
-
     private void FixedUpdate()
     {
         if (currentBuildingTarget != null && !IsInAttackRange())
         {
-            _rb.velocity = new Vector2(direction * enemyData.movementSpeed * Time.deltaTime,_rb.velocity.y);
+            _rb.velocity = new Vector2(direction * enemyData.movementSpeed * Time.deltaTime, _rb.velocity.y);
         }
         else
         {
             _rb.velocity = Vector2.zero;
         }
     }
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        print("attack");
-        if (collision.gameObject.tag == "Player")
-        {
-            Destroy(this.gameObject);
-        }
-        if (collision.gameObject.TryGetComponent<IDamageable>(out IDamageable TMPtarget))
-        {
-            StopMovement();
-            currentTarget = collision.gameObject;
-            targetInterface = TMPtarget;
-            Attacking();
-        }
-    }*/
-
     private void SetMovementDirection()
     {
         if (transform.position.x > 0)
@@ -108,7 +91,7 @@ public class Enemy : MonoBehaviour , IDamageable
             _sr.flipX = false;
         }
     }
-    private void SetTarget()
+    private void SetBuildingTarget()
     {
         buildingTargets = GameObject.FindGameObjectsWithTag("Building").ToList();
         float minDistance = float.MaxValue;
@@ -126,22 +109,10 @@ public class Enemy : MonoBehaviour , IDamageable
 
     private bool IsInAttackRange()
     {
-        if(currentBuildingTarget==null) return false;
+        if (currentBuildingTarget == null) return false;
         float distance = Mathf.Abs(transform.position.x - currentBuildingTarget.transform.position.x); //with vector2.Distance() had some troubles with the target set and attack range
         return distance <= enemyData.attackRange;
     }
-
-    /*private void CheckAttackRange()
-    {
-        if (IsInAttackRange())
-        {
-            StopMovement();
-        }
-        else
-        {
-            ResumeMovement();
-        }
-    }*/
 
     private void AttackTarget()
     {
@@ -152,7 +123,7 @@ public class Enemy : MonoBehaviour , IDamageable
         }
         else
         {
-            SetTarget();
+            SetBuildingTarget();
         }
     }
 
@@ -160,34 +131,14 @@ public class Enemy : MonoBehaviour , IDamageable
     {
         enemyData.health -= damage;
         print($"{enemyData.name} took {damage} damage and now has {enemyData.health} health");
-        if(enemyData.health <= 0)
+        if (enemyData.health <= 0)
         {
+            int dropPercent = Random.Range(1, 101);
+            if(dropPercent <= lootDropChance)
+            {
+                Instantiate(seedLoot, lootDropSpot.position,Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }
-
-
-    /*private void StopMovement()
-    {
-        isWalking = 0;
-        print("stopped moving");
-    }
-    private void ResumeMovement()
-    {
-        isWalking = 1;
-        print("resumed moving");
-    }*/
-
-    /*private void Attacking()
-    {
-        if (currentTarget != null)
-        {
-            targetInterface.TakeDamage(enemyData.dmg);
-            Invoke("Attacking", 1f);
-        }
-        else
-        {
-            ResumeMovement();
-        }
-    }*/
 }

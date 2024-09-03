@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 3095828887650829364}
   - component: {fileID: 5926698070870205923}
   - component: {fileID: 6878812667053373355}
+  - component: {fileID: 1317499031960903527}
   m_Layer: 0
   m_Name: Hatchery
   m_TagString: Building
@@ -316,3 +317,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.143124, y: 24.510157}
   m_EdgeRadius: 0
+--- !u!114 &1317499031960903527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171013364113157511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e53781071c53e4db33b691236563e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  nightColor:
+    serializedVersion: 2
+    rgba: 4286545791
+  delayBetweenTransitions: 0

@@ -87,4 +87,10 @@ public class GuardTower : Building
 
         CanAssignArcher();
     }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        buildingSpot.SetActive(true);
+    }
 }

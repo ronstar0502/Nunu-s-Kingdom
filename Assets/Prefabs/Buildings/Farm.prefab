@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 3095828887650829364}
   - component: {fileID: 6295904070072557041}
   - component: {fileID: 5588828637602594391}
+  - component: {fileID: 5549164501343188224}
   m_Layer: 0
   m_Name: Farm
   m_TagString: Building
@@ -126,7 +127,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.45, y: 1.45, z: 1}
+  m_LocalScale: {x: 0.23, y: 0.23, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3417672916540302365}
@@ -197,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingData: {fileID: 11400000, guid: ffb4a1efcdc3b0f48a266da1abe02c24, type: 2}
-  buildingSpot: {fileID: 6361311465978411407, guid: b473059a8f6629e438b29be20730cbca, type: 3}
+  buildingSpot: {fileID: 0}
   buildingHealth: 0
   villlagerProffesionPrefab: {fileID: 8534889528132189151, guid: f3b817e17c7ca4345957bc77c780a9d4, type: 3}
   villagerRecruitSpot: {fileID: 3417672916540302365}
@@ -246,7 +247,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.530344, y: 3.4819999}
+    oldSize: {x: 32.651722, y: 17.41}
     newSize: {x: 1, y: 0.8828125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -255,6 +256,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.3381577, y: 3.0852752}
   m_EdgeRadius: 0
+--- !u!114 &5549164501343188224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171013364113157511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e53781071c53e4db33b691236563e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  nightColor:
+    serializedVersion: 2
+    rgba: 4286545791
+  delayBetweenTransitions: 0
 --- !u!1 &8464459310650136708
 GameObject:
   m_ObjectHideFlags: 0

@@ -69,4 +69,10 @@ public class ProffesionBuilding : Building
         GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint].position, Quaternion.identity);
         HQ.AddProffesionVillager(proffesionVillager,buildingData.buildingName);
     }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        buildingSpot.SetActive(true);
+    }
 }

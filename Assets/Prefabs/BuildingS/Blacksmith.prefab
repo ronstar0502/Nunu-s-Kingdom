@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 3095828887650829364}
   - component: {fileID: 5696290463779324146}
   - component: {fileID: 9137399245546576632}
+  - component: {fileID: -8077203216060031883}
   m_Layer: 0
   m_Name: Blacksmith
   m_TagString: Building
@@ -348,3 +349,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.139774, y: 33.17141}
   m_EdgeRadius: 0
+--- !u!114 &-8077203216060031883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171013364113157511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e53781071c53e4db33b691236563e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  nightColor:
+    serializedVersion: 2
+    rgba: 4286545791
+  delayBetweenTransitions: 0

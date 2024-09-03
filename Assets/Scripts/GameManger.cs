@@ -3,9 +3,10 @@ using UnityEngine;
 public class GameManger : MonoBehaviour
 {
     [SerializeField] private float dayDuration, nightDuration;
+    public GameState gameState;
     private HQ HQ; // will be pre built
     private Spawner spawner;
-    public GameState gameState;
+    private Player player;
     private float lastStateSwapped=0f;
     private int currday = 1;
 
@@ -14,8 +15,13 @@ public class GameManger : MonoBehaviour
         spawner = FindAnyObjectByType<Spawner>();
         gameState = GameState.Day;
         HQ = FindObjectOfType<HQ>();
+        player = FindObjectOfType<Player>();
     }
 
+    private void Start()
+    {
+        player.SetCanBuild(gameState);
+    }
     void Update()
     {
         ChangeStateTimerCheck();
@@ -56,6 +62,7 @@ public class GameManger : MonoBehaviour
                 StartNightActivities();
                 break;
         }
+        player.SetCanBuild(gameState);
     }
 
     private void StartNightActivities() //starts all night activities
@@ -79,6 +86,21 @@ public class GameManger : MonoBehaviour
         {
             HQ.FarmSeeds();
         }
+    }
+
+    public float GetDayDuration()
+    {
+        return dayDuration;
+    }
+
+    public float GetNightDuration()
+    {
+        return nightDuration;
+    }
+
+    public float GetLastStateSwapedTime()
+    {
+        return lastStateSwapped;
     }
     
 }

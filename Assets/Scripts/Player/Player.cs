@@ -3,6 +3,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
     private IInteractable interactableObj;
+    private bool canBuild; 
     private void Awake()
     {
         playerData.SetInitHealth();
@@ -12,22 +13,59 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && interactableObj!=null)
         {
-            interactableObj.Interact();
+            if (canBuild)
+            {
+                interactableObj.Interact();
+            }
+            else
+            {
+                print("cant build at night");
+            }
         }
     }
     public PlayerData GetPlayerData() { return playerData; }
 
+    public void SetCanBuild(GameState state)
+    {
+        if(state == GameState.Day)
+        {
+            canBuild = true;
+        }else if(state == GameState.Night)
+        {
+            canBuild = false;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(1000);
+        }
+
         if(collision.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable)) //looks for building spot to interact with ot other interactable objects
         {
+            if (collision.gameObject.CompareTag("BuildingSpot"))
+            {
+                collision.gameObject.GetComponent<BuildingSpot>().ShowBuildingGhost();
+            }
             interactableObj = interactable;
+        }
+        if(collision.gameObject.CompareTag("Seed"))
+        {
+            int amount = collision.gameObject.GetComponent<Seed>().amount;
+            playerData.AddSeedsAmount(amount);
+            print($"seeds in invetory: {playerData.seedAmount}");
+            Destroy(collision.gameObject);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        interactableObj=null;
+        if (collision.gameObject.CompareTag("BuildingSpot"))
+        {
+            collision.gameObject.GetComponent<BuildingSpot>().HideBuildingGhost();
+        }
+        interactableObj =null;
     }
 
     
