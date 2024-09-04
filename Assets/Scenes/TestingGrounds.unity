@@ -2184,8 +2184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0462634be341d7a4abef72c2de75ab82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 15
-  nightDuration: 15
+  dayDuration: 40
+  nightDuration: 40
   maxDaysInLevel: 10
   gameState: 0
 --- !u!4 &952256233
@@ -2573,7 +2573,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 079a1cc909c763440b4d0cd3c3600ce8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.247
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0

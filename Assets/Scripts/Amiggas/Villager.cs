@@ -15,9 +15,9 @@ public class Villager : MonoBehaviour
     [SerializeField] protected VillagerState villagerState;
     protected SpriteRenderer sr;
     protected Rigidbody2D rb;
+    protected Vector2 targetPosition;
     protected int direction;
     private GameObject buildingTarget;
-    private Vector2 targetPosition;
     private bool isUnemployed = true;
 
     [Header("Temporary Patrol Points")] //place holder for testing will update later
@@ -70,7 +70,7 @@ public class Villager : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetPos.x,transform.position.y), villagerData.movementSpeed * Time.deltaTime);
     }
-    private void CheckVillagerArrivalToTarget() //checks if the unemployed villager arrive to the proffesion building destination
+    protected void CheckVillagerArrivalToTarget() //checks if the unemployed villager arrive to the proffesion building destination
     {
         if (transform.position == (Vector3)targetPosition)
         {
@@ -151,7 +151,6 @@ public class Villager : MonoBehaviour
                 break;
             case VillagerState.Combat:
                 break;
-
         }
     }
 }

@@ -72,6 +72,14 @@ public class ProffesionBuilding : Building
     {
         int randomSpawnPoint = Random.Range(0, villagerRecruitSpawnPoints.Length);
         GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint].position, Quaternion.identity);
+        if (HQ.isNightMode)
+        {
+            if(proffesionVillager.TryGetComponent<CombatVillager>(out CombatVillager combatVillager))
+            {
+                print($"combat villager found!! {combatVillager.GetVillagerData().villagerName}");
+                combatVillager.ChangeToCombatMode();
+            }
+        }
         HQ.AddProffesionVillager(proffesionVillager,buildingData.buildingName);
     }
 

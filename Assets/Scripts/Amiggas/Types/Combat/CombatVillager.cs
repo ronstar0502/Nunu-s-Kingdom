@@ -44,7 +44,7 @@ public class CombatVillager : Villager
                 {
                     VillagerMoveTo(targetEnemy.transform.position);
                 }
-            }            
+            }          
         }
     }
     /*private void FixedUpdate()
@@ -75,6 +75,7 @@ public class CombatVillager : Villager
     protected void SetNewTarget() //method to set new target
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, targetDetectRange);
+
         float minDistance = float.MaxValue;
         for (int i = 0; i < colliders.Length; i++)
         {
