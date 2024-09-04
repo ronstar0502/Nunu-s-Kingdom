@@ -17,4 +17,5 @@ MonoBehaviour:
   level: 1
   health: 1500
   cost: 0
+  isMaxLevel: 0
   nextLevelBuilding: {fileID: 11400000, guid: e7d0922eb23e53e4abe59009777a1540, type: 2}
