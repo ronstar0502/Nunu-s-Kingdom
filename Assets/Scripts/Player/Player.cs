@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy")) //test to see if enemy drops loot
         {
             collision.gameObject.GetComponent<Enemy>().TakeDamage(1000);
         }
@@ -50,6 +50,12 @@ public class Player : MonoBehaviour
             }
             interactableObj = interactable;
         }
+
+        if (collision.gameObject.CompareTag("Building"))
+        {
+            collision.gameObject.GetComponent<Building>().EnableBuildingPopUp();
+        }
+
         if(collision.gameObject.CompareTag("Seed"))
         {
             int amount = collision.gameObject.GetComponent<Seed>().amount;
@@ -64,6 +70,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("BuildingSpot"))
         {
             collision.gameObject.GetComponent<BuildingSpot>().HideBuildingGhost();
+        }
+
+        if (collision.gameObject.CompareTag("Building"))
+        {
+            collision.gameObject.GetComponent<Building>().DisableBuildingPopUp();
         }
         interactableObj =null;
     }

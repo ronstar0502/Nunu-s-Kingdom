@@ -3,6 +3,7 @@ public class BuildingSpot : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject buildingObj;
     [SerializeField] private GameObject buildingGhost;
+    [SerializeField] private GameObject buildingSpotPopUp;
     private Player player;
     private BuildingData buildingData;
     private SpriteRenderer _sr;
@@ -14,17 +15,21 @@ public class BuildingSpot : MonoBehaviour, IInteractable
         buildingData = buildingObj.GetComponent<Building>().GetBuildingData();
 
         buildingGhost.SetActive(false);
+        buildingSpotPopUp.SetActive(false);
     }
 
     public void ShowBuildingGhost()
     {
         buildingGhost.SetActive(true);
+        buildingSpotPopUp.SetActive(true);
+        buildingSpotPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(buildingData.cost);
         _sr.enabled = false;
     }
 
     public void HideBuildingGhost()
     {
         buildingGhost.SetActive(false);
+        buildingSpotPopUp.SetActive(false);
         _sr.enabled = true;
     }
     //method to build a building at the current building spot

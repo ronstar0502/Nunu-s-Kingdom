@@ -3,12 +3,13 @@ using UnityEngine;
 public class GameManger : MonoBehaviour
 {
     [SerializeField] private float dayDuration, nightDuration;
+    [SerializeField] private int maxDaysInLevel;
     public GameState gameState;
     private HQ HQ; // will be pre built
     private Spawner spawner;
     private Player player;
     private float lastStateSwapped=0f;
-    private int currday = 1;
+    private int currDay = 1;
 
     private void Awake()
     {
@@ -25,6 +26,12 @@ public class GameManger : MonoBehaviour
     void Update()
     {
         ChangeStateTimerCheck();
+        
+        if(currDay == maxDaysInLevel + 1)
+        {
+            print("You Won!");
+            Time.timeScale = 0f;
+        }
 
         if(gameState == GameState.Night)
         {
@@ -73,11 +80,11 @@ public class GameManger : MonoBehaviour
     }
     private void StartDayActivities() //starts all day activities
     {
-        currday++;
-        print($"Day {currday}");
+        currDay++;
+        print($"Day {currDay}");
         HarvestFarm();
         HQ.SetCombatToPatrol();
-        currday++;
+        currDay++;
     }
 
     private void HarvestFarm()

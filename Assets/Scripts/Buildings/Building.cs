@@ -4,6 +4,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
 {
     [SerializeField] protected BuildingData buildingData;
     [SerializeField] protected GameObject buildingSpot;
+    [SerializeField] protected GameObject buildingPopUp;
     [SerializeField] private float buildingHealth;
     protected Player player;
     protected int nextLevelCost;
@@ -39,6 +40,16 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
                 DestroyBuilding();
             }
         }
+    }
+    public virtual void EnableBuildingPopUp()
+    {
+        buildingPopUp.SetActive(true);
+        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost);
+    }
+
+    public void DisableBuildingPopUp()
+    {
+        buildingPopUp.SetActive(false);
     }
     public void Interact() //interact for level up
     {

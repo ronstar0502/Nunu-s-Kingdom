@@ -19,6 +19,11 @@ public class ProffesionBuilding : Building
         villager = villlagerProffesionPrefab.GetComponent<Villager>();
     }
 
+    public override void EnableBuildingPopUp()
+    {
+        buildingPopUp.SetActive(true);
+        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost,villager.GetVillagerData().seedsCost);
+    }
     public virtual void RecruitVillagerProffesion() //method for recruiting unemployed to the specific proffesion 
     {
         if (HQ == null)
