@@ -30,17 +30,18 @@ public class Villager : MonoBehaviour
         villagerData.InitHealth();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        InitVillager();
     }
 
     protected virtual void Start()
     {
-        InitVillager();
         ChangeState(VillagerState.Spawned);
     }
 
     protected void InitVillager()
     {
         HQ = FindObjectOfType<HQ>();
+
         //place holder to test patrol system
         leftPatrolBorder = HQ.transform.position.x - 10f;
         rightPatrolBorder = HQ.transform.position.x + 10f;
@@ -57,8 +58,7 @@ public class Villager : MonoBehaviour
 
         if(villagerState == VillagerState.Patrol)
         {
-            VillagerMoveTo(targetPosition);
-            CheckVillagerArrivalToTarget();
+            VillagerPatrol();           
         }
     }
 
@@ -78,10 +78,10 @@ public class Villager : MonoBehaviour
             if(villagerState == VillagerState.ProffesionAction)
             {
                 VilagerArrivalAction();
-                isUnemployed = false;
-                ChangeState(VillagerState.Spawned);
+                //isUnemployed = false;
+                //ChangeState(VillagerState.Spawned);
             }
-            else if(villagerState == VillagerState.Patrol)
+            else if(villagerState == VillagerState.Patrol || villagerState == VillagerState.Combat)
             {
                 VillagerPatrol();
             }
@@ -114,10 +114,18 @@ public class Villager : MonoBehaviour
     }
     protected void VillagerPatrol()  //patrol for villagers that are not assigned to other tasks
     {
-        print("starts patroling");
+        VillagerMoveTo(targetPosition);
+        if(transform.position == (Vector3)targetPosition)
+        {
+            SetPatrolPosition();
+        }
+
+    }
+
+    private void SetPatrolPosition()
+    {
         float randomPatrolPoint = Random.Range(leftPatrolBorder, rightPatrolBorder);
         targetPosition = new Vector2(randomPatrolPoint, transform.position.y);
-        VillagerMoveTo(targetPosition);
     }
 
     protected void SetVillagerDirection(float targetPoint) //sets the direction of the sprite and movement
@@ -147,9 +155,11 @@ public class Villager : MonoBehaviour
             case VillagerState.InProffesionBuilding:
                 break;
             case VillagerState.Patrol:
+                SetPatrolPosition();
                 VillagerPatrol();
                 break;
             case VillagerState.Combat:
+                SetPatrolPosition();
                 break;
         }
     }
