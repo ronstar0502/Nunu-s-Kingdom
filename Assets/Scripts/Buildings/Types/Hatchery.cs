@@ -29,6 +29,7 @@ public class Hatchery : Building
     {
         if (HQ.CanRecruitVillager() && HasOpenEggSlots()) //checks if the player can recruit and there are available eggs slots
         {         
+            HQ.AddToTotalVillagerAmount();
             int eggSlot = GetEggSlotNumber();
             GameObject newEgg = Instantiate(eggPrefab,eggSpawnPoints[eggSlot]); //spawns an egg on pre determined transforms
             VillagerEgg villagerEgg = newEgg.GetComponent<VillagerEgg>();

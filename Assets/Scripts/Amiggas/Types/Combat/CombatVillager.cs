@@ -14,8 +14,24 @@ public class CombatVillager : Villager
 
     protected override void Start()
     {
-        base.Start();
         attackTimer = attackSpeed;
+        if (HQ.isNightMode) //has some bugs with new recruited ammigas when spawned at night
+        {
+            ChangeState(VillagerState.Combat);
+            SetNewTarget();
+            if (targetEnemy != null)
+            {
+                print($"{villagerData.villagerName} is spawned at night and switched to combat mode | {villagerState} and has target: {targetEnemy.name}");
+            }
+            else
+            {
+                print($"{villagerData.villagerName} is spawned at night and switched to combat mode | {villagerState} but has no target.");
+            }
+        }
+        else
+        {
+            base.Start();
+        }
     }
 
     protected void Update()
@@ -23,45 +39,40 @@ public class CombatVillager : Villager
         base.Update();
         if (villagerState == VillagerState.Combat || villagerState == VillagerState.InProffesionBuilding)
         {
+            print($"{villagerData.villagerName} is in combat mode.");
             if (targetEnemy == null || !targetEnemy.activeInHierarchy) //if target is not in hierarchy and null sets new target
             {
+                print($"{villagerData.villagerName} has no target or target is inactive. Setting new target.");
                 SetNewTarget();
             }
 
             if (targetEnemy != null)
             {
+                print($"{villagerData.villagerName} found a target: {targetEnemy.name}.");
                 if (IsInAttackRange())
                 {
-                    //rb.velocity = Vector2.zero;
+                    print($"{villagerData.villagerName} is in attack range of {targetEnemy.name}. Attacking...");
                     attackTimer -= Time.deltaTime;
                     if (attackTimer <= 0)
                     {
                         AttackTarget();
                         attackTimer = attackSpeed;
+                        print($"{villagerData.villagerName} attacked {targetEnemy.name}.");
                     }
                 }
-                else if(villagerState == VillagerState.Combat)
+                else if (villagerState == VillagerState.Combat)
                 {
+                    print($"{villagerData.villagerName} is moving towards {targetEnemy.name}.");
                     VillagerMoveTo(targetEnemy.transform.position);
                 }
-            }            
+            }
+            else if (villagerState == VillagerState.Combat)
+            {
+                print($"{villagerData.villagerName} has no target and is now patrolling.");
+                VillagerPatrol();
+            }
         }
     }
-    /*private void FixedUpdate()
-    {
-        if(villagerState == VillagerState.Combat)
-        {
-            if (targetEnemy != null && !IsInAttackRange())
-            {
-                VillagerMoveTo(targetEnemy.transform.position);
-                //rb.velocity = new Vector2(direction * villagerData.movementSpeed * Time.deltaTime, rb.velocity.y);
-            }
-            else
-            {
-                rb.velocity = Vector2.zero;
-            }
-        }
-    }*/
 
     public virtual void ChangeToCombatMode() // change the combat villager to combat mode
     {
@@ -74,19 +85,42 @@ public class CombatVillager : Villager
     }
     protected void SetNewTarget() //method to set new target
     {
+        print($"{villagerData.villagerName} is searching for new targets within range {targetDetectRange}.");
+
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, targetDetectRange);
+
+        if (colliders.Length == 0)
+        {
+            print($"{villagerData.villagerName} found no enemies within range.");
+            targetEnemy = null;
+            return;
+        }
+
         float minDistance = float.MaxValue;
+        GameObject closestEnemy = null;
+
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].gameObject.GetComponent<Enemy>() !=null)
+            Enemy enemy = colliders[i].gameObject.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                float distance = Vector2.Distance(transform.position, colliders[i].gameObject.transform.position);
-                if(distance < minDistance)
+                float distance = Vector2.Distance(transform.position, enemy.transform.position);
+                if (distance < minDistance)
                 {
                     minDistance = distance;
-                    targetEnemy = colliders[i].gameObject;
+                    closestEnemy = enemy.gameObject;
                 }
             }
+        }
+        if (closestEnemy != null)
+        {
+            targetEnemy = closestEnemy;
+            print($"{villagerData.villagerName} found a new target: {targetEnemy.name}.");
+        }
+        else
+        {
+            targetEnemy = null;
+            print($"{villagerData.villagerName} did not find any valid enemies.");
         }
     }
 

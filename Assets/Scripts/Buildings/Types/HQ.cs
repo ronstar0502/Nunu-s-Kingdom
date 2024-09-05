@@ -18,6 +18,7 @@ public class HQ : Building
 
     [SerializeField]private List<GuardTower> guardTowers;
     public Farm farm;
+    public bool isNightMode;
     private VillageInfo villageInfoUI;
 
     private void Start()
@@ -36,11 +37,15 @@ public class HQ : Building
     public void AddUnemployedVillager(GameObject villager)
     {
         unemployedVillagers.Add(villager);
-        currentVillagerAmount++;
 
         villageInfoUI.SetUnemployedText(unemployedVillagers.Count);
         villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
         print($"total villager {currentVillagerAmount} / {maxVillagerAmount} and {unemployedVillagers.Count} are unemployed");
+    }
+
+    public void AddToTotalVillagerAmount()
+    {
+        currentVillagerAmount++;
     }
 
     public void AddProffesionVillager(GameObject villager , string buildingName)
@@ -163,6 +168,7 @@ public class HQ : Building
 
     public void SetCombatVillagers()
     {
+        isNightMode = true;
         for(int i = 0; i < warriors.Count; i++)
         {
             warriors[i].GetComponent<CombatVillager>().ChangeToCombatMode();
@@ -175,6 +181,7 @@ public class HQ : Building
 
     public void SetCombatToPatrol()
     {
+        isNightMode = false;
         for (int i = 0; i < warriors.Count; i++)
         {
             warriors[i].GetComponent<CombatVillager>().ChangeToPatrolMode();
