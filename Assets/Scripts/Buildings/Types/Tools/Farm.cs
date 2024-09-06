@@ -9,6 +9,7 @@ public class Farm : ProffesionBuilding
     private int currentFarmerSlots;
     [SerializeField] private int currentWorkingVillagers;
     private int harvestAmount;
+    private bool playerInRange;
 
     //TBD: visualization of farmers
 
@@ -23,9 +24,23 @@ public class Farm : ProffesionBuilding
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E)&& playerInRange)
         {
             RecruitVillagerProffesion();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerInRange = false;
         }
     }
     public void FarmSeeds() //farm seeds
