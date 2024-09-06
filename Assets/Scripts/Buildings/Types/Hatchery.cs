@@ -20,7 +20,7 @@ public class Hatchery : Building
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)) //placeholder for testing
+        if (Input.GetKeyDown(KeyCode.E)) //placeholder for testing
         {
             RecruitVillager();
         }
