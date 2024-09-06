@@ -5,7 +5,7 @@ public class Archery : ProffesionBuilding
     //TBD
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             RecruitVillagerProffesion();
         }

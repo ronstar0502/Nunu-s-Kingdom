@@ -5,7 +5,7 @@ public class BlackSmith : ProffesionBuilding
     //TBD
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             RecruitVillagerProffesion();
         }
