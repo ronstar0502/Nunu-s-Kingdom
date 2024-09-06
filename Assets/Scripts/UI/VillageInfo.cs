@@ -12,7 +12,9 @@ public class VillageInfo : MonoBehaviour
     [SerializeField] private TMP_Text farmersAmountText;
     [SerializeField] private TMP_Text warriorsAmountText;
     [SerializeField] private TMP_Text archersAmountText;
-
+    [SerializeField] private TMP_Text moreInfoText;
+    [SerializeField] private GameObject infoWindow;
+ 
     public void InitInfo(int maxVillagers,int seeds)
     {
         totalVillagersText.text = $"0 / {maxVillagers}";
@@ -22,6 +24,35 @@ public class VillageInfo : MonoBehaviour
         farmersAmountText.text = $"0";
         warriorsAmountText.text = $"0";
         archersAmountText.text = $"0";
+    }
+    private void Start()
+    {
+        if (infoWindow != null)
+        {
+            infoWindow.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab) && infoWindow != null)
+        {
+            infoWindow.SetActive(true);
+            if (moreInfoText != null)
+            {
+                moreInfoText.text = "";
+            }
+        }
+        else if (Input.GetKeyUp(KeyCode.Tab) && infoWindow!=null)
+        {
+            infoWindow.SetActive(false);
+            if (moreInfoText != null)
+            {
+                moreInfoText.text = "Hold Tab for more info";
+            }
+        }
+
+
     }
 
     public void SetSeedsText(int seeds)
