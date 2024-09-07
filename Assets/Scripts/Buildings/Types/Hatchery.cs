@@ -12,6 +12,7 @@ public class Hatchery : Building
     [Header("Variables")]
     [SerializeField] private int villagerCost;
     private HQ HQ;
+    private bool playerInRange;
 
     private void Start()
     {
@@ -20,9 +21,23 @@ public class Hatchery : Building
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)) //placeholder for testing
+        if (Input.GetKeyDown(KeyCode.E)&& playerInRange) //placeholder for testing
         {
             RecruitVillager();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerInRange = false;
         }
     }
     public void RecruitVillager() //recruits a villager

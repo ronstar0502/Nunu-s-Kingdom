@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && interactableObj!=null)
+        if (Input.GetKeyDown(KeyCode.R) && interactableObj!=null)
         {
             if (canBuild)
             {
