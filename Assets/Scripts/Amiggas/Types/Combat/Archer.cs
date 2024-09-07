@@ -19,7 +19,7 @@ public class Archer : CombatVillager
     {
         if (!isAssigned)
         {
-            ChangeState(VillagerState.Combat);
+            SetState(VillagerState.Combat);
         }
         else
         {
@@ -31,14 +31,14 @@ public class Archer : CombatVillager
     {
         if (!isAssigned)
         {
-            ChangeState(VillagerState.Patrol);
+            SetState(VillagerState.Patrol);
         }
     }
 
-    public void GoToGuardTower(GuardTower guardTower) // method to tell the archer to go to assigned tower
+    public void GoToAssignedGuardTower(GuardTower guardTower) // method to tell the archer to go to assigned tower
     {
         print($"archer state 1: {villagerState}");
-        ChangeState(VillagerState.ProffesionAction);
+        SetState(VillagerState.ProffesionAction);
         print($"archer state 2: {villagerState}");
 
         assignedGuardTower = guardTower;
@@ -46,10 +46,10 @@ public class Archer : CombatVillager
         targetTower = new Vector2(guardTower.transform.position.x, transform.position.y);
 
         print($"archer state 3: {villagerState}");
-        ChangeState(VillagerState.InProffesionBuilding);
+        SetState(VillagerState.InProffesionBuilding);
 
         print($"archer state 4: {villagerState}");
-        StartCoroutine(ArcherTowerArrival());
+        StartCoroutine(ArcherGuardTowerArrival());
 
         attackRange += assignedGuardTower.GetAttackRangeBonus();
         print($"archer in tower {gameObject.name} in slot {guardTowerSlot} has {attackRange} range");
@@ -65,14 +65,14 @@ public class Archer : CombatVillager
         {
             return;
         }
-        ChangeState(VillagerState.Patrol);
+        SetState(VillagerState.Patrol);
     }
-    private IEnumerator ArcherTowerArrival() // used courtine to move the archer to the tower so it wont be in update all the time
+    private IEnumerator ArcherGuardTowerArrival() // used courtine to move the archer to the tower so it wont be in update all the time
     {
         print($"archer state 5: {villagerState}");
         while (!isAssigned && assignedGuardTower != null)
         {
-            VillagerMoveTo(targetTower);
+            VillagerMoveToTarget(targetTower);
             print($"archer state 6: {villagerState}");
             if (transform.position == (Vector3)targetTower)
             {

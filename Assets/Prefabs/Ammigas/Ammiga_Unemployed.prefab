@@ -104,7 +104,7 @@ MonoBehaviour:
     maxHealth: 75
     health: 0
     movementSpeed: 5
-    seedsCost: 0
+    seedsCost: 5
   villagerTool: {fileID: 0}
   villagerState: 0
   leftPatrolBorder: 0

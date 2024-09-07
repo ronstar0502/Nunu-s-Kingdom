@@ -116,7 +116,7 @@ public class HQ : Building
             return;
         }
         Archer archer = archerToAssign.GetComponent<Archer>();
-        archer.GoToGuardTower(guardTower);
+        archer.GoToAssignedGuardTower(guardTower);
     }
 
     private GuardTower GetAvailableGuardTower() //method to get one of the available guard towers for the archer

@@ -110,6 +110,7 @@ MonoBehaviour:
     name: Big Goblin
   seedLoot: {fileID: 5269533173031823952, guid: 69ef34eab360acf4b8690d97f1a7563e, type: 3}
   lootDropSpot: {fileID: 6906554350584455144}
+  lootDropChance: 50
   spawnOffsetY: -1.450436
 --- !u!61 &7626191922688359072
 BoxCollider2D:

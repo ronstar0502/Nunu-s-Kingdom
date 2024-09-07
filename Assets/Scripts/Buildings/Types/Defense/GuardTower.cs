@@ -26,7 +26,7 @@ public class GuardTower : Building
             GameObject archerToassign = HQ.GetRandomArcher();
             if (archerToassign != null)
             {
-                archerToassign.gameObject.GetComponent<Archer>().GoToGuardTower(gameObject.GetComponent<GuardTower>());
+                archerToassign.gameObject.GetComponent<Archer>().GoToAssignedGuardTower(gameObject.GetComponent<GuardTower>());
             }
             else
             {

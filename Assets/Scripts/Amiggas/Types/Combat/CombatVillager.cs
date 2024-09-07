@@ -17,7 +17,7 @@ public class CombatVillager : Villager
         attackTimer = attackSpeed;
         if (HQ.isNightMode) //has some bugs with new recruited ammigas when spawned at night
         {
-            ChangeState(VillagerState.Combat);
+            SetState(VillagerState.Combat);
             SetNewTarget();
             if (targetEnemy != null)
             {
@@ -63,7 +63,7 @@ public class CombatVillager : Villager
                 else if (villagerState == VillagerState.Combat)
                 {
                     print($"{villagerData.villagerName} is moving towards {targetEnemy.name}.");
-                    VillagerMoveTo(targetEnemy.transform.position);
+                    VillagerMoveToTarget(targetEnemy.transform.position);
                 }
             }
             else if (villagerState == VillagerState.Combat)
@@ -76,12 +76,12 @@ public class CombatVillager : Villager
 
     public virtual void ChangeToCombatMode() // change the combat villager to combat mode
     {
-        ChangeState(VillagerState.Combat);
+        SetState(VillagerState.Combat);
     }
 
     public virtual void ChangeToPatrolMode() // change the combat villager back to patrol mode
     {
-        ChangeState(VillagerState.Patrol);
+        SetState(VillagerState.Patrol);
     }
     protected void SetNewTarget() //method to set new target
     {

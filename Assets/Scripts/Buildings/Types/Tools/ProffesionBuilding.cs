@@ -57,7 +57,7 @@ public class ProffesionBuilding : Building
         Villager unemployedVillager = randomUnemployed.GetComponent<Villager>();
         if(unemployedVillager != null)
         {
-            unemployedVillager.ChangeProffesion(gameObject, transform.position);
+            unemployedVillager.ChangeVillagerProffesion(gameObject, transform.position);
             HQ.RemoveUnemployed(randomUnemployed);
         }
 
