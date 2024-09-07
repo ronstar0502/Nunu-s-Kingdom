@@ -17,8 +17,8 @@ public class Villager : MonoBehaviour
     protected Rigidbody2D rb;
     protected Vector2 targetPosition;
     protected int direction;
-    private GameObject buildingTarget;
-    private bool isUnemployed = true;
+    private GameObject _buildingTarget;
+    private bool _isUnemployed = true;
 
     [Header("Temporary Patrol Points")] //place holder for testing will update later
     [SerializeField] protected float leftPatrolBorder;
@@ -35,7 +35,7 @@ public class Villager : MonoBehaviour
 
     protected virtual void Start()
     {
-        ChangeState(VillagerState.Spawned);
+        SetState(VillagerState.Spawned);
     }
 
     protected void InitVillager()
@@ -50,9 +50,9 @@ public class Villager : MonoBehaviour
     protected void Update()
     {
         //place holder will change later for better performance
-        if(isUnemployed && villagerState == VillagerState.ProffesionAction)
+        if(_isUnemployed && villagerState == VillagerState.ProffesionAction)
         {
-            VillagerMoveTo(targetPosition);
+            VillagerMoveToTarget(targetPosition);
             CheckVillagerArrivalToTarget();
         }
 
@@ -62,7 +62,7 @@ public class Villager : MonoBehaviour
         }
     }
 
-    protected void VillagerMoveTo(Vector2 targetPos) //method to move the villager to target position on X axsis only
+    protected void VillagerMoveToTarget(Vector2 targetPos) //method to move the villager to target position on X axsis only
     {
         SetVillagerDirection(targetPos.x);
         //float movementDirection = targetPosition.x - transform.position.x;
@@ -77,7 +77,7 @@ public class Villager : MonoBehaviour
             rb.velocity = Vector2.zero;
             if(villagerState == VillagerState.ProffesionAction)
             {
-                VilagerArrivalAction();
+                VilagerArrivalToProffesionBuilding();
                 //isUnemployed = false;
                 //ChangeState(VillagerState.Spawned);
             }
@@ -88,33 +88,33 @@ public class Villager : MonoBehaviour
         }
     }
 
-    private void VilagerArrivalAction()  //method for the arrival of the unepmloyed to the proffesion building
+    private void VilagerArrivalToProffesionBuilding()  //method for the arrival of the unepmloyed to the proffesion building
     {
-        ProffesionBuilding proffesionBuilding = buildingTarget.GetComponent<ProffesionBuilding>();
+        ProffesionBuilding proffesionBuilding = _buildingTarget.GetComponent<ProffesionBuilding>();
         proffesionBuilding.VillagerProffesionChange_OnArrival(gameObject);
     }
 
     public VillagerData GetVillagerData() { return villagerData;}
 
-    public void ChangeProffesion(GameObject proffesionBuilding,Vector2 recruitPosition) // sets unemployed target proffesion building
+    public void ChangeVillagerProffesion(GameObject proffesionBuilding,Vector2 recruitPosition) // sets unemployed target proffesion building
     {
-        ChangeState(VillagerState.ProffesionAction);
+        SetState(VillagerState.ProffesionAction);
         GoToProffesionBuilding(proffesionBuilding, recruitPosition);
     }
 
     private void GoToProffesionBuilding(GameObject proffesionBuilding, Vector2 recruitPosition) //sets the proffesion building for the unemployed to go to
     {
         targetPosition = new Vector2(recruitPosition.x, transform.position.y);
-        buildingTarget = proffesionBuilding;
-        VillagerMoveTo(targetPosition);
+        _buildingTarget = proffesionBuilding;
+        VillagerMoveToTarget(targetPosition);
     }
     protected void StartPatroling()
     {
-        ChangeState(VillagerState.Patrol);
+        SetState(VillagerState.Patrol);
     }
     protected void VillagerPatrol()  //patrol for villagers that are not assigned to other tasks
     {
-        VillagerMoveTo(targetPosition);
+        VillagerMoveToTarget(targetPosition);
         if(transform.position == (Vector3)targetPosition)
         {
             SetPatrolPosition();
@@ -142,7 +142,7 @@ public class Villager : MonoBehaviour
         }
     }
 
-    protected void ChangeState(VillagerState state) //changing villager state
+    protected void SetState(VillagerState state) //changing villager state
     {
         villagerState = state;
         switch (state)

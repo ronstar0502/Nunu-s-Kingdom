@@ -7,6 +7,6 @@ public class Farmer : Villager
     protected override void Start()
     {
         InitVillager();
-        ChangeState(VillagerState.InProffesionBuilding);
+        SetState(VillagerState.InProffesionBuilding);
     }
 }

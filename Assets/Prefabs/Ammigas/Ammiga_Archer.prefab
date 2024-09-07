@@ -103,15 +103,18 @@ MonoBehaviour:
     maxHealth: 125
     health: 0
     movementSpeed: 5
-    seedsCost: 0
+    seedsCost: 8
   villagerTool: {fileID: 5341729962025019665, guid: 98b47637b53dccd46bdb1def65d50be1, type: 3}
   villagerState: 0
   leftPatrolBorder: 0
   rightPatrolBorder: 0
   damage: 20
   targetDetectRange: 30
-  attackRange: 6
+  attackRange: 6.5
   attackSpeed: 1
+  assignedGuardTower: {fileID: 0}
+  targetTower: {x: 0, y: 0}
+  guardTowerSlot: 0
   isAssigned: 0
 --- !u!50 &-9079562888934030536
 Rigidbody2D:
