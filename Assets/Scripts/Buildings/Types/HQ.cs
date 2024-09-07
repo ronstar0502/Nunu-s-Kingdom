@@ -20,9 +20,12 @@ public class HQ : Building
     public Farm farm;
     public bool isNightMode;
     private VillageInfo villageInfoUI;
+    private HealthUI healthUI;
+    private int HP = 4; //Move this to the scriptable Object
 
     private void Start()
     {
+        healthUI = FindAnyObjectByType<HealthUI>();
         maxVillagerAmount = maxVillagerPerLevel[buildingData.level-1];
         villageInfoUI = GetComponent<VillageInfo>();
         villageInfoUI.InitInfo(maxVillagerAmount,player.GetPlayerData().seedAmount);
@@ -46,6 +49,11 @@ public class HQ : Building
     public void AddToTotalVillagerAmount()
     {
         currentVillagerAmount++;
+    }
+    public override void TakeDamage(int damage)
+    {
+        HP--;
+        healthUI.TakeDamage();
     }
 
     public void AddProffesionVillager(GameObject villager , string buildingName)
