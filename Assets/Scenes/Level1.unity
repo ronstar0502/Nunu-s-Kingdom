@@ -841,7 +841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -200}
+  m_AnchoredPosition: {x: 0, y: -198.70001}
   m_SizeDelta: {x: 29688.17, y: 38129.4}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &435622269
@@ -857,7 +857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.63522005, g: 0.3724957, b: 0.11785526, a: 0.8901961}
+  m_Color: {r: 1, g: 0.13396227, b: 0.68024504, a: 0.8901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4248,7 +4248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1608022965}
   m_Layer: 5
-  m_Name: MainVillageInfo (1)
+  m_Name: MoreVillageInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5190,7 +5190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.70440245, g: 0.39533135, b: 0.16613254, a: 0.8784314}
+  m_Color: {r: 1, g: 0.13725491, b: 0.68235296, a: 0.8901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5224,6 +5224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2021598406}
+  - component: {fileID: 2021598407}
   m_Layer: 5
   m_Name: MainVillageInfo
   m_TagString: Untagged
@@ -5254,6 +5255,26 @@ RectTransform:
   m_AnchoredPosition: {x: -88835.92, y: -33333.76}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2021598407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021598405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f1476006cbe7c449bd6205882f0da13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seedsAmountText: {fileID: 856413543}
+  totalVillagersText: {fileID: 1269442870}
+  unemployedAmountText: {fileID: 970849554}
+  farmersAmountText: {fileID: 1531054218}
+  warriorsAmountText: {fileID: 968356271}
+  archersAmountText: {fileID: 902876356}
+  moreInfoText: {fileID: 0}
+  infoWindow: {fileID: 435622267}
 --- !u!1001 &2109218623
 PrefabInstance:
   m_ObjectHideFlags: 0
