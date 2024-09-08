@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   villagerData:
-    villagerName: Warrior
+    villagerName: Samurai
     maxHealth: 150
     health: 0
     movementSpeed: 5

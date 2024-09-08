@@ -37,25 +37,25 @@ public class Archer : CombatVillager
 
     public void GoToAssignedGuardTower(GuardTower guardTower) // method to tell the archer to go to assigned tower
     {
-        print($"archer state 1: {villagerState}");
+        //print($"archer state 1: {villagerState}");
         SetState(VillagerState.ProffesionAction);
-        print($"archer state 2: {villagerState}");
+        //print($"archer state 2: {villagerState}");
 
         assignedGuardTower = guardTower;
         guardTowerSlot = guardTower.GetAvailableSpotIndex();
         targetTower = new Vector2(guardTower.transform.position.x, transform.position.y);
 
-        print($"archer state 3: {villagerState}");
+        //print($"archer state 3: {villagerState}");
         SetState(VillagerState.InProffesionBuilding);
 
-        print($"archer state 4: {villagerState}");
+        //print($"archer state 4: {villagerState}");
         StartCoroutine(ArcherGuardTowerArrival());
 
         attackRange += assignedGuardTower.GetAttackRangeBonus();
-        print($"archer in tower {gameObject.name} in slot {guardTowerSlot} has {attackRange} range");
+        //print($"archer in tower {gameObject.name} in slot {guardTowerSlot} has {attackRange} range");
     }
 
-    private void CheckIfCanPatrol() //checks if archer can patrol
+    /*private void CheckIfCanPatrol() //checks if archer can patrol
     {
         if (assignedGuardTower != null)
         {
@@ -66,17 +66,17 @@ public class Archer : CombatVillager
             return;
         }
         SetState(VillagerState.Patrol);
-    }
+    }*/
     private IEnumerator ArcherGuardTowerArrival() // used courtine to move the archer to the tower so it wont be in update all the time
     {
-        print($"archer state 5: {villagerState}");
+        //print($"archer state 5: {villagerState}");
         while (!isAssigned && assignedGuardTower != null)
         {
             VillagerMoveToTarget(targetTower);
-            print($"archer state 6: {villagerState}");
+            //print($"archer state 6: {villagerState}");
             if (transform.position == (Vector3)targetTower)
             {
-                print($"archer state 7: {villagerState}");
+                //print($"archer state 7: {villagerState}");
                 isAssigned = true;
                 assignedGuardTower.AddArcherToGuard(gameObject, guardTowerSlot);
                 //ChangeState(VillagerState.InProffesionBuilding);

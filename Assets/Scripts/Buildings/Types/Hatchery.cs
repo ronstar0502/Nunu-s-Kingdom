@@ -11,7 +11,7 @@ public class Hatchery : Building
     private bool[] eggSlotsOpen = new bool[]{ true,false,false};
     [Header("Variables")]
     [SerializeField] private int villagerCost;
-    private HQ HQ;
+    private HQ HQ;   
     private bool playerInRange;
 
     private void Start()
@@ -42,9 +42,11 @@ public class Hatchery : Building
     }
     public void RecruitVillager() //recruits a villager
     {
-        if (HQ.CanRecruitVillager() && HasOpenEggSlots()) //checks if the player can recruit and there are available eggs slots
+        if (HQ.CanRecruitVillager() && HasOpenEggSlots() && player.GetPlayerData().seedAmount >= villagerCost) //checks if the player can recruit and there are available eggs slots
         {         
             HQ.AddToTotalVillagerAmount();
+            player.GetPlayerData().SubstarctSeedsAmount(villagerCost);
+            HQ.villageInfoUI.SetSeedsText();
             int eggSlot = GetEggSlotNumber();
             GameObject newEgg = Instantiate(eggPrefab,eggSpawnPoints[eggSlot]); //spawns an egg on pre determined transforms
             VillagerEgg villagerEgg = newEgg.GetComponent<VillagerEgg>();
@@ -64,6 +66,7 @@ public class Hatchery : Building
     protected override void LevelUpBuilding() //extension of level up building with more logic for hatchery
     {
         base.LevelUpBuilding();
+        HQ.villageInfoUI.SetSeedsText();
         eggSlotsOpen[buildingData.level - 1] = true;
     }
 
@@ -89,7 +92,6 @@ public class Hatchery : Building
                 break;
             }
         }
-        print($"egg slot number: {slotIndex}");
         return slotIndex;
     }
 

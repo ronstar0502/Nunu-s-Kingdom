@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   villagerData:
-    villagerName: Ammiga
+    villagerName: Unemployed
     maxHealth: 75
     health: 0
     movementSpeed: 5

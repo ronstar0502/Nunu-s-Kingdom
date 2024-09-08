@@ -1,7 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManger : MonoBehaviour
 {
+    [SerializeField] private TMP_Text daysCountText;
     [SerializeField] private float dayDuration, nightDuration;
     [SerializeField] private int maxDaysInLevel;
     public GameState gameState;
@@ -21,8 +23,15 @@ public class GameManger : MonoBehaviour
 
     private void Start()
     {
+        SetDaysCountTxt();
         player.SetCanBuild(gameState);
     }
+
+    private void SetDaysCountTxt()
+    {
+        daysCountText.text = $"{currDay} / {maxDaysInLevel} Days";
+    }
+
     void Update()
     {
         ChangeStateTimerCheck();
@@ -81,6 +90,7 @@ public class GameManger : MonoBehaviour
     private void StartDayActivities() //starts all day activities
     {
         currDay++;
+        SetDaysCountTxt();
         print($"Day {currDay}");
         HarvestFarm();
         HQ.SetCombatToPatrol();

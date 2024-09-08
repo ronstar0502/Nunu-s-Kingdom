@@ -108,7 +108,7 @@ MonoBehaviour:
     movementSpeed: 75
     attackSpeed: 2
     attackRange: 3
-    name: Big Goblin
+    name: Troll
   seedLoot: {fileID: 5269533173031823952, guid: 69ef34eab360acf4b8690d97f1a7563e, type: 3}
   lootDropSpot: {fileID: 6906554350584455144}
   lootDropChance: 50

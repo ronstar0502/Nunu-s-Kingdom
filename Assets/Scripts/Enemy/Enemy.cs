@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float spawnOffsetY;
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
+    private Animator animator;
     private List<GameObject> buildingTargets;
     private GameObject currentBuildingTarget;
     private int direction = 1;
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         _rb = GetComponent<Rigidbody2D>();
         _sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
         enemyData.health = enemyData.maxHealth;
     }
@@ -43,13 +45,17 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             if (IsInAttackRange())
             {
-                //_rb.velocity = Vector2.zero;
+                animator.SetBool("isAttacking", true);
                 attackTimer -= Time.deltaTime;
                 if (attackTimer <= 0)
                 {
                     AttackTarget();
                     attackTimer = enemyData.attackSpeed;
                 }
+            }
+            else
+            {
+                animator.SetBool("isAttacking", false);
             }
         }
 

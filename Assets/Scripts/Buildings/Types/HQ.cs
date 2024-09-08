@@ -18,8 +18,8 @@ public class HQ : Building
 
     [SerializeField]private List<GuardTower> guardTowers;
     public Farm farm;
+    public VillageInfo villageInfoUI;
     public bool isNightMode;
-    private VillageInfo villageInfoUI;
     private HealthUI healthUI;
     private int HP = 4; //Move this to the scriptable Object
 
@@ -36,6 +36,7 @@ public class HQ : Building
         base.LevelUpBuilding();
         maxVillagerAmount = maxVillagerPerLevel[buildingData.level-1];
         villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
+        villageInfoUI.SetSeedsText();
     }
     public void AddUnemployedVillager(GameObject villager)
     {
@@ -108,7 +109,6 @@ public class HQ : Building
     public void FarmSeeds()
     {
         farm.FarmSeeds();
-        villageInfoUI.SetSeedsText(player.GetPlayerData().seedAmount);
     }
     public void AddGuardTower(GuardTower guardTower) //list of built guard tower
     {

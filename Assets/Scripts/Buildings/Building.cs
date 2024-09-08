@@ -77,7 +77,6 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     {
         player.GetPlayerData().SubstarctSeedsAmount(nextLevelCost); //substracts seed from player based on level up cost
         buildingData = buildingData.nextLevelBuilding; //levels up building by adding 1 to the level
-
         //after that now we set the new level data
         sr.sprite = buildingData.sprite;
         buildingHealth = buildingData.health;
