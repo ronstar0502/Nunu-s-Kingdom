@@ -24,6 +24,11 @@ public class ProffesionBuilding : Building
         buildingPopUp.SetActive(true);
         buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost,villager.GetVillagerData().seedsCost);
     }
+    protected override void LevelUpBuilding()
+    {
+        base.LevelUpBuilding();
+        HQ.villageInfoUI.SetSeedsText();
+    }
     public virtual void RecruitVillagerProffesion() //method for recruiting unemployed to the specific proffesion 
     {
         if (HQ == null)
@@ -39,6 +44,8 @@ public class ProffesionBuilding : Building
         {
             if(player.GetPlayerData().seedAmount >= villager.GetVillagerData().seedsCost)
             {
+                player.GetPlayerData().SubstarctSeedsAmount(villager.GetVillagerData().seedsCost);
+                HQ.villageInfoUI.SetSeedsText();
                 VillagerRecruitAction();
             }
             else

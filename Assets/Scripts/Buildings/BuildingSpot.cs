@@ -5,6 +5,7 @@ public class BuildingSpot : MonoBehaviour, IInteractable
     [SerializeField] private GameObject buildingGhost;
     [SerializeField] private GameObject buildingSpotPopUp;
     private Player player;
+    private HQ HQ;
     private BuildingData buildingData;
     private SpriteRenderer _sr;
 
@@ -12,6 +13,7 @@ public class BuildingSpot : MonoBehaviour, IInteractable
     {
         _sr = GetComponent<SpriteRenderer>();
         player = FindObjectOfType<Player>();
+        HQ = FindObjectOfType<HQ>();
         buildingData = buildingObj.GetComponent<Building>().GetBuildingData();
 
         buildingGhost.SetActive(false);
@@ -40,14 +42,17 @@ public class BuildingSpot : MonoBehaviour, IInteractable
             print("No Building Prefab Avilable");
             return;
         }
-        GameObject building = Instantiate(buildingObj, buildingGhost.transform.position, Quaternion.identity); //spawns the building at the desired position
-        building.GetComponent<Building>().SetBuildingSpot(gameObject);
-        player.GetPlayerData().SubstarctSeedsAmount(buildingData.cost); //substracts seeds amount based on building starting cost
+        if(player.GetPlayerData().seedAmount >= buildingData.cost)
+        {
+            GameObject building = Instantiate(buildingObj, buildingGhost.transform.position, Quaternion.identity); //spawns the building at the desired position
+            building.GetComponent<Building>().SetBuildingSpot(gameObject);
+            player.GetPlayerData().SubstarctSeedsAmount(buildingData.cost); //substracts seeds amount based on building starting cost
+            HQ.villageInfoUI.SetSeedsText();
 
-        //add a delay with animation of the building being built?
+            //add a delay with animation of the building being built?
 
-        //Destroy(gameObject); //destroying the building spot after the building is built
-        gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
     }
     public void Interact() //interaction with the building spot
     {

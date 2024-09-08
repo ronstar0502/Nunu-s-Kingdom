@@ -14,11 +14,12 @@ public class VillageInfo : MonoBehaviour
     [SerializeField] private TMP_Text archersAmountText;
     [SerializeField] private TMP_Text moreInfoText;
     [SerializeField] private GameObject infoWindow;
- 
+    private Player player;
     public void InitInfo(int maxVillagers,int seeds)
     {
+        player = FindObjectOfType<Player>();
         totalVillagersText.text = $"0 / {maxVillagers}";
-        seedsAmountText.text = $"{seeds}";
+        seedsAmountText.text = $"{player.GetPlayerData().seedAmount}";
 
         unemployedAmountText.text = $"0";
         farmersAmountText.text = $"0";
@@ -55,9 +56,9 @@ public class VillageInfo : MonoBehaviour
 
     }
 
-    public void SetSeedsText(int seeds)
+    public void SetSeedsText()
     {
-        seedsAmountText.text = $"{seeds}";
+        seedsAmountText.text = $"{player.GetPlayerData().seedAmount}";
     }
 
     public void SetVillagersAmountText(int currentVillagers,int maxVillagers)

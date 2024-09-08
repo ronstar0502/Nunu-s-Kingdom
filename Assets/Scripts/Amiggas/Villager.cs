@@ -15,6 +15,7 @@ public class Villager : MonoBehaviour
     [SerializeField] protected VillagerState villagerState;
     protected SpriteRenderer sr;
     protected Rigidbody2D rb;
+    protected Animator animator;
     protected Vector2 targetPosition;
     protected int direction;
     private GameObject _buildingTarget;
@@ -30,6 +31,7 @@ public class Villager : MonoBehaviour
         villagerData.InitHealth();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         InitVillager();
     }
 
@@ -147,7 +149,7 @@ public class Villager : MonoBehaviour
         villagerState = state;
         switch (state)
         {
-            case VillagerState.Spawned:
+            case VillagerState.Spawned:               
                 Invoke(nameof(StartPatroling),2f);
                 break;
             case VillagerState.ProffesionAction:                

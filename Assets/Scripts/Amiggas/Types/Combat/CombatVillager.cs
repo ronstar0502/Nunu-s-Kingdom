@@ -51,6 +51,7 @@ public class CombatVillager : Villager
                 print($"{villagerData.villagerName} found a target: {targetEnemy.name}.");
                 if (IsInAttackRange())
                 {
+                    animator.SetBool("isAttacking",true);
                     print($"{villagerData.villagerName} is in attack range of {targetEnemy.name}. Attacking...");
                     attackTimer -= Time.deltaTime;
                     if (attackTimer <= 0)
@@ -62,6 +63,7 @@ public class CombatVillager : Villager
                 }
                 else if (villagerState == VillagerState.Combat)
                 {
+                    animator.SetBool("isAttacking",false);
                     print($"{villagerData.villagerName} is moving towards {targetEnemy.name}.");
                     VillagerMoveToTarget(targetEnemy.transform.position);
                 }
