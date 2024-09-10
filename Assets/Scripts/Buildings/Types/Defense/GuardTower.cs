@@ -42,7 +42,6 @@ public class GuardTower : Building
         Transform spotTransform = archerSpots[slot];
         archer.gameObject.transform.position = spotTransform.position;
         archer.gameObject.transform.SetParent(spotTransform);
-        //availableSpots[slot] = false;
     }
 
     public bool hasOpenSlots() //checks if the guard tower has open slots to assign an archer to

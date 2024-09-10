@@ -8,6 +8,9 @@ public class Archer : CombatVillager
     public int guardTowerSlot;
     public bool isAssigned; //assigned archers cant get out of the tower , unassigned can go to combat 
 
+    [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private Transform arrowSpawnTransform;
+
     protected override void Start()
     {
         if(assignedGuardTower == null)
@@ -42,6 +45,7 @@ public class Archer : CombatVillager
         //print($"archer state 2: {villagerState}");
 
         assignedGuardTower = guardTower;
+        isAssigned = true;
         guardTowerSlot = guardTower.GetAvailableSpotIndex();
         targetTower = new Vector2(guardTower.transform.position.x, transform.position.y);
 
@@ -70,20 +74,46 @@ public class Archer : CombatVillager
     private IEnumerator ArcherGuardTowerArrival() // used courtine to move the archer to the tower so it wont be in update all the time
     {
         //print($"archer state 5: {villagerState}");
-        while (!isAssigned && assignedGuardTower != null)
+        while (assignedGuardTower != null)
         {
             VillagerMoveToTarget(targetTower);
             //print($"archer state 6: {villagerState}");
             if (transform.position == (Vector3)targetTower)
             {
                 //print($"archer state 7: {villagerState}");
-                isAssigned = true;
                 assignedGuardTower.AddArcherToGuard(gameObject, guardTowerSlot);
                 //ChangeState(VillagerState.InProffesionBuilding);
                 yield break;
             }
 
             yield return null;
+        }
+    }
+
+    protected override void AttackTarget()
+    {
+        if (targetEnemy != null)
+        {
+            SetVillagerDirection(targetEnemy.transform.position.x);
+        }
+        else
+        {
+            SetNewTarget();
+        }
+    }
+    public void SpawnArrow()
+    {
+        if (targetEnemy != null)
+        {
+            GameObject arrowObj = Instantiate(arrowPrefab, arrowSpawnTransform.position, Quaternion.identity, arrowSpawnTransform);
+            print(targetEnemy.name);
+            Vector2 direction = targetEnemy.transform.position - gameObject.transform.position;
+            print($"enemy direction: {direction}");
+            arrowObj.GetComponent<Arrow>().InitArrow(targetEnemy, direction, damage);
+        }
+        else
+        {
+            print($"target enemy is null");
         }
     }
 }

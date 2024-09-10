@@ -126,7 +126,7 @@ public class CombatVillager : Villager
         }
     }
 
-    protected void AttackTarget() //method to attack the target by using the target's interface
+    protected virtual void AttackTarget() //method to attack the target by using the target's interface
     {
         if (targetEnemy != null)
         {

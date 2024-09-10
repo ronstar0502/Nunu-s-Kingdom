@@ -6,8 +6,8 @@ public class VillagerEgg : MonoBehaviour
 {
     [SerializeField] private float eggHatchTimer;
     private Hatchery hatchery;
-    private GameObject _villager;
     private Transform villagerSpawnPoint;
+    private GameObject _villager;
     private float hatchTimer;
     private int eggSlot;
 

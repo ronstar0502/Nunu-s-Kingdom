@@ -21,7 +21,6 @@ public class HQ : Building
     public VillageInfo villageInfoUI;
     public bool isNightMode;
     private HealthUI healthUI;
-    private int HP = 4; //Move this to the scriptable Object
 
     private void Start()
     {
@@ -31,17 +30,25 @@ public class HQ : Building
         villageInfoUI.InitInfo(maxVillagerAmount,player.GetPlayerData().seedAmount);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(1);
+        }
+    }
     protected override void LevelUpBuilding()
     {
         base.LevelUpBuilding();
         maxVillagerAmount = maxVillagerPerLevel[buildingData.level-1];
         villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
         villageInfoUI.SetSeedsText();
+        healthUI.SetHealthBar(buildingHealth,buildingData.health);
     }
     public void AddUnemployedVillager(GameObject villager)
     {
         unemployedVillagers.Add(villager);
-
+        villager.transform.SetParent(gameObject.transform);
         villageInfoUI.SetUnemployedText(unemployedVillagers.Count);
         villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
         print($"total villager {currentVillagerAmount} / {maxVillagerAmount} and {unemployedVillagers.Count} are unemployed");
@@ -53,8 +60,8 @@ public class HQ : Building
     }
     public override void TakeDamage(int damage)
     {
-        HP--;
-        healthUI.TakeDamage();
+        base.TakeDamage(1);
+        healthUI.SetHealthBar(buildingHealth,buildingData.health);
     }
 
     public void AddProffesionVillager(GameObject villager , string buildingName)

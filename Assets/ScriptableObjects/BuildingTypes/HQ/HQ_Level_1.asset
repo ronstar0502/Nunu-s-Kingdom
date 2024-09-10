@@ -15,7 +15,7 @@ MonoBehaviour:
   buildingName: HQ
   sprite: {fileID: 21300000, guid: 0115e559f8f3d744c92b75e007712c61, type: 3}
   level: 1
-  health: 1500
+  health: 4
   cost: 0
   isMaxLevel: 0
   nextLevelBuilding: {fileID: 11400000, guid: e7d0922eb23e53e4abe59009777a1540, type: 2}
