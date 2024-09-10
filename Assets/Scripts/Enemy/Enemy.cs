@@ -110,7 +110,10 @@ public class Enemy : MonoBehaviour, IDamageable
                 currentBuildingTarget = buildingTargets[i];
             }
         }
-        print($"enemy target: {currentBuildingTarget.gameObject.name}");
+        if (currentBuildingTarget != null)
+        {
+            print($"enemy target: {currentBuildingTarget.gameObject.name}");
+        }
     }
 
     private bool IsInAttackRange()

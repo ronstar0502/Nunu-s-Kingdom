@@ -79,7 +79,7 @@ public class Farm : ProffesionBuilding
     protected override void ChangeVillagerProffesion() //method to change unemployed to farmer
     {
         int randomSpawnPoint = Random.Range(0, villagerRecruitSpawnPoints.Length);
-        GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint]);
+        GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint].position,Quaternion.identity, villagerRecruitSpawnPoints[randomSpawnPoint]);
         HQ.AddProffesionVillager(proffesionVillager, buildingData.buildingName);
     }
 

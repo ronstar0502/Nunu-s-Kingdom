@@ -15,8 +15,8 @@ public class HealthUI : MonoBehaviour
     {
         _image.fillAmount = 1f;
     }
-    public void TakeDamage()
+    public void SetHealthBar(float currentHealth,float maxHealth)
     {
-        _image.fillAmount -= .25f;
+        _image.fillAmount = currentHealth/maxHealth;
     }
 }

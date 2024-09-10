@@ -78,7 +78,7 @@ public class ProffesionBuilding : Building
     protected virtual void ChangeVillagerProffesion() // method to change unemployed to the building's proffesion
     {
         int randomSpawnPoint = Random.Range(0, villagerRecruitSpawnPoints.Length);
-        GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint].position, Quaternion.identity);
+        GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint].position, Quaternion.identity,transform);
         HQ.AddProffesionVillager(proffesionVillager,buildingData.buildingName);
     }
 

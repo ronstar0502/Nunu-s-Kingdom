@@ -5,7 +5,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     [SerializeField] protected BuildingData buildingData;
     [SerializeField] protected GameObject buildingSpot;
     [SerializeField] protected GameObject buildingPopUp;
-    [SerializeField] private float buildingHealth;
+    [SerializeField] protected float buildingHealth;
     protected Player player;
     protected int nextLevelCost;
     protected bool IsMaxLevel;
