@@ -95,6 +95,7 @@ public class Archer : CombatVillager
         if (targetEnemy != null)
         {
             SetVillagerDirection(targetEnemy.transform.position.x);
+            print("archer attacked!");
         }
         else
         {
@@ -108,7 +109,6 @@ public class Archer : CombatVillager
             GameObject arrowObj = Instantiate(arrowPrefab, arrowSpawnTransform.position, Quaternion.identity, arrowSpawnTransform);
             print(targetEnemy.name);
             Vector2 direction = targetEnemy.transform.position - gameObject.transform.position;
-            print($"enemy direction: {direction}");
             arrowObj.GetComponent<Arrow>().InitArrow(targetEnemy, direction, damage);
         }
         else

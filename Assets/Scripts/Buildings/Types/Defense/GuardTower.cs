@@ -38,7 +38,7 @@ public class GuardTower : Building
     public void AddArcherToGuard(GameObject archer,int slot) //method to add the assigned archer to the guard tower
     {
         archers.Add(archer);
-        print($"slot index for archer placement {slot}");
+        //print($"slot index for archer placement {slot}");
         Transform spotTransform = archerSpots[slot];
         archer.gameObject.transform.position = spotTransform.position;
         archer.gameObject.transform.SetParent(spotTransform);
@@ -50,7 +50,7 @@ public class GuardTower : Building
         {
             if (availableSpots[i]) 
             {
-                print("guard tower has open slots");
+                //print("guard tower has open slots");
                 return true; 
             }
         }
