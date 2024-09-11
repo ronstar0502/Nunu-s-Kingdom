@@ -87,8 +87,7 @@ public class GameManger : MonoBehaviour
     private void StartNightActivities() //starts all night activities
     {
         print("NightTime!");
-        int randomSpawnPoint = Random.Range(0, 2); //place holder
-        spawner.StartSpawning(randomSpawnPoint); //place holder
+        StartCoroutine(spawner.StartSpawning()); //place holder
         HQ.SetAmmigasToCombatMode();
     }
     private void StartDayActivities() //starts all day activities
