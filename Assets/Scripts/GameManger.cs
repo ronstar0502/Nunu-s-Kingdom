@@ -10,11 +10,14 @@ public class GameManger : MonoBehaviour
     private HQ HQ; // will be pre built
     private Spawner spawner;
     private Player player;
+    private TimeLineIndicator timeLineIndicator;
     private float lastStateSwapped=0f;
     private int currDay = 1;
 
     private void Awake()
     {
+        timeLineIndicator = FindObjectOfType<TimeLineIndicator>();
+        timeLineIndicator.SetDayCycleTimer(dayDuration+nightDuration);
         spawner = FindAnyObjectByType<Spawner>();
         gameState = GameState.Day;
         HQ = FindObjectOfType<HQ>();

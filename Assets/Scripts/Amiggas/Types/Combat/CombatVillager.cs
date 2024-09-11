@@ -11,6 +11,7 @@ public class CombatVillager : Villager
     [SerializeField] protected float attackSpeed;
     protected GameObject targetEnemy;
     private float attackTimer;
+    private bool isInAttackAnimation;
 
     protected override void Start()
     {
@@ -39,43 +40,61 @@ public class CombatVillager : Villager
         base.Update();
         if (villagerState == VillagerState.Combat || villagerState == VillagerState.InProffesionBuilding)
         {
-            print($"{villagerData.villagerName} is in combat mode.");
+            //print($"{villagerData.villagerName} is in combat mode.");
             if (targetEnemy == null || !targetEnemy.activeInHierarchy) //if target is not in hierarchy and null sets new target
             {
-                print($"{villagerData.villagerName} has no target or target is inactive. Setting new target.");
+                //print($"{villagerData.villagerName} has no target or target is inactive. Setting new target.");
                 SetNewTarget();
             }
 
             if (targetEnemy != null)
             {
-                print($"{villagerData.villagerName} found a target: {targetEnemy.name}.");
+                //print($"{villagerData.villagerName} found a target: {targetEnemy.name}.");
                 if (IsInAttackRange())
                 {
                     animator.SetBool("isAttacking",true);
-                    print($"{villagerData.villagerName} is in attack range of {targetEnemy.name}. Attacking...");
-                    attackTimer -= Time.deltaTime;
-                    if (attackTimer <= 0)
+                    //print($"{villagerData.villagerName} is in attack range of {targetEnemy.name}. Attacking...");
+                    if (!isInAttackAnimation)
                     {
-                        AttackTarget();
-                        attackTimer = attackSpeed;
-                        print($"{villagerData.villagerName} attacked {targetEnemy.name}.");
+                        attackTimer -= Time.deltaTime;
+                        if (attackTimer <= 0)
+                        {
+                            StartCoroutine(AttackTargetTimer());
+                        }
                     }
                 }
                 else if (villagerState == VillagerState.Combat)
                 {
                     animator.SetBool("isAttacking",false);
-                    print($"{villagerData.villagerName} is moving towards {targetEnemy.name}.");
+                    //print($"{villagerData.villagerName} is moving towards {targetEnemy.name}.");
                     VillagerMoveToTarget(targetEnemy.transform.position);
                 }
             }
             else if (villagerState == VillagerState.Combat)
             {
-                print($"{villagerData.villagerName} has no target and is now patrolling.");
+                //print($"{villagerData.villagerName} has no target and is now patrolling.");
                 VillagerPatrol();
             }
         }
     }
+    private IEnumerator AttackTargetTimer()
+    {
+        AttackTarget();
+        isInAttackAnimation = true;
+        yield return new WaitUntil(()=>animator.GetCurrentAnimatorStateInfo(0).IsName($"{villagerData.villagerName}Attack"));
+        print($"{villagerData.villagerName} finished animation");
+        attackTimer = attackSpeed;
+        isInAttackAnimation = false;
+    }
 
+    public void DealDamageToTarget()
+    {
+        if (targetEnemy != null)
+        {
+            targetEnemy.GetComponent<IDamageable>().TakeDamage(damage);
+            print($"{villagerData.villagerName} attacked {targetEnemy.name} with {damage} damage.");
+        }
+    }
     public virtual void ChangeToCombatMode() // change the combat villager to combat mode
     {
         SetState(VillagerState.Combat);
@@ -131,7 +150,6 @@ public class CombatVillager : Villager
         if (targetEnemy != null)
         {
             SetVillagerDirection(targetEnemy.transform.position.x);
-            targetEnemy.GetComponent<IDamageable>().TakeDamage(damage);
         }
         else
         {

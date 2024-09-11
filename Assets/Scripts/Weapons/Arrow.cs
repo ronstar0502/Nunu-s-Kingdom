@@ -43,7 +43,7 @@ public class Arrow : MonoBehaviour
     {
         if (collision.gameObject == target)
         {
-            print($"arrow hit target: {collision.gameObject.name}");
+            print($"arrow hit target: {collision.gameObject.name} with {arrowDamage} damage");
             collision.gameObject.GetComponent<IDamageable>().TakeDamage(arrowDamage);
             Destroy(gameObject);
         }
