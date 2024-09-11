@@ -104,16 +104,18 @@ MonoBehaviour:
   buildingSpot: {fileID: 0}
   buildingPopUp: {fileID: 7318964688091831396}
   buildingHealth: 0
-  unemployedVillagers: []
-  proffesionVillagers: []
-  maxVillagerPerLevel: 000000000000000000000000
-  maxVillagerAmount: 12
-  currentVillagerAmount: 0
+  unemployedAmmigas: []
+  proffesionAmmigas: []
+  maxAmmigasPerLevel: 070000000c00000012000000
+  maxAmiggaAmount: 0
+  currentAmiggaAmount: 0
   farmers: []
   warriors: []
   archers: []
   guardTowers: []
   farm: {fileID: 0}
+  villageInfoUI: {fileID: 0}
+  isNightMode: 0
 --- !u!114 &3851259660522503986
 MonoBehaviour:
   m_ObjectHideFlags: 0

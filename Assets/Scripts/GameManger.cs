@@ -89,7 +89,7 @@ public class GameManger : MonoBehaviour
         print("NightTime!");
         int randomSpawnPoint = Random.Range(0, 2); //place holder
         spawner.StartSpawning(randomSpawnPoint); //place holder
-        HQ.SetCombatVillagers();
+        HQ.SetAmmigasToCombatMode();
     }
     private void StartDayActivities() //starts all day activities
     {
@@ -97,7 +97,7 @@ public class GameManger : MonoBehaviour
         SetDaysCountTxt();
         print($"Day {currDay}");
         HarvestFarm();
-        HQ.SetCombatToPatrol();
+        HQ.SetAmmigastToPatrolMode();
         currDay++;
     }
 

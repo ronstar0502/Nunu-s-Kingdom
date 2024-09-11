@@ -3,25 +3,25 @@ using UnityEngine;
 public class Hatchery : Building
 {
     [Header("Prefabs")]
-    [SerializeField] private GameObject unemployedVillagerPrefab;
+    [SerializeField] private GameObject unemployedAmiggaPrefab;
     [SerializeField] private GameObject eggPrefab;
     [Header("Transforms")]
     [SerializeField] private Transform[] eggSpawnPoints = new Transform[3];
-    [SerializeField] private Transform[] villagerSpawnPoints;
-    private bool[] eggSlotsOpen = new bool[]{ true,false,false};
+    [SerializeField] private Transform[] amiggaSpawnPoints;
+    private bool[] eggSlotsOpen = new bool[] { true, false, false };
     [Header("Variables")]
-    [SerializeField] private int villagerCost;
-    private HQ HQ;   
+    [SerializeField] private int amiggaCost;
+    private HQ HQ;
     private bool playerInRange;
 
-    private void Start()
+    protected void Start()
     {
-        HQ =  FindObjectOfType<HQ>(); //finds the hq game object for the hatchery to work
+        HQ = FindObjectOfType<HQ>(); //finds the hq game object for the hatchery to work
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)&& playerInRange) //placeholder for testing
+        if (Input.GetKeyDown(KeyCode.E) && playerInRange) //placeholder for testing
         {
             RecruitVillager();
         }
@@ -42,24 +42,24 @@ public class Hatchery : Building
     }
     public void RecruitVillager() //recruits a villager
     {
-        if (HQ.CanRecruitVillager() && HasOpenEggSlots() && player.GetPlayerData().seedAmount >= villagerCost) //checks if the player can recruit and there are available eggs slots
-        {         
+        if (HQ.CanRecruitVillager() && HasOpenEggSlots() && player.GetPlayerData().seedAmount >= amiggaCost) //checks if the player can recruit and there are available eggs slots
+        {
             HQ.AddToTotalVillagerAmount();
-            player.GetPlayerData().SubstarctSeedsAmount(villagerCost);
+            player.GetPlayerData().SubstarctSeedsAmount(amiggaCost);
             HQ.villageInfoUI.SetSeedsText();
             int eggSlot = GetEggSlotNumber();
-            GameObject newEgg = Instantiate(eggPrefab,eggSpawnPoints[eggSlot]); //spawns an egg on pre determined transforms
-            VillagerEgg villagerEgg = newEgg.GetComponent<VillagerEgg>();
+            GameObject newEgg = Instantiate(eggPrefab, eggSpawnPoints[eggSlot]); //spawns an egg on pre determined transforms
+            VillagerEgg amiggaEgg = newEgg.GetComponent<VillagerEgg>();
 
-            int randomSpawnPoint = Random.Range(0, villagerSpawnPoints.Length);
-            villagerEgg.InitEgg(unemployedVillagerPrefab, villagerSpawnPoints[randomSpawnPoint], eggSlot); //sets the egg data and script
+            int randomSpawnPoint = Random.Range(0, amiggaSpawnPoints.Length);
+            amiggaEgg.InitEgg(unemployedAmiggaPrefab, amiggaSpawnPoints[randomSpawnPoint], eggSlot); //sets the egg data and script
             eggSlotsOpen[eggSlot] = false;
         }
     }
 
-    public void EggHatch(GameObject villager , int slotNumber)
+    public void EggHatch(GameObject amigga, int slotNumber)
     {
-        HQ.AddUnemployedVillager(villager);
+        HQ.AddUnemployedVillager(amigga);
         eggSlotsOpen[slotNumber] = true;
     }
 
@@ -72,7 +72,7 @@ public class Hatchery : Building
 
     private bool HasOpenEggSlots()
     {
-        for ( int i = 0; i < eggSlotsOpen.Length; i++ )
+        for (int i = 0; i < eggSlotsOpen.Length; i++)
         {
             if (eggSlotsOpen[i])
             {
@@ -83,8 +83,8 @@ public class Hatchery : Building
     }
     private int GetEggSlotNumber()
     {
-        int slotIndex=0;
-        for (int i=0;i<eggSlotsOpen.Length;i++)
+        int slotIndex = 0;
+        for (int i = 0; i < eggSlotsOpen.Length; i++)
         {
             if (eggSlotsOpen[i])
             {
@@ -93,11 +93,5 @@ public class Hatchery : Building
             }
         }
         return slotIndex;
-    }
-
-    public override void TakeDamage(int damage)
-    {
-        base.TakeDamage(damage);
-        buildingSpot.SetActive(true);
     }
 }

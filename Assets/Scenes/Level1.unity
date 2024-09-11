@@ -228,6 +228,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5966045851807844106, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
+      propertyPath: maxAmmigasPerLevel.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966045851807844106, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
+      propertyPath: maxAmmigasPerLevel.Array.data[1]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966045851807844106, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
+      propertyPath: maxAmmigasPerLevel.Array.data[2]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966045851807844106, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
       propertyPath: maxVillagerPerLevel.Array.data[0]
       value: 7
       objectReference: {fileID: 0}
@@ -1047,7 +1059,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPos: {fileID: 218005541}
   EndPos: {fileID: 1221226850}
-  DayCycleTime: 60
 --- !u!1001 &453800140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2489,7 +2500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daysCountText: {fileID: 785963788}
-  dayDuration: 45
+  dayDuration: 40
   nightDuration: 60
   maxDaysInLevel: 10
   gameState: 0

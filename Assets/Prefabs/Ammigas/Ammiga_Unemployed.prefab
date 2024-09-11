@@ -99,14 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbf6940e4a9c6945a0d5fe129d62880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  villagerData:
+  amiggaData:
     villagerName: Unemployed
-    maxHealth: 75
+    maxHealth: 50
     health: 0
-    movementSpeed: 5
-    seedsCost: 5
-  villagerTool: {fileID: 0}
-  villagerState: 0
+    movementSpeed: 4
+    seedsCost: 8
+  amiggaTool: {fileID: 0}
+  amiggaState: 0
   leftPatrolBorder: 0
   rightPatrolBorder: 0
 --- !u!95 &821013778532573187

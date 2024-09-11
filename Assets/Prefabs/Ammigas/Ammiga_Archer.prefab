@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5230635594117393777}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.74, y: -1.72, z: 0}
+  m_LocalPosition: {x: 8.14, y: -1.72, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,14 +131,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678a0ec8c43c55649bebaac2b5960769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  villagerData:
+  amiggaData:
     villagerName: Archer
-    maxHealth: 125
+    maxHealth: 90
     health: 0
-    movementSpeed: 5
-    seedsCost: 8
-  villagerTool: {fileID: 5341729962025019665, guid: 98b47637b53dccd46bdb1def65d50be1, type: 3}
-  villagerState: 0
+    movementSpeed: 4
+    seedsCost: 9
+  amiggaTool: {fileID: 5341729962025019665, guid: 98b47637b53dccd46bdb1def65d50be1, type: 3}
+  amiggaState: 0
   leftPatrolBorder: 0
   rightPatrolBorder: 0
   damage: 20

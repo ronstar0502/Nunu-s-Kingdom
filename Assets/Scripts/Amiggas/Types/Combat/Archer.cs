@@ -22,7 +22,7 @@ public class Archer : CombatVillager
     {
         if (!isAssigned)
         {
-            SetState(VillagerState.Combat);
+            SetState(AmiggaState.Combat);
         }
         else
         {
@@ -34,14 +34,14 @@ public class Archer : CombatVillager
     {
         if (!isAssigned)
         {
-            SetState(VillagerState.Patrol);
+            SetState(AmiggaState.Patrol);
         }
     }
 
     public void GoToAssignedGuardTower(GuardTower guardTower) // method to tell the archer to go to assigned tower
     {
         //print($"archer state 1: {villagerState}");
-        SetState(VillagerState.ProffesionAction);
+        SetState(AmiggaState.ProffesionAction);
         //print($"archer state 2: {villagerState}");
 
         assignedGuardTower = guardTower;
@@ -50,7 +50,7 @@ public class Archer : CombatVillager
         targetTower = new Vector2(guardTower.transform.position.x, transform.position.y);
 
         //print($"archer state 3: {villagerState}");
-        SetState(VillagerState.InProffesionBuilding);
+        SetState(AmiggaState.InProffesionBuilding);
 
         //print($"archer state 4: {villagerState}");
         StartCoroutine(ArcherGuardTowerArrival());
@@ -76,7 +76,7 @@ public class Archer : CombatVillager
         //print($"archer state 5: {villagerState}");
         while (assignedGuardTower != null)
         {
-            VillagerMoveToTarget(targetTower);
+            AmiggaMoveToTarget(targetTower);
             //print($"archer state 6: {villagerState}");
             if (transform.position == (Vector3)targetTower)
             {

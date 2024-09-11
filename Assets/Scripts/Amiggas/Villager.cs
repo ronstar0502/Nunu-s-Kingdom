@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum VillagerState
+public enum AmiggaState
 {
     Spawned,
     ProffesionAction,
@@ -10,9 +10,9 @@ public enum VillagerState
 }
 public class Villager : MonoBehaviour
 {
-    [SerializeField] protected VillagerData villagerData;
-    [SerializeField] protected GameObject villagerTool; // unemployed doesnt have a tool
-    [SerializeField] protected VillagerState villagerState;
+    [SerializeField] protected VillagerData amiggaData;
+    [SerializeField] protected GameObject amiggaTool; // unemployed doesnt have a tool
+    [SerializeField] protected AmiggaState amiggaState;
     protected SpriteRenderer sr;
     protected Rigidbody2D rb;
     protected Animator animator;
@@ -26,21 +26,24 @@ public class Villager : MonoBehaviour
     [SerializeField] protected float rightPatrolBorder;
     protected HQ HQ;
 
-    private void Awake()
+    protected void Awake()
     {
-        villagerData.InitHealth();
+        amiggaData.InitHealth();
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        InitVillager();
+        InitAmmiga();
     }
 
     protected virtual void Start()
     {
-        SetState(VillagerState.Spawned);
+        if (!HQ.isNightMode)
+        {
+            SetState(AmiggaState.Spawned);           
+        }
     }
 
-    protected void InitVillager()
+    protected void InitAmmiga()
     {
         HQ = FindObjectOfType<HQ>();
 
@@ -52,55 +55,55 @@ public class Villager : MonoBehaviour
     protected void Update()
     {
         //place holder will change later for better performance
-        if(_isUnemployed && villagerState == VillagerState.ProffesionAction)
+        if(_isUnemployed && amiggaState == AmiggaState.ProffesionAction)
         {
-            VillagerMoveToTarget(targetPosition);
-            CheckVillagerArrivalToTarget();
+            AmiggaMoveToTarget(targetPosition);
+            CheckAmiggaArrivalToTarget();
         }
 
-        if(villagerState == VillagerState.Patrol)
+        if(amiggaState == AmiggaState.Patrol)
         {
-            VillagerPatrol();           
+            AmiggaPatrol();           
         }
     }
 
-    protected void VillagerMoveToTarget(Vector2 targetPos) //method to move the villager to target position on X axsis only
+    protected void AmiggaMoveToTarget(Vector2 targetPos) //method to move the villager to target position on X axsis only
     {
         SetVillagerDirection(targetPos.x);
         //float movementDirection = targetPosition.x - transform.position.x;
         //rb.velocity = new Vector2(movementDirection* direction * villagerData.movementSpeed * Time.deltaTime,rb.velocity.y);
 
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetPos.x,transform.position.y), villagerData.movementSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(targetPos.x,transform.position.y), amiggaData.movementSpeed * Time.deltaTime);
     }
-    protected void CheckVillagerArrivalToTarget() //checks if the unemployed villager arrive to the proffesion building destination
+    protected void CheckAmiggaArrivalToTarget() //checks if the unemployed villager arrive to the proffesion building destination
     {
         if (transform.position == (Vector3)targetPosition)
         {
             rb.velocity = Vector2.zero;
-            if(villagerState == VillagerState.ProffesionAction)
+            if(amiggaState == AmiggaState.ProffesionAction)
             {
-                VilagerArrivalToProffesionBuilding();
+                AmiggaArrivalToProffesionBuilding();
                 //isUnemployed = false;
                 //ChangeState(VillagerState.Spawned);
             }
-            else if(villagerState == VillagerState.Patrol || villagerState == VillagerState.Combat)
+            else if(amiggaState == AmiggaState.Patrol || amiggaState == AmiggaState.Combat)
             {
-                VillagerPatrol();
+                AmiggaPatrol();
             }
         }
     }
 
-    private void VilagerArrivalToProffesionBuilding()  //method for the arrival of the unepmloyed to the proffesion building
+    private void AmiggaArrivalToProffesionBuilding()  //method for the arrival of the unepmloyed to the proffesion building
     {
         ProffesionBuilding proffesionBuilding = _buildingTarget.GetComponent<ProffesionBuilding>();
         proffesionBuilding.VillagerProffesionChange_OnArrival(gameObject);
     }
 
-    public VillagerData GetVillagerData() { return villagerData;}
+    public VillagerData GetAmiggaData() { return amiggaData;}
 
-    public void ChangeVillagerProffesion(GameObject proffesionBuilding,Vector2 recruitPosition) // sets unemployed target proffesion building
+    public void ChangeAmiggaProffesion(GameObject proffesionBuilding,Vector2 recruitPosition) // sets unemployed target proffesion building
     {
-        SetState(VillagerState.ProffesionAction);
+        SetState(AmiggaState.ProffesionAction);
         GoToProffesionBuilding(proffesionBuilding, recruitPosition);
     }
 
@@ -108,15 +111,15 @@ public class Villager : MonoBehaviour
     {
         targetPosition = new Vector2(recruitPosition.x, transform.position.y);
         _buildingTarget = proffesionBuilding;
-        VillagerMoveToTarget(targetPosition);
+        AmiggaMoveToTarget(targetPosition);
     }
     protected void StartPatroling()
     {
-        SetState(VillagerState.Patrol);
+        SetState(AmiggaState.Patrol);
     }
-    protected void VillagerPatrol()  //patrol for villagers that are not assigned to other tasks
+    protected void AmiggaPatrol()  //patrol for villagers that are not assigned to other tasks
     {
-        VillagerMoveToTarget(targetPosition);
+        AmiggaMoveToTarget(targetPosition);
         if(transform.position == (Vector3)targetPosition)
         {
             SetPatrolPosition();
@@ -144,23 +147,23 @@ public class Villager : MonoBehaviour
         }
     }
 
-    protected void SetState(VillagerState state) //changing villager state
+    protected void SetState(AmiggaState state) //changing villager state
     {
-        villagerState = state;
+        amiggaState = state;
         switch (state)
         {
-            case VillagerState.Spawned:               
+            case AmiggaState.Spawned:               
                 Invoke(nameof(StartPatroling),2f);
                 break;
-            case VillagerState.ProffesionAction:                
+            case AmiggaState.ProffesionAction:                
                 break;
-            case VillagerState.InProffesionBuilding:
+            case AmiggaState.InProffesionBuilding:
                 break;
-            case VillagerState.Patrol:
+            case AmiggaState.Patrol:
                 SetPatrolPosition();
-                VillagerPatrol();
+                AmiggaPatrol();
                 break;
-            case VillagerState.Combat:
+            case AmiggaState.Combat:
                 SetPatrolPosition();
                 break;
         }
