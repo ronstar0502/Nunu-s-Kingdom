@@ -99,14 +99,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6dbc5da51ffbd2488f9ed80ec278db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  villagerData:
+  amiggaData:
     villagerName: Farmer
-    maxHealth: 100
+    maxHealth: 40
     health: 0
-    movementSpeed: 5
-    seedsCost: 7
-  villagerTool: {fileID: 2652840577269973180, guid: c3d05136d185f414f8977fad9cc319f1, type: 3}
-  villagerState: 0
+    movementSpeed: 4
+    seedsCost: 9
+  amiggaTool: {fileID: 2652840577269973180, guid: c3d05136d185f414f8977fad9cc319f1, type: 3}
+  amiggaState: 0
   leftPatrolBorder: 0
   rightPatrolBorder: 0
 --- !u!50 &3435903735748638678

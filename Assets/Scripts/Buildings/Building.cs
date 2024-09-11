@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Building : MonoBehaviour, IInteractable, IDamageable
@@ -19,8 +21,6 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
         sr.sprite = buildingData.sprite;
         buildingHealth = buildingData.health;
         SetNextLevelCost();
-
-
     }
     public BuildingData GetBuildingData() { return buildingData; }
 
@@ -33,7 +33,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
         if (this != null) // checks if this building is not destroyed
         {
             buildingHealth -= damage;
-            print($"{buildingData.buildingName} took {damage} damage and now has {buildingHealth}!!");
+            //print($"{buildingData.buildingName} took {damage} damage and now has {buildingHealth}!!");
             if (buildingHealth <= 0)
             {
                 print($"{buildingData.buildingName} Destroyed!!");
@@ -43,27 +43,32 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     }
     public virtual void EnableBuildingPopUp()
     {
+
         buildingPopUp.SetActive(true);
         buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost);
     }
 
     public void DisableBuildingPopUp()
     {
+
         buildingPopUp.SetActive(false);
+
     }
     public void Interact() //interact for level up
     {
+
         UpgradeBuilding();
+
     }
 
     private void UpgradeBuilding() // method for upgrading a building when interacting with it
     {
-        if(!buildingData.isMaxLevel) //first check if the building is ont already in max level
+        if (!buildingData.isMaxLevel) //first check if the building is ont already in max level
         {
-            if(player.GetPlayerData().seedAmount >= nextLevelCost) // checks if the player has enough seeds to upgrade
+            if (player.GetPlayerData().seedAmount >= nextLevelCost) // checks if the player has enough seeds to upgrade
             {
                 LevelUpBuilding();
-                print($"upgraded building: {buildingData.buildingName} to level: {buildingData.level} and cost {nextLevelCost} seeds next and has {buildingHealth} health points now");                
+                print($"upgraded building: {buildingData.buildingName} to level: {buildingData.level} and cost {nextLevelCost} seeds next and has {buildingHealth} health points now");
             }
             else
             {
@@ -95,8 +100,12 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     private void DestroyBuilding()
     {
         //put building on destroy state
-        if (this!=null)
+        if (this != null)
         {
+            if (buildingSpot != null)
+            {
+                buildingSpot.SetActive(true);
+            }
             Destroy(gameObject);
         }
     }

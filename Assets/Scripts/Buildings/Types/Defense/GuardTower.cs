@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,14 +12,14 @@ public class GuardTower : Building
     [SerializeField] private float attackRangeBonus;
     private HQ HQ;
 
-    private void Start()
+    protected void Start()
     {
         HQ = FindObjectOfType<HQ>();
-        HQ.AddGuardTower(gameObject.GetComponent<GuardTower>());
-        
-        CanAssignArcher();
-    }
 
+        HQ.AddGuardTower(gameObject.GetComponent<GuardTower>());
+        CanAssignArcher();
+
+    }
     public void CanAssignArcher() //checks if can assign an archer to guard tower
     {
         if (hasOpenSlots() && HQ.ArcherCount()>0)

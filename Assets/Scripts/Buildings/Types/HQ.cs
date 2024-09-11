@@ -5,11 +5,11 @@ public class HQ : Building
 {
     //main building can only be one and cannot be constructed
     [Header("Villagers General Info")]
-    [SerializeField] private List<GameObject> unemployedVillagers;
-    [SerializeField] private List<GameObject> proffesionVillagers;
-    [SerializeField] private int[] maxVillagerPerLevel = new int[3];
-    [SerializeField] private int maxVillagerAmount;
-    [SerializeField] private int currentVillagerAmount;
+    [SerializeField] private List<GameObject> unemployedAmmigas;
+    [SerializeField] private List<GameObject> proffesionAmmigas;
+    [SerializeField] private int[] maxAmmigasPerLevel = new int[3];
+    [SerializeField] private int maxAmiggaAmount;
+    [SerializeField] private int currentAmiggaAmount;
 
     [Header("Villlagers deep info")]
     [SerializeField] private List<GameObject> farmers;
@@ -22,12 +22,12 @@ public class HQ : Building
     public bool isNightMode;
     private HealthUI healthUI;
 
-    private void Start()
+    protected void Start()
     {
         healthUI = FindAnyObjectByType<HealthUI>();
-        maxVillagerAmount = maxVillagerPerLevel[buildingData.level-1];
+        maxAmiggaAmount = maxAmmigasPerLevel[buildingData.level-1];
         villageInfoUI = GetComponent<VillageInfo>();
-        villageInfoUI.InitInfo(maxVillagerAmount,player.GetPlayerData().seedAmount);
+        villageInfoUI.InitInfo(maxAmiggaAmount,player.GetPlayerData().seedAmount);
     }
 
     private void Update()
@@ -40,23 +40,23 @@ public class HQ : Building
     protected override void LevelUpBuilding()
     {
         base.LevelUpBuilding();
-        maxVillagerAmount = maxVillagerPerLevel[buildingData.level-1];
-        villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
+        maxAmiggaAmount = maxAmmigasPerLevel[buildingData.level-1];
+        villageInfoUI.SetVillagersAmountText(currentAmiggaAmount, maxAmiggaAmount);
         villageInfoUI.SetSeedsText();
         healthUI.SetHealthBar(buildingHealth,buildingData.health);
     }
     public void AddUnemployedVillager(GameObject villager)
     {
-        unemployedVillagers.Add(villager);
+        unemployedAmmigas.Add(villager);
         villager.transform.SetParent(gameObject.transform);
-        villageInfoUI.SetUnemployedText(unemployedVillagers.Count);
-        villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
-        print($"total villager {currentVillagerAmount} / {maxVillagerAmount} and {unemployedVillagers.Count} are unemployed");
+        villageInfoUI.SetUnemployedText(unemployedAmmigas.Count);
+        villageInfoUI.SetVillagersAmountText(currentAmiggaAmount, maxAmiggaAmount);
+        print($"total villager {currentAmiggaAmount} / {maxAmiggaAmount} and {unemployedAmmigas.Count} are unemployed");
     }
 
     public void AddToTotalVillagerAmount()
     {
-        currentVillagerAmount++;
+        currentAmiggaAmount++;
     }
     public override void TakeDamage(int damage)
     {
@@ -70,42 +70,42 @@ public class HQ : Building
         {
             case "Archery":
                 archers.Add(villager);
-                villageInfoUI.SetArchersText(archers.Count,unemployedVillagers.Count);
+                villageInfoUI.SetArchersText(archers.Count,unemployedAmmigas.Count);
                 AssignArcherToGuardTower(villager);
                 break;
             case "Blacksmith":
                 warriors.Add(villager);
-                villageInfoUI.SetWarriorsText(warriors.Count, unemployedVillagers.Count);
+                villageInfoUI.SetWarriorsText(warriors.Count, unemployedAmmigas.Count);
                 break;
             case "Farm":
                 farmers.Add(villager);
-                villageInfoUI.SetFarmersText(farmers.Count, unemployedVillagers.Count);
+                villageInfoUI.SetFarmersText(farmers.Count, unemployedAmmigas.Count);
                 break;
         }
-        proffesionVillagers.Add(villager);
-        print($"total villager {currentVillagerAmount} / {maxVillagerAmount} and {proffesionVillagers.Count} are employed and {unemployedVillagers.Count} are unemployed");
+        proffesionAmmigas.Add(villager);
+        print($"total villager {currentAmiggaAmount} / {maxAmiggaAmount} and {proffesionAmmigas.Count} are employed and {unemployedAmmigas.Count} are unemployed");
     }
 
     public bool CanRecruitVillager()
     {
-        return currentVillagerAmount < maxVillagerAmount;
+        return currentAmiggaAmount < maxAmiggaAmount;
     }
 
     public bool HasUnemployedVillager()
     {
-        return unemployedVillagers.Count > 0;
+        return unemployedAmmigas.Count > 0;
     }
 
     public GameObject GetRandomUnemployed() //gets a random unemployed to recruit to a proffesion
     {
-        int randomIndex = Random.Range(0, unemployedVillagers.Count);
-        return unemployedVillagers[randomIndex];
+        int randomIndex = Random.Range(0, unemployedAmmigas.Count);
+        return unemployedAmmigas[randomIndex];
     }
 
     public void RemoveUnemployed(GameObject unemployed) // after recruitment of an unemployed remove from the list
     {
-        unemployedVillagers.Remove(unemployed);
-        print($"now you have {unemployedVillagers.Count} unepmloyed villagers");
+        unemployedAmmigas.Remove(unemployed);
+        print($"now you have {unemployedAmmigas.Count} unepmloyed villagers");
     }
 
     public void SetFarm(Farm farm)
@@ -120,6 +120,7 @@ public class HQ : Building
     public void AddGuardTower(GuardTower guardTower) //list of built guard tower
     {
         guardTowers.Add(guardTower);
+        print($"guard tower count: {guardTowers.Count}");
     }
 
     private void AssignArcherToGuardTower(GameObject archerToAssign) //method to tell the archer which guard tower to go to
@@ -181,7 +182,7 @@ public class HQ : Building
         return farmers;
     } 
 
-    public void SetCombatVillagers()
+    public void SetAmmigasToCombatMode()
     {
         isNightMode = true;
         for(int i = 0; i < warriors.Count; i++)
@@ -194,7 +195,7 @@ public class HQ : Building
         }
     }
 
-    public void SetCombatToPatrol()
+    public void SetAmmigastToPatrolMode()
     {
         isNightMode = false;
         for (int i = 0; i < warriors.Count; i++)

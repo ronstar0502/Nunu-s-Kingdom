@@ -24,7 +24,7 @@ public class Farm : ProffesionBuilding
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)&& playerInRange)
+        if (Input.GetKeyDown(KeyCode.E) && playerInRange)
         {
             RecruitVillagerProffesion();
         }
@@ -62,7 +62,7 @@ public class Farm : ProffesionBuilding
     {
         if (!IsFarmFull())
         {
-            base.RecruitVillagerProffesion();            
+            base.RecruitVillagerProffesion();
         }
     }
     public bool IsFarmFull() //checks if there are no avalable slots
@@ -73,13 +73,13 @@ public class Farm : ProffesionBuilding
     protected override void LevelUpBuilding()
     {
         base.LevelUpBuilding();
-        currentFarmerSlots = farmerSlots[buildingData.level-1];
+        currentFarmerSlots = farmerSlots[buildingData.level - 1];
     }
 
     protected override void ChangeVillagerProffesion() //method to change unemployed to farmer
     {
         int randomSpawnPoint = Random.Range(0, villagerRecruitSpawnPoints.Length);
-        GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint].position,Quaternion.identity, villagerRecruitSpawnPoints[randomSpawnPoint]);
+        GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint].position, Quaternion.identity, villagerRecruitSpawnPoints[randomSpawnPoint]);
         HQ.AddProffesionVillager(proffesionVillager, buildingData.buildingName);
     }
 

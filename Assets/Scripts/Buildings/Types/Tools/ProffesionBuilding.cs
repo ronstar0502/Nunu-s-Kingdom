@@ -21,13 +21,17 @@ public class ProffesionBuilding : Building
 
     public override void EnableBuildingPopUp()
     {
+
         buildingPopUp.SetActive(true);
-        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost,villager.GetVillagerData().seedsCost);
+        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, villager.GetAmiggaData().seedsCost);
+
     }
     protected override void LevelUpBuilding()
     {
+
         base.LevelUpBuilding();
         HQ.villageInfoUI.SetSeedsText();
+
     }
     public virtual void RecruitVillagerProffesion() //method for recruiting unemployed to the specific proffesion 
     {
@@ -35,22 +39,21 @@ public class ProffesionBuilding : Building
         {
             print("HQ is not found");
         }
-        if(villager == null)
+        if (villager == null)
         {
             print("Villager data not found");
         }
-        //villager = villlagerProffesionPrefab.GetComponent<Villager>();
         if (HQ.HasUnemployedVillager())
         {
-            if(player.GetPlayerData().seedAmount >= villager.GetVillagerData().seedsCost)
+            if (player.GetPlayerData().seedAmount >= villager.GetAmiggaData().seedsCost)
             {
-                player.GetPlayerData().SubstarctSeedsAmount(villager.GetVillagerData().seedsCost);
+                player.GetPlayerData().SubstarctSeedsAmount(villager.GetAmiggaData().seedsCost);
                 HQ.villageInfoUI.SetSeedsText();
                 VillagerRecruitAction();
             }
             else
             {
-                print($"has unemployed villager but not enough seeds , you have {player.GetPlayerData().seedAmount} and you need {villager.GetVillagerData().seedsCost}");
+                print($"has unemployed villager but not enough seeds , you have {player.GetPlayerData().seedAmount} and you need {villager.GetAmiggaData().seedsCost}");
             }
         }
         else
@@ -62,9 +65,9 @@ public class ProffesionBuilding : Building
     {
         GameObject randomUnemployed = HQ.GetRandomUnemployed();
         Villager unemployedVillager = randomUnemployed.GetComponent<Villager>();
-        if(unemployedVillager != null)
+        if (unemployedVillager != null)
         {
-            unemployedVillager.ChangeVillagerProffesion(gameObject, transform.position);
+            unemployedVillager.ChangeAmiggaProffesion(gameObject, transform.position);
             HQ.RemoveUnemployed(randomUnemployed);
         }
 
@@ -79,12 +82,6 @@ public class ProffesionBuilding : Building
     {
         int randomSpawnPoint = Random.Range(0, villagerRecruitSpawnPoints.Length);
         GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint].position, Quaternion.identity);
-        HQ.AddProffesionVillager(proffesionVillager,buildingData.buildingName);
-    }
-
-    public override void TakeDamage(int damage)
-    {
-        base.TakeDamage(damage);
-        buildingSpot.SetActive(true);
+        HQ.AddProffesionVillager(proffesionVillager, buildingData.buildingName);
     }
 }
