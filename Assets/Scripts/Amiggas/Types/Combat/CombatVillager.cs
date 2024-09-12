@@ -130,7 +130,9 @@ public class CombatVillager : Villager
             Enemy enemy = colliders[i].gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
-                float distance = Vector2.Distance(transform.position, enemy.transform.position);
+                Vector2 combatAmmigaPos = new Vector2(transform.position.x,0); // the 2 variable below are to check the distance on the x axsis only
+                Vector2 enemyPos = new Vector2(enemy.transform.position.x,0);
+                float distance = Vector2.Distance(combatAmmigaPos,enemyPos);                
                 if (distance < minDistance)
                 {
                     minDistance = distance;
