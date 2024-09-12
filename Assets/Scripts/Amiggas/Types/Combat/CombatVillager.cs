@@ -52,24 +52,28 @@ public class CombatVillager : Villager
             if (targetEnemy != null)
             {
                 //print($"{villagerData.villagerName} found a target: {targetEnemy.name}.");
+                SetAmmigarAttackTargetDirection();
                 if (IsInAttackRange())
                 {
                     animator.SetBool("isAttacking",true);
                     //print($"{villagerData.villagerName} is in attack range of {targetEnemy.name}. Attacking...");
-                    if (!isInAttackAnimation)
+                    /*if (!isInAttackAnimation)
                     {
-                        attackTimer -= Time.deltaTime;
-                        if (attackTimer <= 0)
-                        {
-                            StartCoroutine(AttackTargetTimer());
-                        }
-                    }
+                        //attackTimer -= Time.deltaTime;
+                        //if (attackTimer <= 0)
+                        //{
+                        //}
+                        StartCoroutine(AttackTarget());
+                    }*/
                 }
-                else if (amiggaState == AmiggaState.Combat)
+                else 
                 {
                     animator.SetBool("isAttacking",false);
                     //print($"{villagerData.villagerName} is moving towards {targetEnemy.name}.");
-                    AmiggaMoveToTarget(targetEnemy.transform.position);
+                    if (amiggaState == AmiggaState.Combat)
+                    {
+                        AmiggaMoveToTarget(targetEnemy.transform.position);
+                    }
                 }
             }
             else if (amiggaState == AmiggaState.Combat)
@@ -79,16 +83,28 @@ public class CombatVillager : Villager
             }
         }
     }
-    private IEnumerator AttackTargetTimer()
+    private IEnumerator AttackTarget()
     {
-        AttackTarget();
         if (targetEnemy != null)
         {
+            SetAmmigarAttackTargetDirection();
             isInAttackAnimation = true;
             yield return new WaitUntil(()=>animator.GetCurrentAnimatorStateInfo(0).IsName($"{amiggaData.villagerName}Attack"));
             print($"{amiggaData.villagerName} finished animation");
-            attackTimer = attackSpeed;
+
+            //yield return new WaitForSeconds(attackSpeed);
             isInAttackAnimation = false;
+
+            //loop as long as the target is still in range
+            if (IsInAttackRange() && targetEnemy != null)
+            {
+                StartCoroutine(AttackTarget());
+            }
+            else
+            {
+                //stoping the attack animation if the target is out of range
+                animator.SetBool("isAttacking", false);
+            }
         }
     }
 
@@ -152,7 +168,7 @@ public class CombatVillager : Villager
         }
     }
 
-    protected virtual void AttackTarget() //method to attack the target by using the target's interface
+    protected virtual void SetAmmigarAttackTargetDirection() //method to attack the target by using the target's interface
     {
         if (targetEnemy != null)
         {

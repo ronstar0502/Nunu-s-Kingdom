@@ -24,24 +24,29 @@ public class Arrow : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        _rb.velocity = targetDirection * speed * Time.deltaTime;
+        if (target != null)
+        {
+            _rb.velocity = targetDirection * speed * Time.deltaTime;
+        }
     }
-    public void InitArrow(GameObject targetObj, Vector2 direction, int damage)
+    public void InitArrow(GameObject targetObj, Vector2 direction, int damage ,bool isFromTower)
     {
         if (targetObj != null)
         {
             target = targetObj;
             targetDirection = direction;
-            targetDirection.Normalize();
-            float arrowRotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-            _rb.rotation = arrowRotation;
+            if (isFromTower)
+            {
+                targetDirection.Normalize();
+                float arrowRotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+                _rb.rotation = arrowRotation;
+            }
             arrowDamage = damage;
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == target)
+        if (collision.gameObject == target && target !=null)
         {
             print($"arrow hit target: {collision.gameObject.name} with {arrowDamage} damage");
             collision.gameObject.GetComponent<IDamageable>().TakeDamage(arrowDamage);

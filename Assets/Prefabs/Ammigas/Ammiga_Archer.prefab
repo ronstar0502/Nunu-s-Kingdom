@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7466338137144798965}
   - component: {fileID: -9079562888934030536}
   - component: {fileID: 365368131181351935}
+  - component: {fileID: 7272554589024244763}
   m_Layer: 0
   m_Name: Ammiga_Archer
   m_TagString: Ammiga
@@ -148,7 +149,7 @@ MonoBehaviour:
   assignedGuardTower: {fileID: 0}
   targetTower: {x: 0, y: 0}
   guardTowerSlot: 0
-  isAssigned: 0
+  isAssignedToGuardTower: 0
   arrowPrefab: {fileID: 1595014924496177938, guid: 5a214cd37a32c2845b163cdf7aa03b2b, type: 3}
   arrowSpawnTransform: {fileID: 4270616067414914257}
 --- !u!50 &-9079562888934030536
@@ -199,3 +200,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &7272554589024244763
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534889528132189151}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.7162677, y: -1.1775889}
+  m_Size: {x: 4.373062, y: 9.864794}
+  m_Direction: 0
