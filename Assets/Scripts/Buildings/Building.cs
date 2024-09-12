@@ -97,7 +97,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
             IsMaxLevel = true;
         }
     }
-    private void DestroyBuilding()
+    protected void DestroyBuilding()
     {
         //put building on destroy state
         if (this != null)

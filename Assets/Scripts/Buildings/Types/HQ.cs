@@ -165,7 +165,7 @@ public class HQ : Building
     {
         for (int i = 0;i< archers.Count; i++)
         {
-            if (!archers[i].GetComponent<Archer>().isAssigned)
+            if (!archers[i].GetComponent<Archer>().isAssignedToGuardTower)
             {
                 return archers[i];
             }

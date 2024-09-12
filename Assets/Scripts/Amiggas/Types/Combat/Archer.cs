@@ -6,11 +6,18 @@ public class Archer : CombatVillager
     public GuardTower assignedGuardTower;
     public Vector2 targetTower;
     public int guardTowerSlot;
-    public bool isAssigned; //assigned archers cant get out of the tower , unassigned can go to combat 
+    public bool isAssignedToGuardTower; //assigned archers cant get out of the tower , unassigned can go to combat 
 
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private Transform arrowSpawnTransform;
 
+    protected void Awake()
+    {
+        if(assignedGuardTower == null)
+        {
+            base.Awake();
+        }
+    }
     protected override void Start()
     {
         if(assignedGuardTower == null)
@@ -20,7 +27,7 @@ public class Archer : CombatVillager
     }
     public override void ChangeToCombatMode() //changes the archer to combat mode if not in tower
     {
-        if (!isAssigned)
+        if (!isAssignedToGuardTower)
         {
             SetState(AmiggaState.Combat);
         }
@@ -32,7 +39,7 @@ public class Archer : CombatVillager
 
     public override void ChangeToPatrolMode() //changes the archer back to patrol mode if not in tower
     {
-        if (!isAssigned)
+        if (!isAssignedToGuardTower)
         {
             SetState(AmiggaState.Patrol);
         }
@@ -45,7 +52,7 @@ public class Archer : CombatVillager
         //print($"archer state 2: {villagerState}");
 
         assignedGuardTower = guardTower;
-        isAssigned = true;
+        isAssignedToGuardTower = true;
         guardTowerSlot = guardTower.GetAvailableSpotIndex();
         targetTower = new Vector2(guardTower.transform.position.x, transform.position.y);
 
@@ -90,7 +97,7 @@ public class Archer : CombatVillager
         }
     }
 
-    protected override void AttackTarget()
+    protected override void SetAmmigarAttackTargetDirection()
     {
         if (targetEnemy != null)
         {
@@ -109,7 +116,7 @@ public class Archer : CombatVillager
             GameObject arrowObj = Instantiate(arrowPrefab, arrowSpawnTransform.position, Quaternion.identity, arrowSpawnTransform);
             print(targetEnemy.name);
             Vector2 direction = targetEnemy.transform.position - gameObject.transform.position;
-            arrowObj.GetComponent<Arrow>().InitArrow(targetEnemy, direction, damage);
+            arrowObj.GetComponent<Arrow>().InitArrow(targetEnemy, direction, damage,isAssignedToGuardTower);
         }
         else
         {

@@ -88,7 +88,25 @@ public class GuardTower : Building
 
     public override void TakeDamage(int damage)
     {
-        base.TakeDamage(damage);
+        if (this != null) // checks if this building is not destroyed
+        {
+            buildingHealth -= damage;
+            //print($"{buildingData.buildingName} took {damage} damage and now has {buildingHealth}!!");
+            if (buildingHealth <= 0)
+            {
+                print($"{buildingData.buildingName} Destroyed!!");
+                DestroyArcherInTower();
+                DestroyBuilding();
+            }
+        }
         buildingSpot.SetActive(true);
+    }
+
+    private void DestroyArcherInTower()
+    {
+        for(int i = 0; i < archers.Count; i++)
+        {
+            Destroy(archers[i]);
+        }
     }
 }
