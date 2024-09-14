@@ -4,9 +4,10 @@ using UnityEngine;
 public class Archer : CombatVillager
 {
     public GuardTower assignedGuardTower;
-    public Vector2 targetTower;
-    public int guardTowerSlot;
     public bool isAssignedToGuardTower; //assigned archers cant get out of the tower , unassigned can go to combat 
+    private int guardTowerSlot;
+    private Vector2 targetTower;
+    private bool isGoingToGuardTower;
 
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private Transform arrowSpawnTransform;
@@ -23,6 +24,14 @@ public class Archer : CombatVillager
         if(assignedGuardTower == null)
         {
             base.Start();
+        }
+    }
+
+    private void Update()
+    {
+        if(!isGoingToGuardTower)
+        {
+            base.Update();
         }
     }
     public override void ChangeToCombatMode() //changes the archer to combat mode if not in tower
@@ -44,7 +53,6 @@ public class Archer : CombatVillager
             SetState(AmiggaState.Patrol);
         }
     }
-
     public void GoToAssignedGuardTower(GuardTower guardTower) // method to tell the archer to go to assigned tower
     {
         //print($"archer state 1: {villagerState}");
@@ -80,6 +88,7 @@ public class Archer : CombatVillager
     }*/
     private IEnumerator ArcherGuardTowerArrival() // used courtine to move the archer to the tower so it wont be in update all the time
     {
+        isGoingToGuardTower = true;
         //print($"archer state 5: {villagerState}");
         while (assignedGuardTower != null)
         {
@@ -90,6 +99,7 @@ public class Archer : CombatVillager
                 //print($"archer state 7: {villagerState}");
                 assignedGuardTower.AddArcherToGuard(gameObject, guardTowerSlot);
                 //ChangeState(VillagerState.InProffesionBuilding);
+                isGoingToGuardTower = false;
                 yield break;
             }
 

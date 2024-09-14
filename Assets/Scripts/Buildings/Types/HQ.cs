@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -98,8 +99,16 @@ public class HQ : Building
 
     public GameObject GetRandomUnemployed() //gets a random unemployed to recruit to a proffesion
     {
-        int randomIndex = Random.Range(0, unemployedAmmigas.Count);
-        return unemployedAmmigas[randomIndex];
+        for (int i = 0; i < unemployedAmmigas.Count; i++)
+        {
+            if (!unemployedAmmigas[i].GetComponent<Villager>().isProffesionRecruited)
+            {
+                return unemployedAmmigas[i];
+            }
+        }
+        return null;
+        //int randomIndex = Random.Range(0, unemployedAmmigas.Count);
+        //return unemployedAmmigas[randomIndex];
     }
 
     public void RemoveUnemployed(GameObject unemployed) // after recruitment of an unemployed remove from the list
