@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ProffesionBuilding : Building
@@ -47,9 +48,11 @@ public class ProffesionBuilding : Building
         {
             if (player.GetPlayerData().seedAmount >= villager.GetAmiggaData().seedsCost)
             {
-                player.GetPlayerData().SubstarctSeedsAmount(villager.GetAmiggaData().seedsCost);
-                HQ.villageInfoUI.SetSeedsText();
-                VillagerRecruitAction();
+                if (VillagerRecruitAction())
+                {
+                    player.GetPlayerData().SubstarctSeedsAmount(villager.GetAmiggaData().seedsCost);
+                    HQ.villageInfoUI.SetSeedsText();
+                }
             }
             else
             {
@@ -61,21 +64,24 @@ public class ProffesionBuilding : Building
             print("no unemployed villager available, pls recruit more villager from the hatchery");
         }
     }
-    private void VillagerRecruitAction() //method for the recruit an unemployed villager to a proffesion
+    private bool VillagerRecruitAction() //method for the recruit an unemployed villager to a proffesion
     {
         GameObject randomUnemployed = HQ.GetRandomUnemployed();
-        Villager unemployedVillager = randomUnemployed.GetComponent<Villager>();
-        if (unemployedVillager != null)
+        if (randomUnemployed != null)
         {
-            unemployedVillager.ChangeAmiggaProffesion(gameObject, transform.position);
-            HQ.RemoveUnemployed(randomUnemployed);
+            Villager unemployedVillager = randomUnemployed.GetComponent<Villager>();
+            unemployedVillager.isProffesionRecruited = true;
+            StartCoroutine(unemployedVillager.ChangeAmiggaProffesion(gameObject, transform.position));
+            return true;
         }
+        return false;
 
     }
     public void VillagerProffesionChange_OnArrival(GameObject unemployedVillager) //destroying the unepmloyed and invoking for a delay of x amount of time to change proffesion
     {
+        HQ.RemoveUnemployed(unemployedVillager);
+        Invoke(nameof(ChangeVillagerProffesion),changeProffesionDelay);
         Destroy(unemployedVillager);
-        Invoke(nameof(ChangeVillagerProffesion), changeProffesionDelay);
     }
 
     protected virtual void ChangeVillagerProffesion() // method to change unemployed to the building's proffesion
