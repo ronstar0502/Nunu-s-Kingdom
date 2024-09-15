@@ -59,6 +59,14 @@ public class VillageInfo : MonoBehaviour
     public void SetSeedsText()
     {
         seedsAmountText.text = $"{player.GetPlayerData().seedAmount}";
+        StartCoroutine(ChangeSeedTextColor(seedsAmountText));
+    }
+    private IEnumerator ChangeSeedTextColor(TMP_Text txt)
+    {
+        Color original= txt.color;
+        txt.color = Color.red;
+        yield return new WaitForSeconds(0.7f);
+        txt.color = original;
     }
 
     public void SetVillagersAmountText(int currentVillagers,int maxVillagers)
