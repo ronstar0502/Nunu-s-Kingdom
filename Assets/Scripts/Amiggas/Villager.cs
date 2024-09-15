@@ -19,8 +19,7 @@ public class Villager : MonoBehaviour
     protected Animator animator;
     protected Vector2 targetPosition;
     protected int direction;
-    private GameObject _buildingTarget;
-    private bool _isUnemployed = true;
+    //private GameObject _buildingTarget;
 
     [Header("Temporary Patrol Points")] //place holder for testing will update later
     [SerializeField] protected float leftPatrolBorder;
@@ -70,7 +69,7 @@ public class Villager : MonoBehaviour
 
     protected void AmiggaMoveToTarget(Vector2 targetPos) //method to move the villager to target position on X axsis only
     {
-        SetVillagerDirection(targetPos.x);
+        SetAmmigaDirection(targetPos.x);
         //float movementDirection = targetPosition.x - transform.position.x;
         //rb.velocity = new Vector2(movementDirection* direction * villagerData.movementSpeed * Time.deltaTime,rb.velocity.y);
 
@@ -132,7 +131,7 @@ public class Villager : MonoBehaviour
         }
     }
 
-    protected void SetVillagerDirection(float targetPoint) //sets the direction of the sprite and movement
+    protected void SetAmmigaDirection(float targetPoint) //sets the direction of the sprite and movement
     {
         if (targetPoint < transform.position.x)
         {
