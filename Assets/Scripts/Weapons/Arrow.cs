@@ -40,6 +40,8 @@ public class Arrow : MonoBehaviour
                 targetDirection.Normalize();
                 float arrowRotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
                 _rb.rotation = arrowRotation;
+
+                targetDirection = direction; //preserve the original direction so the speed wont change dramatically
             }
             arrowDamage = damage;
         }

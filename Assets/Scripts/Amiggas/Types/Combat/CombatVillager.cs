@@ -10,8 +10,8 @@ public class CombatVillager : Villager
     [SerializeField] protected float attackRange;
     [SerializeField] protected float attackSpeed;
     protected GameObject targetEnemy;
-    private float attackTimer;
-    private bool isInAttackAnimation;
+    //private float attackTimer;
+    //private bool isInAttackAnimation;
 
     protected void Awake()
     {
@@ -33,7 +33,7 @@ public class CombatVillager : Villager
     }
     protected override void Start()
     {
-        attackTimer = attackSpeed;
+        //attackTimer = attackSpeed;
         base.Start();
     }
 
@@ -57,6 +57,7 @@ public class CombatVillager : Villager
                 {
                     animator.SetBool("isAttacking",true);
                     //print($"{villagerData.villagerName} is in attack range of {targetEnemy.name}. Attacking...");
+
                     /*if (!isInAttackAnimation)
                     {
                         //attackTimer -= Time.deltaTime;
@@ -88,12 +89,12 @@ public class CombatVillager : Villager
         if (targetEnemy != null)
         {
             SetAmmigarAttackTargetDirection();
-            isInAttackAnimation = true;
+            //isInAttackAnimation = true;
             yield return new WaitUntil(()=>animator.GetCurrentAnimatorStateInfo(0).IsName($"{amiggaData.villagerName}Attack"));
             print($"{amiggaData.villagerName} finished animation");
 
             //yield return new WaitForSeconds(attackSpeed);
-            isInAttackAnimation = false;
+            //isInAttackAnimation = false;
 
             //loop as long as the target is still in range
             if (IsInAttackRange() && targetEnemy != null)
@@ -172,7 +173,7 @@ public class CombatVillager : Villager
     {
         if (targetEnemy != null)
         {
-            SetVillagerDirection(targetEnemy.transform.position.x);
+            SetAmmigaDirection(targetEnemy.transform.position.x);
         }
         else
         {

@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class Archer : CombatVillager
 {
+    [Header("Arrow Settings")]
+    [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private Transform arrowSpawnTransform;
+
+    [Header("Other Archer Settings")]
     public GuardTower assignedGuardTower;
     public bool isAssignedToGuardTower; //assigned archers cant get out of the tower , unassigned can go to combat 
     private int guardTowerSlot;
     private Vector2 targetTower;
     private bool isGoingToGuardTower;
 
-    [SerializeField] private GameObject arrowPrefab;
-    [SerializeField] private Transform arrowSpawnTransform;
 
     protected void Awake()
     {
@@ -26,8 +29,7 @@ public class Archer : CombatVillager
             base.Start();
         }
     }
-
-    private void Update()
+    protected void Update()
     {
         if(!isGoingToGuardTower)
         {
@@ -73,19 +75,6 @@ public class Archer : CombatVillager
         attackRange += assignedGuardTower.GetAttackRangeBonus();
         //print($"archer in tower {gameObject.name} in slot {guardTowerSlot} has {attackRange} range");
     }
-
-    /*private void CheckIfCanPatrol() //checks if archer can patrol
-    {
-        if (assignedGuardTower != null)
-        {
-            return;
-        }
-        if (villagerState == VillagerState.ProffesionAction || villagerState == VillagerState.InProffesionBuilding)
-        {
-            return;
-        }
-        SetState(VillagerState.Patrol);
-    }*/
     private IEnumerator ArcherGuardTowerArrival() // used courtine to move the archer to the tower so it wont be in update all the time
     {
         isGoingToGuardTower = true;
@@ -111,7 +100,7 @@ public class Archer : CombatVillager
     {
         if (targetEnemy != null)
         {
-            SetVillagerDirection(targetEnemy.transform.position.x);
+            SetAmmigaDirection(targetEnemy.transform.position.x);
             print("archer attacked!");
         }
         else
@@ -123,10 +112,21 @@ public class Archer : CombatVillager
     {
         if (targetEnemy != null)
         {
+            Vector2 targetDirection = targetEnemy.transform.position - gameObject.transform.position;
+
+            if(targetDirection.magnitude < 0.1f) // if the distance of the arrow spawning from the enemy is very low
+            {
+                print($"Arrow spawned on the target {targetEnemy.name}, dealing {damage} damage");
+                //deal the damage directly to the enemy
+                targetEnemy.GetComponent<IDamageable>().TakeDamage(damage);
+                return; //than no need to instatiate the arrow
+            }
+
+            //targetDirection.Normalize();
+
             GameObject arrowObj = Instantiate(arrowPrefab, arrowSpawnTransform.position, Quaternion.identity, arrowSpawnTransform);
             print(targetEnemy.name);
-            Vector2 direction = targetEnemy.transform.position - gameObject.transform.position;
-            arrowObj.GetComponent<Arrow>().InitArrow(targetEnemy, direction, damage,isAssignedToGuardTower);
+            arrowObj.GetComponent<Arrow>().InitArrow(targetEnemy, targetDirection, damage,isAssignedToGuardTower);
         }
         else
         {
