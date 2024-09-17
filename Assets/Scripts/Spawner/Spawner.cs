@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject spawnerPortalPrefab;
-    [SerializeField] Transform[] spawnPoints;
+    [SerializeField] Transform[] spawnPoints; //portals
     [SerializeField] private GameObject[] enemyDirectionIndicators; //place holder
     private Vector3 spawnPosition;
     private int randomSpawnPoint;
@@ -15,7 +14,6 @@ public class Spawner : MonoBehaviour
     {
         int amount = waves[currWave].enemiesAmount[0]; // ??
         randomSpawnPoint = Random.Range(0, 2);
-        GameObject spawnerPortal = Instantiate(spawnerPortalPrefab, spawnPoints[randomSpawnPoint]);
 
         enemyDirectionIndicators[randomSpawnPoint].SetActive(true); //place holder
         if(currWave < waves.Length)
@@ -31,7 +29,7 @@ public class Spawner : MonoBehaviour
                 }
             }
         }
-        //Destroy(spawnerPortal); //place holder
+        enemyDirectionIndicators[randomSpawnPoint].SetActive(false); //place holder
         currWave++;
     }
 }
