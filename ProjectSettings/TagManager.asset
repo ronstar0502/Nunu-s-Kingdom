@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Ammiga
   - Seed
+  - Platform
   layers:
   - Default
   - TransparentFX

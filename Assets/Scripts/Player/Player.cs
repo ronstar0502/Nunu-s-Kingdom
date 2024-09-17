@@ -2,6 +2,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
+    private VillageInfo villageInfo;
     private IInteractable interactableObj;
     private bool canBuild; 
     private void Awake()
@@ -9,6 +10,10 @@ public class Player : MonoBehaviour
         playerData.SetInitHealth();
     }
 
+    private void Start()
+    {
+        villageInfo =  FindObjectOfType<VillageInfo>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R) && interactableObj!=null)
@@ -60,6 +65,7 @@ public class Player : MonoBehaviour
         {
             int amount = collision.gameObject.GetComponent<Seed>().amount;
             playerData.AddSeedsAmount(amount);
+            villageInfo.SetSeedsText();
             print($"seeds in invetory: {playerData.seedAmount}");
             Destroy(collision.gameObject);
         }

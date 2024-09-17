@@ -37,7 +37,7 @@ public class Arrow : MonoBehaviour
             targetDirection = direction;
             if (isFromTower)
             {
-                targetDirection.Normalize();
+                targetDirection.Normalize(); //normalzie for consistend direction
                 float arrowRotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
                 _rb.rotation = arrowRotation;
 
