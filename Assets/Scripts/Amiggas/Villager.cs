@@ -29,10 +29,7 @@ public class Villager : MonoBehaviour
 
     protected virtual void Start()
     {
-        if (!HQ.isNightMode)
-        {
-            SetState(AmiggaState.Spawned);
-        }
+       SetState(AmiggaState.Spawned);
     }
 
     protected void InitAmmiga()

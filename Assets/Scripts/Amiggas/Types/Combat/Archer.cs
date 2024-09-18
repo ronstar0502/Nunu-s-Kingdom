@@ -114,7 +114,7 @@ public class Archer : CombatVillager
         {
             Vector2 targetDirection = targetEnemy.transform.position - gameObject.transform.position;
 
-            if(targetDirection.magnitude < 0.1f) // if the distance of the arrow spawning from the enemy is very low
+            if(targetDirection.magnitude < 0.2f) // if the distance of the arrow spawning from the enemy is very low
             {
                 print($"Arrow spawned on the target {targetEnemy.name}, dealing {damage} damage");
                 //deal the damage directly to the enemy
@@ -124,7 +124,7 @@ public class Archer : CombatVillager
 
             //targetDirection.Normalize();
 
-            GameObject arrowObj = Instantiate(arrowPrefab, arrowSpawnTransform.position, Quaternion.identity, arrowSpawnTransform);
+            GameObject arrowObj = Instantiate(arrowPrefab, transform.position, Quaternion.identity, arrowSpawnTransform);
             print(targetEnemy.name);
             arrowObj.GetComponent<Arrow>().InitArrow(targetEnemy, targetDirection, damage,isAssignedToGuardTower);
         }
