@@ -7,5 +7,5 @@ public class EnemyData
     public float movementSpeed;
     public float attackSpeed;
     public float attackRange;
-    public string name;
+    public string enemyName;
 }

@@ -10,6 +10,7 @@ TagManager:
   - Ammiga
   - Seed
   - Platform
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Ammiga
+  - Enemy
+  - Player
   - 
   - 
   - 

@@ -11,15 +11,13 @@ public class Farm : ProffesionBuilding
     private int harvestAmount;
     private bool playerInRange;
 
-    //TBD: visualization of farmers
-
     protected override void Start()
     {
         base.Start();
         HQ.SetFarm(gameObject.GetComponent<Farm>());
 
         currentFarmerSlots = farmerSlots[0];
-        harvestAmount = 1; //default harvest amount for idle = no farmers        
+        harvestAmount = 1;        
     }
 
     private void Update()

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7626191922688359072}
   - component: {fileID: 6761454265202325116}
   - component: {fileID: 620025873131378034}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: enemy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -103,12 +103,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData:
     health: 8
-    maxHealth: 200
-    damage: 100
+    maxHealth: 40
+    damage: 6
     movementSpeed: 75
     attackSpeed: 2
     attackRange: 3
-    name: Troll
+    enemyName: 
   seedLoot: {fileID: 5269533173031823952, guid: 69ef34eab360acf4b8690d97f1a7563e, type: 3}
   lootDropSpot: {fileID: 6906554350584455144}
   lootDropChance: 50
@@ -215,7 +215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6906554350584455144}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LootDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

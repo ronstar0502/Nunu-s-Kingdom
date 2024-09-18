@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3435903735748638678}
   - component: {fileID: 8864625179885096629}
   - component: {fileID: -8323511190319586686}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ammiga_Farmer
   m_TagString: Ammiga
   m_Icon: {fileID: 0}
@@ -105,11 +105,12 @@ MonoBehaviour:
     maxHealth: 40
     health: 0
     movementSpeed: 4
-    seedsCost: 9
+    seedsCost: 4
   amiggaTool: {fileID: 2652840577269973180, guid: c3d05136d185f414f8977fad9cc319f1, type: 3}
   amiggaState: 0
   leftPatrolBorder: 0
   rightPatrolBorder: 0
+  isProffesionRecruited: 0
 --- !u!50 &3435903735748638678
 Rigidbody2D:
   serializedVersion: 4

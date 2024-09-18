@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 821013778532573187}
   - component: {fileID: 3448578492354396481}
   - component: {fileID: 6808170451328519234}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ammiga_Unemployed
   m_TagString: Ammiga
   m_Icon: {fileID: 0}
@@ -105,11 +105,12 @@ MonoBehaviour:
     maxHealth: 50
     health: 0
     movementSpeed: 4
-    seedsCost: 8
+    seedsCost: 4
   amiggaTool: {fileID: 0}
   amiggaState: 0
   leftPatrolBorder: 0
   rightPatrolBorder: 0
+  isProffesionRecruited: 0
 --- !u!95 &821013778532573187
 Animator:
   serializedVersion: 5

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2568719440629602085}
   - component: {fileID: 7839505464916427344}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LootDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 7223180472697919605}
   - component: {fileID: 5582360738700882254}
   - component: {fileID: 4400860040262355071}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -187,12 +187,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData:
     health: 5
-    maxHealth: 100
-    damage: 50
+    maxHealth: 24
+    damage: 3
     movementSpeed: 90
     attackSpeed: 1
     attackRange: 2
-    name: Goblin
+    enemyName: 
   seedLoot: {fileID: 5269533173031823952, guid: 69ef34eab360acf4b8690d97f1a7563e, type: 3}
   lootDropSpot: {fileID: 2568719440629602085}
   lootDropChance: 70

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1884013032127697332}
   - component: {fileID: 3158112143533112649}
-  - component: {fileID: 3199858903798557360}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -85,20 +84,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3199858903798557360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5341729962025019665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e3cd7373506bab4c96a7b1cac313d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData:
-    sprite: {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
-    damage: 25
-    attackSpeed: 1.25
-    cost: 15

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3217269770152235193}
   - component: {fileID: 8546669444230652859}
   - component: {fileID: -1078758287379594929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ammiga_Warrior
   m_TagString: Ammiga
   m_Icon: {fileID: 0}
@@ -102,15 +102,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amiggaData:
     villagerName: Samurai
-    maxHealth: 100
+    maxHealth: 32
     health: 0
     movementSpeed: 4
-    seedsCost: 10
+    seedsCost: 6
   amiggaTool: {fileID: 1218095432757400823, guid: 13117e2a28c90444996586d5f324f513, type: 3}
   amiggaState: 0
   leftPatrolBorder: 0
   rightPatrolBorder: 0
-  damage: 25
+  isProffesionRecruited: 0
+  damage: 6
   targetDetectRange: 30
   attackRange: 4
   attackSpeed: 1.5

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3222342359611009475}
   - component: {fileID: 387154049862319806}
-  - component: {fileID: 8343772046879483699}
   m_Layer: 0
   m_Name: Katana
   m_TagString: Untagged
@@ -85,20 +84,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8343772046879483699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218095432757400823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e3cd7373506bab4c96a7b1cac313d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData:
-    sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-    damage: 20
-    attackSpeed: 2
-    cost: 10
