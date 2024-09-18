@@ -4,6 +4,8 @@ public class BuildingSpot : MonoBehaviour, IInteractable
     [SerializeField] private GameObject buildingObj;
     [SerializeField] private GameObject buildingGhost;
     [SerializeField] private GameObject buildingSpotPopUp;
+    [SerializeField] private AudioClip buildSound;
+    [SerializeField] private SoundEffectManger soundEffectManger;
     private Player player;
     private HQ HQ;
     private BuildingData buildingData;
@@ -15,6 +17,7 @@ public class BuildingSpot : MonoBehaviour, IInteractable
         player = FindObjectOfType<Player>();
         HQ = FindObjectOfType<HQ>();
         buildingData = buildingObj.GetComponent<Building>().GetBuildingData();
+        soundEffectManger= FindAnyObjectByType<SoundEffectManger>();
 
         buildingGhost.SetActive(false);
         buildingSpotPopUp.SetActive(false);
@@ -59,6 +62,10 @@ public class BuildingSpot : MonoBehaviour, IInteractable
         if (player.GetPlayerData().seedAmount >= buildingData.cost)
         {
             BuildAtSpot();
+            if (buildSound != null && soundEffectManger != null)
+            {
+                soundEffectManger.PlaySFX(buildSound);
+            }
         }
         else
         {

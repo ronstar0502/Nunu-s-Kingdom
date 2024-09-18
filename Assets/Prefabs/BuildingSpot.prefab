@@ -134,6 +134,8 @@ MonoBehaviour:
   buildingObj: {fileID: 0}
   buildingGhost: {fileID: 4472565336883109997}
   buildingSpotPopUp: {fileID: 7392208137427823836}
+  buildSound: {fileID: 8300000, guid: 86db0e8c15aafa846a4b83d562d2ce64, type: 3}
+  soundEffectManger: {fileID: 0}
 --- !u!212 &3490247137013483196
 SpriteRenderer:
   m_ObjectHideFlags: 0

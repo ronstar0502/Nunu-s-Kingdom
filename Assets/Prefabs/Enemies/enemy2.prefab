@@ -113,6 +113,8 @@ MonoBehaviour:
   lootDropSpot: {fileID: 6906554350584455144}
   lootDropChance: 50
   spawnOffsetY: -1.450436
+  attackSound: {fileID: 8300000, guid: d4b5af80b72c0d54da73c63b171ec864, type: 3}
+  soundEffectManger: {fileID: 0}
 --- !u!61 &7626191922688359072
 BoxCollider2D:
   m_ObjectHideFlags: 0
