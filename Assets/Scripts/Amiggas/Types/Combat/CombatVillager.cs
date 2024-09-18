@@ -34,7 +34,10 @@ public class CombatVillager : Villager
     protected override void Start()
     {
         //attackTimer = attackSpeed;
-        base.Start();
+        if (!HQ.isNightMode)
+        {
+            base.Start();
+        }
     }
 
     protected void Update()
@@ -69,10 +72,10 @@ public class CombatVillager : Villager
                 }
                 else 
                 {
-                    animator.SetBool("isAttacking",false);
                     //print($"{villagerData.villagerName} is moving towards {targetEnemy.name}.");
                     if (amiggaState == AmiggaState.Combat)
                     {
+                        animator.SetBool("isAttacking",false);
                         AmiggaMoveToTarget(targetEnemy.transform.position);
                     }
                 }
@@ -80,6 +83,7 @@ public class CombatVillager : Villager
             else if (amiggaState == AmiggaState.Combat)
             {
                 //print($"{villagerData.villagerName} has no target and is now patrolling.");
+                animator.SetBool("isAttacking", false);
                 AmiggaPatrol();
             }
         }
@@ -159,6 +163,6 @@ public class CombatVillager : Villager
     {
         if (targetEnemy == null) return false;
         float distance = Mathf.Abs(transform.position.x - targetEnemy.transform.position.x); //with vector2.Distance() had some troubles with the target set and attack range
-        return distance <= attackRange;
+        return distance <= attackRange + 0.05f;
     }
 }

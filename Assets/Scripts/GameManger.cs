@@ -93,11 +93,11 @@ public class GameManger : MonoBehaviour
     private void StartDayActivities() //starts all day activities
     {
         currDay++;
+        spawner.EnableAllPortals();
         SetDaysCountTxt();
         print($"Day {currDay}");
         HarvestFarm();
         HQ.SetAmmigastToPatrolMode();
-        currDay++;
     }
 
     private void HarvestFarm()

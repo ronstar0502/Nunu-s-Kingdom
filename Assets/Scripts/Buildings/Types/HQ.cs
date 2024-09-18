@@ -117,6 +117,14 @@ public class HQ : Building
         print($"now you have {unemployedAmmigas.Count} unepmloyed villagers");
     }
 
+    public void RemoveArcher(GameObject Archer) // after recruitment of an unemployed remove from the list
+    {
+        archers.Remove(Archer);
+        currentAmiggaAmount--;
+        villageInfoUI.SetVillagersAmountText(currentAmiggaAmount,maxAmiggaAmount);
+        print($"now you have {archers.Count} archers");
+    }
+
     public void SetFarm(Farm farm)
     {
         this.farm = farm;
@@ -125,6 +133,7 @@ public class HQ : Building
     public void FarmSeeds()
     {
         farm.FarmSeeds();
+
     }
     public void AddGuardTower(GuardTower guardTower) //list of built guard tower
     {
@@ -209,11 +218,17 @@ public class HQ : Building
         isNightMode = false;
         for (int i = 0; i < warriors.Count; i++)
         {
-            warriors[i].GetComponent<CombatVillager>().ChangeToPatrolMode();
+            if (warriors[i] != null)
+            {
+                warriors[i].GetComponent<CombatVillager>().ChangeToPatrolMode();
+            }
         }
         for (int i = 0; i < archers.Count; i++)
         {
-            archers[i].GetComponent<CombatVillager>().ChangeToPatrolMode();
+            if (archers[i] != null)
+            {
+                archers[i].GetComponent<CombatVillager>().ChangeToPatrolMode();
+            }
         }
     }
 }
