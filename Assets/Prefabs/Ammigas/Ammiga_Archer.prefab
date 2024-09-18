@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4270616067414914257}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ArrowSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: -9079562888934030536}
   - component: {fileID: 365368131181351935}
   - component: {fileID: 7272554589024244763}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ammiga_Archer
   m_TagString: Ammiga
   m_Icon: {fileID: 0}
@@ -134,24 +134,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amiggaData:
     villagerName: Archer
-    maxHealth: 90
+    maxHealth: 26
     health: 0
     movementSpeed: 4
-    seedsCost: 9
+    seedsCost: 5
   amiggaTool: {fileID: 5341729962025019665, guid: 98b47637b53dccd46bdb1def65d50be1, type: 3}
   amiggaState: 0
   leftPatrolBorder: 0
   rightPatrolBorder: 0
-  damage: 20
+  isProffesionRecruited: 0
+  damage: 4
   targetDetectRange: 30
   attackRange: 12
   attackSpeed: 1
-  assignedGuardTower: {fileID: 0}
-  targetTower: {x: 0, y: 0}
-  guardTowerSlot: 0
-  isAssignedToGuardTower: 0
   arrowPrefab: {fileID: 1595014924496177938, guid: 5a214cd37a32c2845b163cdf7aa03b2b, type: 3}
   arrowSpawnTransform: {fileID: 4270616067414914257}
+  assignedGuardTower: {fileID: 0}
+  isAssignedToGuardTower: 0
 --- !u!50 &-9079562888934030536
 Rigidbody2D:
   serializedVersion: 4

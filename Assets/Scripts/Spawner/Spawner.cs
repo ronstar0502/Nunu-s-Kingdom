@@ -5,9 +5,10 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] Transform[] spawnPoints; //portals
     [SerializeField] private GameObject[] enemyDirectionIndicators; //place holder
+    [SerializeField] private Wave[] waves;
+    [SerializeField] private float spawnDelay;
     private Vector3 spawnPosition;
     private int randomSpawnPoint;
-    [SerializeField] private Wave[] waves;
     private int currWave = 0;
 
     public IEnumerator StartSpawning()
@@ -16,7 +17,7 @@ public class Spawner : MonoBehaviour
         randomSpawnPoint = Random.Range(0, 2);
 
         enemyDirectionIndicators[randomSpawnPoint].SetActive(true); //place holder
-        if(currWave < waves.Length)
+        if (currWave < waves.Length)
         {
             for (int i = 0; i < waves[currWave].enemies.Length; i++)
             {
@@ -25,7 +26,7 @@ public class Spawner : MonoBehaviour
 
                     spawnPosition = spawnPoints[randomSpawnPoint].position;
                     Instantiate(waves[currWave].enemies[i], spawnPosition, Quaternion.identity, spawnPoints[randomSpawnPoint]);
-                    yield return new WaitForSeconds(2);
+                    yield return new WaitForSeconds(spawnDelay);
                 }
             }
         }

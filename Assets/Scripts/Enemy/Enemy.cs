@@ -43,15 +43,16 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (currentBuildingTarget != null)
         {
+            SetMovementDirection(currentBuildingTarget.transform.position.x);
             if (IsInAttackRange())
             {
                 animator.SetBool("isAttacking", true);
-                attackTimer -= Time.deltaTime;
-                if (attackTimer <= 0)
-                {
-                    AttackTarget();
-                    attackTimer = enemyData.attackSpeed;
-                }
+                //attackTimer -= Time.deltaTime;
+                //if (attackTimer <= 0)
+                //{
+                //    AttackTarget();
+                //    attackTimer = enemyData.attackSpeed;
+                //}
             }
             else
             {
@@ -126,20 +127,16 @@ public class Enemy : MonoBehaviour, IDamageable
     private void AttackTarget()
     {
         if (currentBuildingTarget != null)
-        {
-            SetMovementDirection(currentBuildingTarget.transform.position.x);
+        {          
             currentBuildingTarget.GetComponent<IDamageable>().TakeDamage(enemyData.damage);
-        }
-        else
-        {
-            SetBuildingTarget();
+            print($"{enemyData.enemyName} attacked {currentBuildingTarget.name} with {enemyData.damage} damage.");
         }
     }
 
     public void TakeDamage(int damage)
     {
         enemyData.health -= damage;
-        print($"{enemyData.name} took {damage} damage and now has {enemyData.health} health");
+        print($"{enemyData.enemyName} took {damage} damage and now has {enemyData.health} health");
         if (enemyData.health <= 0)
         {
             int dropPercent = Random.Range(1, 101);

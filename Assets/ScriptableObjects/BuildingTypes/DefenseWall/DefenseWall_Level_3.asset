@@ -15,7 +15,7 @@ MonoBehaviour:
   buildingName: DefenseWall
   sprite: {fileID: 21300000, guid: 55b639c601c40c04cacdfdb80d1dc0c6, type: 3}
   level: 3
-  health: 2700
-  cost: 40
+  health: 70
+  cost: 36
   isMaxLevel: 1
   nextLevelBuilding: {fileID: 0}

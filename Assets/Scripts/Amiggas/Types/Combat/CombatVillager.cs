@@ -84,32 +84,7 @@ public class CombatVillager : Villager
             }
         }
     }
-    private IEnumerator AttackTarget()
-    {
-        if (targetEnemy != null)
-        {
-            SetAmmigarAttackTargetDirection();
-            //isInAttackAnimation = true;
-            yield return new WaitUntil(()=>animator.GetCurrentAnimatorStateInfo(0).IsName($"{amiggaData.villagerName}Attack"));
-            print($"{amiggaData.villagerName} finished animation");
-
-            //yield return new WaitForSeconds(attackSpeed);
-            //isInAttackAnimation = false;
-
-            //loop as long as the target is still in range
-            if (IsInAttackRange() && targetEnemy != null)
-            {
-                StartCoroutine(AttackTarget());
-            }
-            else
-            {
-                //stoping the attack animation if the target is out of range
-                animator.SetBool("isAttacking", false);
-            }
-        }
-    }
-
-    public void DealDamageToTarget()
+    public void AttackTarget()
     {
         if (targetEnemy != null)
         {

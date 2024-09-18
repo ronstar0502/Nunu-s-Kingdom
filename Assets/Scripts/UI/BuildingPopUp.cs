@@ -9,12 +9,11 @@ public class BuildingPopUp : MonoBehaviour
     [SerializeField] private TMP_Text recruitTxt;
     private HQ HQ;
     private Player player;
-
     private void Start()
     {
-        gameObject.SetActive(false);
         HQ = FindObjectOfType<HQ>();
         player = FindObjectOfType<Player>();
+        gameObject.SetActive(false);
     }
     public void EnableBuildingPopUp(int upgradeCost ,int recruitCost)
     {

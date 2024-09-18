@@ -1,14 +1,5 @@
 using System.Collections;
 using UnityEngine;
-
-public enum AmiggaState
-{
-    Spawned,
-    ProffesionAction,
-    InProffesionBuilding,
-    Patrol,
-    Combat
-}
 public class Villager : MonoBehaviour
 {
     [SerializeField] protected VillagerData amiggaData;
