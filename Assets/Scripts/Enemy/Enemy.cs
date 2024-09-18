@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private Transform lootDropSpot;
     [SerializeField] private int lootDropChance;
     [SerializeField] private float spawnOffsetY;
+    [SerializeField] private AudioClip attackSound;
+    [SerializeField] private SoundEffectManger soundEffectManger;
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
     private Animator animator;
@@ -22,6 +24,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _rb = GetComponent<Rigidbody2D>();
         _sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        soundEffectManger = FindAnyObjectByType<SoundEffectManger>();
 
         enemyData.health = enemyData.maxHealth;
     }
@@ -127,7 +130,11 @@ public class Enemy : MonoBehaviour, IDamageable
     private void AttackTarget()
     {
         if (currentBuildingTarget != null)
-        {          
+        {
+            if(attackSound != null && soundEffectManger != null)
+            {
+                soundEffectManger.PlaySFX(attackSound);
+            }
             currentBuildingTarget.GetComponent<IDamageable>().TakeDamage(enemyData.damage);
             print($"{enemyData.enemyName} attacked {currentBuildingTarget.name} with {enemyData.damage} damage.");
         }
