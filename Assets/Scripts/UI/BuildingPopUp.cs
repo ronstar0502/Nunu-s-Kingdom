@@ -7,12 +7,12 @@ public class BuildingPopUp : MonoBehaviour
 {
     [SerializeField] private TMP_Text upgradeTxt;
     [SerializeField] private TMP_Text recruitTxt;
-    private HQ HQ;
-    private Player player;
+    private HQ _HQ;
+    private Player _player;
     private void Start()
     {
-        HQ = FindObjectOfType<HQ>();
-        player = FindObjectOfType<Player>();
+        _HQ = FindObjectOfType<HQ>();
+        _player = FindObjectOfType<Player>();
         gameObject.SetActive(false);
     }
     public void EnableBuildingPopUp(int upgradeCost ,int recruitCost)
@@ -31,7 +31,7 @@ public class BuildingPopUp : MonoBehaviour
     }
     private void SetRecruitTxtColor(int recruitCost)
     {
-        if (player.GetPlayerData().seedAmount >= recruitCost && HQ.HasUnemployedVillager())
+        if (_player.GetPlayerData().seedAmount >= recruitCost && _HQ.HasUnemployedVillager())
         {
             recruitTxt.color = Color.green;
         }
@@ -43,7 +43,7 @@ public class BuildingPopUp : MonoBehaviour
 
     private void SetUpgradeTxtColor(int upgradeCost)
     {
-        if (player.GetPlayerData().seedAmount >= upgradeCost)
+        if (_player.GetPlayerData().seedAmount >= upgradeCost)
         {
             upgradeTxt.color = Color.green;
         }

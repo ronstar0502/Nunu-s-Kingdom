@@ -23,7 +23,7 @@ public class Hatchery : Building
     {
         if (Input.GetKeyDown(KeyCode.E) && playerInRange) //placeholder for testing
         {
-            RecruitVillager();
+            RecruitAmmiga();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,11 +40,16 @@ public class Hatchery : Building
             playerInRange = false;
         }
     }
-    public void RecruitVillager() //recruits a villager
+    public override void EnableBuildingPopUp()
     {
-        if (HQ.CanRecruitVillager() && HasOpenEggSlots() && player.GetPlayerData().seedAmount >= amiggaCost) //checks if the player can recruit and there are available eggs slots
+        buildingPopUp.SetActive(true);
+        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, amiggaCost);
+    }
+    public void RecruitAmmiga() //recruits a villager
+    {
+        if (CanRecruitAmmiga()) //checks if the player can recruit and there are available eggs slots
         {
-            HQ.AddToTotalVillagerAmount();
+            HQ.AddToTotalAmmigaAmount();
             player.GetPlayerData().SubstarctSeedsAmount(amiggaCost);
             HQ.villageInfoUI.SetSeedsText();
             int eggSlot = GetEggSlotNumber();
@@ -57,6 +62,10 @@ public class Hatchery : Building
         }
     }
 
+    public bool CanRecruitAmmiga()
+    {
+        return HQ.CanRecruitVillager() && HasOpenEggSlots() && player.GetPlayerData().seedAmount >= amiggaCost;
+    }
     public void EggHatch(GameObject amigga, int slotNumber)
     {
         HQ.AddUnemployedVillager(amigga);

@@ -75,6 +75,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
                 print($"not enough seeds!! , you need {nextLevelCost} seeds and you have {player.GetPlayerData().seedAmount}");
             }
             SetNextLevelCost(); // after level up , sets the next level up cost
+            buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost); // if player stays on the building so it will update
         }
     }
 

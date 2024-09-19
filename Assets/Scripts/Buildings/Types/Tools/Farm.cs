@@ -56,6 +56,19 @@ public class Farm : ProffesionBuilding
         }
     }
 
+    public override void TakeDamage(int damage)
+    {
+        if (this != null)
+        {
+            buildingHealth -= damage;
+            if (buildingHealth <= 0)
+            {
+                HQ.RemoveFarm();
+                print($"{buildingData.buildingName} Destroyed!!");
+                Destroy(gameObject);
+            }
+        }
+    }
     public override void RecruitVillagerProffesion() //add farmer if there is an available slot 
     {
         if (!IsFarmFull())

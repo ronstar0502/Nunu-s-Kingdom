@@ -96,6 +96,7 @@ public class GuardTower : Building
             {
                 print($"{buildingData.buildingName} Destroyed!!");
                 DestroyArcherInTower();
+                _HQ.RemoveGuardTower(this);
                 DestroyBuilding();
             }
         }
