@@ -1,12 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DayNightSpriteChange : MonoBehaviour
 {
     [SerializeField] Color32 dayColor;
     [SerializeField] Color32 nightColor;
-    [SerializeField] private float delayBetweenTransitions;
     private GameManger gameManger;
     private SpriteRenderer _sr;
     private float dayDuration, nightDuration;
@@ -34,7 +32,7 @@ public class DayNightSpriteChange : MonoBehaviour
         print($"target color time {targetColor}");
         _sr.color = Color.Lerp(dayColor, nightColor, targetColor);
     }
-    private IEnumerator DayNightColorTransition()
+    public IEnumerator DayNightColorTransition()
     {
         float duration = (gameManger.gameState == GameState.Day) ? dayDuration : nightDuration;
         float transitionTime = duration - timeElapsed;  // calculates remaining time for transition if during day night cycle
@@ -52,7 +50,5 @@ public class DayNightSpriteChange : MonoBehaviour
             yield return null;
         }
         _sr.color = targetColor;
-        yield return null;
-        StartCoroutine(DayNightColorTransition()); // starts the cycle again
     }
 }
