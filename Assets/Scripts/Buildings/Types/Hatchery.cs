@@ -40,9 +40,10 @@ public class Hatchery : Building
             playerInRange = false;
         }
     }
-    public override void EnableBuildingPopUp()
+
+    protected override void RefreshPopUp()
     {
-        buildingPopUp.SetActive(true);
+        // for hatchery building that can recruit
         buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, amiggaCost);
     }
     public void RecruitAmmiga() //recruits a villager
@@ -59,6 +60,7 @@ public class Hatchery : Building
             int randomSpawnPoint = Random.Range(0, amiggaSpawnPoints.Length);
             amiggaEgg.InitEgg(unemployedAmiggaPrefab, amiggaSpawnPoints[randomSpawnPoint], eggSlot); //sets the egg data and script
             eggSlotsOpen[eggSlot] = false;
+            InvokeBuildingStateChanged();
         }
     }
 

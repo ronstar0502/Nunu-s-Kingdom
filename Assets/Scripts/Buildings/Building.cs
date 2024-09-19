@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,12 +8,12 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     [SerializeField] protected BuildingData buildingData;
     [SerializeField] protected GameObject buildingSpot;
     [SerializeField] protected GameObject buildingPopUp;
+    [SerializeField] protected event Action OnBuildingStateChanged;
     [SerializeField] protected float buildingHealth;
     protected Player player;
     protected int nextLevelCost;
     protected bool IsMaxLevel;
     private SpriteRenderer sr;
-
 
     private void Awake()
     {
@@ -41,18 +42,36 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
             }
         }
     }
-    public virtual void EnableBuildingPopUp()
+    public void EnableBuildingPopUp()
     {
-
         buildingPopUp.SetActive(true);
-        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost);
+        OnBuildingStateChanged += RefreshPopUp;
+        RefreshPopUp();
     }
 
     public void DisableBuildingPopUp()
     {
-
         buildingPopUp.SetActive(false);
+        OnBuildingStateChanged -= RefreshPopUp;
+    }
 
+    protected virtual void RefreshPopUp()
+    {
+        // default for buildings that can only be upgraded
+        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost);
+    }
+
+    protected void InvokeBuildingStateChanged()
+    {
+        if (OnBuildingStateChanged != null)
+        {
+            Debug.Log("OnBuildingStateChanged has RefreshPopUp as subscribed method");
+            OnBuildingStateChanged.Invoke();
+        }
+        else
+        {
+            Debug.Log("OnBuildingStateChanged has no subscribed methods.");
+        }
     }
     public void Interact() //interact for level up
     {
@@ -75,7 +94,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
                 print($"not enough seeds!! , you need {nextLevelCost} seeds and you have {player.GetPlayerData().seedAmount}");
             }
             SetNextLevelCost(); // after level up , sets the next level up cost
-            buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost); // if player stays on the building so it will update
+            OnBuildingStateChanged?.Invoke();
         }
     }
 
