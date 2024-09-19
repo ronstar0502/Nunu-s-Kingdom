@@ -19,20 +19,17 @@ public class ProffesionBuilding : Building
         HQ = FindObjectOfType<HQ>();
         villager = villlagerProffesionPrefab.GetComponent<Villager>();
     }
-
-    public override void EnableBuildingPopUp()
-    {
-
-        buildingPopUp.SetActive(true);
-        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, villager.GetAmiggaData().seedsCost);
-
-    }
     protected override void LevelUpBuilding()
     {
 
         base.LevelUpBuilding();
         HQ.villageInfoUI.SetSeedsText();
 
+    }
+    protected override void RefreshPopUp()
+    {
+        // for proffesion building that can recruit
+        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, GetRecruitCost());
     }
     public virtual void RecruitVillagerProffesion() //method for recruiting unemployed to the specific proffesion 
     {
@@ -46,17 +43,18 @@ public class ProffesionBuilding : Building
         }
         if (HQ.HasUnemployedVillager())
         {
-            if (player.GetPlayerData().seedAmount >= villager.GetAmiggaData().seedsCost)
+            if (player.GetPlayerData().seedAmount >= GetRecruitCost())
             {
                 if (VillagerRecruitAction())
                 {
-                    player.GetPlayerData().SubstarctSeedsAmount(villager.GetAmiggaData().seedsCost);
+                    player.GetPlayerData().SubstarctSeedsAmount(GetRecruitCost());
                     HQ.villageInfoUI.SetSeedsText();
+                    InvokeBuildingStateChanged();
                 }
             }
             else
             {
-                print($"has unemployed villager but not enough seeds , you have {player.GetPlayerData().seedAmount} and you need {villager.GetAmiggaData().seedsCost}");
+                print($"has unemployed villager but not enough seeds , you have {player.GetPlayerData().seedAmount} and you need {GetRecruitCost()}");
             }
         }
         else
@@ -84,6 +82,10 @@ public class ProffesionBuilding : Building
         Destroy(unemployedVillager);
     }
 
+    public int GetRecruitCost()
+    {
+        return villager.GetAmiggaData().seedsCost;
+    }
     protected virtual void ChangeVillagerProffesion() // method to change unemployed to the building's proffesion
     {
         int randomSpawnPoint = Random.Range(0, villagerRecruitSpawnPoints.Length);
