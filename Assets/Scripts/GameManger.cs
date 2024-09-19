@@ -82,6 +82,7 @@ public class GameManger : MonoBehaviour
                 break;
         }
         player.SetCanBuild(gameState);
+        BuildingsSpriteDayNightChange();
     }
 
     private void StartNightActivities() //starts all night activities
@@ -108,6 +109,17 @@ public class GameManger : MonoBehaviour
         }
     }
 
+    private void BuildingsSpriteDayNightChange()
+    {
+        DayNightSpriteChange[] dayNightSpriteChangeScripts = FindObjectsOfType<DayNightSpriteChange>();
+        foreach (DayNightSpriteChange dayNightSpriteChangeScript in dayNightSpriteChangeScripts)
+        {
+            if (dayNightSpriteChangeScript != null)
+            {
+                StartCoroutine(dayNightSpriteChangeScript.DayNightColorTransition());
+            }
+        }
+    }
     public float GetDayDuration()
     {
         return dayDuration;

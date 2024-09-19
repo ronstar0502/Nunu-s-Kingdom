@@ -55,7 +55,7 @@ public class HQ : Building
         print($"total villager {currentAmiggaAmount} / {maxAmiggaAmount} and {unemployedAmmigas.Count} are unemployed");
     }
 
-    public void AddToTotalVillagerAmount()
+    public void AddToTotalAmmigaAmount()
     {
         currentAmiggaAmount++;
     }
@@ -123,6 +123,15 @@ public class HQ : Building
         currentAmiggaAmount--;
         villageInfoUI.SetVillagersAmountText(currentAmiggaAmount,maxAmiggaAmount);
         print($"now you have {archers.Count} archers");
+    }
+    public void RemoveFarm()
+    {
+        farm = null;
+    }
+
+    public void RemoveGuardTower(GuardTower tower)
+    {
+        guardTowers.Remove(tower);
     }
 
     public void SetFarm(Farm farm)
