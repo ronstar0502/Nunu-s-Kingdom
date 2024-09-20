@@ -7,6 +7,7 @@ public class Tutorial : MonoBehaviour
     private Waypoint curWaypoint;
     [SerializeField] TMP_Text taskText;
     [SerializeField] GameObject waypointUI;
+    [TextArea(5, 3)] private string tutorialTxt;
     int currTaskIndex = 0;
     private string[] tasks = { "Press A or D to move right and left",
         "Now go to the Tree of life,you must deffend it at all cost! its the source of all life and magic in the forest! \n (ITS THE BIG PINK TREE BRUH)",
@@ -25,7 +26,7 @@ public class Tutorial : MonoBehaviour
     {
         while(!(Input.GetKeyDown(KeyCode.A)|| Input.GetKeyDown(KeyCode.D)))//Task 1
         {
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
         currTaskIndex++;
         TaskUpdate(currTaskIndex);
