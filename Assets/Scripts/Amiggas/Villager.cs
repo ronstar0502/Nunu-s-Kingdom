@@ -18,7 +18,7 @@ public class Villager : MonoBehaviour
     protected HQ HQ;
 
     public bool isProffesionRecruited;
-    protected void Awake()
+    protected virtual void Awake()
     {
         amiggaData.InitHealth();
         sr = GetComponent<SpriteRenderer>();
@@ -41,7 +41,7 @@ public class Villager : MonoBehaviour
         rightPatrolBorder = HQ.transform.position.x + 10f;
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         ////place holder will change later for better performance
         //if(_isUnemployed && amiggaState == AmiggaState.ProffesionAction)
