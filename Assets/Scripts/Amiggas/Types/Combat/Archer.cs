@@ -15,7 +15,7 @@ public class Archer : CombatVillager
     private bool isGoingToGuardTower;
 
 
-    protected void Awake()
+    protected override void Awake()
     {
         if(assignedGuardTower == null)
         {
@@ -29,7 +29,7 @@ public class Archer : CombatVillager
             base.Start();
         }
     }
-    protected void Update()
+    protected override void Update()
     {
         if(!isGoingToGuardTower)
         {

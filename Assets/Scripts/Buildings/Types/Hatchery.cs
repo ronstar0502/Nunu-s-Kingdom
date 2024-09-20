@@ -44,7 +44,7 @@ public class Hatchery : Building
     protected override void RefreshPopUp()
     {
         // for hatchery building that can recruit
-        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, amiggaCost);
+        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, amiggaCost,CanRecruitAmmiga());
     }
     public void RecruitAmmiga() //recruits a villager
     {
@@ -72,6 +72,7 @@ public class Hatchery : Building
     {
         HQ.AddUnemployedVillager(amigga);
         eggSlotsOpen[slotNumber] = true;
+        RefreshPopUp();
     }
 
     protected override void LevelUpBuilding() //extension of level up building with more logic for hatchery

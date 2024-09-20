@@ -63,15 +63,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
 
     protected void InvokeBuildingStateChanged()
     {
-        if (OnBuildingStateChanged != null)
-        {
-            Debug.Log("OnBuildingStateChanged has RefreshPopUp as subscribed method");
-            OnBuildingStateChanged.Invoke();
-        }
-        else
-        {
-            Debug.Log("OnBuildingStateChanged has no subscribed methods.");
-        }
+        OnBuildingStateChanged?.Invoke();
     }
     public void Interact() //interact for level up
     {
