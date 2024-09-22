@@ -2390,8 +2390,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daysCountText: {fileID: 785963788}
-  dayDuration: 30
-  nightDuration: 30
+  dayDuration: 15
+  nightDuration: 15
   maxDaysInLevel: 10
   gameState: 0
 --- !u!4 &952256233
