@@ -45,21 +45,21 @@ public class CombatVillager : Villager
         base.Update();
         if (amiggaState == AmiggaState.Combat || amiggaState == AmiggaState.InProffesionBuilding)
         {
-            //print($"{villagerData.villagerName} is in combat mode.");
+            print($"{amiggaData.villagerName} is in combat mode.");
             if (targetEnemy == null || !targetEnemy.activeInHierarchy) //if target is not in hierarchy and null sets new target
             {
-                //print($"{villagerData.villagerName} has no target or target is inactive. Setting new target.");
+                print($"{amiggaData.villagerName} has no target or target is inactive. Setting new target.");
                 SetNewTarget();
             }
 
             if (targetEnemy != null)
             {
-                //print($"{villagerData.villagerName} found a target: {targetEnemy.name}.");
+                print($"{amiggaData.villagerName} found a target: {targetEnemy.name}.");
                 SetAmmigarAttackTargetDirection();
                 if (IsInAttackRange())
                 {
                     animator.SetBool("isAttacking",true);
-                    //print($"{villagerData.villagerName} is in attack range of {targetEnemy.name}. Attacking...");
+                    print($"{amiggaData.villagerName} is in attack range of {targetEnemy.name}. Attacking...");
 
                     /*if (!isInAttackAnimation)
                     {
@@ -70,11 +70,11 @@ public class CombatVillager : Villager
                         StartCoroutine(AttackTarget());
                     }*/
                 }
-                else 
+                else
                 {
-                    //print($"{villagerData.villagerName} is moving towards {targetEnemy.name}.");
                     if (amiggaState == AmiggaState.Combat)
                     {
+                        print($"{amiggaData.villagerName} is moving towards {targetEnemy.name}.");
                         animator.SetBool("isAttacking",false);
                         AmiggaMoveToTarget(targetEnemy.transform.position);
                     }
@@ -82,7 +82,7 @@ public class CombatVillager : Villager
             }
             else if (amiggaState == AmiggaState.Combat)
             {
-                //print($"{villagerData.villagerName} has no target and is now patrolling.");
+                print($"{amiggaData.villagerName} has no target and is now patrolling.");
                 animator.SetBool("isAttacking", false);
                 AmiggaPatrol();
             }
@@ -101,9 +101,13 @@ public class CombatVillager : Villager
         SetState(AmiggaState.Combat);
     }
 
-    public virtual void ChangeToPatrolMode() // change the combat villager back to patrol mode
+    public virtual void ChangeToDayMode() // change the combat villager back to patrol mode
     {
-        SetState(AmiggaState.Patrol);
+        if (targetEnemy == null && !HQ.isNightMode)
+        {
+            SetState(AmiggaState.Patrol);
+            animator.SetBool("isAttacking", false);
+        }
     }
     protected void SetNewTarget() //method to set new target
     {
@@ -115,6 +119,10 @@ public class CombatVillager : Villager
         {
             print($"{amiggaData.villagerName} found no enemies within range.");
             targetEnemy = null;
+            if (!HQ.isNightMode)
+            {
+                SetState(AmiggaState.Patrol);
+            }
             return;
         }
 
@@ -163,6 +171,6 @@ public class CombatVillager : Villager
     {
         if (targetEnemy == null) return false;
         float distance = Mathf.Abs(transform.position.x - targetEnemy.transform.position.x); //with vector2.Distance() had some troubles with the target set and attack range
-        return distance <= attackRange + 0.05f;
+        return distance <= attackRange + 0.1f;
     }
 }

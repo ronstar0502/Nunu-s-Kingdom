@@ -229,14 +229,14 @@ public class HQ : Building
         {
             if (warriors[i] != null)
             {
-                warriors[i].GetComponent<CombatVillager>().ChangeToPatrolMode();
+                warriors[i].GetComponent<CombatVillager>().ChangeToDayMode();
             }
         }
         for (int i = 0; i < archers.Count; i++)
         {
             if (archers[i] != null)
             {
-                archers[i].GetComponent<CombatVillager>().ChangeToPatrolMode();
+                archers[i].GetComponent<CombatVillager>().ChangeToDayMode();
             }
         }
     }
