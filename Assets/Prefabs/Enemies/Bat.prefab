@@ -134,12 +134,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData:
     health: 8
-    maxHealth: 48
+    maxHealth: 20
     damage: 4
     movementSpeed: 75
     attackSpeed: 2
     attackRange: 3
-    enemyName: 
+    enemyName: Bat
   seedLoot: {fileID: 5269533173031823952, guid: 69ef34eab360acf4b8690d97f1a7563e, type: 3}
   lootDropSpot: {fileID: 3056173970398619094}
   lootDropChance: 50
