@@ -187,12 +187,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData:
     health: 5
-    maxHealth: 28
+    maxHealth: 18
     damage: 2
     movementSpeed: 90
     attackSpeed: 1
     attackRange: 2
-    enemyName: 
+    enemyName: Goblin
   seedLoot: {fileID: 5269533173031823952, guid: 69ef34eab360acf4b8690d97f1a7563e, type: 3}
   lootDropSpot: {fileID: 2568719440629602085}
   lootDropChance: 70

@@ -43,12 +43,6 @@ public class Villager : MonoBehaviour
 
     protected virtual void Update()
     {
-        ////place holder will change later for better performance
-        //if(_isUnemployed && amiggaState == AmiggaState.ProffesionAction)
-        //{
-        //    AmiggaMoveToTarget(targetPosition);
-        //}
-
         if(amiggaState == AmiggaState.Patrol)
         {
             AmiggaPatrol();           

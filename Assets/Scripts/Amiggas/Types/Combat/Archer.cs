@@ -48,7 +48,7 @@ public class Archer : CombatVillager
         }
     }
 
-    public override void ChangeToPatrolMode() //changes the archer back to patrol mode if not in tower
+    public override void ChangeToDayMode() //changes the archer back to patrol mode if not in tower
     {
         if (!isAssignedToGuardTower)
         {

@@ -14,19 +14,19 @@ public class DayNightSpriteChange : MonoBehaviour
     {
         gameManger = FindObjectOfType<GameManger>();
         _sr = GetComponent<SpriteRenderer>();
-        dayDuration = gameManger.GetDayDuration();
-        nightDuration = gameManger.GetNightDuration();
+        dayDuration = gameManger.GetDayDuration() -1f;
+        nightDuration = gameManger.GetNightDuration() -1f;
+        InitSpriteColor();
     }
 
     private void Start()
     {
-        InitSpriteColor();
+        //InitSpriteColor();
         StartCoroutine(DayNightColorTransition());
     }
 
     private void InitSpriteColor()
     {
-        timeElapsed = Time.time - gameManger.GetLastStateSwapedTime();
         print($"time elapsed since start of day time: {timeElapsed}");
         float targetColor = timeElapsed / dayDuration; //since i can only build at day state
         print($"target color time {targetColor}");
@@ -34,6 +34,7 @@ public class DayNightSpriteChange : MonoBehaviour
     }
     public IEnumerator DayNightColorTransition()
     {
+        yield return new WaitForSeconds(0.9f);
         float duration = (gameManger.gameState == GameState.Day) ? dayDuration : nightDuration;
         float transitionTime = duration - timeElapsed;  // calculates remaining time for transition if during day night cycle
 
@@ -46,7 +47,10 @@ public class DayNightSpriteChange : MonoBehaviour
         {
             time += Time.deltaTime;
             float timeLerpFactor = time / transitionTime;
-            _sr.color = Color.Lerp(startColor, targetColor, timeLerpFactor);
+            if (_sr != null)
+            {
+                _sr.color = Color.Lerp(startColor, targetColor, timeLerpFactor);
+            }
             yield return null;
         }
         _sr.color = targetColor;
