@@ -26,10 +26,11 @@ public class ProffesionBuilding : Building
         HQ.villageInfoUI.SetSeedsText();
 
     }
+
     protected override void RefreshPopUp()
     {
         // for proffesion building that can recruit
-        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, GetRecruitCost());
+        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, GetRecruitCost() , CanRecruit());
     }
     public virtual void RecruitVillagerProffesion() //method for recruiting unemployed to the specific proffesion 
     {
@@ -75,9 +76,15 @@ public class ProffesionBuilding : Building
         return false;
 
     }
+
+    private bool CanRecruit()
+    {
+        return player.GetPlayerData().seedAmount >= GetRecruitCost() && HQ.HasUnemployedVillager();
+    }
     public void VillagerProffesionChange_OnArrival(GameObject unemployedVillager) //destroying the unepmloyed and invoking for a delay of x amount of time to change proffesion
     {
         HQ.RemoveUnemployed(unemployedVillager);
+        RefreshPopUp();
         Invoke(nameof(ChangeVillagerProffesion),changeProffesionDelay);
         Destroy(unemployedVillager);
     }
@@ -91,5 +98,6 @@ public class ProffesionBuilding : Building
         int randomSpawnPoint = Random.Range(0, villagerRecruitSpawnPoints.Length);
         GameObject proffesionVillager = Instantiate(villlagerProffesionPrefab, villagerRecruitSpawnPoints[randomSpawnPoint].position, Quaternion.identity);
         HQ.AddProffesionVillager(proffesionVillager, buildingData.buildingName);
+
     }
 }

@@ -13,7 +13,7 @@ public class CombatVillager : Villager
     //private float attackTimer;
     //private bool isInAttackAnimation;
 
-    protected void Awake()
+    protected override void Awake()
     {
         base.Awake();
         if (HQ.isNightMode) //has some bugs with new recruited ammigas when spawned at night
@@ -40,7 +40,7 @@ public class CombatVillager : Villager
         }
     }
 
-    protected void Update()
+    protected override void Update()
     {
         base.Update();
         if (amiggaState == AmiggaState.Combat || amiggaState == AmiggaState.InProffesionBuilding)

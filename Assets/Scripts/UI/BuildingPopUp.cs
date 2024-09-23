@@ -15,12 +15,12 @@ public class BuildingPopUp : MonoBehaviour
         _player = FindObjectOfType<Player>();
         gameObject.SetActive(false);
     }
-    public void EnableBuildingPopUp(int upgradeCost ,int recruitCost)
+    public void EnableBuildingPopUp(int upgradeCost ,int recruitCost,bool canRecruit)
     {
         upgradeTxt.text = $"Upgrade cost: {upgradeCost}";
         recruitTxt.text = $"Recruit cost: {recruitCost}";
         SetUpgradeTxtColor(upgradeCost);
-        SetRecruitTxtColor(recruitCost);
+        SetRecruitTxtColor(recruitCost, canRecruit);
     }
 
     public void EnableBuildingPopUp(int upgradeCost)
@@ -29,9 +29,9 @@ public class BuildingPopUp : MonoBehaviour
         SetUpgradeTxtColor(upgradeCost);
 
     }
-    private void SetRecruitTxtColor(int recruitCost)
+    private void SetRecruitTxtColor(int recruitCost , bool canRecruit)
     {
-        if (_player.GetPlayerData().seedAmount >= recruitCost && _HQ.HasUnemployedVillager())
+        if (_player.GetPlayerData().seedAmount >= recruitCost && canRecruit)
         {
             recruitTxt.color = Color.green;
         }
