@@ -2942,6 +2942,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.87
       objectReference: {fileID: 0}
+    - target: {fileID: 2405011701963562809, guid: b473059a8f6629e438b29be20730cbca, type: 3}
+      propertyPath: images.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3490247137013483196, guid: b473059a8f6629e438b29be20730cbca, type: 3}
       propertyPath: m_FlipX
       value: 0
