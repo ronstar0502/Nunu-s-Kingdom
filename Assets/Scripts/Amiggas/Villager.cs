@@ -5,6 +5,8 @@ public class Villager : MonoBehaviour
     [SerializeField] protected VillagerData amiggaData;
     [SerializeField] protected GameObject amiggaTool; // unemployed doesnt have a tool
     [SerializeField] protected AmiggaState amiggaState;
+    [SerializeField] protected AudioClip spawnSound;
+    [SerializeField] protected SoundEffectManger soundEffectManger;
     protected SpriteRenderer sr;
     protected Rigidbody2D rb;
     protected Animator animator;
@@ -24,12 +26,15 @@ public class Villager : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        soundEffectManger = FindAnyObjectByType<SoundEffectManger>();
         InitAmmiga();
     }
 
     protected virtual void Start()
     {
-       SetState(AmiggaState.Spawned);
+        SetState(AmiggaState.Spawned);
+        soundEffectManger.PlaySFX(spawnSound);
+
     }
 
     protected void InitAmmiga()
