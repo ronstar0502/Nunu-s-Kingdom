@@ -44,7 +44,14 @@ public class Hatchery : Building
     protected override void RefreshPopUp()
     {
         // for hatchery building that can recruit
-        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, amiggaCost,CanRecruitAmmiga());
+        if (!buildingData.isMaxLevel)
+        {
+            buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, amiggaCost,CanRecruitAmmiga(),buildingData.level);
+        }
+        else
+        {
+            buildingPopUp.GetComponent<BuildingPopUp>().SetToMaxLevelBuildingPopUp();
+        }
     }
     public void RecruitAmmiga() //recruits a villager
     {
