@@ -324,7 +324,6 @@ MonoBehaviour:
   nightColor:
     serializedVersion: 2
     rgba: 4286545791
-  delayBetweenTransitions: 0
 --- !u!61 &9137399245546576632
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -450,6 +449,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 56
       objectReference: {fileID: 0}
+    - target: {fileID: 4991700434904094164, guid: ad11b2501926271448c257238952df30, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 68d8bb94a3953c246a86b73a2ed8500c, type: 3}
     - target: {fileID: 5153479520202104173, guid: ad11b2501926271448c257238952df30, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 111

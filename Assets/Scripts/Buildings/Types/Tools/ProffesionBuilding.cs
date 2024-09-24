@@ -30,7 +30,14 @@ public class ProffesionBuilding : Building
     protected override void RefreshPopUp()
     {
         // for proffesion building that can recruit
-        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, GetRecruitCost() , CanRecruit());
+        if (!buildingData.isMaxLevel)
+        {
+            buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, GetRecruitCost() , CanRecruit(), buildingData.level);
+        }
+        else
+        {
+            buildingPopUp.GetComponent<BuildingPopUp>().SetToMaxLevelBuildingPopUp();
+        }
     }
     public virtual void RecruitVillagerProffesion() //method for recruiting unemployed to the specific proffesion 
     {

@@ -359,7 +359,6 @@ MonoBehaviour:
   nightColor:
     serializedVersion: 2
     rgba: 4286545791
-  delayBetweenTransitions: 0
 --- !u!1001 &4425065072748678867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +429,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4786911879097955241, guid: ad11b2501926271448c257238952df30, type: 3}
       propertyPath: recruitTxt
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786911879097955241, guid: ad11b2501926271448c257238952df30, type: 3}
+      propertyPath: images.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786911879097955241, guid: ad11b2501926271448c257238952df30, type: 3}
+      propertyPath: images.Array.data[0]
+      value: 
+      objectReference: {fileID: 5867825784205516304}
+    - target: {fileID: 4786911879097955241, guid: ad11b2501926271448c257238952df30, type: 3}
+      propertyPath: images.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786911879097955241, guid: ad11b2501926271448c257238952df30, type: 3}
+      propertyPath: images.Array.data[2]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5800791964335024537, guid: ad11b2501926271448c257238952df30, type: 3}
@@ -545,3 +560,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8861232743571734869, guid: ad11b2501926271448c257238952df30, type: 3}
   m_PrefabInstance: {fileID: 4425065072748678867}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5867825784205516304 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7783989593340039363, guid: ad11b2501926271448c257238952df30, type: 3}
+  m_PrefabInstance: {fileID: 4425065072748678867}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

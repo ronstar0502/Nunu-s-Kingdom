@@ -58,7 +58,14 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     protected virtual void RefreshPopUp()
     {
         // default for buildings that can only be upgraded
-        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost);
+        if (!buildingData.isMaxLevel)
+        {
+            buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost,buildingData.level);
+        }
+        else
+        {
+            buildingPopUp.GetComponent<BuildingPopUp>().SetToMaxLevelBuildingPopUp();
+        }
     }
 
     protected void InvokeBuildingStateChanged()

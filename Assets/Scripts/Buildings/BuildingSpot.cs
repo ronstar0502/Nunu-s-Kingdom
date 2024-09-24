@@ -27,7 +27,7 @@ public class BuildingSpot : MonoBehaviour, IInteractable
     {
         buildingGhost.SetActive(true);
         buildingSpotPopUp.SetActive(true);
-        buildingSpotPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(buildingData.cost);
+        buildingSpotPopUp.GetComponent<BuildingPopUp>().EnableBuildingSpotPopUp(buildingData.cost,buildingData.level);
         _sr.enabled = false;
     }
 
