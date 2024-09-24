@@ -108,6 +108,8 @@ MonoBehaviour:
     seedsCost: 6
   amiggaTool: {fileID: 1218095432757400823, guid: 13117e2a28c90444996586d5f324f513, type: 3}
   amiggaState: 0
+  spawnSound: {fileID: 8300000, guid: 27ae3db324ea7c34d80d5df80294fafc, type: 3}
+  soundEffectManger: {fileID: 0}
   leftPatrolBorder: 0
   rightPatrolBorder: 0
   isProffesionRecruited: 0
