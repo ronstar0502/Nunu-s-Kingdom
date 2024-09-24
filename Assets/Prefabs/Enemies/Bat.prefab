@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6033288448707538732}
   - component: {fileID: 6697016260017920842}
   - component: {fileID: 7386036489051368894}
-  - component: {fileID: 1437852159964981140}
+  - component: {fileID: 1920806128573110524}
   m_Layer: 7
   m_Name: Bat
   m_TagString: Enemy
@@ -218,7 +218,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &1437852159964981140
+--- !u!95 &1920806128573110524
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ Animator:
   m_GameObject: {fileID: 1845103974465721023}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 029405210cc7323419433f2a85122a2b, type: 2}
+  m_Controller: {fileID: 9100000, guid: d349b5909377a4741b68e7c3833a11b9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
