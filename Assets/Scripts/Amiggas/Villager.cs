@@ -33,7 +33,7 @@ public class Villager : MonoBehaviour
     protected virtual void Start()
     {
         SetState(AmiggaState.Spawned);
-        soundEffectManger.PlaySFX(spawnSound);
+        PlaySFX();
 
     }
 
@@ -152,6 +152,10 @@ public class Villager : MonoBehaviour
                 SetPatrolPosition();
                 break;
         }
+    }
+    protected void PlaySFX()
+    {
+        soundEffectManger.PlaySFX(spawnSound);
     }
 }
 
