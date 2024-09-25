@@ -9,6 +9,7 @@ public class GameManger : MonoBehaviour
     public GameState gameState;
     private HQ HQ; // will be pre built
     private Spawner spawner;
+    private FlowerSpawner flowerSpawner;
     private Player player;
     private TimeLineIndicator timeLineIndicator;
     private float lastStateSwapped=0f;
@@ -19,6 +20,7 @@ public class GameManger : MonoBehaviour
         timeLineIndicator = FindObjectOfType<TimeLineIndicator>();
         timeLineIndicator.SetDayCycleTimer(dayDuration+nightDuration);
         spawner = FindAnyObjectByType<Spawner>();
+        flowerSpawner = FindAnyObjectByType<FlowerSpawner>();
         gameState = GameState.Day;
         HQ = FindObjectOfType<HQ>();
         player = FindObjectOfType<Player>();
@@ -88,13 +90,15 @@ public class GameManger : MonoBehaviour
     private void StartNightActivities() //starts all night activities
     {
         print("NightTime!");
-        StartCoroutine(spawner.StartSpawning()); //place holder
+        StartCoroutine(spawner.StartSpawning());
+        StartCoroutine(flowerSpawner.SpawnFlowers());
         HQ.SetAmmigasToCombatMode();
     }
     private void StartDayActivities() //starts all day activities
     {
         currDay++;
         spawner.EnableAllPortals();
+        flowerSpawner.isNight = false;
         SetDaysCountTxt();
         print($"Day {currDay}");
         HarvestFarm();

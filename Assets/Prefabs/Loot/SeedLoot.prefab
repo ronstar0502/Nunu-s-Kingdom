@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 666013341304990855}
   - component: {fileID: 7026718892165788476}
   - component: {fileID: 642757263058357853}
+  - component: {fileID: 7556694319724310984}
   m_Layer: 0
   m_Name: SeedLoot
   m_TagString: Seed
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5269533173031823952}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.73, y: -2.99, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: e8e865eacdcf1b1408c0acf2bf819125, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -143,4 +144,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9628f1eb32d77354f9bfef15ded463c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 1
+  force: 3
+  value: 0
+  canLoot: 0
+--- !u!50 &7556694319724310984
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5269533173031823952}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
