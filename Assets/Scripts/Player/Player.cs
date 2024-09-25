@@ -63,11 +63,15 @@ public class Player : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Seed"))
         {
-            int amount = collision.gameObject.GetComponent<Seed>().amount;
-            playerData.AddSeedsAmount(amount);
-            villageInfo.SetSeedsText();
-            print($"seeds in invetory: {playerData.seedAmount}");
-            Destroy(collision.gameObject);
+            Seed seed = collision.gameObject.GetComponent<Seed>();
+            if (seed.canLoot)
+            {
+                int amount = seed.value;
+                playerData.AddSeedsAmount(amount);
+                villageInfo.SetSeedsText();
+                print($"seeds in invetory: {playerData.seedAmount}");
+                Destroy(collision.gameObject);
+            }
         }
     }
 

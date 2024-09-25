@@ -7,6 +7,7 @@ public class BuildingPopUp : MonoBehaviour
     [SerializeField] private TMP_Text upgradeTxt;
     [SerializeField] private TMP_Text recruitTxt;
     [SerializeField] private TMP_Text maxLevelTxt;
+    [SerializeField] private TMP_Text buildingLevelTxt;
     [SerializeField] private Image[] images;
     private HQ _HQ;
     private Player _player;
@@ -20,25 +21,28 @@ public class BuildingPopUp : MonoBehaviour
         }
         gameObject.SetActive(false);
     }
-    public void EnableBuildingPopUp(int upgradeCost ,int recruitCost,bool canRecruit , int upgradeLevel)
+    public void EnableBuildingPopUp(int upgradeCost ,int recruitCost,bool canRecruit , int buildingLevel)
     {
-        SetUpgradeText(upgradeCost, upgradeLevel);
+        SetUpgradeText(upgradeCost);
         SetRecruitText(recruitCost, canRecruit);
+        buildingLevelTxt.text = $"Building Level: {buildingLevel}";
     }
 
-    public void EnableBuildingPopUp(int upgradeCost, int upgradeLevel)
+    public void EnableBuildingPopUp(int upgradeCost, int buildingLevel)
     {
-        SetUpgradeText(upgradeCost, upgradeLevel);
+        SetUpgradeText(upgradeCost);
+        buildingLevelTxt.text = $"Building Level: {buildingLevel}";
     }
 
     public void EnableBuildingSpotPopUp(int upgradeCost, int upgradeLevel)
     {
-        SetBuildingText(upgradeCost, upgradeLevel);
+        SetBuildingText(upgradeCost);
     }
 
     public void SetToMaxLevelBuildingPopUp()
     {
         upgradeTxt.enabled = false;
+        buildingLevelTxt.enabled = false;
         if (recruitTxt != null)
         {
             recruitTxt.enabled = false;
@@ -53,14 +57,14 @@ public class BuildingPopUp : MonoBehaviour
         maxLevelTxt.enabled = true;
     }
 
-    private void SetBuildingText(int upgradeCost, int upgradeLevel)
+    private void SetBuildingText(int upgradeCost)
     {
-        upgradeTxt.text = $"Building cost: {upgradeCost} to level: {upgradeLevel + 1}";
+        upgradeTxt.text = $"Building cost: {upgradeCost}";
         SetUpgradeTxtColor(upgradeCost);
     }
-    private void SetUpgradeText(int upgradeCost, int upgradeLevel)
+    private void SetUpgradeText(int upgradeCost)
     {
-        upgradeTxt.text = $"Upgrade cost: {upgradeCost} to level: {upgradeLevel+1}";
+        upgradeTxt.text = $"Upgrade cost: {upgradeCost}";
         SetUpgradeTxtColor(upgradeCost);
     }
 

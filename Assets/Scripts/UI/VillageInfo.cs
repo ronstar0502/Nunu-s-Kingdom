@@ -55,7 +55,6 @@ public class VillageInfo : MonoBehaviour
 
 
     }
-
     public void SetSeedsText()
     {
         seedsAmountText.text = $"{player.GetPlayerData().seedAmount}";
