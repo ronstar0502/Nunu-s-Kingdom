@@ -27,9 +27,9 @@ public class DayNightSpriteChange : MonoBehaviour
 
     private void InitSpriteColor()
     {
-        print($"time elapsed since start of day time: {timeElapsed}");
+        //print($"time elapsed since start of day time: {timeElapsed}");
         float targetColor = timeElapsed / dayDuration; //since i can only build at day state
-        print($"target color time {targetColor}");
+        //print($"target color time {targetColor}");
         _sr.color = Color.Lerp(dayColor, nightColor, targetColor);
     }
     public IEnumerator DayNightColorTransition()
