@@ -143,7 +143,7 @@ MonoBehaviour:
   seedLoot: {fileID: 5269533173031823952, guid: 69ef34eab360acf4b8690d97f1a7563e, type: 3}
   lootDropSpot: {fileID: 3056173970398619094}
   lootDropChance: 50
-  spawnOffsetY: 1.8
+  spawnOffsetY: 0.2
   attackSound: {fileID: 8300000, guid: 1d9e311e4cfa35346aaca04ef7611efa, type: 3}
   soundEffectManger: {fileID: 0}
 --- !u!61 &6697016260017920842
