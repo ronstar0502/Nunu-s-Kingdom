@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 3
+  pickUpSFX: {fileID: 8300000, guid: 3914423f416901b45aac3ec89be1d012, type: 3}
   value: 0
   canLoot: 0
 --- !u!50 &7556694319724310984

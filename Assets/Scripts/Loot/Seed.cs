@@ -3,13 +3,17 @@ using UnityEngine;
 public class Seed : MonoBehaviour 
 {
     [SerializeField] private float force = 4f;
+    [SerializeField] private  AudioClip pickUpSFX;
     public int value; //amount
     public bool canLoot;
     private Rigidbody2D rb;
+    private SoundEffectManger soundEffectManger;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        soundEffectManger = FindAnyObjectByType<SoundEffectManger>();
     }
     public void InitSeed(int value)
     {
@@ -33,5 +37,9 @@ public class Seed : MonoBehaviour
         {
             print("player looted the seed");
         }
+    }
+    public void PlayPickupSFX()
+    {
+        soundEffectManger.PlaySFX(pickUpSFX);
     }
 }
