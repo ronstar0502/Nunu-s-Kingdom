@@ -1481,27 +1481,32 @@ MonoBehaviour:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
     - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
-    enemiesAmount: 000000000000000005000000
+    enemiesAmount: 040000000000000000000000
   - enemies:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
-    enemiesAmount: 0500000005000000
+    - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
+    enemiesAmount: 080000000000000000000000
   - enemies:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
-    enemiesAmount: 0500000005000000
+    - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
+    enemiesAmount: 0a0000000200000000000000
   - enemies:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
-    enemiesAmount: 0500000005000000
+    - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
+    enemiesAmount: 050000000400000000000000
   - enemies:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
-    enemiesAmount: 0500000005000000
+    - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
+    enemiesAmount: 0a0000000300000001000000
   - enemies:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
-    enemiesAmount: 0500000005000000
+    - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
+    enemiesAmount: 0a0000000300000005000000
   spawnDelay: 2
 --- !u!4 &593140464
 Transform:
@@ -2405,7 +2410,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 205103445}
   gameEndMenu: {fileID: 1860097277}
   gameEndTxt: {fileID: 1894391379}
-  dayDuration: 40
+  dayDuration: 10
   nightDuration: 40
   maxDaysInLevel: 10
   gameState: 0
@@ -2794,7 +2799,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 079a1cc909c763440b4d0cd3c3600ce8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.099
+  m_Volume: 0.152
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3151,7 +3156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1434735749627083843, guid: b473059a8f6629e438b29be20730cbca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.64
+      value: 1.38
       objectReference: {fileID: 0}
     - target: {fileID: 2494176598020688687, guid: b473059a8f6629e438b29be20730cbca, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3208,6 +3213,14 @@ PrefabInstance:
     - target: {fileID: 4614179342832413686, guid: b473059a8f6629e438b29be20730cbca, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6065188948258381870, guid: b473059a8f6629e438b29be20730cbca, type: 3}
+      propertyPath: m_Size.x
+      value: 24.802656
+      objectReference: {fileID: 0}
+    - target: {fileID: 6065188948258381870, guid: b473059a8f6629e438b29be20730cbca, type: 3}
+      propertyPath: m_Size.y
+      value: 35.079998
       objectReference: {fileID: 0}
     - target: {fileID: 6065188948258381870, guid: b473059a8f6629e438b29be20730cbca, type: 3}
       propertyPath: m_Sprite
@@ -3778,7 +3791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031797278801003575, guid: b473059a8f6629e438b29be20730cbca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.25
+      value: -3.45
       objectReference: {fileID: 0}
     - target: {fileID: 1031797278801003575, guid: b473059a8f6629e438b29be20730cbca, type: 3}
       propertyPath: m_LocalPosition.z

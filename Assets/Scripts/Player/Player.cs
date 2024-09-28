@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
             Seed seed = collision.gameObject.GetComponent<Seed>();
             if (seed.canLoot)
             {
+                seed.PlayPickupSFX();
                 int amount = seed.value;
                 playerData.AddSeedsAmount(amount);
                 villageInfo.SetSeedsText();
