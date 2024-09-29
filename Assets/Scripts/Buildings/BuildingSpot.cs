@@ -7,14 +7,13 @@ public class BuildingSpot : MonoBehaviour, IInteractable
     [SerializeField] private GameObject pileBuildingSpritePreview;
     [SerializeField] private AudioClip buildSound;
     [SerializeField] private SoundEffectManger soundEffectManger;
+    [SerializeField] private SpriteRenderer _sr;
     private Player _player;
     private HQ _HQ;
     private BuildingData _buildingData;
-    private SpriteRenderer _sr;
 
     private void Start()
     {
-        _sr = GetComponent<SpriteRenderer>();
         _player = FindObjectOfType<Player>();
         _HQ = FindObjectOfType<HQ>();
         _buildingData = buildingObj.GetComponent<Building>().GetBuildingData();

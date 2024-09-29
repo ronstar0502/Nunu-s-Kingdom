@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManger : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class GameManger : MonoBehaviour
     [SerializeField] private GameObject gameEndMenu;
     [SerializeField] private TMP_Text gameEndTxt;
     [SerializeField] private float dayDuration, nightDuration;
-    [SerializeField] private int maxDaysInLevel;
+    private int maxDaysInLevel;
     public GameState gameState;
     private HQ _HQ; // will be pre built
     private Spawner _spawner;
@@ -54,6 +55,11 @@ public class GameManger : MonoBehaviour
         CheckVictory();
         CheckDefeat();
 
+        if (Input.GetKeyDown(KeyCode.Keypad0)) // cheat code for level 2
+        {
+            SceneManager.LoadScene(2);
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape)) // pause menu
         {
             OpenPauseMenu();
@@ -75,6 +81,11 @@ public class GameManger : MonoBehaviour
     {
         if (_currDay == maxDaysInLevel + 1)
         {
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                SceneManager.LoadScene(2);
+                return;
+            }
             print("You Won!");
             gameEndMenu.SetActive(true);
             gameEndTxt.text = "Victory!";
@@ -129,6 +140,7 @@ public class GameManger : MonoBehaviour
 
     private void StartDayActivities() //starts all day activities
     {
+        CheckVictory();
         _currDay++;
         DestroyAllFlowers();
         _spawner.EnableAllPortals();
