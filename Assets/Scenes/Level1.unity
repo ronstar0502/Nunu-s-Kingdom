@@ -2592,8 +2592,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 205103445}
   gameEndMenu: {fileID: 1860097277}
   gameEndTxt: {fileID: 1894391379}
-  dayDuration: 40
-  nightDuration: 40
+  dayDuration: 120
+  nightDuration: 120
   gameState: 0
 --- !u!4 &952256233
 Transform:
@@ -2980,7 +2980,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 079a1cc909c763440b4d0cd3c3600ce8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.33
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5712,7 +5712,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.37
+  m_Volume: 0.51
   m_Pitch: 1
   Loop: 0
   Mute: 0

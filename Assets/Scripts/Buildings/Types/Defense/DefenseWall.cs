@@ -14,6 +14,5 @@ public class DefenseWall : Building
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        buildingSpot.SetActive(true);
     }
 }
