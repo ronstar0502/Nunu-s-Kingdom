@@ -15,7 +15,7 @@ MonoBehaviour:
   buildingName: Farm
   sprite: {fileID: 21300000, guid: 7362d5a8f904d224ebd9244b5e0e0e40, type: 3}
   level: 1
-  health: 18
+  health: 26
   cost: 8
   isMaxLevel: 0
   nextLevelBuilding: {fileID: 11400000, guid: b6ae38d10a7d00b499e1c752a53861d5, type: 2}

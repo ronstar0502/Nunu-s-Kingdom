@@ -105,7 +105,7 @@ MonoBehaviour:
     maxHealth: 32
     health: 0
     movementSpeed: 4
-    seedsCost: 6
+    seedsCost: 5
   amiggaTool: {fileID: 1218095432757400823, guid: 13117e2a28c90444996586d5f324f513, type: 3}
   amiggaState: 0
   spawnSound: {fileID: 8300000, guid: 27ae3db324ea7c34d80d5df80294fafc, type: 3}
@@ -114,7 +114,7 @@ MonoBehaviour:
   rightPatrolBorder: 0
   isProffesionRecruited: 0
   damage: 4
-  targetDetectRange: 30
+  targetDetectRange: 36
   attackRange: 2.5
   attackSpeed: 1.5
 --- !u!50 &3217269770152235193

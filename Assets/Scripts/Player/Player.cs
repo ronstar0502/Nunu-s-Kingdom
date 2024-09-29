@@ -42,11 +42,6 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")) //test to see if enemy drops loot
-        {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(1000);
-        }
-
         if(collision.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable)) //looks for building spot to interact with ot other interactable objects
         {
             if (collision.gameObject.CompareTag("BuildingSpot"))

@@ -43,7 +43,7 @@ public class Farm : ProffesionBuilding
     }
     public void FarmSeeds() //farm seeds
     {
-        harvestAmount = (5 + currentWorkingVillagers) * buildingData.level;
+        harvestAmount = (12 + currentWorkingVillagers) * buildingData.level;
         print($"harvest amount : {harvestAmount}");
         if (player != null)
         {
