@@ -14,18 +14,20 @@ public class VillageInfo : MonoBehaviour
     [SerializeField] private TMP_Text archersAmountText;
     [SerializeField] private TMP_Text moreInfoText;
     [SerializeField] private GameObject infoWindow;
-    private Player player;
+    private Player _player;
+
     public void InitInfo(int maxVillagers,int seeds)
     {
-        player = FindObjectOfType<Player>();
+        _player = FindObjectOfType<Player>();
         totalVillagersText.text = $"0 / {maxVillagers}";
-        seedsAmountText.text = $"{player.GetPlayerData().seedAmount}";
+        seedsAmountText.text = $"{_player.GetPlayerData().seedAmount}";
 
         unemployedAmountText.text = $"0";
         farmersAmountText.text = $"0";
         warriorsAmountText.text = $"0";
         archersAmountText.text = $"0";
     }
+
     private void Start()
     {
         if (infoWindow != null)
@@ -55,11 +57,13 @@ public class VillageInfo : MonoBehaviour
 
 
     }
+
     public void SetSeedsText()
     {
-        seedsAmountText.text = $"{player.GetPlayerData().seedAmount}";
+        seedsAmountText.text = $"{_player.GetPlayerData().seedAmount}";
         StartCoroutine(ChangeSeedTextColor(seedsAmountText));
     }
+
     private IEnumerator ChangeSeedTextColor(TMP_Text txt)
     {
         Color original= txt.color;

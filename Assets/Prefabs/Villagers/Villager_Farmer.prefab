@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2417298801306730825}
   - component: {fileID: 2985807423966815545}
-  - component: {fileID: 2842340920559803500}
-  - component: {fileID: 821013778532573187}
-  - component: {fileID: 3448578492354396481}
-  - component: {fileID: 6808170451328519234}
+  - component: {fileID: 3279306494148434875}
+  - component: {fileID: 3435903735748638678}
+  - component: {fileID: 8864625179885096629}
+  - component: {fileID: -8323511190319586686}
   m_Layer: 6
-  m_Name: Ammiga_Unemployed
+  m_Name: Villager_Farmer
   m_TagString: Ammiga
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.14331, y: 0.14022608, z: 0.47103155}
+  m_LocalScale: {x: 0.14331, y: 0.1402261, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,18 +77,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 05aca591f7b809341b037de8eb3a1d9b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca33fe8a85fa0134ab414f106e56f577, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.57, y: 12.22}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2842340920559803500
+--- !u!114 &3279306494148434875
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,44 +97,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8534889528132189151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dbf6940e4a9c6945a0d5fe129d62880, type: 3}
+  m_Script: {fileID: 11500000, guid: d6dbc5da51ffbd2488f9ed80ec278db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amiggaData:
-    villagerName: Unemployed
-    maxHealth: 50
+  villagerData:
+    villagerName: Farmer
+    maxHealth: 16
     health: 0
-    movementSpeed: 4
-    seedsCost: 2
-  amiggaTool: {fileID: 0}
-  amiggaState: 0
-  spawnSound: {fileID: 8300000, guid: 00b022d7ee771244babf5d5fc2af264e, type: 3}
+    movementSpeed: 3.75
+    seedsCost: 3
+  villagerTool: {fileID: 2652840577269973180, guid: c3d05136d185f414f8977fad9cc319f1, type: 3}
+  villagerState: 0
+  spawnSound: {fileID: 8300000, guid: 982bbcd393e47db43a8ad67e307be0a1, type: 3}
   soundEffectManger: {fileID: 0}
   leftPatrolBorder: 0
   rightPatrolBorder: 0
   isProffesionRecruited: 0
---- !u!95 &821013778532573187
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8534889528132189151}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7952bfa4203e97d48a42ebd7fc269801, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!50 &3448578492354396481
+--- !u!50 &3435903735748638678
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -161,7 +140,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &6808170451328519234
+--- !u!95 &8864625179885096629
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534889528132189151}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1bca6fb8d16eb1f41921fd23ae181984, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &-8323511190319586686
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,6 +193,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.1641215, y: -1.6457752}
-  m_Size: {x: 4.241768, y: 9.245694}
+  m_Offset: {x: 0.5428764, y: -1.2155316}
+  m_Size: {x: 4.516851, y: 9.78892}
   m_Direction: 0

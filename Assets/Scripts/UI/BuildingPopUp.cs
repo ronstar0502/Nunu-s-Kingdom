@@ -11,6 +11,7 @@ public class BuildingPopUp : MonoBehaviour
     [SerializeField] private Image[] images;
     private HQ _HQ;
     private Player _player;
+
     private void Start()
     {
         _HQ = FindObjectOfType<HQ>();
@@ -21,6 +22,7 @@ public class BuildingPopUp : MonoBehaviour
         }
         gameObject.SetActive(false);
     }
+
     public void EnableBuildingPopUp(int upgradeCost ,int recruitCost,bool canRecruit , int buildingLevel)
     {
         SetUpgradeText(upgradeCost);
@@ -62,6 +64,7 @@ public class BuildingPopUp : MonoBehaviour
         upgradeTxt.text = $"Building cost: {upgradeCost}";
         SetUpgradeTxtColor(upgradeCost);
     }
+
     private void SetUpgradeText(int upgradeCost)
     {
         upgradeTxt.text = $"Upgrade cost: {upgradeCost}";
@@ -73,6 +76,7 @@ public class BuildingPopUp : MonoBehaviour
         recruitTxt.text = $"Recruit cost: {recruitCost}";
         SetRecruitTxtColor(recruitCost, canRecruit);
     }
+
     private void SetRecruitTxtColor(int recruitCost , bool canRecruit)
     {
         if (_player.GetPlayerData().seedAmount >= recruitCost && canRecruit)

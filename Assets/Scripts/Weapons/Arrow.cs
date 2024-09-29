@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private float speed;
     private Rigidbody2D _rb;
-    private GameObject target;
-    private Vector2 targetDirection;
-    private int arrowDamage;
+    private GameObject _target;
+    private Vector2 _targetDirection;
+    private int _arrowDamage;
 
     private void Awake()
     {
@@ -17,41 +15,44 @@ public class Arrow : MonoBehaviour
 
     private void Update()
     {
-        if (target == null)
+        if (_target == null)
         {
             Destroy(gameObject);
         }
     }
+
     private void FixedUpdate()
     {
-        if (target != null)
+        if (_target != null)
         {
-            _rb.velocity = targetDirection * speed * Time.deltaTime;
+            _rb.velocity = _targetDirection * speed * Time.deltaTime;
         }
     }
+
     public void InitArrow(GameObject targetObj, Vector2 direction, int damage ,bool isFromTower)
     {
         if (targetObj != null)
         {
-            target = targetObj;
-            targetDirection = direction;
+            _target = targetObj;
+            _targetDirection = direction;
             if (isFromTower)
             {
-                targetDirection.Normalize(); //normalzie for consistend direction
-                float arrowRotation = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+                _targetDirection.Normalize(); //normalzie for consistend direction
+                float arrowRotation = Mathf.Atan2(_targetDirection.y, _targetDirection.x) * Mathf.Rad2Deg;
                 _rb.rotation = arrowRotation;
 
-                targetDirection = direction; //preserve the original direction so the speed wont change dramatically
+                _targetDirection = direction; //preserve the original direction so the speed wont change dramatically
             }
-            arrowDamage = damage;
+            _arrowDamage = damage;
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == target && target !=null)
+        if (collision.gameObject == _target && _target !=null)
         {
-            print($"arrow hit target: {collision.gameObject.name} with {arrowDamage} damage");
-            collision.gameObject.GetComponent<IDamageable>().TakeDamage(arrowDamage);
+            print($"arrow hit target: {collision.gameObject.name} with {_arrowDamage} damage");
+            collision.gameObject.GetComponent<IDamageable>().TakeDamage(_arrowDamage);
             Destroy(gameObject);
         }
     }

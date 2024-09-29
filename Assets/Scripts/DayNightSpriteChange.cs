@@ -5,17 +5,17 @@ public class DayNightSpriteChange : MonoBehaviour
 {
     [SerializeField] Color32 dayColor;
     [SerializeField] Color32 nightColor;
-    private GameManger gameManger;
+    private GameManger _gameManger;
     private SpriteRenderer _sr;
-    private float dayDuration, nightDuration;
-    private float timeElapsed;
+    private float _dayDuration, _nightDuration;
+    private float _timeElapsed;
 
     private void Awake()
     {
-        gameManger = FindObjectOfType<GameManger>();
+        _gameManger = FindObjectOfType<GameManger>();
         _sr = GetComponent<SpriteRenderer>();
-        dayDuration = gameManger.GetDayDuration() -1f;
-        nightDuration = gameManger.GetNightDuration() -1f;
+        _dayDuration = _gameManger.GetDayDuration() -1f;
+        _nightDuration = _gameManger.GetNightDuration() -1f;
         InitSpriteColor();
     }
 
@@ -28,18 +28,19 @@ public class DayNightSpriteChange : MonoBehaviour
     private void InitSpriteColor()
     {
         //print($"time elapsed since start of day time: {timeElapsed}");
-        float targetColor = timeElapsed / dayDuration; //since i can only build at day state
+        float targetColor = _timeElapsed / _dayDuration; //since i can only build at day state
         //print($"target color time {targetColor}");
         _sr.color = Color.Lerp(dayColor, nightColor, targetColor);
     }
+
     public IEnumerator DayNightColorTransition()
     {
         yield return new WaitForSeconds(0.9f);
-        float duration = (gameManger.gameState == GameState.Day) ? dayDuration : nightDuration;
-        float transitionTime = duration - timeElapsed;  // calculates remaining time for transition if during day night cycle
+        float duration = (_gameManger.gameState == GameState.Day) ? _dayDuration : _nightDuration;
+        float transitionTime = duration - _timeElapsed;  // calculates remaining time for transition if during day night cycle
 
         Color startColor = _sr.color;  // start transitioning from the current color
-        Color targetColor = (gameManger.gameState == GameState.Day) ? nightColor : dayColor;
+        Color targetColor = (_gameManger.gameState == GameState.Day) ? nightColor : dayColor;
 
         float time = 0f;
 

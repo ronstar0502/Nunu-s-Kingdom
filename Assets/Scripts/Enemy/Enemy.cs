@@ -13,18 +13,18 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private int lootDropChance;
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
-    private Animator animator;
-    private List<GameObject> buildingTargets;
-    private GameObject currentBuildingTarget;
-    private int direction = 1;
-    private float attackTimer;
-    private float attackRange;
+    private Animator _animator;
+    private List<GameObject> _buildingTargets;
+    private GameObject _currentBuildingTarget;
+    private int _direction = 1;
+    private float _attackTimer;
+    private float _attackRange;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _sr = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
         soundEffectManger = FindAnyObjectByType<SoundEffectManger>();
 
         enemyData.health = enemyData.maxHealth;
@@ -32,26 +32,26 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        attackRange = Random.Range(enemyData.minAttackRange, enemyData.maxAttackRange+0.1f);
+        _attackRange = Random.Range(enemyData.minAttackRange, enemyData.maxAttackRange+0.1f);
         SetMovementDirection();
         transform.position = new Vector3(transform.position.x, spawnOffsetY, 0f);
-        attackTimer = enemyData.attackSpeed;
+        _attackTimer = enemyData.attackSpeed;
         SetBuildingTarget();
     }
 
     private void Update()
     {
-        if (currentBuildingTarget == null || !currentBuildingTarget.activeInHierarchy) //if target is not in hierarchy and null sets new target
+        if (_currentBuildingTarget == null || !_currentBuildingTarget.activeInHierarchy) //if target is not in hierarchy and null sets new target
         {
             SetBuildingTarget();
         }
 
-        if (currentBuildingTarget != null)
+        if (_currentBuildingTarget != null)
         {
-            SetMovementDirection(currentBuildingTarget.transform.position.x);
+            SetMovementDirection(_currentBuildingTarget.transform.position.x);
             if (IsInAttackRange())
             {
-                animator.SetBool("isAttacking", true);
+                _animator.SetBool("isAttacking", true);
                 //attackTimer -= Time.deltaTime;
                 //if (attackTimer <= 0)
                 //{
@@ -61,27 +61,29 @@ public class Enemy : MonoBehaviour, IDamageable
             }
             else
             {
-                animator.SetBool("isAttacking", false);
+                _animator.SetBool("isAttacking", false);
             }
         }
 
     }
+
     private void FixedUpdate()
     {
-        if (currentBuildingTarget != null && !IsInAttackRange())
+        if (_currentBuildingTarget != null && !IsInAttackRange())
         {
-            _rb.velocity = new Vector2(direction * enemyData.movementSpeed * Time.deltaTime, _rb.velocity.y);
+            _rb.velocity = new Vector2(_direction * enemyData.movementSpeed * Time.deltaTime, _rb.velocity.y);
         }
         else
         {
             _rb.velocity = Vector2.zero;
         }
     }
+
     private void SetMovementDirection()
     {
         if (transform.position.x > 0)
         {
-            direction = -1;
+            _direction = -1;
             _sr.flipX = true;
         }
         else
@@ -94,51 +96,52 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (targetPoint < transform.position.x)
         {
-            direction = -1;
+            _direction = -1;
             _sr.flipX = true;
         }
         else if (targetPoint > transform.position.x)
         {
-            direction = 1;
+            _direction = 1;
             _sr.flipX = false;
         }
     }
+
     private void SetBuildingTarget()
     {
-        buildingTargets = GameObject.FindGameObjectsWithTag("Building").ToList();
+        _buildingTargets = GameObject.FindGameObjectsWithTag("Building").ToList();
         float minDistance = float.MaxValue;
-        for (int i = 0; i < buildingTargets.Count; i++)
+        for (int i = 0; i < _buildingTargets.Count; i++)
         {
-            float distance = Vector2.Distance(transform.position, buildingTargets[i].transform.position);
+            float distance = Vector2.Distance(transform.position, _buildingTargets[i].transform.position);
             if (distance < minDistance)
             {
                 minDistance = distance;
-                currentBuildingTarget = buildingTargets[i];
+                _currentBuildingTarget = _buildingTargets[i];
             }
         }
-        if (currentBuildingTarget != null)
+        if (_currentBuildingTarget != null)
         {
-            print($"enemy target: {currentBuildingTarget.gameObject.name}");
+            print($"enemy target: {_currentBuildingTarget.gameObject.name}");
         }
     }
 
     private bool IsInAttackRange()
     {
-        if (currentBuildingTarget == null) return false;
-        float distance = Mathf.Abs(transform.position.x - currentBuildingTarget.transform.position.x); //with vector2.Distance() had some troubles with the target set and attack range
-        return distance <= attackRange;
+        if (_currentBuildingTarget == null) return false;
+        float distance = Mathf.Abs(transform.position.x - _currentBuildingTarget.transform.position.x); //with vector2.Distance() had some troubles with the target set and attack range
+        return distance <= _attackRange;
     }
 
     private void AttackTarget()
     {
-        if (currentBuildingTarget != null)
+        if (_currentBuildingTarget != null)
         {
             if(attackSound != null && soundEffectManger != null)
             {
                 soundEffectManger.PlaySFX(attackSound);
             }
-            currentBuildingTarget.GetComponent<IDamageable>().TakeDamage(enemyData.damage);
-            print($"{enemyData.enemyName} attacked {currentBuildingTarget.name} with {enemyData.damage} damage.");
+            _currentBuildingTarget.GetComponent<IDamageable>().TakeDamage(enemyData.damage);
+            print($"{enemyData.enemyName} attacked {_currentBuildingTarget.name} with {enemyData.damage} damage.");
         }
     }
 

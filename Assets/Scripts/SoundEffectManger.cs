@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundEffectManger : MonoBehaviour
 {
-    AudioSource myAudio;
-    AudioClip currentClip;
+    private AudioSource _myAudio;
+    private AudioClip _currentClip;
     private void Awake()
     {
-        myAudio = GetComponent<AudioSource>();
+        _myAudio = GetComponent<AudioSource>();
     }
     public void PlaySFX(AudioClip sfx)
     {
-        myAudio.clip = sfx;
-        myAudio.Play();
+        _myAudio.clip = sfx;
+        _myAudio.Play();
     }
 }

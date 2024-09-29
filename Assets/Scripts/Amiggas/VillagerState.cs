@@ -1,4 +1,4 @@
-public enum AmiggaState
+public enum VillagerState
 {
     Spawned,
     ProffesionAction,

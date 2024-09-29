@@ -1,53 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Farm : ProffesionBuilding
 {
     [Header("Farm Details")]
     [SerializeField] private int[] farmerSlots = new int[3];
-    private int currentFarmerSlots;
+    [SerializeField] private int idleFarmValue;
     [SerializeField] private int currentWorkingVillagers;
-    private int harvestAmount;
-    private bool playerInRange;
+    private int _currentFarmerSlots;
+    private int _harvestAmount;
+    private bool _playerInRange;
 
     protected override void Start()
     {
         base.Start();
         HQ.AddFarm(gameObject.GetComponent<Farm>());
 
-        currentFarmerSlots = farmerSlots[0];
-        harvestAmount = 1;        
+        _currentFarmerSlots = farmerSlots[0];
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerInRange)
+        if (Input.GetKeyDown(KeyCode.E) && _playerInRange)
         {
             RecruitVillagerProffesion();
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerInRange = true;
+            _playerInRange = true;
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerInRange = false;
+            _playerInRange = false;
         }
     }
+
     public void FarmSeeds() //farm seeds
     {
-        harvestAmount = (12 + currentWorkingVillagers) * buildingData.level;
-        print($"harvest amount : {harvestAmount}");
+        _harvestAmount = (idleFarmValue + currentWorkingVillagers) * buildingData.level;
+        print($"harvest amount : {_harvestAmount}");
         if (player != null)
         {
-            player.GetPlayerData().AddSeedsAmount(harvestAmount);
+            player.GetPlayerData().AddSeedsAmount(_harvestAmount);
             HQ.villageInfoUI.SetSeedsText();
         }
         else
@@ -69,6 +70,7 @@ public class Farm : ProffesionBuilding
             }
         }
     }
+
     public override void RecruitVillagerProffesion() //add farmer if there is an available slot 
     {
         if (!IsFarmFull())
@@ -78,13 +80,13 @@ public class Farm : ProffesionBuilding
     }
     public bool IsFarmFull() //checks if there are no avalable slots
     {
-        return currentWorkingVillagers == currentFarmerSlots;
+        return currentWorkingVillagers == _currentFarmerSlots;
     }
 
     protected override void LevelUpBuilding()
     {
         base.LevelUpBuilding();
-        currentFarmerSlots = farmerSlots[buildingData.level - 1];
+        _currentFarmerSlots = farmerSlots[buildingData.level - 1];
     }
 
     protected override void ChangeVillagerProffesion() //method to change unemployed to farmer

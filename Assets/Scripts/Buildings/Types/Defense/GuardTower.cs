@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +19,7 @@ public class GuardTower : Building
         CanAssignArcher();
 
     }
+
     public void CanAssignArcher() //checks if can assign an archer to guard tower
     {
         if (hasOpenSlots() && _HQ.ArcherCount()>0)

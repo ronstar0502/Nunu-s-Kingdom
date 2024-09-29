@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FlowerSpawner : MonoBehaviour
@@ -10,6 +9,7 @@ public class FlowerSpawner : MonoBehaviour
     [SerializeField] private float minSpawnDelay;
     [SerializeField] private float maxSpawnDelay;
     public bool isNight;
+
     public IEnumerator SpawnFlowers()
     {
         isNight = true;
@@ -20,6 +20,7 @@ public class FlowerSpawner : MonoBehaviour
             SpawnFlower();
         }
     }
+
     private void SpawnFlower()
     {
         float randomXPos = Random.Range(spawnLeftBorder, spawnRightBorder);
