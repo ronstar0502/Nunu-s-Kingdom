@@ -295,7 +295,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270767568577316193, guid: ad11b2501926271448c257238952df30, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -86
+      value: -125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953378508933062140, guid: ad11b2501926271448c257238952df30, type: 3}
+      propertyPath: m_Name
+      value: BuildingPopUpPanel
       objectReference: {fileID: 0}
     - target: {fileID: 2523718046585030502, guid: ad11b2501926271448c257238952df30, type: 3}
       propertyPath: m_PresetInfoIsWorld

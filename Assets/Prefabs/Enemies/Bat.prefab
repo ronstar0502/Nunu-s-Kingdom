@@ -135,7 +135,7 @@ MonoBehaviour:
   enemyData:
     health: 8
     maxHealth: 20
-    damage: 4
+    damage: 2
     movementSpeed: 75
     attackSpeed: 2
     maxAttackRange: 2.75

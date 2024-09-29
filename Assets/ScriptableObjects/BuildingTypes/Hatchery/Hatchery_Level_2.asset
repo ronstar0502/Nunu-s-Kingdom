@@ -15,7 +15,7 @@ MonoBehaviour:
   buildingName: Hatchery
   sprite: {fileID: 21300000, guid: 5251a40abfd50654ea41a910354a1b09, type: 3}
   level: 2
-  health: 32
+  health: 36
   cost: 18
   isMaxLevel: 0
   nextLevelBuilding: {fileID: 11400000, guid: 0c551f383a262c249aa40166507e9ff1, type: 2}

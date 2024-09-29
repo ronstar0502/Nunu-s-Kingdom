@@ -15,7 +15,7 @@ MonoBehaviour:
   buildingName: Blacksmith
   sprite: {fileID: 21300000, guid: ff897f554be83ed4bbe03c089e3526d1, type: 3}
   level: 1
-  health: 24
+  health: 30
   cost: 10
   isMaxLevel: 0
   nextLevelBuilding: {fileID: 11400000, guid: 7a76128264667de4cba07be8de9566d8, type: 2}

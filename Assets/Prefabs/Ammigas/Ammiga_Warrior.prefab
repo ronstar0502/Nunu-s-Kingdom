@@ -114,7 +114,7 @@ MonoBehaviour:
   rightPatrolBorder: 0
   isProffesionRecruited: 0
   damage: 4
-  targetDetectRange: 30
+  targetDetectRange: 36
   attackRange: 2.5
   attackSpeed: 1.5
 --- !u!50 &3217269770152235193

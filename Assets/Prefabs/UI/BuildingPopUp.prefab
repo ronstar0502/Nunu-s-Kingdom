@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 6971907700399448994}
   - component: {fileID: 4786911879097955241}
   m_Layer: 0
-  m_Name: Panel
+  m_Name: BuildingPopUpPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2572,8 +2572,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 205103445}
   gameEndMenu: {fileID: 1860097277}
   gameEndTxt: {fileID: 1894391379}
-  dayDuration: 15
-  nightDuration: 15
+  dayDuration: 40
+  nightDuration: 40
   maxDaysInLevel: 10
   gameState: 0
 --- !u!4 &952256233
@@ -5836,7 +5836,7 @@ Transform:
   m_GameObject: {fileID: 1866274678}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.660843, y: -5.1971474, z: 3762.5637}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
