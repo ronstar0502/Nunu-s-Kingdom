@@ -153,9 +153,14 @@ public class GameManger : MonoBehaviour
 
     private void DestroyAllFlowers()
     {
-        foreach (Flower flower in FindObjectsByType<Flower>(FindObjectsSortMode.None))
+        GameObject[] flowers = GameObject.FindGameObjectsWithTag("Flower");
+        if (flowers.Length == 0)
         {
-            Destroy(flower.gameObject);
+            return;
+        }
+        for(int i = 0 ; i<flowers.Length;i++)
+        {
+            Destroy(flowers[i]);
         }
     }
 

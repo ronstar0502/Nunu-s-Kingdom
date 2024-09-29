@@ -23,7 +23,7 @@ public class ProffesionBuilding : Building
     {
 
         base.LevelUpBuilding();
-        HQ.villageInfoUI.SetSeedsText();
+        HQ.villageInfoUI.SetSeedsText(true);
 
     }
 
@@ -56,7 +56,7 @@ public class ProffesionBuilding : Building
                 if (VillagerRecruitAction())
                 {
                     player.GetPlayerData().SubstarctSeedsAmount(GetRecruitCost());
-                    HQ.villageInfoUI.SetSeedsText();
+                    HQ.villageInfoUI.SetSeedsText(true);
                     InvokeBuildingStateChanged();
                 }
             }
