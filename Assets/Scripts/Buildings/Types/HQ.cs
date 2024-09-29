@@ -17,8 +17,9 @@ public class HQ : Building
     [SerializeField] private List<GameObject> warriors;
     [SerializeField] private List<GameObject> archers;
 
+    [Header("Other info")]
     [SerializeField]private List<GuardTower> guardTowers;
-    public Farm farm;
+    public List<Farm> farms;
     public VillageInfo villageInfoUI;
     public bool isNightMode;
     private HealthUI healthUI;
@@ -107,8 +108,6 @@ public class HQ : Building
             }
         }
         return null;
-        //int randomIndex = Random.Range(0, unemployedAmmigas.Count);
-        //return unemployedAmmigas[randomIndex];
     }
 
     public void RemoveUnemployed(GameObject unemployed) // after recruitment of an unemployed remove from the list
@@ -124,9 +123,9 @@ public class HQ : Building
         villageInfoUI.SetVillagersAmountText(currentAmiggaAmount,maxAmiggaAmount);
         print($"now you have {archers.Count} archers");
     }
-    public void RemoveFarm()
+    public void RemoveFarm(Farm farm)
     {
-        farm = null;
+        farms.Remove(farm);
     }
 
     public void RemoveGuardTower(GuardTower tower)
@@ -134,14 +133,20 @@ public class HQ : Building
         guardTowers.Remove(tower);
     }
 
-    public void SetFarm(Farm farm)
+    public void AddFarm(Farm farm)
     {
-        this.farm = farm;
+        farms.Add(farm);
     }
 
     public void FarmSeeds()
     {
-        farm.FarmSeeds();
+        foreach (Farm farm in farms)
+        {
+            if (farm != null)
+            {
+                farm.FarmSeeds();
+            }
+        }
 
     }
     public void AddGuardTower(GuardTower guardTower) //list of built guard tower

@@ -14,7 +14,7 @@ public class Farm : ProffesionBuilding
     protected override void Start()
     {
         base.Start();
-        HQ.SetFarm(gameObject.GetComponent<Farm>());
+        HQ.AddFarm(gameObject.GetComponent<Farm>());
 
         currentFarmerSlots = farmerSlots[0];
         harvestAmount = 1;        
@@ -63,7 +63,7 @@ public class Farm : ProffesionBuilding
             buildingHealth -= damage;
             if (buildingHealth <= 0)
             {
-                HQ.RemoveFarm();
+                HQ.RemoveFarm(this);
                 print($"{buildingData.buildingName} Destroyed!!");
                 Destroy(gameObject);
             }

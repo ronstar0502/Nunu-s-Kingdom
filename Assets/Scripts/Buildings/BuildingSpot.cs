@@ -4,6 +4,7 @@ public class BuildingSpot : MonoBehaviour, IInteractable
     [SerializeField] private GameObject buildingObj;
     [SerializeField] private GameObject buildingGhost;
     [SerializeField] private GameObject buildingSpotPopUp;
+    [SerializeField] private GameObject pileBuildingSpritePreview;
     [SerializeField] private AudioClip buildSound;
     [SerializeField] private SoundEffectManger soundEffectManger;
     private Player player;
@@ -18,7 +19,7 @@ public class BuildingSpot : MonoBehaviour, IInteractable
         HQ = FindObjectOfType<HQ>();
         buildingData = buildingObj.GetComponent<Building>().GetBuildingData();
         soundEffectManger= FindAnyObjectByType<SoundEffectManger>();
-
+        pileBuildingSpritePreview.GetComponent<SpriteRenderer>().sprite = buildingData.sprite;
         buildingGhost.SetActive(false);
         buildingSpotPopUp.SetActive(false);
     }

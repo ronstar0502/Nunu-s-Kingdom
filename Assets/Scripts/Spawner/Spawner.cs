@@ -55,4 +55,9 @@ public class Spawner : MonoBehaviour
             spawnPoints[i].Find("Portal").gameObject.SetActive(true);
         }
     }
+
+    public int GetWaveCount()
+    {
+        return waves.Length;
+    }
 }

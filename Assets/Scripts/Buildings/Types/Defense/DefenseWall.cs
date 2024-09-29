@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class DefenseWall : Building
 {
-    //TBD
+
+    private void Start()
+    {
+        HQ _HQ =  FindObjectOfType<HQ>();
+        if(transform.position.x > _HQ.transform.position.x)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+    }
 
     public override void TakeDamage(int damage)
     {

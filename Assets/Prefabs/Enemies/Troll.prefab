@@ -107,14 +107,15 @@ MonoBehaviour:
     damage: 4
     movementSpeed: 75
     attackSpeed: 2
-    attackRange: 3
+    maxAttackRange: 3.1
+    minAttackRange: 2.55
     enemyName: Troll
   seedLoot: {fileID: 5269533173031823952, guid: 69ef34eab360acf4b8690d97f1a7563e, type: 3}
   lootDropSpot: {fileID: 6906554350584455144}
-  lootDropChance: 50
-  spawnOffsetY: -1.450436
-  attackSound: {fileID: 8300000, guid: d4b5af80b72c0d54da73c63b171ec864, type: 3}
   soundEffectManger: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: d4b5af80b72c0d54da73c63b171ec864, type: 3}
+  spawnOffsetY: -1.450436
+  lootDropChance: 50
 --- !u!61 &7626191922688359072
 BoxCollider2D:
   m_ObjectHideFlags: 0

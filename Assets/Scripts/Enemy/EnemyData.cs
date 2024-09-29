@@ -6,6 +6,7 @@ public class EnemyData
     public int damage;
     public float movementSpeed;
     public float attackSpeed;
-    public float attackRange;
+    public float maxAttackRange;
+    public float minAttackRange;
     public string enemyName;
 }
