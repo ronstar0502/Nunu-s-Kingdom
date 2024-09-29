@@ -10,11 +10,10 @@ public class BuildingSpot : MonoBehaviour, IInteractable
     private Player player;
     private HQ HQ;
     private BuildingData buildingData;
-    private SpriteRenderer _sr;
+    [SerializeField]private SpriteRenderer _sr;
 
     private void Start()
     {
-        _sr = GetComponent<SpriteRenderer>();
         player = FindObjectOfType<Player>();
         HQ = FindObjectOfType<HQ>();
         buildingData = buildingObj.GetComponent<Building>().GetBuildingData();
