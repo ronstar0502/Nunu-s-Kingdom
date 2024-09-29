@@ -1648,32 +1648,32 @@ MonoBehaviour:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
     - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
-    enemiesAmount: 050000000000000001000000
+    enemiesAmount: 050000000100000001000000
   - enemies:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
     - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
-    enemiesAmount: 060000000100000002000000
+    enemiesAmount: 060000000300000002000000
   - enemies:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
     - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
-    enemiesAmount: 070000000100000003000000
+    enemiesAmount: 070000000200000003000000
   - enemies:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
     - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
-    enemiesAmount: 060000000200000005000000
+    enemiesAmount: 060000000300000005000000
   - enemies:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
     - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
-    enemiesAmount: 070000000200000005000000
+    enemiesAmount: 070000000300000005000000
   - enemies:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
     - {fileID: 1845103974465721023, guid: 7b0cabf5957445e4ebe241b8a31cd659, type: 3}
-    enemiesAmount: 070000000200000006000000
+    enemiesAmount: 070000000300000006000000
   - enemies:
     - {fileID: 7345609963696644078, guid: e4061a2761b04cc499a6d1abe8c97bdf, type: 3}
     - {fileID: 1400116752163269385, guid: d97309373a4b8864b899c58edbcbbddb, type: 3}
@@ -2592,8 +2592,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 205103445}
   gameEndMenu: {fileID: 1860097277}
   gameEndTxt: {fileID: 1894391379}
-  dayDuration: 120
-  nightDuration: 120
+  dayDuration: 40
+  nightDuration: 40
   gameState: 0
 --- !u!4 &952256233
 Transform:
