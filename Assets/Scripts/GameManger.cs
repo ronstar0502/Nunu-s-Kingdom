@@ -37,6 +37,7 @@ public class GameManger : MonoBehaviour
 
     private void Start()
     {
+        maxDaysInLevel = spawner.GetWaveCount();
         SetDaysCountTxt();
         player.SetCanBuild(gameState);
         gameEndMenu.SetActive(false);
@@ -52,13 +53,6 @@ public class GameManger : MonoBehaviour
         ChangeStateTimerCheck();
         CheckVictory();
         CheckDefeat();
-
-        if (Input.GetKeyDown(KeyCode.V)) //place holder for debugging if it works
-        {
-            gameEndMenu.SetActive(true);
-            gameEndTxt.text = "Victory!";
-            Time.timeScale = 0f;
-        }
 
         if (Input.GetKeyDown(KeyCode.Escape)) // pause menu
         {
@@ -135,6 +129,7 @@ public class GameManger : MonoBehaviour
     private void StartDayActivities() //starts all day activities
     {
         currDay++;
+        DestroyAllFlowers();
         spawner.EnableAllPortals();
         flowerSpawner.isNight = false;
         SetDaysCountTxt();
@@ -143,9 +138,17 @@ public class GameManger : MonoBehaviour
         HQ.SetAmmigastToPatrolMode();
     }
 
+    private void DestroyAllFlowers()
+    {
+        foreach (Flower flower in FindObjectsByType<Flower>(FindObjectsSortMode.None))
+        {
+            Destroy(flower.gameObject);
+        }
+    }
+
     private void HarvestFarm()
     {
-        if (HQ.farm != null)
+        if (HQ.farms.Count>0)
         {
             HQ.FarmSeeds();
         }

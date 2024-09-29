@@ -7,10 +7,10 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private GameObject seedLoot;
     [SerializeField] private Transform lootDropSpot;
-    [SerializeField] private int lootDropChance;
-    [SerializeField] private float spawnOffsetY;
-    [SerializeField] private AudioClip attackSound;
     [SerializeField] private SoundEffectManger soundEffectManger;
+    [SerializeField] private AudioClip attackSound;
+    [SerializeField] private float spawnOffsetY;
+    [SerializeField] private int lootDropChance;
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
     private Animator animator;
@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private GameObject currentBuildingTarget;
     private int direction = 1;
     private float attackTimer;
+    private float attackRange;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        attackRange = Random.Range(enemyData.minAttackRange, enemyData.maxAttackRange+0.1f);
         SetMovementDirection();
         transform.position = new Vector3(transform.position.x, spawnOffsetY, 0f);
         attackTimer = enemyData.attackSpeed;
@@ -124,7 +126,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (currentBuildingTarget == null) return false;
         float distance = Mathf.Abs(transform.position.x - currentBuildingTarget.transform.position.x); //with vector2.Distance() had some troubles with the target set and attack range
-        return distance <= enemyData.attackRange;
+        return distance <= attackRange;
     }
 
     private void AttackTarget()

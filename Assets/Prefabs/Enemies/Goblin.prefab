@@ -191,14 +191,15 @@ MonoBehaviour:
     damage: 2
     movementSpeed: 90
     attackSpeed: 1
-    attackRange: 2
+    maxAttackRange: 2.3
+    minAttackRange: 1.8
     enemyName: Goblin
   seedLoot: {fileID: 5269533173031823952, guid: 69ef34eab360acf4b8690d97f1a7563e, type: 3}
   lootDropSpot: {fileID: 2568719440629602085}
-  lootDropChance: 70
-  spawnOffsetY: -2.69619
-  attackSound: {fileID: 8300000, guid: a5fdf563e44e9944e952601c782c75a0, type: 3}
   soundEffectManger: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: a5fdf563e44e9944e952601c782c75a0, type: 3}
+  spawnOffsetY: -2.69619
+  lootDropChance: 70
 --- !u!61 &7223180472697919605
 BoxCollider2D:
   m_ObjectHideFlags: 0
