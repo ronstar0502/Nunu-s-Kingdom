@@ -16,6 +16,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 3581f13b0089e254caf836bb233b4c88, type: 3}
   level: 3
   health: 60
-  cost: 24
+  cost: 16
   isMaxLevel: 1
   nextLevelBuilding: {fileID: 0}

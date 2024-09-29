@@ -105,7 +105,7 @@ MonoBehaviour:
     maxHealth: 40
     health: 0
     movementSpeed: 4
-    seedsCost: 4
+    seedsCost: 3
   amiggaTool: {fileID: 2652840577269973180, guid: c3d05136d185f414f8977fad9cc319f1, type: 3}
   amiggaState: 0
   spawnSound: {fileID: 8300000, guid: 982bbcd393e47db43a8ad67e307be0a1, type: 3}
