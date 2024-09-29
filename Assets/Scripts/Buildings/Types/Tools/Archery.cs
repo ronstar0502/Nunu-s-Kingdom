@@ -3,6 +3,7 @@ using UnityEngine;
 public class Archery : ProffesionBuilding
 {
     private bool playerInRange;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && playerInRange)
@@ -10,6 +11,7 @@ public class Archery : ProffesionBuilding
             RecruitVillagerProffesion();
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -17,6 +19,7 @@ public class Archery : ProffesionBuilding
             playerInRange = true;
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

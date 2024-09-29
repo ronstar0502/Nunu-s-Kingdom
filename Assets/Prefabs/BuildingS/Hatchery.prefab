@@ -264,16 +264,16 @@ MonoBehaviour:
   buildingSpot: {fileID: 6361311465978411407, guid: b473059a8f6629e438b29be20730cbca, type: 3}
   buildingPopUp: {fileID: 3958030269232325115}
   buildingHealth: 0
-  unemployedAmiggaPrefab: {fileID: 8534889528132189151, guid: 8c8723b2b56f0a3458b4d71f68aa4be7, type: 3}
+  unemployedVillagerPrefab: {fileID: 8534889528132189151, guid: 8c8723b2b56f0a3458b4d71f68aa4be7, type: 3}
   eggPrefab: {fileID: 4536669054792532824, guid: d4733a24678803444a549359bcf470fb, type: 3}
   eggSpawnPoints:
   - {fileID: 4581774193652330596}
   - {fileID: 2276668878833894305}
   - {fileID: 3977919680987811659}
-  amiggaSpawnPoints:
+  villagerSpawnPoints:
   - {fileID: 428222846708303003}
   - {fileID: 691639759677029624}
-  amiggaCost: 8
+  villagerCost: 0
 --- !u!61 &6878812667053373355
 BoxCollider2D:
   m_ObjectHideFlags: 0

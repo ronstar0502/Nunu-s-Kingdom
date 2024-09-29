@@ -7,42 +7,41 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject[] enemyDirectionIndicators;
     [SerializeField] private Wave[] waves;
     [SerializeField] private float spawnDelay;
-    private Vector3 spawnPosition;
-    private int randomSpawnPoint;
-    private int currWave = 0;
+    private Vector3 _spawnPosition;
+    private int _randomSpawnPoint;
+    private int _currWave = 0;
 
     public IEnumerator StartSpawning()
     {
-        //int amount = waves[currWave].enemiesAmount[0]; // ??
-        randomSpawnPoint = Random.Range(0, 2);
+        _randomSpawnPoint = Random.Range(0, 2);
 
-        enemyDirectionIndicators[randomSpawnPoint].SetActive(true);
+        enemyDirectionIndicators[_randomSpawnPoint].SetActive(true);
         DisableNotActivePortal();
-        if (currWave < waves.Length)
+        if (_currWave < waves.Length)
         {
-            for (int i = 0; i < waves[currWave].enemies.Length; i++)
+            for (int i = 0; i < waves[_currWave].enemies.Length; i++)
             {
-                for (int j = 0; j < waves[currWave].enemiesAmount[i]; j++)
+                for (int j = 0; j < waves[_currWave].enemiesAmount[i]; j++)
                 {
 
-                    spawnPosition = spawnPoints[randomSpawnPoint].position;
-                    Instantiate(waves[currWave].enemies[i], spawnPosition, Quaternion.identity, spawnPoints[randomSpawnPoint]);
+                    _spawnPosition = spawnPoints[_randomSpawnPoint].position;
+                    Instantiate(waves[_currWave].enemies[i], _spawnPosition, Quaternion.identity, spawnPoints[_randomSpawnPoint]);
                     yield return new WaitForSeconds(spawnDelay);
                 }
             }
         }
-        currWave++;
+        _currWave++;
         yield return new WaitForSeconds(1.5f);
-        enemyDirectionIndicators[randomSpawnPoint].SetActive(false);
+        enemyDirectionIndicators[_randomSpawnPoint].SetActive(false);
     }
 
     private void DisableNotActivePortal()
     {
-        if(randomSpawnPoint == 0)
+        if(_randomSpawnPoint == 0)
         {
             spawnPoints[1].Find("Portal").gameObject.SetActive(false);
         }
-        else if(randomSpawnPoint == 1)
+        else if(_randomSpawnPoint == 1)
         {
             spawnPoints[0].Find("Portal").gameObject.SetActive(false);
         }

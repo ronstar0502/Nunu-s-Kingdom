@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,11 +5,11 @@ public class HQ : Building
 {
     //main building can only be one and cannot be constructed
     [Header("Villagers General Info")]
-    [SerializeField] private List<GameObject> unemployedAmmigas;
-    [SerializeField] private List<GameObject> proffesionAmmigas;
-    [SerializeField] private int[] maxAmmigasPerLevel = new int[3];
-    [SerializeField] private int maxAmiggaAmount;
-    [SerializeField] private int currentAmiggaAmount;
+    [SerializeField] private List<GameObject> unemployedVillagers;
+    [SerializeField] private List<GameObject> proffesionVillagers;
+    [SerializeField] private int[] maxVillagersPerLevel = new int[3];
+    [SerializeField] private int maxVillagerAmount;
+    [SerializeField] private int currentVillagerAmount;
 
     [Header("Villlagers deep info")]
     [SerializeField] private List<GameObject> farmers;
@@ -19,17 +18,18 @@ public class HQ : Building
 
     [Header("Other info")]
     [SerializeField]private List<GuardTower> guardTowers;
+    public float leftPatrolBorder , rightPatrolBorder ; //for X axsis
     public List<Farm> farms;
     public VillageInfo villageInfoUI;
     public bool isNightMode;
-    private HealthUI healthUI;
+    private HealthUI _healthUI;
 
     protected void Start()
     {
-        healthUI = FindAnyObjectByType<HealthUI>();
-        maxAmiggaAmount = maxAmmigasPerLevel[buildingData.level-1];
+        _healthUI = FindAnyObjectByType<HealthUI>();
+        maxVillagerAmount = maxVillagersPerLevel[buildingData.level-1];
         villageInfoUI = GetComponent<VillageInfo>();
-        villageInfoUI.InitInfo(maxAmiggaAmount,player.GetPlayerData().seedAmount);
+        villageInfoUI.InitInfo(maxVillagerAmount,player.GetPlayerData().seedAmount);
     }
 
     private void Update()
@@ -39,31 +39,34 @@ public class HQ : Building
             TakeDamage(1);
         }
     }
+
     protected override void LevelUpBuilding()
     {
         base.LevelUpBuilding();
-        maxAmiggaAmount = maxAmmigasPerLevel[buildingData.level-1];
-        villageInfoUI.SetVillagersAmountText(currentAmiggaAmount, maxAmiggaAmount);
+        maxVillagerAmount = maxVillagersPerLevel[buildingData.level-1];
+        villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
         villageInfoUI.SetSeedsText();
-        healthUI.SetHealthBar(buildingHealth,buildingData.health);
-    }
-    public void AddUnemployedVillager(GameObject villager)
-    {
-        unemployedAmmigas.Add(villager);
-        villager.transform.SetParent(gameObject.transform);
-        villageInfoUI.SetUnemployedText(unemployedAmmigas.Count);
-        villageInfoUI.SetVillagersAmountText(currentAmiggaAmount, maxAmiggaAmount);
-        print($"total villager {currentAmiggaAmount} / {maxAmiggaAmount} and {unemployedAmmigas.Count} are unemployed");
+        _healthUI.SetHealthBar(buildingHealth,buildingData.health);
     }
 
-    public void AddToTotalAmmigaAmount()
+    public void AddUnemployedVillager(GameObject villager)
     {
-        currentAmiggaAmount++;
+        unemployedVillagers.Add(villager);
+        villager.transform.SetParent(gameObject.transform);
+        villageInfoUI.SetUnemployedText(unemployedVillagers.Count);
+        villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
+        print($"total villager {currentVillagerAmount} / {maxVillagerAmount} and {unemployedVillagers.Count} are unemployed");
     }
+
+    public void AddToTotalVillagerAmount()
+    {
+        currentVillagerAmount++;
+    }
+
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(1);
-        healthUI.SetHealthBar(buildingHealth,buildingData.health);
+        _healthUI.SetHealthBar(buildingHealth,buildingData.health);
     }
 
     public void AddProffesionVillager(GameObject villager , string buildingName)
@@ -72,39 +75,39 @@ public class HQ : Building
         {
             case "Archery":
                 archers.Add(villager);
-                villageInfoUI.SetArchersText(archers.Count,unemployedAmmigas.Count);
+                villageInfoUI.SetArchersText(archers.Count,unemployedVillagers.Count);
                 AssignArcherToGuardTower(villager);
                 break;
             case "Blacksmith":
                 warriors.Add(villager);
-                villageInfoUI.SetWarriorsText(warriors.Count, unemployedAmmigas.Count);
+                villageInfoUI.SetWarriorsText(warriors.Count, unemployedVillagers.Count);
                 break;
             case "Farm":
                 farmers.Add(villager);
-                villageInfoUI.SetFarmersText(farmers.Count, unemployedAmmigas.Count);
+                villageInfoUI.SetFarmersText(farmers.Count, unemployedVillagers.Count);
                 break;
         }
-        proffesionAmmigas.Add(villager);
-        print($"total villager {currentAmiggaAmount} / {maxAmiggaAmount} and {proffesionAmmigas.Count} are employed and {unemployedAmmigas.Count} are unemployed");
+        proffesionVillagers.Add(villager);
+        print($"total villager {currentVillagerAmount} / {maxVillagerAmount} and {proffesionVillagers.Count} are employed and {unemployedVillagers.Count} are unemployed");
     }
 
     public bool CanRecruitVillager()
     {
-        return currentAmiggaAmount < maxAmiggaAmount;
+        return currentVillagerAmount < maxVillagerAmount;
     }
 
     public bool HasUnemployedVillager()
     {
-        return unemployedAmmigas.Count > 0;
+        return unemployedVillagers.Count > 0;
     }
 
     public GameObject GetRandomUnemployed() //gets a random unemployed to recruit to a proffesion
     {
-        for (int i = 0; i < unemployedAmmigas.Count; i++)
+        for (int i = 0; i < unemployedVillagers.Count; i++)
         {
-            if (!unemployedAmmigas[i].GetComponent<Villager>().isProffesionRecruited)
+            if (!unemployedVillagers[i].GetComponent<Villager>().isProffesionRecruited)
             {
-                return unemployedAmmigas[i];
+                return unemployedVillagers[i];
             }
         }
         return null;
@@ -112,15 +115,15 @@ public class HQ : Building
 
     public void RemoveUnemployed(GameObject unemployed) // after recruitment of an unemployed remove from the list
     {
-        unemployedAmmigas.Remove(unemployed);
-        print($"now you have {unemployedAmmigas.Count} unepmloyed villagers");
+        unemployedVillagers.Remove(unemployed);
+        print($"now you have {unemployedVillagers.Count} unepmloyed villagers");
     }
 
     public void RemoveArcher(GameObject Archer) // after recruitment of an unemployed remove from the list
     {
         archers.Remove(Archer);
-        currentAmiggaAmount--;
-        villageInfoUI.SetVillagersAmountText(currentAmiggaAmount,maxAmiggaAmount);
+        currentVillagerAmount--;
+        villageInfoUI.SetVillagersAmountText(currentVillagerAmount,maxVillagerAmount);
         print($"now you have {archers.Count} archers");
     }
     public void RemoveFarm(Farm farm)
@@ -149,6 +152,7 @@ public class HQ : Building
         }
 
     }
+
     public void AddGuardTower(GuardTower guardTower) //list of built guard tower
     {
         guardTowers.Add(guardTower);
@@ -204,6 +208,7 @@ public class HQ : Building
         }   
         return null;
     }
+
     public int ArcherCount()
     {
         return archers.Count;

@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DefenseWall : Building
 {
-
     private void Start()
     {
         HQ _HQ =  FindObjectOfType<HQ>();

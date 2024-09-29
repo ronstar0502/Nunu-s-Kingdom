@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData:
     health: 8
-    maxHealth: 36
+    maxHealth: 32
     damage: 4
     movementSpeed: 75
     attackSpeed: 2

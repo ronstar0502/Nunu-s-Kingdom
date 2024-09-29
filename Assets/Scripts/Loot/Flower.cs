@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Flower : MonoBehaviour
@@ -10,7 +9,7 @@ public class Flower : MonoBehaviour
     [SerializeField] private int maxSpawnSeedAmount;
     [SerializeField] private int seedMinValue;
     [SerializeField] private int seedMaxValue;
-    private int seedsToSpawn;
+    private int _seedsToSpawn;
 
     private void Start()
     {
@@ -20,7 +19,7 @@ public class Flower : MonoBehaviour
     private void SetSeedsToSpawn()
     {
         int randomAmount = Random.Range(minSpawnSeedAmount, maxSpawnSeedAmount+1);
-        seedsToSpawn = randomAmount;
+        _seedsToSpawn = randomAmount;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,9 +29,10 @@ public class Flower : MonoBehaviour
             StartCoroutine(SpawnSeeds());
         }
     }
+
     private IEnumerator SpawnSeeds()
     {
-        for (int i = 0; i < seedsToSpawn; i++)
+        for (int i = 0; i < _seedsToSpawn; i++)
         {
             GameObject seed = Instantiate(seedPrefab, seedSpawnTransform.position,Quaternion.identity);
             int seedValue = Random.Range(seedMinValue,seedMaxValue);

@@ -7,18 +7,19 @@ public class BuildingSpot : MonoBehaviour, IInteractable
     [SerializeField] private GameObject pileBuildingSpritePreview;
     [SerializeField] private AudioClip buildSound;
     [SerializeField] private SoundEffectManger soundEffectManger;
-    private Player player;
-    private HQ HQ;
-    private BuildingData buildingData;
-    [SerializeField]private SpriteRenderer _sr;
+    private Player _player;
+    private HQ _HQ;
+    private BuildingData _buildingData;
+    private SpriteRenderer _sr;
 
     private void Start()
     {
-        player = FindObjectOfType<Player>();
-        HQ = FindObjectOfType<HQ>();
-        buildingData = buildingObj.GetComponent<Building>().GetBuildingData();
+        _sr = GetComponent<SpriteRenderer>();
+        _player = FindObjectOfType<Player>();
+        _HQ = FindObjectOfType<HQ>();
+        _buildingData = buildingObj.GetComponent<Building>().GetBuildingData();
         soundEffectManger= FindAnyObjectByType<SoundEffectManger>();
-        pileBuildingSpritePreview.GetComponent<SpriteRenderer>().sprite = buildingData.sprite;
+        pileBuildingSpritePreview.GetComponent<SpriteRenderer>().sprite = _buildingData.sprite;
         buildingGhost.SetActive(false);
         buildingSpotPopUp.SetActive(false);
     }
@@ -27,7 +28,7 @@ public class BuildingSpot : MonoBehaviour, IInteractable
     {
         buildingGhost.SetActive(true);
         buildingSpotPopUp.SetActive(true);
-        buildingSpotPopUp.GetComponent<BuildingPopUp>().EnableBuildingSpotPopUp(buildingData.cost,buildingData.level);
+        buildingSpotPopUp.GetComponent<BuildingPopUp>().EnableBuildingSpotPopUp(_buildingData.cost,_buildingData.level);
         _sr.enabled = false;
     }
 
@@ -37,6 +38,7 @@ public class BuildingSpot : MonoBehaviour, IInteractable
         buildingSpotPopUp.SetActive(false);
         _sr.enabled = true;
     }
+
     //method to build a building at the current building spot
     public void BuildAtSpot()
     {
@@ -45,21 +47,22 @@ public class BuildingSpot : MonoBehaviour, IInteractable
             print("No Building Prefab Avilable");
             return;
         }
-        if(player.GetPlayerData().seedAmount >= buildingData.cost)
+        if(_player.GetPlayerData().seedAmount >= _buildingData.cost)
         {
             GameObject building = Instantiate(buildingObj, buildingGhost.transform.position, Quaternion.identity); //spawns the building at the desired position
             building.GetComponent<Building>().SetBuildingSpot(gameObject);
-            player.GetPlayerData().SubstarctSeedsAmount(buildingData.cost); //substracts seeds amount based on building starting cost
-            HQ.villageInfoUI.SetSeedsText();
+            _player.GetPlayerData().SubstarctSeedsAmount(_buildingData.cost); //substracts seeds amount based on building starting cost
+            _HQ.villageInfoUI.SetSeedsText();
 
             //add a delay with animation of the building being built?
 
             gameObject.SetActive(false);
         }
     }
+
     public void Interact() //interaction with the building spot
     {
-        if (player.GetPlayerData().seedAmount >= buildingData.cost)
+        if (_player.GetPlayerData().seedAmount >= _buildingData.cost)
         {
             BuildAtSpot();
             if (buildSound != null && soundEffectManger != null)

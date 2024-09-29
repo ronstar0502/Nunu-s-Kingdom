@@ -282,6 +282,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5966045851807844106, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
+      propertyPath: leftPatrolBorder
+      value: 15.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966045851807844106, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
+      propertyPath: rightPatrolBorder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966045851807844106, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
       propertyPath: maxVillagerPerLevel.Array.data[0]
       value: 7
       objectReference: {fileID: 0}
@@ -292,6 +300,18 @@ PrefabInstance:
     - target: {fileID: 5966045851807844106, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
       propertyPath: maxVillagerPerLevel.Array.data[2]
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966045851807844106, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
+      propertyPath: maxVillagersPerLevel.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966045851807844106, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
+      propertyPath: maxVillagersPerLevel.Array.data[1]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966045851807844106, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
+      propertyPath: maxVillagersPerLevel.Array.data[2]
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6741863136819709694, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -2572,8 +2592,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 205103445}
   gameEndMenu: {fileID: 1860097277}
   gameEndTxt: {fileID: 1894391379}
-  dayDuration: 15
-  nightDuration: 15
+  dayDuration: 40
+  nightDuration: 40
   maxDaysInLevel: 10
   gameState: 0
 --- !u!4 &952256233
@@ -3278,7 +3298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1031797278801003575, guid: b473059a8f6629e438b29be20730cbca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.16
+      value: -3.22
       objectReference: {fileID: 0}
     - target: {fileID: 1031797278801003575, guid: b473059a8f6629e438b29be20730cbca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3477,7 +3497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 820, y: 126.7}
+  m_AnchoredPosition: {x: 813, y: 126.1}
   m_SizeDelta: {x: 196.43, y: 47.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1149612856
@@ -3527,8 +3547,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5044,56 +5064,6 @@ RectTransform:
   m_AnchoredPosition: {x: -88835.92, y: -34673}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1623102883
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1623102885}
-  - component: {fileID: 1623102884}
-  m_Layer: 0
-  m_Name: FlowerSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1623102884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623102883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd8bc2c49f4dd664297ffc032ec9d6d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flowerPrefab: {fileID: 3945179807293158739, guid: a8f7c0f5e7976444da8cdbc1539bbcf3, type: 3}
-  spawnLeftBorder: -36
-  spawnRightBorder: 36
-  minSpawnDelay: 2
-  maxSpawnDelay: 4
-  isNight: 0
---- !u!4 &1623102885
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623102883}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.44, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1631946444
 GameObject:
   m_ObjectHideFlags: 0
@@ -5836,7 +5806,7 @@ Transform:
   m_GameObject: {fileID: 1866274678}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.660843, y: -5.1971474, z: 3762.5637}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6848,6 +6818,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82f042d9ced174343988176b122af45e, type: 3}
+--- !u!1001 &4587440376282217549
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2519115080032142934, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519115080032142934, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519115080032142934, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519115080032142934, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519115080032142934, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519115080032142934, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519115080032142934, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519115080032142934, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519115080032142934, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519115080032142934, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3226378268077228923, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
+      propertyPath: m_Name
+      value: FlowerSpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
 --- !u!1001 &4674033899858550426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6910,7 +6937,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6395970027193639827, guid: abfc703ac4cbea34bb295714937319c2, type: 3}
       propertyPath: playerData.seedAmount
-      value: 200
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6395970027193639827, guid: abfc703ac4cbea34bb295714937319c2, type: 3}
+      propertyPath: playerData.startingSeedsAmount
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6594298872048498110, guid: abfc703ac4cbea34bb295714937319c2, type: 3}
       propertyPath: m_SortingOrder
@@ -7077,4 +7108,4 @@ SceneRoots:
   - {fileID: 968621315}
   - {fileID: 226906479}
   - {fileID: 249291030}
-  - {fileID: 1623102885}
+  - {fileID: 4587440376282217549}

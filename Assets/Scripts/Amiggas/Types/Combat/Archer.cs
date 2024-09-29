@@ -10,10 +10,9 @@ public class Archer : CombatVillager
     [Header("Other Archer Settings")]
     public GuardTower assignedGuardTower;
     public bool isAssignedToGuardTower; //assigned archers cant get out of the tower , unassigned can go to combat 
-    private int guardTowerSlot;
-    private Vector2 targetTower;
-    private bool isGoingToGuardTower;
-
+    private int _guardTowerSlot;
+    private Vector2 _targetTower;
+    private bool _isGoingToGuardTower;
 
     protected override void Awake()
     {
@@ -22,6 +21,7 @@ public class Archer : CombatVillager
             base.Awake();
         }
     }
+
     protected override void Start()
     {
         if(assignedGuardTower == null)
@@ -29,18 +29,20 @@ public class Archer : CombatVillager
             base.Start();
         }
     }
+
     protected override void Update()
     {
-        if(!isGoingToGuardTower)
+        if(!_isGoingToGuardTower)
         {
             base.Update();
         }
     }
+
     public override void ChangeToCombatMode() //changes the archer to combat mode if not in tower
     {
         if (!isAssignedToGuardTower)
         {
-            SetState(AmiggaState.Combat);
+            SetState(VillagerState.Combat);
         }
         else
         {
@@ -52,43 +54,35 @@ public class Archer : CombatVillager
     {
         if (!isAssignedToGuardTower)
         {
-            SetState(AmiggaState.Patrol);
+            SetState(VillagerState.Patrol);
         }
     }
+
     public void GoToAssignedGuardTower(GuardTower guardTower) // method to tell the archer to go to assigned tower
     {
-        //print($"archer state 1: {villagerState}");
-        SetState(AmiggaState.ProffesionAction);
-        //print($"archer state 2: {villagerState}");
+        SetState(VillagerState.ProffesionAction);
 
         assignedGuardTower = guardTower;
         isAssignedToGuardTower = true;
-        guardTowerSlot = guardTower.GetAvailableSpotIndex();
-        targetTower = new Vector2(guardTower.transform.position.x, transform.position.y);
+        _guardTowerSlot = guardTower.GetAvailableSpotIndex();
+        _targetTower = new Vector2(guardTower.transform.position.x, transform.position.y);
 
-        //print($"archer state 3: {villagerState}");
-        SetState(AmiggaState.InProffesionBuilding);
+        SetState(VillagerState.InProffesionBuilding);
 
-        //print($"archer state 4: {villagerState}");
-        StartCoroutine(ArcherGuardTowerArrival());
+        StartCoroutine(MoveARcherToAssignedGuardTower());
 
         attackRange += assignedGuardTower.GetAttackRangeBonus();
-        //print($"archer in tower {gameObject.name} in slot {guardTowerSlot} has {attackRange} range");
     }
-    private IEnumerator ArcherGuardTowerArrival() // used courtine to move the archer to the tower so it wont be in update all the time
+    private IEnumerator MoveARcherToAssignedGuardTower() // used courtine to move the archer to the tower so it wont be in update all the time
     {
-        isGoingToGuardTower = true;
-        //print($"archer state 5: {villagerState}");
+        _isGoingToGuardTower = true;
         while (assignedGuardTower != null)
         {
-            AmiggaMoveToTarget(targetTower);
-            //print($"archer state 6: {villagerState}");
-            if (transform.position == (Vector3)targetTower)
+            VillagerMoveToTarget(_targetTower);
+            if (transform.position == (Vector3)_targetTower)
             {
-                //print($"archer state 7: {villagerState}");
-                assignedGuardTower.AddArcherToGuard(gameObject, guardTowerSlot);
-                //ChangeState(VillagerState.InProffesionBuilding);
-                isGoingToGuardTower = false;
+                assignedGuardTower.AddArcherToGuard(gameObject, _guardTowerSlot);
+                _isGoingToGuardTower = false;
                 yield break;
             }
 
@@ -96,11 +90,11 @@ public class Archer : CombatVillager
         }
     }
 
-    protected override void SetAmmigarAttackTargetDirection()
+    protected override void SetVillagerAttackTargetDirection()
     {
         if (targetEnemy != null)
         {
-            SetAmmigaDirection(targetEnemy.transform.position.x);
+            SetVillagerDirection(targetEnemy.transform.position.x);
             print("archer attacked!");
         }
         else
