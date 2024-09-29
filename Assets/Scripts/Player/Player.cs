@@ -2,25 +2,27 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
-    private VillageInfo villageInfo;
-    private IInteractable interactableObj;
-    private bool canBuild; 
+    private VillageInfo _villageInfo;
+    private IInteractable _interactableObj;
+    private bool _canBuild; 
+
     private void Awake()
     {
-        playerData.SetInitHealth();
+        playerData.InitPlayer();
     }
 
     private void Start()
     {
-        villageInfo =  FindObjectOfType<VillageInfo>();
+        _villageInfo =  FindObjectOfType<VillageInfo>();
     }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && interactableObj!=null)
+        if (Input.GetKeyDown(KeyCode.R) && _interactableObj!=null)
         {
-            if (canBuild)
+            if (_canBuild)
             {
-                interactableObj.Interact();
+                _interactableObj.Interact();
             }
             else
             {
@@ -28,18 +30,20 @@ public class Player : MonoBehaviour
             }
         }
     }
+
     public PlayerData GetPlayerData() { return playerData; }
 
     public void SetCanBuild(GameState state)
     {
         if(state == GameState.Day)
         {
-            canBuild = true;
+            _canBuild = true;
         }else if(state == GameState.Night)
         {
-            canBuild = false;
+            _canBuild = false;
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable)) //looks for building spot to interact with ot other interactable objects
@@ -48,7 +52,7 @@ public class Player : MonoBehaviour
             {
                 collision.gameObject.GetComponent<BuildingSpot>().ShowBuildingGhost();
             }
-            interactableObj = interactable;
+            _interactableObj = interactable;
         }
 
         if (collision.gameObject.CompareTag("Building"))
@@ -64,7 +68,7 @@ public class Player : MonoBehaviour
                 seed.PlayPickupSFX();
                 int amount = seed.value;
                 playerData.AddSeedsAmount(amount);
-                villageInfo.SetSeedsText();
+                _villageInfo.SetSeedsText();
                 print($"seeds in invetory: {playerData.seedAmount}");
                 Destroy(collision.gameObject);
             }
@@ -82,8 +86,7 @@ public class Player : MonoBehaviour
         {
             collision.gameObject.GetComponent<Building>().DisableBuildingPopUp();
         }
-        interactableObj =null;
+        _interactableObj =null;
     }
-
-    
+  
 }

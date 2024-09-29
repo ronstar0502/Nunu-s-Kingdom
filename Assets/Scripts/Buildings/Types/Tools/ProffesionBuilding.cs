@@ -77,7 +77,7 @@ public class ProffesionBuilding : Building
         {
             Villager unemployedVillager = randomUnemployed.GetComponent<Villager>();
             unemployedVillager.isProffesionRecruited = true;
-            StartCoroutine(unemployedVillager.ChangeAmiggaProffesion(gameObject, transform.position));
+            StartCoroutine(unemployedVillager.ChangeVillagerProffesion(gameObject, transform.position));
             return true;
         }
         return false;
@@ -98,7 +98,7 @@ public class ProffesionBuilding : Building
 
     public int GetRecruitCost()
     {
-        return villager.GetAmiggaData().seedsCost;
+        return villager.GetVillagerData().seedsCost;
     }
     protected virtual void ChangeVillagerProffesion() // method to change unemployed to the building's proffesion
     {

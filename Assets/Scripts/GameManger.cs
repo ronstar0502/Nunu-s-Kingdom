@@ -10,23 +10,23 @@ public class GameManger : MonoBehaviour
     [SerializeField] private float dayDuration, nightDuration;
     [SerializeField] private int maxDaysInLevel;
     public GameState gameState;
-    private HQ HQ; // will be pre built
-    private Spawner spawner;
-    private FlowerSpawner flowerSpawner;
-    private Player player;
-    private TimeLineIndicator timeLineIndicator;
-    private float lastStateSwapped = 0f;
-    private int currDay = 1;
+    private HQ _HQ; // will be pre built
+    private Spawner _spawner;
+    private FlowerSpawner _flowerSpawner;
+    private Player _player;
+    private TimeLineIndicator _timeLineIndicator;
+    private float _lastStateSwapped = 0f;
+    private int _currDay = 1;
 
     private void Awake()
     {
-        timeLineIndicator = FindObjectOfType<TimeLineIndicator>();
-        timeLineIndicator.SetDayCycleTimer(dayDuration + nightDuration);
-        spawner = FindAnyObjectByType<Spawner>();
-        flowerSpawner = FindAnyObjectByType<FlowerSpawner>();
+        _timeLineIndicator = FindObjectOfType<TimeLineIndicator>();
+        _timeLineIndicator.SetDayCycleTimer(dayDuration + nightDuration);
+        _spawner = FindAnyObjectByType<Spawner>();
+        _flowerSpawner = FindAnyObjectByType<FlowerSpawner>();
         gameState = GameState.Day;
-        HQ = FindObjectOfType<HQ>();
-        player = FindObjectOfType<Player>();
+        _HQ = FindObjectOfType<HQ>();
+        _player = FindObjectOfType<Player>();
 
         if(Time.timeScale == 0f)
         {
@@ -37,15 +37,15 @@ public class GameManger : MonoBehaviour
 
     private void Start()
     {
-        maxDaysInLevel = spawner.GetWaveCount();
+        maxDaysInLevel = _spawner.GetWaveCount();
         SetDaysCountTxt();
-        player.SetCanBuild(gameState);
+        _player.SetCanBuild(gameState);
         gameEndMenu.SetActive(false);
     }
 
     private void SetDaysCountTxt()
     {
-        daysCountText.text = $"{currDay} / {maxDaysInLevel} Days";
+        daysCountText.text = $"{_currDay} / {maxDaysInLevel} Days";
     }
 
     void Update()
@@ -62,7 +62,7 @@ public class GameManger : MonoBehaviour
 
     private void CheckDefeat()
     {
-        if (HQ == null)
+        if (_HQ == null)
         {
             print("Game Over");
             gameEndMenu.SetActive(true);
@@ -73,7 +73,7 @@ public class GameManger : MonoBehaviour
 
     private void CheckVictory()
     {
-        if (currDay == maxDaysInLevel + 1)
+        if (_currDay == maxDaysInLevel + 1)
         {
             print("You Won!");
             gameEndMenu.SetActive(true);
@@ -84,16 +84,16 @@ public class GameManger : MonoBehaviour
 
     private void ChangeStateTimerCheck() //check if game state needs to change based on time for state of Day/Night
     {
-        if (Time.time >= lastStateSwapped + dayDuration && gameState == GameState.Day)
+        if (Time.time >= _lastStateSwapped + dayDuration && gameState == GameState.Day)
         {
 
             SetState(GameState.Night);
-            lastStateSwapped = Time.time;
+            _lastStateSwapped = Time.time;
         }
-        else if (Time.time >= lastStateSwapped + nightDuration && gameState == GameState.Night)
+        else if (Time.time >= _lastStateSwapped + nightDuration && gameState == GameState.Night)
         {
             SetState(GameState.Day);
-            lastStateSwapped = Time.time;
+            _lastStateSwapped = Time.time;
         }
     }
 
@@ -115,27 +115,28 @@ public class GameManger : MonoBehaviour
                 StartNightActivities();
                 break;
         }
-        player.SetCanBuild(gameState);
+        _player.SetCanBuild(gameState);
         BuildingsSpriteDayNightChange();
     }
 
     private void StartNightActivities() //starts all night activities
     {
         print("NightTime!");
-        StartCoroutine(spawner.StartSpawning());
-        StartCoroutine(flowerSpawner.SpawnFlowers());
-        HQ.SetAmmigasToCombatMode();
+        StartCoroutine(_spawner.StartSpawning());
+        StartCoroutine(_flowerSpawner.SpawnFlowers());
+        _HQ.SetAmmigasToCombatMode();
     }
+
     private void StartDayActivities() //starts all day activities
     {
-        currDay++;
+        _currDay++;
         DestroyAllFlowers();
-        spawner.EnableAllPortals();
-        flowerSpawner.isNight = false;
+        _spawner.EnableAllPortals();
+        _flowerSpawner.isNight = false;
         SetDaysCountTxt();
-        print($"Day {currDay}");
+        print($"Day {_currDay}");
         HarvestFarm();
-        HQ.SetAmmigastToPatrolMode();
+        _HQ.SetAmmigastToPatrolMode();
     }
 
     private void DestroyAllFlowers()
@@ -148,9 +149,9 @@ public class GameManger : MonoBehaviour
 
     private void HarvestFarm()
     {
-        if (HQ.farms.Count>0)
+        if (_HQ.farms.Count>0)
         {
-            HQ.FarmSeeds();
+            _HQ.FarmSeeds();
         }
     }
 
@@ -177,7 +178,7 @@ public class GameManger : MonoBehaviour
 
     public float GetLastStateSwapedTime()
     {
-        return lastStateSwapped;
+        return _lastStateSwapped;
     }
 
 }

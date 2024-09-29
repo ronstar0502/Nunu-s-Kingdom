@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5230635594117393777
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4270616067414914257}
-  m_Layer: 6
-  m_Name: ArrowSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4270616067414914257
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5230635594117393777}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.14, y: -1.72, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2417298801306730825}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8534889528132189151
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2417298801306730825}
   - component: {fileID: 2985807423966815545}
-  - component: {fileID: 7466338137144798965}
-  - component: {fileID: -9079562888934030536}
-  - component: {fileID: 365368131181351935}
-  - component: {fileID: 7272554589024244763}
+  - component: {fileID: -8696585596981799036}
+  - component: {fileID: 3217269770152235193}
+  - component: {fileID: 8546669444230652859}
+  - component: {fileID: -1078758287379594929}
   m_Layer: 6
-  m_Name: Ammiga_Archer
+  m_Name: Villager_Warrior
   m_TagString: Ammiga
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,10 +31,9 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.14331, y: 0.1402261, z: 0.4710315}
+  m_LocalScale: {x: 0.14331, y: 0.1402261, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 4270616067414914257}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2985807423966815545
@@ -109,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: ab4f23cf6691c2e468736f5cd10b6315, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68d8bb94a3953c246a86b73a2ed8500c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7466338137144798965
+--- !u!114 &-8696585596981799036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,31 +97,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 8534889528132189151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678a0ec8c43c55649bebaac2b5960769, type: 3}
+  m_Script: {fileID: 11500000, guid: 936db2262c8b1cd44addeca3d20d31dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amiggaData:
-    villagerName: Archer
-    maxHealth: 26
+  villagerData:
+    villagerName: Samurai
+    maxHealth: 24
     health: 0
     movementSpeed: 4
-    seedsCost: 4
-  amiggaTool: {fileID: 5341729962025019665, guid: 98b47637b53dccd46bdb1def65d50be1, type: 3}
-  amiggaState: 0
-  spawnSound: {fileID: 8300000, guid: 5a8670ff44c0154439e39bf716b0caf4, type: 3}
+    seedsCost: 5
+  villagerTool: {fileID: 1218095432757400823, guid: 13117e2a28c90444996586d5f324f513, type: 3}
+  villagerState: 0
+  spawnSound: {fileID: 8300000, guid: 27ae3db324ea7c34d80d5df80294fafc, type: 3}
   soundEffectManger: {fileID: 0}
   leftPatrolBorder: 0
   rightPatrolBorder: 0
   isProffesionRecruited: 0
-  damage: 2
+  damage: 4
   targetDetectRange: 36
-  attackRange: 9
-  attackSpeed: 1
-  arrowPrefab: {fileID: 1595014924496177938, guid: 5a214cd37a32c2845b163cdf7aa03b2b, type: 3}
-  arrowSpawnTransform: {fileID: 4270616067414914257}
-  assignedGuardTower: {fileID: 0}
-  isAssignedToGuardTower: 0
---- !u!50 &-9079562888934030536
+  attackRange: 2.5
+  attackSpeed: 1.5
+--- !u!50 &3217269770152235193
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -180,7 +144,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &365368131181351935
+--- !u!95 &8546669444230652859
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -190,7 +154,7 @@ Animator:
   m_GameObject: {fileID: 8534889528132189151}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0aeb4ba0552f9004b9e6929e8e08a0ba, type: 2}
+  m_Controller: {fileID: 9100000, guid: 008377ca58ebf7146ade5ef8983d9ef3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -201,7 +165,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!70 &7272554589024244763
+--- !u!70 &-1078758287379594929
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,6 +197,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7162677, y: -1.1775889}
-  m_Size: {x: 4.373062, y: 9.864794}
+  m_Offset: {x: -1.0540199, y: -1.644133}
+  m_Size: {x: 4.8313794, y: 8.931693}
   m_Direction: 0

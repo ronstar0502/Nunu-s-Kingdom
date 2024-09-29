@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+
     public void ExitGame()
     {
         Application.Quit();
@@ -16,11 +17,13 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
     public void Continue(GameObject pauseMenu)
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
     }
+
     public void Restart()
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
