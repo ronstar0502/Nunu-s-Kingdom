@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
                 seed.PlayPickupSFX();
                 int amount = seed.value;
                 playerData.AddSeedsAmount(amount);
-                _villageInfo.SetSeedsText();
+                _villageInfo.SetSeedsText(false);
                 print($"seeds in invetory: {playerData.seedAmount}");
                 Destroy(collision.gameObject);
             }

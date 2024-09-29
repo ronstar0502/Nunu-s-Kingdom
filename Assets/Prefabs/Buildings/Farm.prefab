@@ -212,6 +212,7 @@ MonoBehaviour:
   toolName: Farmer Tool
   changeProffesionDelay: 2
   farmerSlots: 030000000500000007000000
+  idleFarmValue: 12
   currentWorkingVillagers: 0
 --- !u!61 &5588828637602594391
 BoxCollider2D:

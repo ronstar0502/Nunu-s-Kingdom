@@ -62,7 +62,7 @@ public class Hatchery : Building
         {
             _HQ.AddToTotalVillagerAmount();
             player.GetPlayerData().SubstarctSeedsAmount(_villagerCost);
-            _HQ.villageInfoUI.SetSeedsText();
+            _HQ.villageInfoUI.SetSeedsText(true);
             int eggSlot = GetEggSlotNumber();
             GameObject newEgg = Instantiate(eggPrefab, eggSpawnPoints[eggSlot]); //spawns an egg on pre determined transforms
             VillagerEgg villagerEgg = newEgg.GetComponent<VillagerEgg>();
@@ -89,7 +89,7 @@ public class Hatchery : Building
     protected override void LevelUpBuilding() //extension of level up building with more logic for hatchery
     {
         base.LevelUpBuilding();
-        _HQ.villageInfoUI.SetSeedsText();
+        _HQ.villageInfoUI.SetSeedsText(true);
         _eggSlotsOpen[buildingData.level - 1] = true;
     }
 

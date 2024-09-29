@@ -66,11 +66,14 @@ public class CombatVillager : Villager
                     }
                 }
             }
-            else if (villagerState == VillagerState.Combat)
+            else 
             {
-                print($"{villagerData.villagerName} has no target and is now patrolling.");
                 animator.SetBool("isAttacking", false);
-                VillagerPatrol();
+                print($"{villagerData.villagerName} has no target and is now patrolling.");
+                if (villagerState == VillagerState.Combat)
+                {
+                    VillagerPatrol();
+                }
             }
         }
     }

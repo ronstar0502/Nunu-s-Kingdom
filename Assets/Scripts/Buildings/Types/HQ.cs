@@ -45,7 +45,7 @@ public class HQ : Building
         base.LevelUpBuilding();
         maxVillagerAmount = maxVillagersPerLevel[buildingData.level-1];
         villageInfoUI.SetVillagersAmountText(currentVillagerAmount, maxVillagerAmount);
-        villageInfoUI.SetSeedsText();
+        villageInfoUI.SetSeedsText(true);
         _healthUI.SetHealthBar(buildingHealth,buildingData.health);
     }
 

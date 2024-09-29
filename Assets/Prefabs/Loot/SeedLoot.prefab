@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 257343949004017425}
   - component: {fileID: 666013341304990855}
-  - component: {fileID: 7026718892165788476}
   - component: {fileID: 642757263058357853}
+  - component: {fileID: 7026718892165788476}
   - component: {fileID: 7556694319724310984}
   m_Layer: 0
   m_Name: SeedLoot
@@ -87,6 +87,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &642757263058357853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5269533173031823952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9628f1eb32d77354f9bfef15ded463c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 3
+  pickUpSFX: {fileID: 8300000, guid: 3914423f416901b45aac3ec89be1d012, type: 3}
+  value: 0
+  canLoot: 0
 --- !u!61 &7026718892165788476
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132,22 +148,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.70326, y: 4.743128}
   m_EdgeRadius: 0
---- !u!114 &642757263058357853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5269533173031823952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9628f1eb32d77354f9bfef15ded463c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 3
-  pickUpSFX: {fileID: 8300000, guid: 3914423f416901b45aac3ec89be1d012, type: 3}
-  value: 0
-  canLoot: 0
 --- !u!50 &7556694319724310984
 Rigidbody2D:
   serializedVersion: 4

@@ -58,18 +58,25 @@ public class VillageInfo : MonoBehaviour
 
     }
 
-    public void SetSeedsText()
+    public void SetSeedsText(bool isLower)
     {
         seedsAmountText.text = $"{_player.GetPlayerData().seedAmount}";
-        StartCoroutine(ChangeSeedTextColor(seedsAmountText));
+        StartCoroutine(ChangeSeedTextColor(isLower));
     }
 
-    private IEnumerator ChangeSeedTextColor(TMP_Text txt)
+    private IEnumerator ChangeSeedTextColor(bool isLower)
     {
-        Color original= txt.color;
-        txt.color = Color.red;
-        yield return new WaitForSeconds(0.7f);
-        txt.color = original;
+        Color original= seedsAmountText.color;
+        if (isLower)
+        {
+            seedsAmountText.color = Color.red;
+        }
+        else
+        {
+            seedsAmountText.color = Color.green;
+        }
+        yield return new WaitForSeconds(1f);
+        seedsAmountText.color = original;
     }
 
     public void SetVillagersAmountText(int currentVillagers,int maxVillagers)
