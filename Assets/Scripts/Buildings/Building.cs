@@ -9,6 +9,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     [SerializeField] protected event Action OnBuildingStateChanged;
     [SerializeField] protected float buildingHealth;
     protected Player player;
+    protected VillageInfo villageInfoUI;
     protected int nextLevelCost;
     protected bool IsMaxLevel;
     private SpriteRenderer _sr;
@@ -19,6 +20,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
         _sr = GetComponent<SpriteRenderer>();
         _sr.sprite = buildingData.sprite;
         buildingHealth = buildingData.health;
+        villageInfoUI = FindObjectOfType<VillageInfo>();
         SetNextLevelCost();
     }
 
@@ -59,14 +61,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     protected virtual void RefreshPopUp()
     {
         // default for buildings that can only be upgraded
-        if (!buildingData.isMaxLevel)
-        {
-            buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost,buildingData.level);
-        }
-        else
-        {
-            buildingPopUp.GetComponent<BuildingPopUp>().SetToMaxLevelBuildingPopUp();
-        }
+        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost,buildingData.level);
     }
 
     protected void InvokeBuildingStateChanged()
@@ -81,6 +76,10 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
 
     }
 
+    public VillageInfo GetVillageInfo()
+    {
+        return villageInfoUI;
+    }
     private void UpgradeBuilding() // method for upgrading a building when interacting with it
     {
         if (!buildingData.isMaxLevel) //first check if the building is ont already in max level
@@ -102,6 +101,7 @@ public class Building : MonoBehaviour, IInteractable, IDamageable
     protected virtual void LevelUpBuilding() //method for building level up
     {
         player.GetPlayerData().SubstarctSeedsAmount(nextLevelCost); //substracts seed from player based on level up cost
+        villageInfoUI.SetSeedsText(true);
         buildingData = buildingData.nextLevelBuilding; //levels up building by adding 1 to the level
         //after that now we set the new level data
         _sr.sprite = buildingData.sprite;

@@ -20,7 +20,6 @@ public class HQ : Building
     [SerializeField]private List<GuardTower> guardTowers;
     public float leftPatrolBorder , rightPatrolBorder ; //for X axsis
     public List<Farm> farms;
-    public VillageInfo villageInfoUI;
     public bool isNightMode;
     private HealthUI _healthUI;
 
@@ -28,8 +27,7 @@ public class HQ : Building
     {
         _healthUI = FindAnyObjectByType<HealthUI>();
         maxVillagerAmount = maxVillagersPerLevel[buildingData.level-1];
-        villageInfoUI = GetComponent<VillageInfo>();
-        villageInfoUI.InitInfo(maxVillagerAmount,player.GetPlayerData().seedAmount);
+        villageInfoUI.InitInfo(maxVillagerAmount, player.GetPlayerData().seedAmount);
     }
 
     private void Update()

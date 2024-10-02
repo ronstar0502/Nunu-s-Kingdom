@@ -96,6 +96,7 @@ public class CombatVillager : Villager
     {
         if (targetEnemy == null && !HQ.isNightMode)
         {
+            print("Cillager back to day mode");
             SetState(VillagerState.Patrol);
             animator.SetBool("isAttacking", false);
         }

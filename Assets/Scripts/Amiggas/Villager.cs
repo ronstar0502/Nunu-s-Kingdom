@@ -135,6 +135,7 @@ public class Villager : MonoBehaviour
         {
             case VillagerState.Spawned:
                 SetState(VillagerState.Patrol);
+                print("villager is now patrolling");
                 break;
             case VillagerState.ProffesionAction:                
                 break;

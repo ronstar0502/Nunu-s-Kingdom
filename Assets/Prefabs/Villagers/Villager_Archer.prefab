@@ -146,7 +146,7 @@ MonoBehaviour:
   rightPatrolBorder: 0
   isProffesionRecruited: 0
   damage: 2
-  targetDetectRange: 36
+  targetDetectRange: 64
   attackRange: 9
   attackSpeed: 1
   arrowPrefab: {fileID: 1595014924496177938, guid: 5a214cd37a32c2845b163cdf7aa03b2b, type: 3}

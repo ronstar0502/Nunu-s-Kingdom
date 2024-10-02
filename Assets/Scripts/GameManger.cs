@@ -34,6 +34,8 @@ public class GameManger : MonoBehaviour
             Time.timeScale = 1f;
             print("restarted level time");
         }
+
+        _lastStateSwapped = Time.time;
     }
 
     private void Start()
@@ -79,7 +81,7 @@ public class GameManger : MonoBehaviour
 
     private void CheckVictory()
     {
-        if (_currDay == maxDaysInLevel + 1)
+        if (_currDay == maxDaysInLevel)
         {
             if (SceneManager.GetActiveScene().buildIndex == 1)
             {

@@ -51,7 +51,7 @@ public class BuildingSpot : MonoBehaviour, IInteractable
             GameObject building = Instantiate(buildingObj, buildingGhost.transform.position, Quaternion.identity); //spawns the building at the desired position
             building.GetComponent<Building>().SetBuildingSpot(gameObject);
             _player.GetPlayerData().SubstarctSeedsAmount(_buildingData.cost); //substracts seeds amount based on building starting cost
-            _HQ.villageInfoUI.SetSeedsText(true);
+            _HQ.GetVillageInfo().SetSeedsText(true);
 
             //add a delay with animation of the building being built?
 
