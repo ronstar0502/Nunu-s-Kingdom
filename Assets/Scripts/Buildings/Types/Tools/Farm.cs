@@ -49,7 +49,7 @@ public class Farm : ProffesionBuilding
         if (player != null)
         {
             player.GetPlayerData().AddSeedsAmount(_harvestAmount);
-            HQ.villageInfoUI.SetSeedsText(false);
+            villageInfoUI.SetSeedsText(false);
         }
         else
         {

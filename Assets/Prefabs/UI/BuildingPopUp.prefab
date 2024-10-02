@@ -405,10 +405,11 @@ MonoBehaviour:
   recruitTxt: {fileID: 8435084545397270808}
   maxLevelTxt: {fileID: 1296452038067492567}
   buildingLevelTxt: {fileID: 3967694173467626754}
-  images:
-  - {fileID: 4991700434904094164}
-  - {fileID: 2311690741767843606}
+  imagesToDisable:
   - {fileID: 7783989593340039363}
+  infoToDisable:
+  - {fileID: 96409303533012486}
+  - {fileID: 6112881327182143104}
 --- !u!1 &2459675146803372215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,7 +1555,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &273039467429058664
 MonoBehaviour:
   m_ObjectHideFlags: 0

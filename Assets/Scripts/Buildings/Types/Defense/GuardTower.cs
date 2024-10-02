@@ -82,7 +82,6 @@ public class GuardTower : Building
     {
         base.LevelUpBuilding();
         availableSpots[buildingData.level-1] = true;
-
         CanAssignArcher();
     }
 

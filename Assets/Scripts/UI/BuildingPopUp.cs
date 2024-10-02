@@ -8,7 +8,7 @@ public class BuildingPopUp : MonoBehaviour
     [SerializeField] private TMP_Text recruitTxt;
     [SerializeField] private TMP_Text maxLevelTxt;
     [SerializeField] private TMP_Text buildingLevelTxt;
-    [SerializeField] private Image[] images;
+    [SerializeField] private GameObject[] infoToDisable;
     private HQ _HQ;
     private Player _player;
 
@@ -25,15 +25,29 @@ public class BuildingPopUp : MonoBehaviour
 
     public void EnableBuildingPopUp(int upgradeCost ,int recruitCost,bool canRecruit , int buildingLevel)
     {
-        SetUpgradeText(upgradeCost);
+        if(buildingLevel == 3) //max level
+        {
+            SetToMaxLevelBuildingPopUp();
+        }
+        else
+        {
+            SetUpgradeText(upgradeCost);
+            buildingLevelTxt.text = $"Building Level: {buildingLevel}";
+        }
         SetRecruitText(recruitCost, canRecruit);
-        buildingLevelTxt.text = $"Building Level: {buildingLevel}";
     }
 
     public void EnableBuildingPopUp(int upgradeCost, int buildingLevel)
     {
-        SetUpgradeText(upgradeCost);
-        buildingLevelTxt.text = $"Building Level: {buildingLevel}";
+        if(buildingLevel == 3)
+        {
+            SetToMaxLevelBuildingPopUp();
+        }
+        else
+        {
+            SetUpgradeText(upgradeCost);
+            buildingLevelTxt.text = $"Building Level: {buildingLevel}";
+        }
     }
 
     public void EnableBuildingSpotPopUp(int upgradeCost, int upgradeLevel)
@@ -41,22 +55,17 @@ public class BuildingPopUp : MonoBehaviour
         SetBuildingText(upgradeCost);
     }
 
-    public void SetToMaxLevelBuildingPopUp()
+    private void SetToMaxLevelBuildingPopUp()
     {
         upgradeTxt.enabled = false;
-        buildingLevelTxt.enabled = false;
-        if (recruitTxt != null)
+        buildingLevelTxt.text = "Max Level";
+        for (int i = 0; i < infoToDisable.Length; i++)
         {
-            recruitTxt.enabled = false;
-        }
-        for (int i = 0; i < images.Length; i++) 
-        {
-            if (images[i] != null)
+            if (infoToDisable[i] != null)
             {
-                images[i].enabled = false;
+                infoToDisable[i].SetActive(false);
             }
         }
-        maxLevelTxt.enabled = true;
     }
 
     private void SetBuildingText(int upgradeCost)

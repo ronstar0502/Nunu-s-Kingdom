@@ -21,23 +21,14 @@ public class ProffesionBuilding : Building
     }
     protected override void LevelUpBuilding()
     {
-
         base.LevelUpBuilding();
-        HQ.villageInfoUI.SetSeedsText(true);
-
     }
 
     protected override void RefreshPopUp()
     {
         // for proffesion building that can recruit
-        if (!buildingData.isMaxLevel)
-        {
-            buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, GetRecruitCost() , CanRecruit(), buildingData.level);
-        }
-        else
-        {
-            buildingPopUp.GetComponent<BuildingPopUp>().SetToMaxLevelBuildingPopUp();
-        }
+        buildingPopUp.GetComponent<BuildingPopUp>().EnableBuildingPopUp(nextLevelCost, GetRecruitCost(), CanRecruit(), buildingData.level);
+
     }
     public virtual void RecruitVillagerProffesion() //method for recruiting unemployed to the specific proffesion 
     {
@@ -56,7 +47,7 @@ public class ProffesionBuilding : Building
                 if (VillagerRecruitAction())
                 {
                     player.GetPlayerData().SubstarctSeedsAmount(GetRecruitCost());
-                    HQ.villageInfoUI.SetSeedsText(true);
+                    villageInfoUI.SetSeedsText(true);
                     InvokeBuildingStateChanged();
                 }
             }
@@ -92,7 +83,7 @@ public class ProffesionBuilding : Building
     {
         HQ.RemoveUnemployed(unemployedVillager);
         RefreshPopUp();
-        Invoke(nameof(ChangeVillagerProffesion),changeProffesionDelay);
+        Invoke(nameof(ChangeVillagerProffesion), changeProffesionDelay);
         Destroy(unemployedVillager);
     }
 
