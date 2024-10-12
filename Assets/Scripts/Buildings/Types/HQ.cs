@@ -18,7 +18,7 @@ public class HQ : Building
 
     [Header("Other info")]
     [SerializeField]private List<GuardTower> guardTowers;
-    public float leftPatrolBorder , rightPatrolBorder ; //for X axsis
+    public Transform leftPatrolBorderTransform , rightPatrolBorderTransform ; //for X axsis
     public List<Farm> farms;
     public bool isNightMode;
     private HealthUI _healthUI;
@@ -114,7 +114,6 @@ public class HQ : Building
     public void RemoveUnemployed(GameObject unemployed) // after recruitment of an unemployed remove from the list
     {
         unemployedVillagers.Remove(unemployed);
-        print($"now you have {unemployedVillagers.Count} unepmloyed villagers");
     }
 
     public void RemoveArcher(GameObject Archer) // after recruitment of an unemployed remove from the list
@@ -122,7 +121,6 @@ public class HQ : Building
         archers.Remove(Archer);
         currentVillagerAmount--;
         villageInfoUI.SetVillagersAmountText(currentVillagerAmount,maxVillagerAmount);
-        print($"now you have {archers.Count} archers");
     }
     public void RemoveFarm(Farm farm)
     {
@@ -154,7 +152,6 @@ public class HQ : Building
     public void AddGuardTower(GuardTower guardTower) //list of built guard tower
     {
         guardTowers.Add(guardTower);
-        print($"guard tower count: {guardTowers.Count}");
     }
 
     private void AssignArcherToGuardTower(GameObject archerToAssign) //method to tell the archer which guard tower to go to

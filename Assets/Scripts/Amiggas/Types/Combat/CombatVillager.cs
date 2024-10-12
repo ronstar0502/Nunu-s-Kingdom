@@ -7,6 +7,7 @@ public class CombatVillager : Villager
     [SerializeField] protected float targetDetectRange;
     [SerializeField] protected float attackRange;
     [SerializeField] protected float attackSpeed;
+    [SerializeField] protected LayerMask targetMask;
     protected GameObject targetEnemy;
 
     protected override void Awake()
@@ -94,7 +95,7 @@ public class CombatVillager : Villager
 
     public virtual void ChangeToDayMode() // change the combat villager back to patrol mode
     {
-        if (targetEnemy == null && !HQ.isNightMode)
+        if (targetEnemy == null && !HQ.isNightMode && !GetAvailableEnemies())
         {
             print("Cillager back to day mode");
             SetState(VillagerState.Patrol);
@@ -106,7 +107,7 @@ public class CombatVillager : Villager
     {
         print($"{villagerData.villagerName} is searching for new targets within range {targetDetectRange}.");
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, targetDetectRange);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, targetDetectRange, targetMask);
 
         if (colliders.Length == 0)
         {
@@ -115,6 +116,7 @@ public class CombatVillager : Villager
             if (!HQ.isNightMode)
             {
                 SetState(VillagerState.Patrol);
+                animator.SetBool("isAttacking", false);
             }
             return;
         }
@@ -166,5 +168,10 @@ public class CombatVillager : Villager
         if (targetEnemy == null) return false;
         float distance = Mathf.Abs(transform.position.x - targetEnemy.transform.position.x); //with vector2.Distance() had some troubles with the target set and attack range
         return distance <= attackRange + 0.1f;
+    }
+
+    private bool GetAvailableEnemies()
+    {
+        return GameObject.FindGameObjectsWithTag("Enemy").Length > 0;
     }
 }
