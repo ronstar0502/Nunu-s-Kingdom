@@ -10,13 +10,9 @@ public class Villager : MonoBehaviour
     protected SpriteRenderer sr;
     protected Rigidbody2D rb;
     protected Animator animator;
+    protected HQ HQ;
     protected Vector2 targetPosition;
     protected int direction;
-
-    [Header("Temporary Patrol Points")]
-    [SerializeField] private float leftPatrolBorder;
-    [SerializeField] private float rightPatrolBorder;
-    protected HQ HQ;
 
     public bool isProffesionRecruited;
 
@@ -27,25 +23,13 @@ public class Villager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         soundEffectManger = FindAnyObjectByType<SoundEffectManger>();
-        InitVillager();
+        HQ = FindObjectOfType<HQ>();
     }
 
     protected virtual void Start()
     {
         SetState(VillagerState.Spawned);
         PlaySFX();
-
-    }
-
-    protected void InitVillager()
-    {
-        HQ = FindObjectOfType<HQ>();
-
-        if (HQ != null)
-        {
-            leftPatrolBorder = HQ.transform.position.x - HQ.leftPatrolBorder;
-            rightPatrolBorder = HQ.transform.position.x + HQ.rightPatrolBorder;
-        }
     }
 
     protected virtual void Update()
@@ -109,7 +93,7 @@ public class Villager : MonoBehaviour
     {
         if (!isProffesionRecruited)
         {
-            float randomPatrolPoint = Random.Range(leftPatrolBorder, rightPatrolBorder);
+            float randomPatrolPoint = Random.Range(HQ.leftPatrolBorderTransform.position.x, HQ.rightPatrolBorderTransform.position.x);
             targetPosition = new Vector2(randomPatrolPoint, transform.position.y);
         }
     }

@@ -283,6 +283,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HQ
       objectReference: {fileID: 0}
+    - target: {fileID: 8690924340629844813, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 55.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787952953844553273, guid: 153321f44f8fc5442aa957e99ea89bd7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -50.51
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2914,7 +2922,6 @@ MonoBehaviour:
   gameEndTxt: {fileID: 1894391379}
   dayDuration: 120
   nightDuration: 120
-  maxDaysInLevel: 10
   gameState: 0
 --- !u!4 &952256233
 Transform:
@@ -5629,6 +5636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowerPrefab: {fileID: 3945179807293158739, guid: a8f7c0f5e7976444da8cdbc1539bbcf3, type: 3}
+  flowerSpawnAmountPerWave: 
   spawnLeftBorder: -36
   spawnRightBorder: 36
   minSpawnDelay: 2

@@ -136,7 +136,7 @@ public class GameManger : MonoBehaviour
     {
         print("NightTime!");
         StartCoroutine(_spawner.StartSpawning());
-        StartCoroutine(_flowerSpawner.SpawnFlowers());
+        StartCoroutine(_flowerSpawner.SpawnFlowers(_currDay));
         _HQ.SetAmmigasToCombatMode();
     }
 

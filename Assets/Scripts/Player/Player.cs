@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     private VillageInfo _villageInfo;
     private IInteractable _interactableObj;
+    [SerializeField] private GameObject _interactableGameObject;
     private bool _canBuild; 
 
     private void Awake()
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
                 collision.gameObject.GetComponent<BuildingSpot>().ShowBuildingGhost();
             }
             _interactableObj = interactable;
+            _interactableGameObject = collision.gameObject;
         }
 
         if (collision.gameObject.CompareTag("Building"))
@@ -87,6 +89,7 @@ public class Player : MonoBehaviour
             collision.gameObject.GetComponent<Building>().DisableBuildingPopUp();
         }
         _interactableObj =null;
+        _interactableGameObject =null;
     }
   
 }

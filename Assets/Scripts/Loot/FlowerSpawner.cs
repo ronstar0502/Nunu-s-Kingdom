@@ -4,20 +4,23 @@ using UnityEngine;
 public class FlowerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject flowerPrefab;
+    [SerializeField] private int[] flowerSpawnAmountPerWave;
     [SerializeField] private float spawnLeftBorder;
     [SerializeField] private float spawnRightBorder;
     [SerializeField] private float minSpawnDelay;
     [SerializeField] private float maxSpawnDelay;
     public bool isNight;
 
-    public IEnumerator SpawnFlowers()
+    public IEnumerator SpawnFlowers(int waveNumber)
     {
         isNight = true;
-        while (isNight)
+        int flowerSpawnedCount = 0;
+        while (isNight || flowerSpawnedCount <= flowerSpawnAmountPerWave[waveNumber-1])
         {
             float spawnDelay = Random.Range(minSpawnDelay,maxSpawnDelay); 
             yield return new WaitForSeconds(spawnDelay);
             SpawnFlower();
+            flowerSpawnedCount++;
         }
     }
 
