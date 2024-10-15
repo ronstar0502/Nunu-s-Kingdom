@@ -90,16 +90,22 @@ public class CombatVillager : Villager
 
     public virtual void ChangeToCombatMode() // change the combat villager to combat mode
     {
-        SetState(VillagerState.Combat);
+        if(villagerState == VillagerState.Patrol)
+        {
+            SetState(VillagerState.Combat);
+        }
     }
 
     public virtual void ChangeToDayMode() // change the combat villager back to patrol mode
     {
-        if (targetEnemy == null && !HQ.isNightMode && !GetAvailableEnemies())
+        if(villagerState == VillagerState.Combat)
         {
-            print("Cillager back to day mode");
-            SetState(VillagerState.Patrol);
-            animator.SetBool("isAttacking", false);
+            if (targetEnemy == null && !HQ.isNightMode && !GetAvailableEnemies())
+            {
+                print("Villager back to day mode");
+                SetState(VillagerState.Patrol);
+                animator.SetBool("isAttacking", false);
+            }
         }
     }
 
@@ -113,11 +119,7 @@ public class CombatVillager : Villager
         {
             print($"{villagerData.villagerName} found no enemies within range.");
             targetEnemy = null;
-            if (!HQ.isNightMode)
-            {
-                SetState(VillagerState.Patrol);
-                animator.SetBool("isAttacking", false);
-            }
+            ChangeToDayMode(); // if there are enemies that died at day and now there are none it check if it can go back to patrol. 
             return;
         }
 
