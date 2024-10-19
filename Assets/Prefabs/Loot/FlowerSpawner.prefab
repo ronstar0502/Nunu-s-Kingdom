@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flowerPrefab: {fileID: 3945179807293158739, guid: a8f7c0f5e7976444da8cdbc1539bbcf3, type: 3}
+  flowerSpawnAmountPerWave: 03000000030000000400000004000000050000000500000005000000060000000600000007000000
   spawnLeftBorder: -36
   spawnRightBorder: 36
-  minSpawnDelay: 3
-  maxSpawnDelay: 5
+  minSpawnDelay: 5
+  maxSpawnDelay: 9
   isNight: 0

@@ -4776,6 +4776,7 @@ GameObject:
   - component: {fileID: 1631946446}
   - component: {fileID: 1631946445}
   - component: {fileID: 1631946448}
+  - component: {fileID: 1631946449}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4871,6 +4872,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 831557866}
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &1631946449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631946444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1001 &1661882232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6051,6 +6096,17 @@ MonoBehaviour:
   archersAmountText: {fileID: 902876356}
   moreInfoText: {fileID: 1149612856}
   infoWindow: {fileID: 435622267}
+--- !u!114 &2049311936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8678005236151694532, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+  m_PrefabInstance: {fileID: 507469442146680457}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507469442146680458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2059929136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6239,6 +6295,86 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a9b343a5539f5c49826629dc7529f0f, type: 3}
+--- !u!1001 &507469442146680457
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2900902857227828309, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      propertyPath: m_Name
+      value: DayNightLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361201647750912037, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361201647750912037, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361201647750912037, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361201647750912037, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361201647750912037, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361201647750912037, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361201647750912037, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361201647750912037, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361201647750912037, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361201647750912037, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2900902857227828309, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 507469442146680459}
+  m_SourcePrefab: {fileID: 100100000, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+--- !u!1 &507469442146680458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2900902857227828309, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
+  m_PrefabInstance: {fileID: 507469442146680457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &507469442146680459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507469442146680458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23980de13d5c81549a720b8e950403cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalLight: {fileID: 2049311936}
+  dayIntensity: 1
+  nightIntensity: 0.25
 --- !u!1001 &1048703606032233074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6445,58 +6581,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: maxSpawnDelay
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: minSpawnDelay
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: flowerSpawnAmountPerWave.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: flowerSpawnAmountPerWave.Array.data[0]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: flowerSpawnAmountPerWave.Array.data[1]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: flowerSpawnAmountPerWave.Array.data[2]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: flowerSpawnAmountPerWave.Array.data[3]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: flowerSpawnAmountPerWave.Array.data[4]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: flowerSpawnAmountPerWave.Array.data[5]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: flowerSpawnAmountPerWave.Array.data[6]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: flowerSpawnAmountPerWave.Array.data[7]
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: flowerSpawnAmountPerWave.Array.data[8]
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1932988684351033741, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
-      propertyPath: flowerSpawnAmountPerWave.Array.data[9]
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2519115080032142934, guid: 1862e717b76a1a3479b12b3110212da2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6780,3 +6864,4 @@ SceneRoots:
   - {fileID: 226906479}
   - {fileID: 249291030}
   - {fileID: 4587440376282217549}
+  - {fileID: 507469442146680457}
