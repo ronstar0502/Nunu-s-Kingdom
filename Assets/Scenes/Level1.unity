@@ -6096,17 +6096,6 @@ MonoBehaviour:
   archersAmountText: {fileID: 902876356}
   moreInfoText: {fileID: 1149612856}
   infoWindow: {fileID: 435622267}
---- !u!114 &2049311936 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8678005236151694532, guid: 898c866f070d1f14daf06708f2abb266, type: 3}
-  m_PrefabInstance: {fileID: 507469442146680457}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507469442146680458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2059929136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6372,9 +6361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23980de13d5c81549a720b8e950403cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalLight: {fileID: 2049311936}
+  _globalLight: {fileID: 0}
   dayIntensity: 1
-  nightIntensity: 0.25
+  nightIntensity: 0.2
 --- !u!1001 &1048703606032233074
 PrefabInstance:
   m_ObjectHideFlags: 0
