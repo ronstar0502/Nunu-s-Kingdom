@@ -2555,8 +2555,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 205103445}
   gameEndMenu: {fileID: 1860097277}
   gameEndTxt: {fileID: 1894391379}
-  dayDuration: 30
-  nightDuration: 30
+  dayDuration: 60
+  nightDuration: 60
   gameState: 0
 --- !u!4 &952256233
 Transform:
